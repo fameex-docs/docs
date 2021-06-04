@@ -6788,7 +6788,7 @@
         btn_swap.href = btn_swap.href.replace('en/', 'cn/');
         //v1_url.href = '/docs/spot/v1/cn/';
         //v2_url.href = '/docs/spot/v2/cn/';
-      }else{
+      }else if(url.indexOf('en') != -1){
         // for the English Language env.
         lang_btn.innerHTML = '简体中文';
         btn_spot.innerHTML = 'Spot/Margin';
@@ -6799,7 +6799,15 @@
         btn_swap.href = btn_swap.href.replace('cn/', 'en/');
         //v1_url.href = '/docs/spot/v1/en/';
         //v2_url.href = '/docs/spot/v2/en/';
+      }else{
+        // for the Chinese Language env.
+        lang_btn.innerHTML = 'English';
+        btn_spot.innerHTML = '现货/杠杆';
+        btn_swap.innerHTML = 'U本位合约';
+        LG.href = "https://www.fameex.com/";
+        window.location.pathname = 'docs/api/spot/cn/';
       }
+
       if(location.href.indexOf('api/swap') > 0){
         btn_spot.className = '';
         btn_swap.className = 'current';
