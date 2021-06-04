@@ -21,174 +21,178 @@ meta:
     content: FAMEEX,API,Documentation
 ---
 
-# 更新日志
+
+
+# Update log
 
 **2020-12-22**
 
-- 钱包接口更新：
-  - 删除所有币种的提币记录接口 `v1/api/account/withdrawal/history`
-  - 删除单个币种的提币记录接口 `v1/api/account/withdrawal/history/currency`
-  - 删除获取所有币种的充币记录接口 `v1/api/account/deposit/histoty`
-  - 删除查询账单流水记录接口 `v1/api/spot/bill_flow`
-  - 新增查询现货账户交易账单接口 `v1/api/spot/record/trade`
-  - 新增查询现货账户划转账单接口 `v1/api/spot/record/chargewithdraw`
-  - 新增查询现货账户充提账单接口 `v1/api/spot/record/trans`
-  - 新增查询现货账户其他账单接口 `v1/api/spot/record/others`
-  - 修改资金划转接口参数接口 `v1/api/account/transfer`
+- Wallet interface update:
+  - Delete the withdrawal record interface of all currencies `v1/api/account/withdrawal/history`
+  - Delete the withdrawal record interface of a single currency `v1/api/account/withdrawal/history/currency`
+  - Delete the deposit record interface for obtaining all currencies `v1/api/account/deposit/histoty`
+  - Delete the interface for querying bill flow records `v1/api/spot/bill_flow`
+  - Added an interface for querying spot account transaction bills `v1/api/spot/record/trade`
+  - Added an interface for querying the transfer bill of a spot account `v1/api/spot/record/chargewithdraw`
+  - Added an interface for querying cash account deposit and withdrawal bills `v1/api/spot/record/trans`
+  - Added an interface for querying other bills of spot accounts `v1/api/spot/record/others`
+  - Modify the fund transfer interface parameter interface `v1/api/account/transfer`
 
 **2020-11-16**
 
-- 币币交易接口更新：
-  - 更新获取订单列表 `v1/api/spot/orderlist`为获取委托单列表
-  - 更新获取订单详情 `v1/api/spot/orderdetail` 为获取委托单详情
-  - 更新获取杠杆订单列表 `v1/api/lever/orders`为获取杠杆订单列表
-  - 更新获取杠杆订单详情 `v1/api/lever/orders/detail`为获取杠杆委托单详情
+- Coin trading interface update:
+  - Update obtain a list of orders `v1/api/spot/orderlist`to obtain a list of orders
+  - Update get order details `v1/api/spot/orderdetail`to obtain orders details
+  - Updated list of orders to obtain leverage `v1/api/lever/orders`to obtain a list of orders lever
+  - Update get order details leverage `v1/api/lever/orders/detail`to acquire a lever Order details
 
 **2020-10-30**
 
-- 钱包接口更新：
-  - 修改资金划转功能接口 `v1/api/account/transfer`
+- Wallet interface update:
+  - Modify the fund transfer function interface `v1/api/account/transfer`
 
 **2020-10-29**
 
-- 钱包接口更新：
-  - 新增杠杆挂单功能接口 `v1/api/lever/orders/place`
-  - 新增杠杆撤单功能接口 `v1/api/lever/orders/cancel`
-  - 新增杠杆批量撤单接口 `v1/api/lever/orders/batch_cancel`
-  - 新增获取杠杆账户委托单列表功能接口 `v1/api/lever/orders`
-  - 新增获取杠杆账户委托单详情功能接口 `v1/api/lever/orders/detail`
-  - 新增获取杠杆配置功能接口 `v1/api/lever/pair/config`
+- Wallet interface update:
+  - Added function interface for leveraged pending orders `v1/api/lever/orders/place`
+  - Added a function interface for leveraged order cancellation `v1/api/lever/orders/cancel`
+  - New interface for batch withdrawal of leveraged orders `v1/api/lever/orders/batch_cancel`
+  - Added a function interface for obtaining the order list of margin accounts `v1/api/lever/orders`
+  - Added a function interface for obtaining the details of a margin account order `v1/api/lever/orders/detail`
+  - Added function interface for obtaining leverage configuration `v1/api/lever/pair/config`
 
 **2020-10-28**
 
-- 钱包接口更新：
-  - 新增获取杠杆账户账单接口 `v1/api/lever/ledger`
-  - 新增获取杠杆账户特定币对，特定币种下还币的提示参数接口 `v1/api/lever/repayparam`
-  - 新增获取杠杆账户特定币对，特定币种下还币接口 `v1/api/lever/repay`
-  - 新增获取杠杆账户特定币对，特定币种下借币的提示参数接口 `v1/api/lever/borrow`
-  - 新增获取杠杆账户特定币对，特定币种下借币接口 `v1/api/lever/borrowparam`
+- Wallet interface update:
+  - Added an interface for obtaining a margin account statement `v1/api/lever/ledger`
+  - Added the prompt parameter interface for obtaining a specific currency pair of a margin account and repaying a currency under a specific currency `v1/api/lever/repayparam`
+  - Added a new interface for obtaining specific currency pairs for margin accounts and repaying currencies under specific currencies `v1/api/lever/repay`
+  - Added a new interface for obtaining specific currency pairs in a margin account, and a prompt parameter interface for borrowing currency in a specific currency `v1/api/lever/borrow`
+  - Added interface for obtaining specific currency pairs in margin accounts and borrowing currency in specific currencies `v1/api/lever/borrowparam`
 
 **2020-10-27**
 
-- 钱包接口更新：
-  - 新增获取杠杆账户信息接口 `v1/api/lever/accounts`
-  - 新增获取杠杆账户下某一特定币对详情接口 `v1/api/lever/accounts/{pairName}`
+- Wallet interface update:
+  - Added an interface for obtaining margin account information `v1/api/lever/accounts`
+  - Added an interface for obtaining the details of a specific currency pair under a margin account `v1/api/lever/accounts/{pairName}`
 
-# 简介
+# Introduction
 
-API 概述
+API overview
 
-FAMEEX 为您提供了一套简单又强大的 API 接口，帮助您快速、高效的获取行情和进行交易。
+FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
 
-使用 API 前，请先创建您个人的 API，获取您的 AccessKey 和 SecretKey，并设置 API 的 IP 访问限制。
+Before using the API, please create your own API, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
 
-API 的交易权限让您可以快速的获取当前市场最新行情及时的下单交易、查询自己可用和冻结金额、查询自己当前尚未成交的挂单、买进或卖出、撤单。
+API trading permissions allow you to quickly obtain the latest market quotations and timely order transactions, query your available and frozen amounts, query your current pending orders, buy or sell, and withdraw orders.
 
-FAMEEX 官网首页： www.fameex.com <br><br>
+FAMEEX official website homepage: [www.fameex.com](http://www.fameex.com)
 
-如果在使用过程中有任何问题，请联系 FAMEEX 官方客服，
 
-我们的联系方式如下：
 
-官方客服邮箱：Service@mail.fameex.info
+If you have any questions during use, please contact FAMEEX official customer service,
 
-官方微博：https://m.weibo.cn/u/7130914300
+Our contact information is as follows:
 
-官方 Twitter：https://twitter.com/FameexGroup
+Official customer service mailbox: [Service@mail.fameex.info](mailto:Service@mail.fameex.info)
 
-我们将为您做出最权威的解答。
+Official Weibo: https://m.weibo.cn/u/7130914300
 
-# 接入说明
+Official Twitter: https://twitter.com/FameexGroup
 
-## 接入URLs
+We will make the most authoritative answer for you.
 
-| 接入 URLs                 | 备注                   |
-| ------------------------- | ---------------------- |
-| `https://api.fameex.com`  | RESTFUL API            |
-| `wss://www.fameex.com/ws` | WebSocket Feed（行情） |
+# Access instructions
 
-所有请求基于 Https 协议，POST 请求的请求头信息中 contentType 需要统一设置为:’application/json’
+## Access URLs
 
-鉴于延迟高和稳定性差等原因，不建议通过代理的方式访问 FAMEEX- API。
+| Access URLs               | Remarks                 |
+| ------------------------- | ----------------------- |
+| `https://api.fameex.com`  | RESTFUL API             |
+| `wss://www.fameex.com/ws` | WebSocket Feed (quotes) |
 
-## 限频规则
+All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:'application/json'
 
-**限制频率：**每个接口的限制不同 。
+In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.
 
-单个 API Key 维度限制，建议行情 API 访问也要加上签名，否则限频会更严格。
+## Frequency limiting rules
 
-| 限频规则                               | 数据类型               | 备注 |
-| -------------------------------------- | ---------------------- | ---- |
-| 对每个 AccessKey 及每个 url 的频率限制 | 20 次/2s（大部分接口） | 无   |
+**Limit frequency:** The limit of each interface is different.
 
-## 请求头设置
+A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.
 
-请求头(header)的参数如下：
+| Frequency limiting rules                        | type of data                  | Remarks |
+| ----------------------------------------------- | ----------------------------- | ------- |
+| Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no      |
 
-| 参数             | 数据类型 | 备注                       |
-| ---------------- | -------- | -------------------------- |
-| AccessKey        | string   | 您申请的 Accesskey         |
-| SignatureMethod  | string   | HmacSHA256                 |
-| SignatureVersion | string   | v1.0                       |
-| Timestamp        | int64    | 请求时间的时间戳; 单位: 秒 |
-| Signature        | string   | 签名                       |
-| Content-Type     | string   | application/json           |
+## Request header settings
 
-请求头(header)的参数解释：
+The parameters of the request header are as follows:
 
-**API 访问密钥（AccessKey）：**您申请的 API 的 AccessKey。
+| parameter        | type of data | Remarks                                      |
+| ---------------- | ------------ | -------------------------------------------- |
+| AccessKey        | string       | The Accesskey you applied for                |
+| SignatureMethod  | string       | HmacSHA256                                   |
+| SignatureVersion | string       | v1.0                                         |
+| Timestamp        | int64        | Timestamp of the request time; unit: seconds |
+| Signature        | string       | signature                                    |
+| Content-Type     | string       | application/json                             |
 
-**签名方法（SignatureMethod）：**用户计算签名的基于哈希的协议，此处使用 HmacSHA256。
+Explanation of the parameters of the request header:
 
-**签名版本（SignatureVersion）：**签名协议的版本，此处使用 v1.0。
+**API Access Key (AccessKey):** The AccessKey of the API you applied for.
 
-**时间戳（Timestamp）：**您发出请求的时间。 如：2019-07-24 00:00:00 对应时间戳 1563897600。在查询请求中包含此值有助于防止第三方截取您的请求。
+**Signature Method (SignatureMethod):** A hash-based protocol for the user to calculate the signature. Here, HmacSHA256 is used.
 
-**签名（Signature）：**签名计算得出的值，用于确保签名有效和未被篡改。
+**Signature Version (SignatureVersion):** the version of the signature protocol, here v1.0 is used.
 
-## 签名
+**Timestamp:** The time when you made the request. For example: 2019-07-24 00:00:00 corresponds to the timestamp 1563897600. Including this value in the query request helps prevent third parties from intercepting your request.
 
-1、签名说明
+**Signature:** The value calculated by the signature to ensure that the signature is valid and has not been tampered with.
 
-API 请求在通过 internet 传输的过程中极有可能被篡改，为了确保请求未被更改，除推送服务接口外的私有接口均必须使用您的 API 的 AccessKey 和 SecretKey 做签名认证，以校验参数或参数值在传输途中是否发生了更改。
+## signature
 
-方法请求地址：即访问服务器地址 api.fameex.com，比如 api.fameex.com/v1/order/orders
+\1. Signature description
 
-**API Key 包含以下两部分：**
+API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to verify parameters or parameters Whether the value has changed during transmission.
 
-AccessKey：API 访问密钥
+Method request address: access server address api.fameex.com, such as api.fameex.com/v1/order/orders
 
-SecretKey： 签名认证加密所使用的密钥（仅申请时可见）
+**API Key contains the following two parts:**
 
-`Signature`是对`timestamp（单位 秒） + method（GET或POST） + requestPath + body`字符串(+表示字符串连接)拼接的字符串，使用 secretKey，按照 HMAC SHA256 方法加密，通过 hex 编码输出而得到的。
+AccessKey: API access key
 
-其中，`timestamp`的值与请求头的`Timestamp`相同，必须是 UTC 时区 Unix 时间戳的十进制秒数格式或 ISO8601 标准的时间格式，精确到秒
+SecretKey: The key used for signature authentication and encryption (only visible at the time of application)
 
-method 是请求方法，字母全部大写：`GET/POST`。
+`Signature`It is a string spliced on a `timestamp（Unit second） + method（GET OR POST） + requestPath + body`string (+ means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.
 
-requestPath 是请求接口路径。例如：`/orders?state=1&type=2`
+Among them, `timestamp`the value of is the same as the request header, `Timestamp`and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second
 
-body 是指请求主体的字符串(去掉空白字符，如\n,\r,\t)，如果请求没有主体(通常为 GET 请求)则 body 可省略。例如：`{"orderId":"377454671037440"}`
+method is a request method, all uppercase letters: `GET/POST`.
 
-secretKey 为用户申请 API Key 时所生成。例如：533d6e70-21b2-eb5c-f801-c128021c70a1
+requestPath is the request interface path. E.g:`/orders?state=1&type=2`
 
-# Websocket 行情推送
+The body refers to the string of the request body (without blank characters, such as \n,\r,\t). If the request has no body (usually a GET request), the body can be omitted. E.g:`{"orderId":"377454671037440"}`
 
-## 心跳连接
+The secretKey is generated when the user applies for the API Key. For example: 533d6e70-21b2-eb5c-f801-c128021c70a1
 
-`说明`
+# Websocket market push
 
-长连接心跳
+## Heartbeat connection
 
-`请求路径`
+`Description`
 
-wss://www.fameex.com/push
+Long connection heartbeat
 
-`请求方式`
+`Request path`
+
+wss://[www.fameex.com/push](http://www.fameex.com/push)
+
+`Request method`
 
 websocket
 
-`请求示例`
+`Request example`
 
 ``` json
 {
@@ -196,19 +200,17 @@ websocket
 }
 ```
 
-`参数`
+| parameter | Do you have to | type of data | Remarks                    |
+| --------- | -------------- | ------------ | -------------------------- |
+| on        | Yes            | string       | Message type ("heartBeat") |
 
-| 参数 | 是否必须 | 数据类型 | 备注                  |
-| ---- | -------- | -------- | --------------------- |
-| op   | 是       | string   | 消息类型("heartBeat") |
+`Return Value`
 
-`返回值`
+| Field Name | type of data | Remarks                    |
+| ---------- | ------------ | -------------------------- |
+| type       | string       | Message type ("heartBeat") |
 
-| 字段名称 | 数据类型 | 备注                  |
-| -------- | -------- | --------------------- |
-| type     | string   | 消息类型("heartBeat") |
-
-``` json
+```json
   {
     "code": 200,
     "msg": "***",
@@ -216,45 +218,42 @@ websocket
   }
 ```
 
-## 登录信息
+## login information
 
-`说明`
+`Description`
 
-长连接登录
+Long connection login
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`请求示例`
-
-```json
+Request example`
 {
   "op": "login",
   "AccessKey": "***",
   "sign": "***"
 }
+Parameter
 ```
 
-`参数`
+| parameter | Do you have to | type of data | Remarks                       |
+| --------- | -------------- | ------------ | ----------------------------- |
+| on        | Yes            | string       | Message type ("Login")        |
+| AccessKey | Yes            | string       | AccessKey applied for         |
+| sign      | Yes            | string       | Unique page identifier (uuid) |
 
-| 参数      | 是否必须 | 数据类型 | 备注               |
-| --------- | -------- | -------- | ------------------ |
-| op        | 是       | string   | 消息类型("Login")  |
-| AccessKey | 是       | string   | 申请的 AccessKey   |
-| sign      | 是       | string   | 页面唯一标识(uuid) |
+`Return Value`
 
-`返回值`
-
-| 字段名称 | 数据类型 | 备注              |
-| -------- | -------- | ----------------- |
-| code     | int      | 200, 正常         |
-| msg      | string   | 备注              |
-| type     | string   | 消息类型("login") |
+| Field Name | type of data | Remarks                |
+| ---------- | ------------ | ---------------------- |
+| code       | int          | 200, normal            |
+| msg        | string       | Remarks                |
+| type       | string       | Message type ("login") |
 
 ```json
 {
@@ -264,21 +263,21 @@ websocket
 }
 ```
 
-## 注册K线信息
+## Register Kline Information
 
-`说明`
+`Description`
 
-此接口注册 K 线服务
+This interface is registered for K-line service
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`请求示例`
+`Request example`
 
 ```json
 {
@@ -288,71 +287,69 @@ websocket
   "quote": "***",
   "KTime": "***"
 }
+Parameter
 ```
 
-`参数`
+| parameter | Do you have to | type of data | Remarks                                                |
+| --------- | -------------- | ------------ | ------------------------------------------------------ |
+| on        | Yes            | string       | Message type ("register")                              |
+| type      | Yes            | string       | Registration type ("kLineData")                        |
+| base      | Yes            | string       | Trading currency in the trading pair                   |
+| quote     | Yes            | string       | Denominated currency in the trading pair               |
+| Ktima     | Yes            | string       | K Line Time("1","5","15","30","60","120","240","1D","1W") |
 
-| 参数  | 是否必须 | 数据类型 | 备注                                                   |
-| ----- | -------- | -------- | ------------------------------------------------------ |
-| op    | 是       | string   | 消息类型("register")                                   |
-| type  | 是       | string   | 注册类型("kLineData")                                  |
-| base  | 是       | string   | 交易对中的交易币种                                     |
-| quote | 是       | string   | 交易对中的计价币种                                     |
-| KTime | 是       | string   | K 线时间("1","5","15","30","60","120","240","1D","1W") |
+`Return Value`
 
-`返回值`
+no
 
-无
+## Register Home Quotes
 
-## 注册首页行情
+`Description`
 
-`说明`
+This interface is used to register the homepage quotation service
 
-此接口注册首页行情服务
+`Request path`
 
-`请求路径`
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-wss://www.fameex.com/push
-
-`请求方式`
+`Request method`
 
 websocket
 
-`请求示例`
+`Request example`
 
 ```json
 {
   "op": "register",
   "type": "homemarket"
 }
+Parameter
 ```
 
-`参数`
+| parameter | Do you have to | type of data | Remarks           |
+| --------- | -------------- | ------------ | ----------------- |
+| on        | Yes            | string       | Message type      |
+| type      | Yes            | string       | Registration Type |
 
-| 参数 | 是否必须 | 数据类型 | 备注     |
-| ---- | -------- | -------- | -------- |
-| op   | 是       | string   | 消息类型 |
-| type | 是       | string   | 注册类型 |
+`Return Value`
 
-`返回值`
+no
 
-无
+## Register in-depth quotes
 
-## 注册深度行情
+`Description`
 
-`说明`
+This interface registers for in-depth services
 
-此接口注册深度服务
+`Request path`
 
-`请求路径`
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-wss://www.fameex.com/push
-
-`请求方式`
+`Request method`
 
 websocket
 
-`请求示例`
+`Request example`
 
 ```json
 {
@@ -362,59 +359,58 @@ websocket
   "quote": "***",
   "percision": 0
 }
+Parameter
 ```
 
-`参数`
+| parameter | Do you have to | type of data | Remarks                                  |
+| --------- | -------------- | ------------ | ---------------------------------------- |
+| on        | Yes            | string       | Message type                             |
+| type      | Yes            | string       | Registration Type                        |
+| base      | Yes            | string       | Trading currency in the trading pair     |
+| quote     | Yes            | string       | Denominated currency in the trading pair |
+| percision | Yes            | int          | Depth precision digits                   |
 
-| 参数      | 是否必须 | 数据类型 | 备注               |
-| --------- | -------- | -------- | ------------------ |
-| op        | 是       | string   | 消息类型           |
-| type      | 是       | string   | 注册类型           |
-| base      | 是       | string   | 交易对中的交易币种 |
-| quote     | 是       | string   | 交易对中的计价币种 |
-| percision | 是       | int      | 深度精度位数       |
+`Return Value`
 
-`返回值`
+no
 
-无
+## Push homepage quotation
 
-## 推送首页行情
+`Description`
 
-`说明`
+This interface pushes homepage market data
 
-此接口推送首页行情数据
+`Request path`
 
-`请求路径`
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-wss://www.fameex.com/push
-
-`请求方式`
+`Request method`
 
 websocket
 
-`参数`
+`Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称            | 数据类型 | 备注                   |
-| ------------------- | -------- | ---------------------- |
-| type                | string   | 消息类型               |
-| base_quote          | string   | 币对 key               |
-| base                | string   | 交易对中的交易币种     |
-| quote               | string   | 交易对中的计价币种     |
-| transactionPrice    | float    | 成交价                 |
-| gain                | float    | 24 小时涨幅            |
-| coinHour24OpenPrice | float    | 24 小时开盘            |
-| coinHour24LowPrice  | float    | 24 小时最低            |
-| coinHour24HighPrice | float    | 24 小时最高            |
-| hour24Volume        | float    | 24 小时成交量          |
-| tranHour24Volume    | float    | 24 小时成交总额        |
-| tranByCnyPrice      | float    | 计价币价格(单位人民币) |
-| baseByCnyPrice      | float    | 交易币价格(单位人民币) |
+| Field Name          | type of data | Remarks                                  |
+| ------------------- | ------------ | ---------------------------------------- |
+| type                | string       | Message type                             |
+| base_quote          | string       | Currency pair key                        |
+| base                | string       | Trading currency in the trading pair     |
+| quote               | string       | Denominated currency in the trading pair |
+| transactionPrice    | float        | final price                              |
+| gain                | float        | 24-hour increase                         |
+| coinHour24OpenPrice | float        | Open 24 hours                            |
+| coinHour24LowPrice  | float        | 24 hours minimum                         |
+| coinHour24HighPrice | float        | 24 hours maximum                         |
+| hour24Volume        | float        | 24-hour volume                           |
+| tranHour24Volume    | float        | 24-hour turnover                         |
+| tranByCnyPrice      | float        | Price in denominated currency (in RMB)   |
+| baseByCnyPrice      | float        | Transaction currency price (in RMB)      |
 
-``` json
+```json
  {
     "code": 200,
     "msg": "***",
@@ -437,39 +433,39 @@ websocket
   }
 ```
 
-## 推送币对深度列表
+## Push the depth list of currency pairs
 
-`说明`
+`Description`
 
-此接口推送币对深度列表数据
+This interface pushes the currency pair depth list data
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`参数`
+`Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称   | 数据类型 | 备注                   |
-| ---------- | -------- | ---------------------- |
-| type       | string   | 消息类型("transDepth") |
-| base       | string   | 交易对中的交易币种     |
-| quote      | string   | 交易对中的计价币种     |
-| buyList    | array    | 买入列表               |
-| price      | string   | 单价                   |
-| count      | string   | 单价对应深度数量       |
-| orderCount | int      | 订单数量               |
-| sellList   | array    | 卖出列表               |
-| timestamp  | int64    | 时间戳                 |
+| Field Name | type of data | Remarks                                  |
+| ---------- | ------------ | ---------------------------------------- |
+| type       | string       | Message type ("transDepth")              |
+| base       | string       | Trading currency in the trading pair     |
+| quote      | string       | Denominated currency in the trading pair |
+| buyList    | array        | Buy list                                 |
+| price      | string       | unit price                               |
+| count      | string       | Unit price corresponds to depth quantity |
+| orderCount | int          | quantity of order                        |
+| sellList   | array        | Sell list                                |
+| timestamp  | int64        | Timestamp                                |
 
-``` json
+```json
 {
     "code": 200,
     "msg": "***",
@@ -496,37 +492,37 @@ websocket
 }
 ```
 
-## 推送K线数据
+## Push K-line data
 
-`说明`
+`Description`
 
-此接口推送 K 线数据
+This interface pushes K-line data
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`参数`
+`Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                                |
-| -------- | -------- | ----------------------------------- |
-| type     | string   | 消息类型("kLineData")               |
-| time     | int64    | K 线时间戳（根据注册 K 线服务推送） |
-| open     | float    | 开盘价                              |
-| high     | float    | 最高价                              |
-| low      | float    | 最低价                              |
-| close    | float    | 收盘价                              |
-| volume   | float    | 成交量                              |
+| Field Name | type of data | Remarks                                                      |
+| ---------- | ------------ | ------------------------------------------------------------ |
+| type       | string       | Message type ("kLineData")                                   |
+| time       | int64        | K-line timestamp (push according to registered K-line service) |
+| open       | float        | Opening price                                                |
+| high       | float        | Highest price                                                |
+| low        | float        | Lowest price                                                 |
+| close      | float        | Closing price                                                |
+| volume     | float        | Volume                                                       |
 
-``` json
+```json
 {
     "code": 200,
     "msg": "***",
@@ -542,37 +538,37 @@ websocket
 }
 ```
 
-## 推送最新成交订单行情
+## Push the latest transaction order quotation
 
-`说明`
+`Description`
 
-此接口推送最新成交订单详情
+This interface pushes the latest transaction order details
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`参数`
+`Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                 |
-| -------- | -------- | -------------------- |
-| type     | string   | 消息类型             |
-| base     | string   | 交易对中的交易币种   |
-| quote    | string   | 交易对中的计价币种   |
-| price    | float    | 成交单价             |
-| count    | float    | 成交数量             |
-| time     | int64    | 成交时间 单位: 毫秒  |
-| buyType  | int      | 买卖方向 0, 买, 1 卖 |
+| Field Name | type of data | Remarks                                     |
+| ---------- | ------------ | ------------------------------------------- |
+| type       | string       | Message type                                |
+| base       | string       | Trading currency in the trading pair        |
+| quote      | string       | Denominated currency in the trading pair    |
+| price      | float        | Transaction price                           |
+| count      | float        | The number of transactions                  |
+| time       | int64        | Transaction time unit: milliseconds         |
+| buyType    | int          | Buying and selling direction 0, buy, 1 sell |
 
-``` json
+```json
  {
     "code": 200,
     "msg": "***",
@@ -588,44 +584,44 @@ websocket
 }
 ```
 
-## 推送订单成交或者撤销
+## Push order transaction or cancellation
 
-`说明`
+`Description`
 
-推送买卖方或自己订单成交或取消
+Push buyers and sellers or own orders to complete or cancel
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`参数`
+`Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                                                                                        |
-| ----------- | -------- | ------------------------------------------------------------------------------------------- |
-| type        | string   | 消息类型("myTransDepth")                                                                    |
-| orderId     | string   | 订单 id                                                                                     |
-| base        | string   | 交易币                                                                                      |
-| quote       | string   | 计价币                                                                                      |
-| state       | int      | 订单的状态码 4-taker 完全成交 8-taker 部分成交 9-maker 部分成交 10-maker 完全成交 11-已撤销 |
-| price       | float    | 委托单价格                                                                                  |
-| count       | float    | 未成交数量                                                                                  |
-| totalCount  | float    | 委托单数量                                                                                  |
-| dealedCount | float    | 已成交数量                                                                                  |
-| dealedMoney | float    | 已成交额                                                                                    |
-| buyType     | int      | 买卖方向 0-买 1-卖                                                                          |
-| buyClass    | int      | 交易类型 0-限价 1 市价 2 止盈止损                                                           |
-| lossPrice   | float    | 止盈止损触发价格                                                                            |
-| createTime  | int64    | 下单时间                                                                                    |
+| Field Name  | type of data | Remarks                                                      |
+| ----------- | ------------ | ------------------------------------------------------------ |
+| type        | string       | Message type ("myTransDepth")                                |
+| orderId     | string       | Order id                                                     |
+| base        | string       | Transaction currency                                         |
+| quote       | string       | Denominated currency                                         |
+| state       | int          | The status code of the order 4-taker is fully executed 8-taker is partially executed 9-maker is partially executed 10-maker is completely executed 11-cancelled |
+| price       | float        | Order price                                                  |
+| count       | float        | Unsold quantity                                              |
+| totalCount  | float        | Number of orders                                             |
+| dealedCount | float        | Number of transactions                                       |
+| dealedMoney | float        | Turnover                                                     |
+| buyType     | int          | Buying and Selling Direction 0-Buy1-Sell                     |
+| buyClass    | int          | Transaction Type 0-Limit Price 1 Market Price 2 Take Profit and Stop Loss |
+| lossPrice   | float        | Stop profit and stop loss trigger price                      |
+| createTime  | int64        | order time                                                   |
 
-``` json
+```json
 {
     "code": 200,
     "msg": "***",
@@ -648,32 +644,32 @@ websocket
 }
 ```
 
-## 推送我的订单部分撤销
+## Push partial cancellation of my order
 
-`说明`
+`Description`
 
-此接口推送我的订单部分成交或部分取消数据
+This interface pushes partial transaction or partial cancellation data of my order
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`参数`
+`Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                          |
-| -------- | -------- | ----------------------------- |
-| type     | string   | 消息类型("myOrderPartCancel") |
-| orderId  | string   | 订单 id                       |
+| Field Name | type of data | Remarks                            |
+| ---------- | ------------ | ---------------------------------- |
+| type       | string       | Message type ("myOrderPartCancel") |
+| orderId    | string       | Order id                           |
 
-``` json
+```json
  {
     "code": 200,
     "msg": "***",
@@ -682,73 +678,72 @@ websocket
   }
 ```
 
-## 注销首页行情
+## Cancel homepage quotes
 
-`说明`
+`Description`
 
-此接口注销首页行情服务
+This interface cancels the homepage quotation service
 
-`请求路径`
+`Request path`
 
-wss://www.fameex.com/push
+wss://[www.fameex.com/push](http://www.fameex.com/push)
 
-`请求方式`
+`Request method`
 
 websocket
 
-`请求示例`
+`Request example`
 
 ```json
 {
   "op": "unregister",
   "type": "homemarket"
 }
+Parameter
 ```
 
-`参数`
+| parameter | Do you have to | type of data | Remarks           |
+| --------- | -------------- | ------------ | ----------------- |
+| on        | Yes            | string       | Message type      |
+| type      | Yes            | string       | Registration Type |
 
-| 参数 | 是否必须 | 数据类型 | 备注     |
-| ---- | -------- | -------- | -------- |
-| op   | 是       | string   | 消息类型 |
-| type | 是       | string   | 注册类型 |
+`Return Value`
 
-`返回值`
+no
 
-无
+# Basic API interface
 
-# 基础 API 接口
+## Get current system time
 
-## 获取当前系统时间
+Speed limit rule: 20 times/2s
 
-限速规则：20 次/2s
+`Description`
 
-`说明`
+Get the current system time, in seconds
 
-获取当前系统时间，单位秒
-
-`请求路径`
+`Request path`
 
 /v1/common/timestamp
 
 curl `https://api.fameex.com/v1/common/timestamp`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                |
-| -------- | -------- | ------------------- |
-| code     | int      | 200, 正常           |
-| ts       | int64    | 请求时间, 秒        |
-| data     | int64    | 返回值,当前时间, 秒 |
+| Field Name | type of data | Remarks                            |
+| ---------- | ------------ | ---------------------------------- |
+| code       | int          | 200, normal                        |
+| ts         | int64        | Request time, seconds              |
+| data       | int64        | Return value, current time, second |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -758,45 +753,45 @@ curl `https://api.fameex.com/v1/common/timestamp`
 }
 ```
 
-## 获取所有交易币对
+## Get all trading currency pairs
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口返回 FAMEEX 平台支持的所有交易币对。
+This interface returns all trading currency pairs supported by the FAMEEX platform.
 
-`请求路径`
+`Request path`
 
 /v1/common/symbols
 
 curl `https://api.fameex.com/v1/common/symbols`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称        | 数据类型 | 备注                                   |
-| --------------- | -------- | -------------------------------------- |
-| code            | int      | 200, 正常                              |
-| ts              | int64    | 请求时间, 秒                           |
-| msg             | string   | 此次返回值说明                         |
-| total           | int      | 交易币对总数量                         |
-| data            | list     | 返回数据：币对信息                     |
-| base            | string   | 交易币                                 |
-| quote           | string   | 计价币                                 |
-| pair            | string   | 交易币对                               |
-| pricePercision  | string   | 交易对中计价币种的精度（小数点后位数） |
-| amountPercision | string   | 交易对中交易币种的精度（小数点后位数） |
-| permitAmount    | string   | 最小挂单数量                           |
+| Field Name      | type of data | Remarks                                                      |
+| --------------- | ------------ | ------------------------------------------------------------ |
+| code            | int          | 200, normal                                                  |
+| ts              | int64        | Request time, seconds                                        |
+| msg             | string       | Description of the return value this time                    |
+| total           | int          | Total number of trading currency pairs                       |
+| data            | list         | Return data: currency pair information                       |
+| base            | string       | Transaction currency                                         |
+| quote           | string       | Denominated currency                                         |
+| pair            | string       | Trading currency pairs                                       |
+| pricePercision  | string       | The precision of the denominated currency in the trading pair (digits after the decimal point) |
+| amountPercision | string       | The precision of the trading currency in the trading pair (digits after the decimal point) |
+| permitAmount    | string       | Minimum number of pending orders                             |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -817,49 +812,49 @@ curl `https://api.fameex.com/v1/common/symbols`
 }
 ```
 
-## 获取所有交易币种
+## Get all transaction currencies
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口返回 FAMEEX 支持的所有交易币种。
+This interface returns all trading currencies supported by FAMEEX.
 
-`请求路径`
+`Request path`
 
 /v1/common/currencys
 
 curl `https://api.fameex.com/v1/common/currencys`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称                    | 数据类型 | 备注                                |
-| --------------------------- | -------- | ----------------------------------- |
-| code                        | int      | 200, 正常                           |
-| msg                         | string   | 此次返回值说明                      |
-| data                        | list     | 返回数据：币种信息                  |
-| currency                    | string   | 币种简称                            |
-| nameEn                      | string   | 英文名                              |
-| nameZh                      | string   | 中文名                              |
-| isBase                      | int      | 1-可以作为交易币 2-不可以作为交易币 |
-| isQuote                     | int      | 1-可以作为计价币 2-不可以作为计价币 |
-| minChargeAmount             | string   | 最小充币数量                        |
-| blockConfirmNumber          | int      | 区块确认数                          |
-| onceminwithdraw             | string   | 单次最大提币数量                    |
-| daymaxwithdrawtimes         | int      | 单日最大提币次数                    |
-| feewithdraw                 | string   | 提币手续费                          |
-| currencyRecharge 里的 state | int      | 充币的状态 1-开启 2-关闭            |
-| currencyWithdraw 里的 state | int      | 提币的状态 1-开启 2-关闭            |
+| Field Name                | type of data | Remarks                                                      |
+| ------------------------- | ------------ | ------------------------------------------------------------ |
+| code                      | int          | 200, normal                                                  |
+| msg                       | string       | Description of the return value this time                    |
+| data                      | list         | Return data: currency information                            |
+| currency                  | string       | Currency abbreviation                                        |
+| nameEn                    | string       | English name                                                 |
+| nameZh                    | string       | Chinese name                                                 |
+| isBase                    | int          | 1- Can be used as transaction currency 2- Can not be used as transaction currency |
+| isQuote                   | int          | 1- Can be used as a denominated currency 2- Can not be used as a denominated currency |
+| minChargeAmount           | string       | Minimum deposit amount                                       |
+| blockConfirmNumber        | int          | Block confirmation number                                    |
+| onceminwithdraw           | string       | Maximum number of withdrawals at a time                      |
+| daymaxwithdrawtimes       | int          | Maximum number of withdrawals in a single day                |
+| feewithdraw               | string       | Withdrawal fee                                               |
+| state in currencyRecharge | int          | Deposit status 1-open 2-close                                |
+| state in currencyWithdraw | int          | Withdrawal status 1-open 2-close                             |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -874,7 +869,6 @@ curl `https://api.fameex.com/v1/common/currencys`
         "isQuote": 1,
         "currencyDetail": {
           "ERC20": {
-            //链类型的名称
             "id": 49,
             "chainType": "ERC20",
             "currencyRecharge": {
@@ -934,49 +928,49 @@ curl `https://api.fameex.com/v1/common/currencys`
 }
 ```
 
-# 行情 API 接口
+# Quote API interface
 
-## 获取k线数据
+## Get k-line data
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口获取历史 K 线数据。
+This interface obtains historical K-line data.
 
-`请求路径`
+`Request path`
 
 GET/v1/market/history/kline
 
 curl `https://api.fameex.com/v1/market/history/kline`
 
-`路由参数`
+`Routing parameters`
 
-| 参数        | 是否必须 | 数据类型 | 备注                                                        |
-| ----------- | -------- | -------- | ----------------------------------------------------------- |
-| pairName    | 是       | string   | 币对, 例"ETH_BTC"                                           |
-| granularity | 是       | string   | 时间粒度 例（ "1","5","15","30","60","120","240","1D","1W") |
-| startTime   | 否       | string   | 开始时间，时间戳（单位:秒）                                 |
-| endTime     | 否       | string   | 结束时间，时间戳（单位:秒）                                 |
+| parameter   | Do you have to | type of data | Remarks                                                     |
+| ----------- | -------------- | ------------ | ----------------------------------------------------------- |
+| pairName    | Yes            | string       | Currency pair, for example "ETH_BTC"                        |
+| granularity | Yes            | string       | 时间粒度 例（ "1","5","15","30","60","120","240","1D","1W") |
+| startTime   | no             | string       | Start time, timestamp (unit: seconds)                       |
+| endTime     | no             | string       | End time, timestamp (unit: seconds)                         |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                   |
-| -------- | -------- | ---------------------- |
-| code     | int      | 返回值状态             |
-| time     | int64    | 时间戳                 |
-| amount   | float    | 以计价币种统计的交易额 |
-| open     | float    | 开盘价                 |
-| close    | float    | 收盘价                 |
-| low      | float    | 最低价                 |
-| hight    | float    | 最高价                 |
-| vol      | float    | 以交易币种统计的交易量 |
+| Field Name | type of data | Remarks                                                |
+| ---------- | ------------ | ------------------------------------------------------ |
+| code       | int          | Return value status                                    |
+| time       | int64        | Timestamp                                              |
+| amount     | float        | Transaction volume counted in the denominated currency |
+| open       | float        | Opening price                                          |
+| close      | float        | Closing price                                          |
+| low        | float        | Lowest price                                           |
+| hight      | float        | Highest price                                          |
+| vol        | float        | Transaction volume counted in transaction currency     |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -996,49 +990,47 @@ curl `https://api.fameex.com/v1/market/history/kline`
 }
 ```
 
-## 市场深度数据
+## Market Depth Data
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口返回指定交易对的当前市场深度数据。
+This interface returns the current market depth data of the specified trading pair.
 
-`请求路径`
+`Request path`
 
 /v1/market/depth
 
 curl `https://api.fameex.com/v1/market/depth`
 
-`路由参数`
+`Routing parameters`
 
-| 参数     | 是否必须 | 数据类型 | 备注                              |
-| -------- | -------- | -------- | --------------------------------- |
-| pairName | 是       | string   | 币对 例如: BTC_USDT               |
-| size     | 否       | string   | 返回深度档位数量，最多返回 200    |
-| depth    | 否       | string   | 深度价格小数位数，例如：-2,-1,0,1 |
+| parameter | Do you have to | type of data | Remarks                                            |
+| --------- | -------------- | ------------ | -------------------------------------------------- |
+| pairName  | Yes            | string       | For example: BTC_USDT                              |
+| size      | no             | string       | Return the number of depth gears, up to 200        |
+| depth     | no             | string       | Depth price decimal places, for example: -2,-1,0,1 |
 
-`返回值`
+`Routing parameters`
 
-`Post参数`
+no
 
-无
+`Return Value`
 
-`返回值`
+| Field Name | type of data | Remarks                        |
+| ---------- | ------------ | ------------------------------ |
+| code       | int          | 200, normal                    |
+| msg        | string       | Remarks                        |
+| data       | map          | Return data: market depth data |
+| base       | string       | Transaction currency           |
+| quote      | string       | Denominated currency           |
+| price      | string       | unit price                     |
+| count      | string       | Quantity                       |
+| orderCount | int          | quantity of order              |
+| timestamp  | int64        | Timestamp                      |
 
-| 字段名称   | 数据类型 | 备注                   |
-| ---------- | -------- | ---------------------- |
-| code       | int      | 200,正常               |
-| msg        | string   | 备注                   |
-| data       | map      | 返回数据：市场深度数据 |
-| base       | string   | 交易币                 |
-| quote      | string   | 计价币                 |
-| price      | string   | 单价                   |
-| count      | string   | 数量                   |
-| orderCount | int      | 订单数量               |
-| timestamp  | int64    | 时间戳                 |
-
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1066,45 +1058,45 @@ curl `https://api.fameex.com/v1/market/depth`
 }
 ```
 
-## 获取成交数据
+## Get transaction data
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口返回指定交易对的成交明细记录。
+This interface returns the transaction detail record of the specified trading pair.
 
-`请求路径`
+`Request path`
 
 GET/v1/market/history/trade
 
 curl `https://api.fameex.com/v1/market/history/trade`
 
-`路由参数`
+`Routing parameters`
 
-| 参数     | 是否必须 | 数据类型 | 备注                            |
-| -------- | -------- | -------- | ------------------------------- |
-| pairName | 是       | string   | 币对名称 例如: BTC_USDT         |
-| size     | 否       | string   | 最大为 100，不填默认返回 100 条 |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| pairName  | Yes            | string       | For example, the name of the currency pair: BTC_USDT         |
+| size      | no             | string       | The maximum is 100, if not filled in, 100 will be returned by default |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                       |
-| -------- | -------- | -------------------------- |
-| code     | int      | 200,正常                   |
-| msg      | string   | 备注                       |
-| data     | list     | 返回值,最新成交记录        |
-| orderId  | string   | 成交订单 id                |
-| price    | string   | 成交单价                   |
-| count    | string   | 成交数量                   |
-| time     | string   | 成交时间 时间戳 单位：纳秒 |
-| buyType  | string   | 买卖方向 0, 买, 1 卖       |
+| Field Name | type of data | Remarks                                         |
+| ---------- | ------------ | ----------------------------------------------- |
+| code       | int          | 200, normal                                     |
+| msg        | string       | Remarks                                         |
+| data       | list         | Return value, latest transaction record         |
+| orderId    | string       | Transaction order id                            |
+| price      | string       | Transaction price                               |
+| count      | string       | The number of transactions                      |
+| time       | string       | Time stamp unit of transaction time: nanosecond |
+| buyType    | string       | Buying and selling direction 0, buy, 1 sell     |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1122,47 +1114,47 @@ curl `https://api.fameex.com/v1/market/history/trade`
 }
 ```
 
-## 获取某个ticker信息
+## Get a ticker information
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口返回最近 24 小时的行情数据汇总，数据取值时间区间为 24 小时滚动。
+This interface returns a summary of the market data for the last 24 hours, and the data value time interval is 24-hour rolling.
 
-`请求路径`
+`Request path`
 
 /v1/market/history/kline24h
 
 curl `https://api.fameex.com/v1/market/history/kline24h`
 
-`路由参数`
+`Routing parameters`
 
-| 参数     | 是否必须 | 数据类型 | 备注                  |
-| -------- | -------- | -------- | --------------------- |
-| pairName | 是       | string   | 交易币对, 例"ETH_BTC" |
+| parameter | Do you have to | type of data | Remarks                                      |
+| --------- | -------------- | ------------ | -------------------------------------------- |
+| pairName  | Yes            | string       | Trading currency pair, for example "ETH_BTC" |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称            | 数据类型 | 备注                         |
-| ------------------- | -------- | ---------------------------- |
-| code                | int      | 200,正常                     |
-| pairName            | string   | 币对名称 例如:"OMG_ETH"      |
-| last                | string   | 最新成交价                   |
-| buyFirst            | string   | 买一价                       |
-| sellFirst           | string   | 卖一价                       |
-| coinHour24OpenPrice | string   | 24 小时开盘价                |
-| coinHour24LowPrice  | string   | 24 小时最低价                |
-| coinHour24HighPrice | string   | 24 小时最高价                |
-| base24Volume        | string   | 按交易货币统计 24 小时成交量 |
-| quoteHour24Volume   | string   | 按计价货币统计 24 小时成交量 |
-| timestamp           | int64    | 系统时间戳 (单位：纳秒)      |
+| Field Name          | type of data | Remarks                                                      |
+| ------------------- | ------------ | ------------------------------------------------------------ |
+| code                | int          | 200, normal                                                  |
+| pairName            | string       | For example, the name of the currency pair: "OMG_ETH"        |
+| last                | string       | Latest transaction price                                     |
+| buyFirst            | string       | Buy one price                                                |
+| sellFirst           | string       | Sell one price                                               |
+| coinHour24OpenPrice | string       | 24-hour opening price                                        |
+| coinHour24LowPrice  | string       | Lowest price in 24 hours                                     |
+| coinHour24HighPrice | string       | Highest price in 24 hours                                    |
+| base24Volume        | string       | Statistics of 24-hour trading volume by trading currency     |
+| quoteHour24Volume   | string       | Calculate the 24-hour trading volume in the currency of denomination |
+| timestamp           | int64        | System timestamp (unit: nanosecond)                          |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1183,45 +1175,45 @@ curl `https://api.fameex.com/v1/market/history/kline24h`
 }
 ```
 
-## 获取全部ticker信息
+## Get all ticker information
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口返回最近 24 小时的行情数据汇总，数据取值时间区间为 24 小时滚动。
+This interface returns a summary of the market data for the last 24 hours, and the data value time interval is 24-hour rolling.
 
-`请求路径`
+`Request path`
 
 /v1/market/history/kline24h/all
 
 curl `https://api.fameex.com/v1/market/history/kline24h/all`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称            | 数据类型 | 备注                         |
-| ------------------- | -------- | ---------------------------- |
-| code                | int      | 200,正常                     |
-| pairName            | string   | 币对名称 例如:"OMG_ETH"      |
-| last                | string   | 最新成交价                   |
-| buyFirst            | string   | 买一价                       |
-| sellFirst           | string   | 卖一价                       |
-| coinHour24OpenPrice | string   | 24 小时开盘价                |
-| coinHour24LowPrice  | string   | 24 小时最低价                |
-| coinHour24HighPrice | string   | 24 小时最高价                |
-| base24Volume        | string   | 按交易货币统计 24 小时成交量 |
-| quoteHour24Volume   | string   | 按计价货币统计 24 小时成交量 |
-| timestamp           | int64    | 系统时间戳 (单位：纳秒)      |
+| Field Name          | type of data | Remarks                                                      |
+| ------------------- | ------------ | ------------------------------------------------------------ |
+| code                | int          | 200, normal                                                  |
+| pairName            | string       | For example, the name of the currency pair: "OMG_ETH"        |
+| last                | string       | Latest transaction price                                     |
+| buyFirst            | string       | Buy one price                                                |
+| sellFirst           | string       | Sell one price                                               |
+| coinHour24OpenPrice | string       | 24-hour opening price                                        |
+| coinHour24LowPrice  | string       | Lowest price in 24 hours                                     |
+| coinHour24HighPrice | string       | Highest price in 24 hours                                    |
+| base24Volume        | string       | Statistics of 24-hour trading volume by trading currency     |
+| quoteHour24Volume   | string       | Calculate the 24-hour trading volume in the currency of denomination |
+| timestamp           | int64        | System timestamp (unit: nanosecond)                          |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1256,45 +1248,45 @@ curl `https://api.fameex.com/v1/market/history/kline24h/all`
 }
 ```
 
-# 币币交易 API 接口
+# Coin trading API interface
 
-## 币币下单
+## Currency order
 
-限速规则：100 次/2s
+Speed limit rule: 100 times/2s
 
-`功能说明`
+`Function description`
 
-此接口提供撤销指定的某一种或多种币对的所有未成交订单的功能。
+This interface provides the function of canceling all unexecuted orders of a specified currency pair or currency pairs.
 
-`请求路径`
+`Request path`
 
 /v1/api/spot/orders
 
 curl `https://api.fameex.com/v1/api/spot/orders`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数    | 是否必须 | 数据类型 | 备注               |
-| ------- | -------- | -------- | ------------------ |
-| base    | 是       | string   | 交易对中的交易币种 |
-| quote   | 是       | string   | 交易对中的计价币种 |
-| buyType | 是       | int      | 0 买, 1 卖         |
-| price   | 是       | string   | 下单单价           |
-| count   | 是       | string   | 下单数量           |
+| parameter | Do you have to | type of data | Remarks                                  |
+| --------- | -------------- | ------------ | ---------------------------------------- |
+| base      | Yes            | string       | Trading currency in the trading pair     |
+| quote     | Yes            | string       | Denominated currency in the trading pair |
+| buyType   | Yes            | int          | 0 buy, 1 sell                            |
+| price     | Yes            | string       | Order unit price                         |
+| count     | Yes            | string       | Order quantity                           |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注      |
-| -------- | -------- | --------- |
-| code     | int      | 200, 正常 |
-| msg      | string   | 信息说明  |
-| orderId  | string   | 挂单 id   |
+| Field Name | type of data | Remarks                 |
+| ---------- | ------------ | ----------------------- |
+| code       | int          | 200, normal             |
+| msg        | string       | Information Description |
+| orderId    | string       | Pending order id        |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1304,41 +1296,41 @@ curl `https://api.fameex.com/v1/api/spot/orders`
 }
 ```
 
-## 币币撤单
+## Currency withdrawal order
 
-限速规则：100 次/2s
+Speed limit rule: 100 times/2s
 
-`功能说明`
+`Function description`
 
-此接口提供将未成交的订单撤销的功能。
+This interface provides the function of canceling unfilled orders.
 
-`请求路径`
+`Request path`
 
 /v1/api/spot/cancel_orders
 
 curl `https://api.fameex.com/v1/api/spot/cancel_orders`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数    | 是否必须 | 数据类型 | 备注               |
-| ------- | -------- | -------- | ------------------ |
-| orderid | 是       | string   | 订单 id            |
-| base    | 是       | string   | 交易对中的交易币种 |
-| quote   | 是       | string   | 交易对中的计价币种 |
+| parameter | Do you have to | type of data | Remarks                                  |
+| --------- | -------------- | ------------ | ---------------------------------------- |
+| orderid   | Yes            | string       | Order id                                 |
+| base      | Yes            | string       | Trading currency in the trading pair     |
+| quote     | Yes            | string       | Denominated currency in the trading pair |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注        |
-| -------- | -------- | ----------- |
-| code     | int      | 200, 正常   |
-| msg      | string   | 备注        |
-| orderId  | string   | 要撤单的 id |
+| Field Name | type of data | Remarks                |
+| ---------- | ------------ | ---------------------- |
+| code       | int          | 200, normal            |
+| msg        | string       | Remarks                |
+| orderId    | string       | Id to cancel the order |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1348,40 +1340,40 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders`
 }
 ```
 
-## 币币批量撤单
+## Batch withdrawal of coins
 
-限速规则：100 次/2s
+Speed limit rule: 100 times/2s
 
-`功能说明`
+`Function description`
 
-此接口提供撤销指定的某一种或多种币对的所有未成交订单的功能。
+This interface provides the function of canceling all unexecuted orders of a specified currency pair or currency pairs.
 
-`请求路径`
+`Request path`
 
 /v1/api/spot/cancel_orders_all
 
 curl `https://api.fameex.com/v1/api/spot/cancel_orders_all`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                         |
-| --------- | -------- | -------- | ---------------------------- |
-| buyType   | 是       | int      | 买卖方向 0 买, 1 卖, -1 全部 |
-| base      | 是       | string   | 交易对中的交易币种           |
-| quote     | 是       | string   | 交易对中的计价币种           |
-| startTime | 是       | int64    | "0" 全部                     |
-| endTime   | 是       | int64    | "0" 全部                     |
+| parameter | Do you have to | type of data | Remarks                                            |
+| --------- | -------------- | ------------ | -------------------------------------------------- |
+| buyType   | Yes            | int          | Buying and selling direction 0 buy, 1 sell, -1 all |
+| base      | Yes            | string       | Trading currency in the trading pair               |
+| quote     | Yes            | string       | Denominated currency in the trading pair           |
+| startTime | Yes            | int64        | "0" all                                            |
+| endTime   | Yes            | int64        | "0" all                                            |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注     |
-| -------- | -------- | -------- |
-| code     | int      | 200,正常 |
-| msg      | string   | SUCCESS  |
+| Field Name | type of data | Remarks     |
+| ---------- | ------------ | ----------- |
+| code       | int          | 200, normal |
+| msg        | string       | SUCCESS     |
 
 ```json
 {
@@ -1390,58 +1382,58 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders_all`
 }
 ```
 
-## 获取委托单详情
+## Get order details
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口通过订单 ID 获取指定委托单信息。
+This interface obtains the specified order information through the order ID.
 
-`请求路径`
+`Request path`
 
 /v1/api/spot/orderdetail
 
 curl `https://api.fameex.com/v1/api/spot/orderdetail`
 
-`headers参数`
+`headersParameter`
 
-无
+no
 
-`路由参数`
+`Routing parameters`
 
-| 参数     | 是否必须 | 数据类型 | 备注                    |
-| -------- | -------- | -------- | ----------------------- |
-| orderId  | 是       | string   | 订单 id                 |
-| pairName | 是       | string   | 币对名称（例:BTC_USDT） |
+| parameter | Do you have to | type of data | Remarks                                               |
+| --------- | -------------- | ------------ | ----------------------------------------------------- |
+| orderId   | Yes            | string       | Order id                                              |
+| pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT) |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                                                                                         |
-| ----------- | -------- | -------------------------------------------------------------------------------------------- |
-| code        | int      | 返回值状态                                                                                   |
-| msg         | string   | 返回值描述                                                                                   |
-| data        | string   | 返回值,订单详情                                                                              |
-| orderId     | string   | 撮合任务 id                                                                                  |
-| pairName    | string   | 币对名称（例:BTC_USDT）                                                                      |
-| buyType     | int      | 买卖方向 0-买 1-卖                                                                           |
-| buyClass    | int      | 委托类型 0-限价 1-市价 2-止盈止损                                                            |
-| state       | int      | 订单状态 1-待撮合 4-taker 完全成交 7-在深度队列 9-maker 部分成交 10-maker 完全成交 11-已撤销 |
-| price       | string   | 挂单单价                                                                                     |
-| count       | string   | 未成交数量                                                                                   |
-| lossPrice   | string   | 止盈止损触发价                                                                               |
-| totalCount  | string   | 总挂单数量                                                                                   |
-| dealedCount | string   | 已成交数量                                                                                   |
-| dealedMoney | string   | 已成交金额                                                                                   |
-| priceAvg    | string   | 成交均价                                                                                     |
-| createTime  | int64    | 订单创建时间 纳秒                                                                            |
-| endTime     | int64    | 订单状态最后更新时间 纳秒                                                                    |
+| Field Name  | type of data | Remarks                                                      |
+| ----------- | ------------ | ------------------------------------------------------------ |
+| code        | int          | Return value status                                          |
+| msg         | string       | Return value description                                     |
+| data        | string       | Return value, order details                                  |
+| orderId     | string       | Matching task id                                             |
+| pairName    | string       | The name of the currency pair (for example: BTC_USDT)        |
+| buyType     | int          | Buying and Selling Direction 0-Buy1-Sell                     |
+| buyClass    | int          | Order type 0-limit price1-market price2-stop profit and stop loss |
+| state       | int          | Order status 1-To be matched 4-Taker is fully traded 7-In the deep queue 9-Partially traded by maker 10-Maker is fully traded 11-Canceled |
+| price       | string       | Pending order unit price                                     |
+| count       | string       | Unsold quantity                                              |
+| lossPrice   | string       | Stop Profit and Stop Loss Trigger Price                      |
+| totalCount  | string       | Total number of pending orders                               |
+| dealedCount | string       | Number of transactions                                       |
+| dealedMoney | string       | Transaction amount                                           |
+| priceAvg    | string       | Average transaction price                                    |
+| createTime  | int64        | Order creation time in nanoseconds                           |
+| endTime     | int64        | Last update time of order status in nanoseconds              |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1466,73 +1458,73 @@ curl `https://api.fameex.com/v1/api/spot/orderdetail`
 }
 ```
 
-## 获取委托单列表
+## Get a list of orders
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口获取列出您当前的委托单信息（最近 3 个月的委托单信息）。这个请求支持分页，并且按时间倒序排序和存储，最新的排在最前面。
+This interface obtains and lists your current order information (the order information of the last 3 months). This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
 
-`请求路径`
+`Request path`
 
 /v1/api/spot/orderlist
 
 curl `https://api.fameex.com/v1/api/spot/orderlist`
 
-`headers参数`
+`headersParameter`
 
-无
+no
 
-`路由参数`
+`Routing parameters`
 
-| 参数      | 是否必须 | 数据类型 | 备注                                              |
-| --------- | -------- | -------- | ------------------------------------------------- |
-| type      | 是       | string   | 0 所有, 1 完成,2 未完成, 3 已撤销, 4 已撤单和完成 |
-| buyType   | 是       | string   | 买卖方向: 0 买, 1 卖, -1 全部                     |
-| pairName  | 是       | string   | 币对名称（例:BTC_USDT）                           |
-| pageNum   | 是       | string   | 分页使用, 第几页                                  |
-| pageSize  | 是       | string   | 分页使用, 每页数量 (0 < pageSize ≤ 500)             |
-| startTime | 否       | string   | 时间戳,查询订单的开始时间 秒                      |
-| endTime   | 否       | string   | 时间戳,查询订单的结束时间 秒                      |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| type      | Yes            | string       | 0 all, 1 completed, 2 not completed, 3 cancelled, 4 cancelled and completed |
+| buyType   | Yes            | string       | Trading direction: 0 buy, 1 sell, -1 all                     |
+| pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT)        |
+| pageno    | Yes            | string       | Paging usage, which page                                     |
+| pageSize  | Yes            | string       | Paging usage, number per page (0 <pageSize ≤ 500)            |
+| startTime | no             | string       | Timestamp, query the start time of the order in seconds      |
+| endTime   | no             | string       | Timestamp, query the end time of the order in seconds        |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称       | 数据类型 | 备注                                                                                                          |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| code           | int      | 返回值状态                                                                                                    |
-| msg            | string   | 返回值描述                                                                                                    |
-| data           | string   | 返回值,订单列表                                                                                               |
-| id             | int64    | 数据编号                                                                                                      |
-| orderId        | string   | 委托单 id                                                                                                     |
-| userId         | string   | 用户 id                                                                                                       |
-| userType       | int      | 用户类型 1 普通用户 2 api 用户                                                                                |
-| userLevel      | int      | 用户等级                                                                                                      |
-| base           | string   | 交易对中的交易币种                                                                                            |
-| quote          | string   | 交易对中的计价币种                                                                                            |
-| buyType        | int      | 0 买 1 卖                                                                                                     |
-| buyClass       | int      | 0 限价单                                                                                                      |
-| state          | int      | 订单状态 1-待撮合 4-taker 完全成交 7-在深度队列 8-taker 部分成交 9-maker 部分成交 10-maker 完全成交 11-已撤销 |
-| price          | string   | 委托单价                                                                                                      |
-| totalPrice     | string   | 初始委托价格                                                                                                  |
-| count          | string   | 未成交数量                                                                                                    |
-| lossPrice      | string   | 止盈止损触发价                                                                                                |
-| totalCount     | string   | 总数量                                                                                                        |
-| dealedCount    | string   | 已成交数量                                                                                                    |
-| dealedMoney    | string   | 累计成交额                                                                                                    |
-| priceAvg       | string   | 成交均价                                                                                                      |
-| triggerGreater | bool     | 是否大于等于止盈止损触发价                                                                                    |
-| matchCount     | int      | 匹配次数                                                                                                      |
-| createTime     | int64    | 订单创建时间 单位：纳秒                                                                                       |
-| endTime        | int64    | 订单最后的更新时间 单位：纳秒                                                                                 |
-| isErr          | int      | 0 正常委托单 其他为解锁资产失败的委托单                                                                       |
-| triggered      | int      | 止盈止损是否触发 0 未触发 1 已触发                                                                            |
+| Field Name     | type of data | Remarks                                                      |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| code           | int          | Return value status                                          |
+| msg            | string       | Return value description                                     |
+| data           | string       | Return value, order list                                     |
+| id             | int64        | Data number                                                  |
+| orderId        | string       | Order id                                                     |
+| userId         | string       | User id                                                      |
+| userType       | int          | User type 1 Ordinary user 2 api user                         |
+| userLevel      | int          | user level                                                   |
+| base           | string       | Trading currency in the trading pair                         |
+| quote          | string       | Denominated currency in the trading pair                     |
+| buyType        | int          | 0 buy 1 sell                                                 |
+| buyClass       | int          | 0 limit order                                                |
+| state          | int          | Order Status 1-Pending Match 4-Taker Completed Transaction 7-In the Deep Queue 8-Taker Partial Transaction 9-maker Partial Transaction 10-maker Complete Transaction 11-Canceled |
+| price          | string       | Order unit price                                             |
+| totalPrice     | string       | Initial commission price                                     |
+| count          | string       | Unsold quantity                                              |
+| lossPrice      | string       | Stop Profit and Stop Loss Trigger Price                      |
+| totalCount     | string       | The total amount                                             |
+| dealedCount    | string       | Number of transactions                                       |
+| dealedMoney    | string       | Cumulative turnover                                          |
+| priceAvg       | string       | Average transaction price                                    |
+| triggerGreater | bool         | Is it greater than or equal to the trigger price of stop profit and stop loss |
+| matchCount     | int          | Matches                                                      |
+| createTime     | int64        | Order creation time unit: nanosecond                         |
+| endTime        | int64        | The last update time unit of the order: nanosecond           |
+| isErr          | int          | 0 Normal orders and other orders that failed to unlock assets |
+| triggered      | int          | Whether stop profit and stop loss is triggered 0 not triggered 1 triggered |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1573,57 +1565,57 @@ curl `https://api.fameex.com/v1/api/spot/orderlist`
 }
 ```
 
-## 获取成交明细
+## Get transaction details
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口获取您当前所有的成交订单信息。这个请求支持分页，并且按时间倒序排序和存储，最新的排在最前面。
+This interface gets all your current transaction order information. This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
 
-`请求路径`
+`Request path`
 
 /v1/api/spot/fills
 
 curl `https://api.fameex.com/v1/api/spot/fills`
 
-`路由参数`
+`Routing parameters`
 
-| 参数      | 是否必须 | 数据类型 | 备注                                  |
-| --------- | -------- | -------- | ------------------------------------- |
-| pairName  | 是       | string   | 币对名称 (例:BTC_UDST)                |
-| orderId   | 否       | string   | 委托单订单 id                         |
-| buyType   | 是       | string   | 买卖方向: 0 买, 1 卖, -1 全部         |
-| pageNum   | 是       | string   | 分页使用, 第几页,从第一页开始         |
-| pageSize  | 是       | string   | 分页使用, 每页数量 (0 < pageSize ≤ 500) |
-| startTime | 否       | string   | 时间戳, 秒                            |
-| endTime   | 否       | string   | 时间戳, 秒                            |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| pairName  | Yes            | string       | Token name (e.g. BTC_UDST)                                   |
+| orderId   | no             | string       | Order id                                                     |
+| buyType   | Yes            | string       | Trading direction: 0 buy, 1 sell, -1 all                     |
+| pageno    | Yes            | string       | Pagination use, the first few pages, starting from the first page |
+| pageSize  | Yes            | string       | Paging usage, number per page (0 <pageSize ≤ 500)            |
+| startTime | no             | string       | Timestamp, seconds                                           |
+| endTime   | no             | string       | Timestamp, seconds                                           |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称      | 数据类型 | 备注                     |
-| ------------- | -------- | ------------------------ |
-| code          | int      | 返回值状态               |
-| msg           | string   | 返回值描述               |
-| data          | string   | 返回值,成交明细          |
-| pairName      | string   | 币对名称（例：BTC_USDT） |
-| base          | string   | 交易币                   |
-| quote         | string   | 计价币                   |
-| orderId       | string   | 委托单 id                |
-| time          | int64    | 成交时间 纳秒            |
-| buyClass      | int      | 交易类型: 0 限价交易     |
-| buyType       | int      | 买卖方向: 0 买, 1 卖     |
-| price         | string   | 成交价格                 |
-| count         | string   | 成交数量                 |
-| fee           | string   | 手续费                   |
-| feeRate       | string   | 实际手续费费率           |
-| originFeeRate | string   | 原始手续费费率           |
+| Field Name    | type of data | Remarks                                               |
+| ------------- | ------------ | ----------------------------------------------------- |
+| code          | int          | Return value status                                   |
+| msg           | string       | Return value description                              |
+| data          | string       | Return value, transaction details                     |
+| pairName      | string       | The name of the currency pair (for example: BTC_USDT) |
+| base          | string       | Transaction currency                                  |
+| quote         | string       | Denominated currency                                  |
+| orderId       | string       | Order id                                              |
+| time          | int64        | Transaction time in nanoseconds                       |
+| buyClass      | int          | Transaction type: 0 limit transaction                 |
+| buyType       | int          | Trading direction: 0 buy, 1 sell                      |
+| price         | string       | the deal price                                        |
+| count         | string       | The number of transactions                            |
+| fee           | string       | Handling fee                                          |
+| feeRate       | string       | Actual handling fee rate                              |
+| originFeeRate | string       | Original fee rate                                     |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1653,51 +1645,51 @@ curl `https://api.fameex.com/v1/api/spot/fills`
 }
 ```
 
-## 获取所有未完成的订单
+## Get all outstanding orders
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口获取您当前所有的成交订单信息。这个请求支持分页，并且按时间倒序排序和存储，最新的排在最前面。
+This interface gets all your current transaction order information. This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
 
-`请求路径`
+`Request path`
 
 /v1/api/orders_pending
 
 curl `https://api.fameex.com /v1/api/orders_pending`
 
-`路由参数
+`Routing parameters
 
-| 参数     | 是否必须 | 数据类型 | 备注                                  |
-| -------- | -------- | -------- | ------------------------------------- |
-| pairName | 是       | string   | 币对名称（例:BTC_USDT）               |
-| pageNum  | 是       | string   | 分页使用, 第几页,从第一页开始         |
-| pageSize | 是       | string   | 分页使用, 每页数量 (0< pageSize ≤ 500) |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT)        |
+| pageno    | Yes            | string       | Pagination use, the first few pages, starting from the first page |
+| pageSize  | Yes            | string       | Paging usage, number per page (0< pageSize ≤ 500)            |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                         |
-| ----------- | -------- | ---------------------------- |
-| code        | int      | 返回值状态                   |
-| msg         | string   | 返回值描述                   |
-| data        | string   | 返回值,成交明细              |
-| pairName    | string   | 币对名称（例:BTC_USDT）      |
-| orderId     | string   | 订单编号                     |
-| buyClass    | int      | 交易类型: 0 限价交易         |
-| buyType     | int      | 买卖方向: 0 买, 1 卖         |
-| price       | string   | 委托价格                     |
-| count       | string   | 委托数量                     |
-| dealedCount | string   | 已成交数量                   |
-| dealedMoney | string   | 已成交金额                   |
-| state       | int      | 1 未生效 2 未成交 3 部分成交 |
-| time        | int64    | 时间（单位:纳秒）            |
+| Field Name  | type of data | Remarks                                               |
+| ----------- | ------------ | ----------------------------------------------------- |
+| code        | int          | Return value status                                   |
+| msg         | string       | Return value description                              |
+| data        | string       | Return value, transaction details                     |
+| pairName    | string       | The name of the currency pair (for example: BTC_USDT) |
+| orderId     | string       | Order number                                          |
+| buyClass    | int          | Transaction type: 0 limit transaction                 |
+| buyType     | int          | Trading direction: 0 buy, 1 sell                      |
+| price       | string       | Commission price                                      |
+| count       | string       | Number of orders                                      |
+| dealedCount | string       | Number of transactions                                |
+| dealedMoney | string       | Transaction amount                                    |
+| state       | int          | 1 Not effective 2 Not completed 3 Partially completed |
+| time        | int64        | Time (unit: nanosecond)                               |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1724,44 +1716,44 @@ curl `https://api.fameex.com /v1/api/orders_pending`
 }
 ```
 
-# 钱包 API 接口
+# Wallet API interface
 
-## 获取钱包账户信息
+## Get wallet account information
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口获取钱包币币账户所有资产信息列表，查询各币种的余额、冻结和可用等信息。
+This interface obtains a list of all asset information of the wallet currency account, and queries the balance, freeze and availability information of each currency.
 
-`请求路径`
+`Request path`
 
 /v1/api/account/wallet
 
 curl `https://api.fameex.com/v1/api/account/wallet`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称   | 数据类型 | 备注                                                                      |
-| ---------- | -------- | ------------------------------------------------------------------------- |
-| code       | int      | 200, 正常                                                                 |
-| data       | list     | 返回值,币币账户数据                                                       |
-| userid     | string   | 用户 id                                                                   |
-| walletType | string   | 账户类型:spot-现货账户 otc-法币账户 l2c-杠杆账户 |
-| available  | string   | 可用余额                                                                  |
-| total      | string   | 总余额                                                                    |
-| currency   | string   | 币种 例:BTC                                                               |
-| hold       | string   | 冻结金额                                                                  |
+| Field Name | type of data | Remarks                                                      |
+| ---------- | ------------ | ------------------------------------------------------------ |
+| code       | int          | 200, normal                                                  |
+| data       | list         | Return value, currency account data                          |
+| userid     | string       | User id                                                      |
+| walletType | string       | Account type: spot-spot account otc-fiat account l2c-margin account |
+| available  | string       | Available Balance                                            |
+| total      | string       | Total balance                                                |
+| currency   | string       | Currency example: BTC                                        |
+| hold       | string       | Frozen amount                                                |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1789,42 +1781,42 @@ curl `https://api.fameex.com/v1/api/account/wallet`
 }
 ```
 
-## 获取钱包账户某币种详情
+## Get the details of a certain currency of the wallet account
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-获取钱包账户详情（单一币种）
+Get wallet account details (single currency)
 
-`请求路径`
+`Request path`
 
 /v1/api/account/wallet/currency
 
 curl `https://api.fameex.com/v1/api/account/wallet/currency`
 
-`路由参数`
+`Routing parameters`
 
-| 参数     | 是否必须 | 数据类型 | 备注         |
-| -------- | -------- | -------- | ------------ |
-| currency | 是       | string   | 币种, 例 BTC |
+| parameter | Do you have to | type of data | Remarks            |
+| --------- | -------------- | ------------ | ------------------ |
+| currency  | Yes            | string       | Currency, e.g. BTC |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称  | 数据类型 | 备注                            |
-| --------- | -------- | ------------------------------- |
-| code      | int      | 200, 正常                       |
-| msg       | string   | 此次返回值说明                  |
-| userid    | string   | 用户 id                         |
-| data      | map      | 返回值,币币账户，某一币种的详情 |
-| available | string   | 可用余额                        |
-| hold      | string   | 冻结金额                        |
+| Field Name | type of data | Remarks                                               |
+| ---------- | ------------ | ----------------------------------------------------- |
+| code       | int          | 200, normal                                           |
+| msg        | string       | Description of the return value this time             |
+| userid     | string       | User id                                               |
+| data       | map          | Return value, currency account, details of a currency |
+| available  | string       | Available Balance                                     |
+| hold       | string       | Frozen amount                                         |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1838,46 +1830,46 @@ curl `https://api.fameex.com/v1/api/account/wallet/currency`
 }
 ```
 
-## 资金划转
+## Fund transfer
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口提供平台内现货钱包、法币钱包、杠杆钱包之间进行资金划转。【注：杠杆账户币对之间互相划转仅支持计价币之间的划转，例如从杠杆账户下的 BTC_USDT 将 USDT 划转至 ETH_USDT 币对下】
+This interface provides funds transfer between spot wallets, legal currency wallets, and leveraged wallets within the platform. [Note: Transfers between margin account currency pairs only support transfers between quoted currencies, for example, transfer USDT from BTC_USDT under the margin account to the ETH_USDT currency pair]
 
-`请求路径`
+`Request path`
 
 POST /v1/api/account/transfer
 
 curl `https://api.fameex.com/v1/api/account/transfer`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                                            |
-| -------- | -------- | -------- | ----------------------------------------------- |
-| currency | 是       | string   | 币种类型                                        |
-| amount   | 是       | string   | 数量                                            |
-| from     | 是       | string   | 转出账户: spot 现货账户, otc 法币账户，l2c 杠杆账户 |
-| to       | 是       | string   | 转入账户: spot 现货账户, otc 法币账户，l2c 杠杆账户 |
-| fromPair | 否       | string   | 杠杆账户币对间互转时的转出币对，例:BTC_USDT     |
-| toPair   | 否       | string   | 杠杆账户币对间互转时的转入币对,例:ETH_USDT      |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| currency  | Yes            | string       | Currency type                                                |
+| amount    | Yes            | string       | Quantity                                                     |
+| from      | Yes            | string       | Transfer account: spot spot account, otc fiat currency account, l2c margin account |
+| to        | Yes            | string       | Transfer account: spot spot account, otc fiat currency account, l2c margin account |
+| fromPair  | no             | string       | The outgoing currency pair during the mutual transfer between margin account currency pairs, for example: BTC_USDT |
+| toPair    | no             | string       | The transferred currency pair during the mutual transfer between margin account currency pairs, for example: ETH_USDT |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注                   |
-| -------- | -------- | ---------------------- |
-| code     | int      | 200, 正常              |
-| msg      | string   | success,正常           |
-| data     | object   | 资金划转返回的响应对象 |
-| orderid  | string   | 订单 id                |
-| userid   | string   | 用户 id                |
+| Field Name | type of data | Remarks                                           |
+| ---------- | ------------ | ------------------------------------------------- |
+| code       | int          | 200, normal                                       |
+| msg        | string       | success, normal                                   |
+| data       | object       | The response object returned by the fund transfer |
+| orderid    | string       | Order id                                          |
+| userid     | string       | User id                                           |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1890,51 +1882,51 @@ curl `https://api.fameex.com/v1/api/account/transfer`
 }
 ```
 
-## 获取现货账户交易账单
+## Get a transaction bill for a spot account
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口查询现货账户交易账单。
+This interface queries the spot account transaction bill.
 
-`请求路径`
+`Request path`
 
 POST /v1/api/spot/record/trade
 
 curl `https://api.fameex.com/v1/api/spot/record/trade`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                                   |
-| --------- | -------- | -------- | -------------------------------------- |
-| tradeType | 否       | int      | 交易类型：0.全部；2.买入；3.卖出；4.实收手续费 |
-| currency  | 否       | string   | 币种名称 例:ETH                        |
-| pageNum   | 是       | string   | 第几页，1 开始                         |
-| pageSize  | 是       | string   | 每页数量 (0 < pageSize ≤ 500)            |
-| startTime | 否       | string   | 开始时间 秒 最多查询最近 90 天内的记录 |
-| endTime   | 否       | string   | 结束时间 秒                            |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| tradeType | no             | int          | Transaction type: 0. All; 2. Buy; 3. Sell; 4. Actual fee     |
+| currency  | no             | string       | Example of currency name: ETH                                |
+| pageno    | Yes            | string       | Page, 1 starts                                               |
+| pageSize  | Yes            | string       | Number of pages (0 <pageSize ≤ 500)                          |
+| startTime | no             | string       | Start time seconds to query records within the last 90 days at most |
+| endTime   | no             | string       | End time seconds                                             |
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                                   |
-| ----------- | -------- | -------------------------------------- |
-| code        | int      | 200, 正常                              |
-| msg         | string   | success,正常                           |
-| data        | object   | 空字符串                               |
-| userId      | string   | 用户 id                                |
-| total       | int      | 账单记录数量                           |
-| list        | array    | 账单记录列表                           |
-| tradeType   | int      | 交易类型：2.买入；3.卖出；4.实收手续费 |
-| operateTime | int64    | 操作时间                               |
-| currency    | string   | 币种名称 例:ETH                        |
-| amount      | string   | 数量                                   |
+| Field Name  | type of data | Remarks                                          |
+| ----------- | ------------ | ------------------------------------------------ |
+| code        | int          | 200, normal                                      |
+| msg         | string       | success, normal                                  |
+| data        | object       | Empty string                                     |
+| userId      | string       | User id                                          |
+| total       | int          | Number of bill records                           |
+| list        | array        | Billing record list                              |
+| tradeType   | int          | Transaction type: 2. Buy; 3. Sell; 4. Actual fee |
+| operateTime | int64        | Operating time                                   |
+| currency    | string       | Example of currency name: ETH                    |
+| amount      | string       | Quantity                                         |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -1973,56 +1965,56 @@ curl `https://api.fameex.com/v1/api/spot/record/trade`
 }
 ```
 
-## 获取现货账户充提账单
+## Obtain a cash account deposit and withdrawal bill
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口查询现货账户充提账单。
+This interface queries the deposit and withdrawal bills of the spot account.
 
-`请求路径`
+`Request path`
 
 POST /v1/api/spot/record/chargewithdraw
 
 curl `https://api.fameex.com/v1/api/spot/record/chargewithdraw`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                               |
-| --------- | -------- | -------- | ---------------------------------- |
-| tradeType | 否       | int      | 交易类型：0.全部；1.提币；2.充币 |
-| currency  | 否       | string   | 币种名称 例:ETH                    |
-| startTime | 否       | int64    | 开始时间：秒级时间戳               |
-| endTime   | 否       | int64    | 结束时间时间：秒级时间戳           |
-| pageNum   | 是       | int      | 页码，从 1 开始                    |
-| pageSize  | 是       | int      | 每页数量 (0 < pageSize ≤ 500)     |
+| parameter | Do you have to | type of data | Remarks                                             |
+| --------- | -------------- | ------------ | --------------------------------------------------- |
+| tradeType | no             | int          | Transaction type: 0. All; 1. Withdrawal; 2. Deposit |
+| currency  | no             | string       | Example of currency name: ETH                       |
+| startTime | no             | int64        | Start time: second-level timestamp                  |
+| endTime   | no             | int64        | End time time: second-level timestamp               |
+| pageno    | Yes            | int          | Page number, starting from 1                        |
+| pageSize  | Yes            | int          | Number of pages (0 <pageSize ≤ 500)                 |
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                                                                                                                                                                                     |
-| ----------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| code        | int      | 200, 正常                                                                                                                                                                                |
-| msg         | string   | success,正常                                                                                                                                                                             |
-| data        | object   | 空字符串                                                                                                                                                                                 |
-| total       | int      | 账单记录数量                                                                                                                                                                             |
-| list        | array    | 账单记录列表                                                                                                                                                                             |
-| tradeType   | int      | 交易类型：1.提币；2.充币                                                                                                                                                                 |
-| operateTime | int64    | 操作时间                                                                                                                                                                                 |
-| currency    | string   | 币种名称 例:ETH                                                                                                                                                                          |
-| amount      | string   | 数量                                                                                                                                                                                     |
-| address     | string   | 当 tradeType 为 1 时，代表提币地址；tradeType 为 2 时，代表充币地址                                                                                                                      |
-| fee         | string   | 提币手续费                                                                                                                                                                               |
-| label       | string   | 用户的标签                                                                                                                                                                               |
-| chainType   | string   | 币种的链类型                                                                                                                                                                             |
-| state       | int      | 账单状态:<br> 当 tradeType 为 1 时, state 分别代表: 1-待审核; 2-审核中; 3-已完成; 4-审核失败; 5-已撤单; 6-提币失败; 7-初始化创建; 8-确认中<br>当 tradeType 为 2 时, state 分别代表: 1-已完成 |
-| txId        | string   | 交易哈希                                                                                                                                                                                 |
+| Field Name  | type of data | Remarks                                                      |
+| ----------- | ------------ | ------------------------------------------------------------ |
+| code        | int          | 200, normal                                                  |
+| msg         | string       | success, normal                                              |
+| data        | object       | Empty string                                                 |
+| total       | int          | Number of bill records                                       |
+| list        | array        | Billing record list                                          |
+| tradeType   | int          | Transaction type: 1. Withdraw coins; 2. Deposit coins        |
+| operateTime | int64        | Operating time                                               |
+| currency    | string       | Example of currency name: ETH                                |
+| amount      | string       | Quantity                                                     |
+| address     | string       | When the tradeType is 1, it represents the withdrawal address; when the tradeType is 2, it represents the deposit address |
+| fee         | string       | Withdrawal fee                                               |
+| label       | string       | User's label                                                 |
+| chainType   | string       | Chain type of currency                                       |
+| state       | int          | Bill status: When the tradeType is 1, state respectively represents: 1-Pending review; 2-Under review; 3-Completed; 4-Review failed; 5-Retracted; 6-Withdrawal failed; 7-Initial creation; 8- When the tradeType is 2 in confirmation , state respectively represents: 1-Completed |
+| txId        | string       | Transaction hash                                             |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2084,57 +2076,57 @@ curl `https://api.fameex.com/v1/api/spot/record/chargewithdraw`
 }
 ```
 
-​
 
-## 获取现货账户划转账单
 
-限速规则：20 次/2s
+## Obtain a transfer bill from a spot account
 
-`功能说明`
+Speed limit rule: 20 times/2s
 
-此接口查询现货账户划转账单。
+`Function description`
 
-`请求路径`
+This interface queries the transfer bill of the spot account.
+
+`Request path`
 
 POST /v1/api/spot/record/trans
 
 curl `https://api.fameex.com/v1/api/spot/record/trans`
 
-``路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                               |
-| --------- | -------- | -------- | ---------------------------------- |
-| tradeType | 否       | int      | 交易类型：0.全部；1.转入；2.转出 |
-| currency  | 否       | string   | 币种名称 例:ETH                    |
-| startTime | 否       | int64    | 开始时间：秒级时间戳               |
-| endTime   | 否       | int64    | 结束时间时间：秒级时间戳           |
-| pageNum   | 是       | int      | 页码，从 1 开始                    |
-| pageSize  | 是       | int      | 每页数量 (0 < pageSize ≤ 500)        |
+| parameter | Do you have to | type of data | Remarks                                                   |
+| --------- | -------------- | ------------ | --------------------------------------------------------- |
+| tradeType | no             | int          | Transaction type: 0. All; 1. Transfer in; 2. Transfer out |
+| currency  | no             | string       | Example of currency name: ETH                             |
+| startTime | no             | int64        | Start time: second-level timestamp                        |
+| endTime   | no             | int64        | End time time: second-level timestamp                     |
+| pageno    | Yes            | int          | Page number, starting from 1                              |
+| pageSize  | Yes            | int          | Number of pages (0 <pageSize ≤ 500)                       |
 
-`返回值`
+`Return Value`
 
-| 字段名称     | 数据类型 | 备注                                     |
-| ------------ | -------- | ---------------------------------------- |
-| code         | int      | 200, 正常                                |
-| msg          | string   | success,正常                             |
-| data         | object   | 空字符串                                 |
-| userId       | string   | 用户 id                                  |
-| total        | int      | 账单记录数量                             |
-| list         | array    | 账单记录列表                             |
-| tradeType    | int      | 交易类型：1.转入；2.转出         |
-| operateTime  | int64    | 操作时间                                 |
-| currency     | string   | 币种名称 例:ETH                          |
-| amount       | string   | 数量                                     |
-| fromCoinPair | string   | 转入币对                                 |
-| toCoinPair   | string   | 转出币对                                 |
-| fromAccount  | string   | 转出账户：0.现货；1.杠杆；3.法币 |
-| toAccount    | string   | 转入账户：0.现货；1.杠杆；3.法币 |
+| Field Name   | type of data | Remarks                                                      |
+| ------------ | ------------ | ------------------------------------------------------------ |
+| code         | int          | 200, normal                                                  |
+| msg          | string       | success, normal                                              |
+| data         | object       | Empty string                                                 |
+| userId       | string       | User id                                                      |
+| total        | int          | Number of bill records                                       |
+| list         | array        | Billing record list                                          |
+| tradeType    | int          | Transaction type: 1. Transfer in; 2. Transfer out            |
+| operateTime  | int64        | Operating time                                               |
+| currency     | string       | Example of currency name: ETH                                |
+| amount       | string       | Quantity                                                     |
+| fromCoinPair | string       | Transferred currency pair                                    |
+| toCoinPair   | string       | Transfer out currency pair                                   |
+| fromAccount  | string       | Transfer out account: 0. Spot; 1. Leverage; 3. Legal currency |
+| toAccount    | string       | Transfer to account: 0. Spot; 1. Leverage; 3. Legal currency |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2173,51 +2165,51 @@ curl `https://api.fameex.com/v1/api/spot/record/trans`
 }
 ```
 
-## 获取现货账户其他账单
+## Get other bills for spot accounts
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口查询现货账户其他账单，包括返佣及活动。
+This interface queries other bills of spot accounts, including rebates and activities.
 
-`请求路径`
+`Request path`
 
 POST /v1/api/spot/record/others
 
 curl `https://api.fameex.com/v1/api/spot/record/others`
 
-``路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                             |
-| --------- | -------- | -------- | -------------------------------- |
-| tradeType | 否       | int      | 交易类型：0.全部；1.返佣；2.活动 |
-| currency  | 否       | string   | 币种名称 例:ETH                  |
-| startTime | 否       | int64    | 开始时间：秒级时间戳             |
-| endTime   | 否       | int64    | 结束时间时间：秒级时间戳         |
-| pageNum   | 是       | int      | 页码，从 1 开始                  |
-| pageSize  | 是       | int      | 每页数量 (0 < pageSize ≤ 500)      |
+| parameter | Do you have to | type of data | Remarks                                            |
+| --------- | -------------- | ------------ | -------------------------------------------------- |
+| tradeType | no             | int          | Transaction type: 0. All; 1. Rebate; 2. Activities |
+| currency  | no             | string       | Example of currency name: ETH                      |
+| startTime | no             | int64        | Start time: second-level timestamp                 |
+| endTime   | no             | int64        | End time time: second-level timestamp              |
+| pageno    | Yes            | int          | Page number, starting from 1                       |
+| pageSize  | Yes            | int          | Number of pages (0 <pageSize ≤ 500)                |
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                             |
-| ----------- | -------- | -------------------------------- |
-| code        | int      | 200, 正常                        |
-| msg         | string   | success,正常                     |
-| data        | object   | 空字符串                         |
-| userId      | string   | 用户 id                          |
-| total       | int      | 账单记录数量                     |
-| list        | array    | 账单记录列表                     |
-| tradeType   | int      | 交易类型：1.返佣；2.活动 |
-| operateTime | int64    | 操作时间：秒级时间戳             |
-| currency    | string   | 币种名称 例:ETH                  |
-| amount      | string   | 数量                             |
+| Field Name  | type of data | Remarks                                    |
+| ----------- | ------------ | ------------------------------------------ |
+| code        | int          | 200, normal                                |
+| msg         | string       | success, normal                            |
+| data        | object       | Empty string                               |
+| userId      | string       | User id                                    |
+| total       | int          | Number of bill records                     |
+| list        | array        | Billing record list                        |
+| tradeType   | int          | Transaction type: 1. Rebate; 2. Activities |
+| operateTime | int64        | Operation time: second-level timestamp     |
+| currency    | string       | Example of currency name: ETH              |
+| amount      | string       | Quantity                                   |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2244,42 +2236,42 @@ curl `https://api.fameex.com/v1/api/spot/record/others`
 }
 ```
 
-## 获取充币地址
+## Get the deposit address
 
-限速规则：20 次/2s
+Speed limit rule: 20 times/2s
 
-`功能说明`
+`Function description`
 
-此接口获取各个币种的充币地址。
+This interface obtains the deposit address of each currency.
 
-`请求路径`
+`Request path`
 
 /v1/api/account/deposit/address
 
 curl `https://api.fameex.com/v1/api/account/deposit/address`
 
-`路由参数`
+`Routing parameters`
 
-| 参数      | 是否必须 | 数据类型 | 备注          |
-| --------- | -------- | -------- | ------------- |
-| coinType  | 是       | string   | 币种类型 USDT |
-| chainType | 是       | string   | 链类型 ERC20  |
+| parameter | Do you have to | type of data | Remarks            |
+| --------- | -------------- | ------------ | ------------------ |
+| coinType  | Yes            | string       | Currency type USDT |
+| chainType | Yes            | string       | Chain type ERC20   |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注      |
-| -------- | -------- | --------- |
-| code     | int      | 200, 正常 |
-| request  | map      | 请求参数  |
-| userId   | string   | 用户 id   |
-| coinType | string   | 币种      |
-| address  | string   | 地址      |
+| Field Name | type of data | Remarks           |
+| ---------- | ------------ | ----------------- |
+| code       | int          | 200, normal       |
+| request    | map          | Request parameter |
+| userId     | string       | User id           |
+| coinType   | string       | Currency          |
+| address    | string       | address           |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2300,51 +2292,51 @@ curl `https://api.fameex.com/v1/api/account/deposit/address`
 }
 ```
 
-## 获取杠杆账户信息
+## Get margin account information
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取杠杆账户所有资产信息列表，查询各币种的余额、冻结和可用等信息。
+This interface obtains a list of all asset information of a margin account, and queries the balance, freeze, and availability information of each currency.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/accounts
 
 curl `https://api.fameex.com/v1/api/lever/accounts`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称       | 数据类型 | 备注                                                                      |
-| -------------- | -------- | ------------------------------------------------------------------------- |
-| code           | int      | 200, 正常                                                                 |
-| data           | list     | 返回值,杠杆账户数据                                                       |
-| userid         | string   | 用户 id                                                                   |
-| walletType     | string   | 账户类型:spot-币币账户 otc-法币账户 l2c-杠杆账户 |
-| coinpair       | string   | 币对名称 例:BTC/USDT                                                      |
-| baseCurrency   | string   | 交易币名称 例:BTC                                                         |
-| quoteCurrency  | string   | 计价币名称 例:USDT                                                        |
-| baseAvailable  | string   | 交易币可用金额                                                            |
-| quoteAvailable | string   | 计价币可用金额                                                            |
-| baseHold       | string   | 交易币冻结金额                                                            |
-| quoteHold      | string   | 计价币冻结金额                                                            |
-| baseTotal      | string   | 交易币总额                                                                |
-| quoteTotal     | string   | 计价币总额                                                                |
-| baseBorrowed   | string   | 交易币借币金额                                                            |
-| quoteBorrowed  | string   | 计价币借币金额                                                            |
-| baseInterest   | string   | 交易币利息                                                                |
-| quoteInterest  | string   | 计价币利息                                                                |
+| Field Name     | type of data | Remarks                                                      |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| code           | int          | 200, normal                                                  |
+| data           | list         | Return value, margin account data                            |
+| userid         | string       | User id                                                      |
+| walletType     | string       | Account type: spot-currency account otc-fiat currency account l2c-margin account |
+| coinpair       | string       | Example of currency pair name: BTC/USDT                      |
+| baseCurrency   | string       | Example of transaction currency name: BTC                    |
+| quoteCurrency  | string       | Example of denomination currency name: USDT                  |
+| baseAvailable  | string       | Available amount of transaction currency                     |
+| quoteAvailable | string       | Available amount in denominated currency                     |
+| baseHold       | string       | Frozen amount of trading currency                            |
+| quoteHold      | string       | Frozen amount in denominated currency                        |
+| baseTotal      | string       | Total transaction currency                                   |
+| quoteTotal     | string       | Total denominated currency                                   |
+| baseBorrowed   | string       | Transaction currency loan amount                             |
+| quote Borrowed | string       | Denominated currency loan amount                             |
+| baseInterest   | string       | Transaction currency interest                                |
+| quoteInterest  | string       | Denominated currency interest                                |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2389,55 +2381,55 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 }
 ```
 
-# 杠杆交易 API 接口
+# Margin trading API interface
 
-## 获取杠杆账户下某币对详情
+## Get the details of a currency pair under a margin account
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-获取杠杆账户下某币对账户余额、冻结和可用等信息
+Get information about the balance, freeze, and availability of a currency pair account under a margin account
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/accounts
 
 curl `https://api.fameex.com/v1/api/lever/accounts`
 
-`路由参数`
+`Routing parameters`
 
-| 参数     | 是否必须 | 数据类型 | 备注              |
-| -------- | -------- | -------- | ----------------- |
-| pairName | 是       | string   | 币对, 例 BTC_USDT |
+| parameter | Do you have to | type of data | Remarks                         |
+| --------- | -------------- | ------------ | ------------------------------- |
+| pairName  | Yes            | string       | Currency pair, example BTC_USDT |
 
-`Post参数`
+`Post Parameter`
 
-无
+no
 
-`返回值`
+`Return Value`
 
-| 字段名称       | 数据类型 | 备注                 |
-| -------------- | -------- | -------------------- |
-| code           | int      | 200, 正常            |
-| data           | list     | 返回值,杠杆账户数据  |
-| msg            | string   | code 响应信息        |
-| userid         | string   | 用户 id              |
-| coinpair       | string   | 币对名称 例:BTC/USDT |
-| baseCurrency   | string   | 交易币名称 例:BTC    |
-| quoteCurrency  | string   | 计价币名称 例:USDT   |
-| baseAvailable  | string   | 交易币可用金额       |
-| quoteAvailable | string   | 计价币可用金额       |
-| baseHold       | string   | 交易币冻结金额       |
-| quoteHold      | string   | 计价币冻结金额       |
-| baseTotal      | string   | 交易币总额           |
-| quoteTotal     | string   | 计价币总额           |
-| baseBorrowed   | string   | 交易币借币金额       |
-| quoteBorrowed  | string   | 计价币借币金额       |
-| baseInterest   | string   | 交易币利息           |
-| quoteInterest  | string   | 计价币利息           |
-| burstPrice     | string   | 爆仓价               |
-| riskRate       | string   | 爆仓风险率           |
+| Field Name     | type of data | Remarks                                     |
+| -------------- | ------------ | ------------------------------------------- |
+| code           | int          | 200, normal                                 |
+| data           | list         | Return value, margin account data           |
+| msg            | string       | code response message                       |
+| userid         | string       | User id                                     |
+| coinpair       | string       | Example of currency pair name: BTC/USDT     |
+| baseCurrency   | string       | Example of transaction currency name: BTC   |
+| quoteCurrency  | string       | Example of denomination currency name: USDT |
+| baseAvailable  | string       | Available amount of transaction currency    |
+| quoteAvailable | string       | Available amount in denominated currency    |
+| baseHold       | string       | Frozen amount of trading currency           |
+| quoteHold      | string       | Frozen amount in denominated currency       |
+| baseTotal      | string       | Total transaction currency                  |
+| quoteTotal     | string       | Total denominated currency                  |
+| baseBorrowed   | string       | Transaction currency loan amount            |
+| quote Borrowed | string       | Denominated currency loan amount            |
+| baseInterest   | string       | Transaction currency interest               |
+| quoteInterest  | string       | Denominated currency interest               |
+| burstPrice     | string       | Liquidation price                           |
+| riskRate       | string       | Liquidation risk rate                       |
 
 ```json
 {
@@ -2464,43 +2456,43 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 }
 ```
 
-## 杠杆下单
+## Leverage order
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口提供杠杆下单功能。
+This interface provides leverage to place orders.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/orders/place
 
 curl `https://api.fameex.com/v1/api/lever/orders/place`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数    | 是否必须 | 数据类型 | 备注               |
-| ------- | -------- | -------- | ------------------ |
-| base    | 是       | string   | 交易对中的交易币种 |
-| quote   | 是       | string   | 交易对中的计价币种 |
-| buyType | 是       | int      | 0 买, 1 卖         |
-| price   | 是       | string   | 下单单价           |
-| count   | 是       | string   | 下单数量           |
+| parameter | Do you have to | type of data | Remarks                                  |
+| --------- | -------------- | ------------ | ---------------------------------------- |
+| base      | Yes            | string       | Trading currency in the trading pair     |
+| quote     | Yes            | string       | Denominated currency in the trading pair |
+| buyType   | Yes            | int          | 0 buy, 1 sell                            |
+| price     | Yes            | string       | Order unit price                         |
+| count     | Yes            | string       | Order quantity                           |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注      |
-| -------- | -------- | --------- |
-| code     | int      | 200, 正常 |
-| msg      | string   | 信息说明  |
-| orderId  | string   | 挂单 id   |
+| Field Name | type of data | Remarks                 |
+| ---------- | ------------ | ----------------------- |
+| code       | int          | 200, normal             |
+| msg        | string       | Information Description |
+| orderId    | string       | Pending order id        |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2510,82 +2502,82 @@ curl `https://api.fameex.com/v1/api/lever/orders/place`
 }
 ```
 
-## 杠杆撤单
+## Leverage Cancellation
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口提供将未成交的杠杆订单撤销的功能。
+This interface provides the function of canceling unfilled leveraged orders.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/orders/cancel
 
 curl `https://api.fameex.com/v1/api/lever/orders/cancel`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数    | 是否必须 | 数据类型 | 备注    |
-| ------- | -------- | -------- | ------- |
-| orderId | 是       | string   | 订单 id |
+| parameter | Do you have to | type of data | Remarks  |
+| --------- | -------------- | ------------ | -------- |
+| orderId   | Yes            | string       | Order id |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注        |
-| -------- | -------- | ----------- |
-| code     | int      | 200, 正常   |
-| msg      | string   | 备注        |
-| orderId  | string   | 要撤单的 id |
+| Field Name | type of data | Remarks                |
+| ---------- | ------------ | ---------------------- |
+| code       | int          | 200, normal            |
+| msg        | string       | Remarks                |
+| orderId    | string       | Id to cancel the order |
 
-`返回示例`
+`Return example`
 
 ```json
 {
-  "code": 200, //成功
+  "code": 200,
   "msg": "success",
   "orderId": "10541638782567317504"
 }
 ```
 
-## 杠杆批量撤单
+## Leverage batch cancellation
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口提供撤销指定的某一种或多种币对的所有未成交的杠杆订单的功能。
+This interface provides the function of canceling all unexecuted leveraged orders of a specified currency pair or currency pairs.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/orders/batch_cancel
 
 curl `https://api.fameex.com/v1/api/lever/orders/batch_cancel`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                         |
-| --------- | -------- | -------- | ---------------------------- |
-| buyType   | 是       | int      | 买卖方向 0 买, 1 卖, -1 全部 |
-| base      | 是       | string   | 交易对中的交易币种           |
-| quote     | 是       | string   | 交易对中的计价币种           |
-| startTime | 是       | int64    | "0" 全部                     |
-| endTime   | 是       | int64    | "0" 全部                     |
+| parameter | Do you have to | type of data | Remarks                                            |
+| --------- | -------------- | ------------ | -------------------------------------------------- |
+| buyType   | Yes            | int          | Buying and selling direction 0 buy, 1 sell, -1 all |
+| base      | Yes            | string       | Trading currency in the trading pair               |
+| quote     | Yes            | string       | Denominated currency in the trading pair           |
+| startTime | Yes            | int64        | "0" all                                            |
+| endTime   | Yes            | int64        | "0" all                                            |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注     |
-| -------- | -------- | -------- |
-| code     | int      | 200,正常 |
-| msg      | string   | SUCCESS  |
+| Field Name | type of data | Remarks     |
+| ---------- | ------------ | ----------- |
+| code       | int          | 200, normal |
+| msg        | string       | SUCCESS     |
 
 ```json
 {
@@ -2594,72 +2586,72 @@ curl `https://api.fameex.com/v1/api/lever/orders/batch_cancel`
 }
 ```
 
-## 获取杠杆委托单列表
+## Get a list of leveraged orders
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-列出您当前的委托单信息（最近 3 个月的委托单信息）。这个请求支持分页，并且按时间倒序排序和存储，最新的排在最前面。
+List your current order information (the order information of the last 3 months). This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/orders
 
 curl `https://api.fameex.com/v1/api/lever/orders`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数      | 是否必须 | 数据类型 | 备注                                                                                                                         |
-| --------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| pageNum   | 是       | int      | 分页使用, 第几页                                                                                                             |
-| pageSize  | 是       | int      | 分页使用, 每页数量 (0 < pageSize ≤ 500)                                                                                        |
-| type      | 是       | int      | 0 所有, 1 完成(完全成交),2 未完成, 3 已撤销, 4 已撤销和完成 5 部分成交已撤销 6 完成(完全成交)和部分成交已撤销 7 未成交已撤销 |
-| buyType   | 否       | int      | 买卖方向: 0 买, 1 卖, -1 全部                                                                                                |
-| base      | 否       | string   | 交易币名称 例:BTC                                                                                                            |
-| quote     | 否       | string   | 计价币名称 例:USDT                                                                                                           |
-| startTime | 否       | int64    | 时间戳,查询订单的开始时间 秒                                                                                                 |
-| endTime   | 否       | int64    | 时间戳,查询订单的结束时间 秒                                                                                                 |
+| parameter | Do you have to | type of data | Remarks                                                      |
+| --------- | -------------- | ------------ | ------------------------------------------------------------ |
+| pageno    | Yes            | int          | Paging usage, which page                                     |
+| pageSize  | Yes            | int          | Paging usage, number per page (0 <pageSize ≤ 500)            |
+| type      | Yes            | int          | 0 all, 1 completed (complete deal), 2 not completed, 3 cancelled, 4 cancelled and completed 5 partial deal has been cancelled 6 completed (complete deal) and partial deal has been cancelled 7 uncompleted deal has been cancelled |
+| buyType   | no             | int          | Trading direction: 0 buy, 1 sell, -1 all                     |
+| base      | no             | string       | Example of transaction currency name: BTC                    |
+| quote     | no             | string       | Example of denomination currency name: USDT                  |
+| startTime | no             | int64        | Timestamp, query the start time of the order in seconds      |
+| endTime   | no             | int64        | Timestamp, query the end time of the order in seconds        |
 
-`返回值`
+`Return Value`
 
-| 字段名称       | 数据类型 | 备注                                                                                                          |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| code           | int      | 返回值状态                                                                                                    |
-| msg            | string   | 返回值描述                                                                                                    |
-| data           | string   | 返回值,订单列表                                                                                               |
-| id             | int64    | 数据编号                                                                                                      |
-| orderId        | string   | 委托单 id                                                                                                     |
-| userId         | string   | 用户 id                                                                                                       |
-| userType       | int      | 用户类型 1 普通用户 2 api 用户                                                                                |
-| userLevel      | int      | 用户等级                                                                                                      |
-| base           | string   | 交易对中的交易币种                                                                                            |
-| quote          | string   | 交易对中的计价币种                                                                                            |
-| buyType        | int      | 0 买 1 卖                                                                                                     |
-| buyClass       | int      | 0 限价单                                                                                                      |
-| state          | int      | 订单状态 1-待撮合 4-taker 完全成交 7-在深度队列 8-taker 部分成交 9-maker 部分成交 10-maker 完全成交 11-已撤销 |
-| price          | string   | 委托单价                                                                                                      |
-| totalPrice     | string   | 初始委托价格                                                                                                  |
-| count          | string   | 未成交数量                                                                                                    |
-| lossPrice      | string   | 止盈止损触发价                                                                                                |
-| totalCount     | string   | 总数量                                                                                                        |
-| dealedCount    | string   | 已成交数量                                                                                                    |
-| dealedMoney    | string   | 累计成交额                                                                                                    |
-| priceAvg       | string   | 成交均价                                                                                                      |
-| triggerGreater | bool     | 是否大于等于止盈止损触发价                                                                                    |
-| matchCount     | int      | 匹配次数                                                                                                      |
-| createTime     | int64    | 订单创建时间 单位：纳秒                                                                                       |
-| endTime        | int64    | 订单最后的更新时间 单位：纳秒                                                                                 |
-| isErr          | int      | 0 正常委托单 其他为解锁资产失败的委托单                                                                       |
-| triggered      | int      | 止盈止损是否触发 0 未触发 1 已触发                                                                            |
-| accountFlag    | int      | 订单类型：1.普通杠杆订单；2.杠杆爆仓                                                                          |
-| detail         | object   | 详情                                                                                                          |
+| Field Name     | type of data | Remarks                                                      |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| code           | int          | Return value status                                          |
+| msg            | string       | Return value description                                     |
+| data           | string       | Return value, order list                                     |
+| id             | int64        | Data number                                                  |
+| orderId        | string       | Order id                                                     |
+| userId         | string       | User id                                                      |
+| userType       | int          | User type 1 Ordinary user 2 api user                         |
+| userLevel      | int          | user level                                                   |
+| base           | string       | Trading currency in the trading pair                         |
+| quote          | string       | Denominated currency in the trading pair                     |
+| buyType        | int          | 0 buy 1 sell                                                 |
+| buyClass       | int          | 0 limit order                                                |
+| state          | int          | Order Status 1-Pending Match 4-Taker Completed Transaction 7-In the Deep Queue 8-Taker Partial Transaction 9-maker Partial Transaction 10-maker Complete Transaction 11-Canceled |
+| price          | string       | Order unit price                                             |
+| totalPrice     | string       | Initial commission price                                     |
+| count          | string       | Unsold quantity                                              |
+| lossPrice      | string       | Stop Profit and Stop Loss Trigger Price                      |
+| totalCount     | string       | The total amount                                             |
+| dealedCount    | string       | Number of transactions                                       |
+| dealedMoney    | string       | Cumulative turnover                                          |
+| priceAvg       | string       | Average transaction price                                    |
+| triggerGreater | bool         | Is it greater than or equal to the trigger price of stop profit and stop loss |
+| matchCount     | int          | Matches                                                      |
+| createTime     | int64        | Order creation time unit: nanosecond                         |
+| endTime        | int64        | The last update time unit of the order: nanosecond           |
+| isErr          | int          | 0 Normal orders and other orders that failed to unlock assets |
+| triggered      | int          | Whether stop profit and stop loss is triggered 0 not triggered 1 triggered |
+| accountFlag    | int          | Order type: 1. Ordinary leveraged order; 2. Leveraged liquidation |
+| detail         | object       | Details                                                      |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2707,54 +2699,54 @@ curl `https://api.fameex.com/v1/api/lever/orders`
 }
 ```
 
-## 获取杠杆委托单详情
+## Get details of leveraged orders
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口通过订单 ID 获取指定委托单信息。
+This interface obtains the specified order information through the order ID.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/orders/detail
 
 curl `https://api.fameex.com/v1/api/lever/orders/detail`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                    |
-| -------- | -------- | -------- | ----------------------- |
-| orderId  | 是       | string   | 订单 id                 |
-| pairName | 是       | string   | 币对名称（例:BTC_USDT） |
+| parameter | Do you have to | type of data | Remarks                                               |
+| --------- | -------------- | ------------ | ----------------------------------------------------- |
+| orderId   | Yes            | string       | Order id                                              |
+| pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT) |
 
-`返回值`
+`Return Value`
 
-| 字段名称    | 数据类型 | 备注                                                                                         |
-| ----------- | -------- | -------------------------------------------------------------------------------------------- |
-| code        | int      | 返回值状态                                                                                   |
-| msg         | string   | 返回值描述                                                                                   |
-| data        | string   | 返回值,订单详情                                                                              |
-| orderId     | string   | 撮合任务 id                                                                                  |
-| pairName    | string   | 币对名称（例:BTC_USDT）                                                                      |
-| buyType     | int      | 买卖方向 0-买 1-卖                                                                           |
-| buyClass    | int      | 委托类型 0-限价 1-市价 2-止盈止损                                                            |
-| state       | int      | 订单状态 1-待撮合 4-taker 完全成交 7-在深度队列 9-maker 部分成交 10-maker 完全成交 11-已撤销 |
-| price       | string   | 挂单单价                                                                                     |
-| count       | string   | 未成交数量                                                                                   |
-| lossPrice   | string   | 止盈止损触发价                                                                               |
-| totalCount  | string   | 总挂单数量                                                                                   |
-| dealedCount | string   | 已成交数量                                                                                   |
-| dealedMoney | string   | 已成交金额                                                                                   |
-| priceAvg    | string   | 成交均价                                                                                     |
-| createTime  | int64    | 订单创建时间 纳秒                                                                            |
-| endTime     | int64    | 订单状态最后更新时间 纳秒                                                                    |
+| Field Name  | type of data | Remarks                                                      |
+| ----------- | ------------ | ------------------------------------------------------------ |
+| code        | int          | Return value status                                          |
+| msg         | string       | Return value description                                     |
+| data        | string       | Return value, order details                                  |
+| orderId     | string       | Matching task id                                             |
+| pairName    | string       | The name of the currency pair (for example: BTC_USDT)        |
+| buyType     | int          | Buying and Selling Direction 0-Buy1-Sell                     |
+| buyClass    | int          | Order type 0-limit price1-market price2-stop profit and stop loss |
+| state       | int          | Order status 1-To be matched 4-Taker is fully traded 7-In the deep queue 9-Partially traded by maker 10-Maker is fully traded 11-Canceled |
+| price       | string       | Pending order unit price                                     |
+| count       | string       | Unsold quantity                                              |
+| lossPrice   | string       | Stop Profit and Stop Loss Trigger Price                      |
+| totalCount  | string       | Total number of pending orders                               |
+| dealedCount | string       | Number of transactions                                       |
+| dealedMoney | string       | Transaction amount                                           |
+| priceAvg    | string       | Average transaction price                                    |
+| createTime  | int64        | Order creation time in nanoseconds                           |
+| endTime     | int64        | Last update time of order status in nanoseconds              |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2779,59 +2771,59 @@ curl `https://api.fameex.com/v1/api/lever/orders/detail`
 }
 ```
 
-## 获取杠杆成交明细
+## Get leveraged transaction details
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取您当前所有的成交订单信息。这个请求支持分页，并且按时间倒序排序和存储，最新的排在最前面。
+This interface gets all your current transaction order information. This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/deals
 
 curl `https://api.fameex.com/v1/api/lever/deals`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数        | 是否必须 | 数据类型 | 备注                                  |
-| ----------- | -------- | -------- | ------------------------------------- |
-| pairName    | 是       | string   | 币对名称 (例:BTC_UDST)                |
-| buyType     | 是       | int      | 买卖方向: 0 买, 1 卖, -1 全部         |
-| pageNum     | 是       | int      | 分页使用, 第几页,从第一页开始         |
-| pageSize    | 是       | int      | 分页使用, 每页数量 (0 < pageSize ≤ 500) |
-| accountFlag | 是       | int      | 账户来源( 0-币币 1-杠杆 2-杠杆爆仓)   |
-| orderId     | 否       | string   | 委托单订单 id                         |
-| startTime   | 否       | int64    | 时间戳, 秒                            |
-| endTime     | 否       | int64    | 时间戳, 秒                            |
+| parameter   | Do you have to | type of data | Remarks                                                      |
+| ----------- | -------------- | ------------ | ------------------------------------------------------------ |
+| pairName    | Yes            | string       | Token name (e.g. BTC_UDST)                                   |
+| buyType     | Yes            | int          | Trading direction: 0 buy, 1 sell, -1 all                     |
+| pageno      | Yes            | int          | Pagination use, the first few pages, starting from the first page |
+| pageSize    | Yes            | int          | Paging usage, number per page (0 <pageSize ≤ 500)            |
+| accountFlag | Yes            | int          | Account source (0-coin1-leverage 2-leverage liquidation)     |
+| orderId     | no             | string       | Order id                                                     |
+| startTime   | no             | int64        | Timestamp, seconds                                           |
+| endTime     | no             | int64        | Timestamp, seconds                                           |
 
-`返回值`
+`Return Value`
 
-| 字段名称      | 数据类型 | 备注                             |
-| ------------- | -------- | -------------------------------- |
-| code          | int      | 返回值状态                       |
-| msg           | string   | 返回值描述                       |
-| data          | string   | 返回值,成交明细                  |
-| pairName      | string   | 币对名称（例：BTC_USDT）         |
-| base          | string   | 交易币                           |
-| quote         | string   | 计价币                           |
-| orderId       | string   | 委托单 id                        |
-| time          | int64    | 成交时间 纳秒                    |
-| buyClass      | int      | 交易类型: 0 限价交易             |
-| buyType       | int      | 买卖方向: 0 买, 1 卖             |
-| price         | string   | 成交价格                         |
-| count         | string   | 成交数量                         |
-| fee           | string   | 手续费                           |
-| feeRate       | string   | 实际手续费费率                   |
-| originFeeRate | string   | 原始手续费费率                   |
-| accountFlag   | int      | 类型：1.普通杠杆订单；2.杠杆爆仓 |
+| Field Name    | type of data | Remarks                                                   |
+| ------------- | ------------ | --------------------------------------------------------- |
+| code          | int          | Return value status                                       |
+| msg           | string       | Return value description                                  |
+| data          | string       | Return value, transaction details                         |
+| pairName      | string       | The name of the currency pair (for example: BTC_USDT)     |
+| base          | string       | Transaction currency                                      |
+| quote         | string       | Denominated currency                                      |
+| orderId       | string       | Order id                                                  |
+| time          | int64        | Transaction time in nanoseconds                           |
+| buyClass      | int          | Transaction type: 0 limit transaction                     |
+| buyType       | int          | Trading direction: 0 buy, 1 sell                          |
+| price         | string       | the deal price                                            |
+| count         | string       | The number of transactions                                |
+| fee           | string       | Handling fee                                              |
+| feeRate       | string       | Actual handling fee rate                                  |
+| originFeeRate | string       | Original fee rate                                         |
+| accountFlag   | int          | Type: 1. Ordinary leverage order; 2. Leverage liquidation |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2869,45 +2861,45 @@ curl `https://api.fameex.com/v1/api/lever/deals`
 }
 ```
 
-## 获取杠杆配置
+## Get leverage configuration
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取钱包杠杆账户下币对配置信息。
+This interface obtains the currency pair configuration information of the wallet margin account.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/pair/config
 
 curl `https://api.fameex.com/v1/api/lever/pair/config`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
-| -------- | -------- | -------- | -------------------- |
-| pairName | 否       | string   | 币对名称 例:ETH_USDT |
+| parameter | Do you have to | type of data | Remarks                                 |
+| --------- | -------------- | ------------ | --------------------------------------- |
+| pairName  | no             | string       | Example of currency pair name: ETH_USDT |
 
-`返回值`
+`Return Value`
 
-| 字段名称                 | 数据类型 | 备注                |
-| ------------------------ | -------- | ------------------- |
-| code                     | int      | 200, 正常           |
-| msg                      | string   | success,正常        |
-| data                     | array    | 返回值,杠杆配置信息 |
-| coinPair                 | string   | 币对名称            |
-| leverMultiple            | string   | 杠杆倍数            |
-| quoteLeatestBorrowAmount | string   | 计价币最少借币金额  |
-| borrowFeeRate            | string   | 借币费率            |
-| quoteMostBorrowAmount    | string   | 计价币单日最大可借  |
-| baseMostBorrowAmount     | string   | 交易币单日最大可借  |
+| Field Name               | type of data | Remarks                                           |
+| ------------------------ | ------------ | ------------------------------------------------- |
+| code                     | int          | 200, normal                                       |
+| msg                      | string       | success, normal                                   |
+| data                     | array        | Return value, leverage configuration information  |
+| coinPair                 | string       | Currency pair name                                |
+| leverMultiple            | string       | Leverage                                          |
+| quoteLeatestBorrowAmount | string       | Minimum borrowing amount of denominated currency  |
+| borrowFeeRate            | string       | Loan rate                                         |
+| quoteMostBorrowAmount    | string       | The maximum loanable currency in a single day     |
+| baseMostBorrowAmount     | string       | Maximum loanable trading currency in a single day |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2945,44 +2937,44 @@ curl `https://api.fameex.com/v1/api/lever/pair/config`
 }
 ```
 
-## 获取杠杆借币参数
+## Get leveraged currency borrowing parameters
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取用户借币时的提示参数。
+This interface obtains the prompt parameters when the user borrows coins.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/borrowparam
 
 curl `https://api.fameex.com/v1/api/lever/borrowparam`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
-| -------- | -------- | -------- | -------------------- |
-| pairName | 是       | string   | 币对名称 例:ETH_USDT |
-| currency | 是       | string   | 币种名称 例:ETH      |
+| parameter | Do you have to | type of data | Remarks                                 |
+| --------- | -------------- | ------------ | --------------------------------------- |
+| pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
+| currency  | Yes            | string       | Example of currency name: ETH           |
 
-`返回值`
+`Return Value`
 
-| 字段名称          | 数据类型 | 备注                |
-| ----------------- | -------- | ------------------- |
-| code              | int      | 200, 正常           |
-| msg               | string   | success,正常        |
-| data              | array    | 返回值,杠杆配置信息 |
-| canBorrowAmount   | string   | 可借金额            |
-| borrowedAmount    | string   | 已借金额            |
-| borrowFeeRate     | string   | 计价币最少借币金额  |
-| leastBorrowAmount | string   | 最小借币金额        |
+| Field Name        | type of data | Remarks                                          |
+| ----------------- | ------------ | ------------------------------------------------ |
+| code              | int          | 200, normal                                      |
+| msg               | string       | success, normal                                  |
+| data              | array        | Return value, leverage configuration information |
+| canBorrowAmount   | string       | Available amount                                 |
+| borrowedAmount    | string       | Amount borrowed                                  |
+| borrowFeeRate     | string       | Minimum borrowing amount of denominated currency |
+| leastBorrowAmount | string       | Minimum loan amount                              |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -2997,41 +2989,41 @@ curl `https://api.fameex.com/v1/api/lever/borrowparam`
 }
 ```
 
-## 杠杆借币
+## Leveraged currency
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口用于杠杆借币。
+This interface is used for leveraged currency borrowing.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/borrow
 
 curl `https://api.fameex.com/v1/api/lever/borrow`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
-| -------- | -------- | -------- | -------------------- |
-| pairName | 是       | string   | 币对名称 例:ETH_USDT |
-| currency | 是       | string   | 币种名称 例:ETH      |
-| amount   | 是       | string   | 借币金额             |
+| parameter | Do you have to | type of data | Remarks                                 |
+| --------- | -------------- | ------------ | --------------------------------------- |
+| pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
+| currency  | Yes            | string       | Example of currency name: ETH           |
+| amount    | Yes            | string       | Loan amount                             |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注         |
-| -------- | -------- | ------------ |
-| code     | int      | 200, 正常    |
-| msg      | string   | success,正常 |
-| data     | array    | 空字符串     |
+| Field Name | type of data | Remarks         |
+| ---------- | ------------ | --------------- |
+| code       | int          | 200, normal     |
+| msg        | string       | success, normal |
+| data       | array        | Empty string    |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -3041,44 +3033,44 @@ curl `https://api.fameex.com/v1/api/lever/borrow`
 }
 ```
 
-## 获取杠杆还币参数
+## Get leveraged currency parameters
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取特定币对下特定币种的还币提示参数。
+This interface obtains the currency return prompt parameters of a specific currency under a specific currency pair.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/repayparam
 
 curl `https://api.fameex.com/v1/api/lever/repayparam`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
-| -------- | -------- | -------- | -------------------- |
-| pairName | 是       | string   | 币对名称 例:ETH_USDT |
-| currency | 是       | string   | 币种名称 例:ETH      |
+| parameter | Do you have to | type of data | Remarks                                 |
+| --------- | -------------- | ------------ | --------------------------------------- |
+| pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
+| currency  | Yes            | string       | Example of currency name: ETH           |
 
-`返回值`
+`Return Value`
 
-| 字段名称       | 数据类型 | 备注                     |
-| -------------- | -------- | ------------------------ |
-| code           | int      | 200, 正常                |
-| msg            | string   | success,正常             |
-| data           | object   | 返回值,用户还币提示信息  |
-| borrowedAmount | string   | 借币未还本金             |
-| interest       | string   | 借币未还利息             |
-| unReturnAmount | string   | 未还金额                 |
-| availAmount    | string   | 该币对下该币种的可用金额 |
+| Field Name     | type of data | Remarks                                                      |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| code           | int          | 200, normal                                                  |
+| msg            | string       | success, normal                                              |
+| data           | object       | Return value, prompt message of user returning currency      |
+| borrowedAmount | string       | Unpaid principal                                             |
+| interest       | string       | Unpaid interest on borrowed currency                         |
+| unReturnAmount | string       | Outstanding amount                                           |
+| availAmount    | string       | The available amount of the currency under the currency pair |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -3093,41 +3085,41 @@ curl `https://api.fameex.com/v1/api/lever/repayparam`
 }
 ```
 
-## 杠杆还币
+## Leveraged currency
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口用于杠杆还币。
+This interface is used for leveraged currency.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/repay
 
 curl `https://api.fameex.com/v1/api/lever/repay`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
-| -------- | -------- | -------- | -------------------- |
-| pairName | 是       | string   | 币对名称 例:ETH_USDT |
-| currency | 是       | string   | 币种名称             |
-| amount   | 是       | string   | 还币金额             |
+| parameter | Do you have to | type of data | Remarks                                 |
+| --------- | -------------- | ------------ | --------------------------------------- |
+| pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
+| currency  | Yes            | string       | Currency name                           |
+| amount    | Yes            | string       | Refund amount                           |
 
-`返回值`
+`Return Value`
 
-| 字段名称 | 数据类型 | 备注         |
-| -------- | -------- | ------------ |
-| code     | int      | 200, 正常    |
-| msg      | string   | success,正常 |
-| data     | array    | 空字符串     |
+| Field Name | type of data | Remarks         |
+| ---------- | ------------ | --------------- |
+| code       | int          | 200, normal     |
+| msg        | string       | success, normal |
+| data       | array        | Empty string    |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -3137,52 +3129,52 @@ curl `https://api.fameex.com/v1/api/lever/repay`
 }
 ```
 
-## 获取杠杆账户借还记录
+## Get Margin Account Debit and Return Record
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取杠杆借还记录信息。
+This interface obtains the information of the leverage loan and return record.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/record/borrow_repay
 
 curl `https://api.fameex.com/v1/api/lever/record/borrow_repay`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
-| -------- | -------- | -------- | -------------------- |
-| pairName | 是       | string   | 币对名称 例:ETH_USDT |
-| currency | 是       | string   | 币种名称 例:ETH      |
-| pageSize | 是       | int      | 每页显示数量         |
-| pageNum  | 是       | int      | 页码                 |
+| parameter | Do you have to | type of data | Remarks                                 |
+| --------- | -------------- | ------------ | --------------------------------------- |
+| pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
+| currency  | Yes            | string       | Example of currency name: ETH           |
+| pageSize  | Yes            | int          | Display quantity per page               |
+| pageno    | Yes            | int          | page number                             |
 
-`返回值`
+`Return Value`
 
-| 字段名称       | 数据类型 | 备注                         |
-| -------------- | -------- | ---------------------------- |
-| code           | int      | 200, 正常                    |
-| msg            | string   | success,正常                 |
-| data           | list     | 返回值,杠杆账户数据          |
-| borrowedTime   | int64    | 借币时间                     |
-| coinPair       | string   | 借币币对名称 例:BTC/USDT     |
-| coinType       | string   | 借币币种名称 例:BTC          |
-| recordId       | string   | 借币记录 id                  |
-| borrowedAmount | string   | 借币数量                     |
-| amount         | string   | 交易币可用金额               |
-| borrowFeeRate  | string   | 每小时利率                   |
-| interest       | string   | 已还利息                     |
-| refund         | string   | 计价币冻结金额               |
-| state          | int      | 借币状态：1.未还清；2.已还清 |
+| Field Name     | type of data | Remarks                                           |
+| -------------- | ------------ | ------------------------------------------------- |
+| code           | int          | 200, normal                                       |
+| msg            | string       | success, normal                                   |
+| data           | list         | Return value, margin account data                 |
+| borrowedTime   | int64        | Borrow time                                       |
+| coinPair       | string       | Example of borrowing currency pair name: BTC/USDT |
+| coinType       | string       | Example of borrowing currency name: BTC           |
+| recordId       | string       | Borrowing record id                               |
+| borrowedAmount | string       | Number of borrowed coins                          |
+| amount         | string       | Available amount of transaction currency          |
+| borrowFeeRate  | string       | Hourly rate                                       |
+| interest       | string       | Interest paid                                     |
+| refund         | string       | Frozen amount in denominated currency             |
+| state          | int          | Loan status: 1. Not repaid; 2. Repaid             |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -3222,47 +3214,47 @@ curl `https://api.fameex.com/v1/api/lever/record/borrow_repay`
 }
 ```
 
-## 获取杠杆账户账单
+## Get a margin account statement
 
-限速规则：1 次/2s
+Speed limit rule: 1 time/2s
 
-`功能说明`
+`Function description`
 
-此接口获取杠杆账单。
+Use this interface to obtain leveraged bills.
 
-`请求路径`
+`Request path`
 
 /v1/api/lever/ledger
 
 curl `https://api.fameex.com/v1/api/lever/ledger`
 
-`路由参数`
+`Routing parameters`
 
-无
+no
 
-`Post参数`
+`Post Parameter`
 
-| 参数       | 是否必须 | 数据类型 | 备注                                                                                         |
-| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
-| pageNum    | 是       | int      | 页码                                                                                         |
-| pageSize   | 是       | int      | 每页显示数量 (0 < pageSize ≤ 500)                                                              |
-| currency   | 否       | string   | 币种类型,不填时返回所有的账单                                                            |
-| ledgerType | 否       | int      | 账单类型 2 买入 3 买出 4 手续费 5 借币 6 归还利息 7 归还本金 8 系统买入 9 系统卖出 11 强平费 12 转入 13 转出 |
-| pairName   | 否       | string   | 币对类型，不填时返回所有币对的账单                                                       |
+| parameter  | Do you have to | type of data | Remarks                                                      |
+| ---------- | -------------- | ------------ | ------------------------------------------------------------ |
+| pageno     | Yes            | int          | page number                                                  |
+| pageSize   | Yes            | int          | Display quantity per page (0 <pageSize ≤ 500)                |
+| currency   | no             | string       | Currency type, all bills will be returned if not filled      |
+| ledgerType | no             | int          | Bill type 2 Buy in 3 Buy out 4 Handling fee 5 Loan currency 6 Return interest 7 Return principal 8 System buy 9 System sell 11 Liquidation fee 12 Transfer in 13 Transfer out |
+| pairName   | no             | string       | Currency pair type, if not filled in, the bill of all currency pairs will be returned |
 
-`返回值`
+`Return Value`
 
-| 字段名称  | 数据类型 | 备注         |
-| --------- | -------- | ------------ |
-| ledger_id | string   | 账单 ID      |
-| coinPair  | string   | 币对         |
-| currency  | string   | 币种         |
-| balance   | string   | 余额         |
-| amount    | string   | 变动数量     |
-| typename  | string   | 账单类型     |
-| timestamp | string   | 账单创建时间 |
+| Field Name | type of data | Remarks            |
+| ---------- | ------------ | ------------------ |
+| ledger_id  | string       | Bill ID            |
+| coinPair   | string       | Currency pair      |
+| currency   | string       | Currency           |
+| balance    | string       | Balance            |
+| amount     | string       | Number of changes  |
+| typename   | string       | Bill type          |
+| timestamp  | string       | Bill creation time |
 
-`返回示例`
+`Return example`
 
 ```json
 {
@@ -3320,35 +3312,35 @@ curl `https://api.fameex.com/v1/api/lever/ledger`
 }
 ```
 
-# 错误信息
+# Error message
 
-| code 码 | 备注                                              |
-| ------- | ------------------------------------------------- |
-| 200     | 正常                                              |
-| 112002  | API 单个 Key 流量超限                             |
-| 112005  | API 请求频率超限                                  |
-| 112007  | API-Key 创建失败                                  |
-| 112008  | API-Key 备注名称已存在                            |
-| 112009  | API-Key 创建数量超限（单个用户最多创建 5 个 API） |
-| 112010  | API-Key 失效（单个 Key 的时限为 60 天自然日）     |
-| 112011  | API 请求 IP 访问受限（绑定 IP 与请求 IP 不一致）  |
-| 112015  | 签名错误                                          |
-| 112020  | 签名方式错误                                      |
-| 112021  | 签名版本错误                                      |
-| 112022  | 签名时间戳错误                                    |
+| code   | Remarks                                                      |
+| ------ | ------------------------------------------------------------ |
+| 200    | normal                                                       |
+| 112002 | API single key traffic exceeds limit                         |
+| 112005 | API request frequency exceeded                               |
+| 112007 | API-Key creation failed                                      |
+| 112008 | API-Key remark name already exists                           |
+| 112009 | The number of API-Key creation exceeds the limit (a single user can create up to 5 APIs) |
+| 112010 | API-Key is invalid (the time limit for a single Key is 60 natural days) |
+| 112011 | API request IP access is restricted (the bound IP is inconsistent with the request IP) |
+| 112015 | Signature error                                              |
+| 112020 | Wrong signature                                              |
+| 112021 | Wrong signature version                                      |
+| 112022 | Signature timestamp error                                    |
 
-# 常见问题
+# common problem
 
-| 常见问题                                                                                                                                                                                                                                                                                                                         |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.什么是交易币种?什么是计价币种？交易量是以交易币种还是计价币种进行数量统计？<br>答：<br>每一个交易币对都是由 交易币种/计价币种 组成的，币对中前方为交易货币，后方为计价货币。<br>举例说明：BTC/USDT 这个交易币对中，BTC 为交易货币，USDT 为计价货币。<br>交易量是以交易币种为准进行统计。<br>成交总额是以计价币种为准进行统计。 |
-| 2.Rest 访问限制?<br>答: <br>1.单个 IP 限制每分钟 1200 次访问，超过 1200 次将被锁定 1 小时，一小时后自动解锁。<br>2.单个用户限制每秒钟 20 次访问，一秒钟内 20 次以上的请求，将会视作无效。                                                                                                                                        |
-| 3.WebSocket 访问限制?<br>答:<br> 单个用户限制每秒钟 50 次访问，一秒钟内 50 次以上的请求，将会视作无效。                                                                                                                                                                                                                          |
-| 4.生成的密钥有什么用处?<br>答:<br> 密钥是用来操作 API 的钥匙，在调用 API 接口时需要提供 API 密钥。私有密钥只在刚生成时显示一次，遗忘需重新生成。                                                                                                                                                                                 |
-| 5.k 线图是否可以获取几个月或者一年前的数据?<br>答:<br> 系统 k 线图最多只提供 1000 条数据,如果要获取比较久的数据需要使用小时或者天的单位获取。                                                                                                                                                                                      |
-| 6.API 的 IP 是否需要绑定?<br>答:<br> 1.API 的 IP 绑定有效的防止除了这个 IP 之外的服务器进行调用自己的权限进行交易操作。<br> 2.绑定 IP 后，只能由绑定的 IP 进行访问，如不绑定，则不限制访问 IP。                                     |
-| 7.API 是否支持提币?<br>答:<br> 不支持,提币必须现在 FAMEEX 官网进行提币。                                                                                                                                                                                                                            |
-| 8.公钥私钥可以提供给别人吗?<br>答:<br> 不建议,会导致资产损失。                                                                                                                                                                                                                                                                     |
-| 9.签名失败频繁?<br> • 检查 API Key 是否有效，是否复制正确，是否有绑定 IP 白名单；<br>• 检查时间戳是否是 UTC 时间；<br>• 检查参数是否按字母排序；<br>• 检查编码；<br>• 检查签名编码应该是 hex；<br>• 检查 是否以表单方式提交；<br>• 检查 的 url 是否带着签名字段，POST 的数据格式是否是 json 格式；<br>• 检查签名结果是否有进行 URI 编码。        |
-| 10.返回 login-required?<br>• 检查参数 account-id 是否是由 /v1/account/accounts 接口返回的，而不是填的 UID；<br>• 检查请求是否把业务参数也计算进签名；<br>• 检查请求是否将参数按照 ASCII 码表顺序排序。                                                                                                                           |
-| 11.返回 gateway-internal-error?<br>检查请求是否在 header 中声明 Content-Type:application/json。                                                                                                                                                                                                                                   |
+| common problem                                               |
+| ------------------------------------------------------------ |
+| 1. What is a trading currency? What is a denominated currency? Is the transaction volume counted in the transaction currency or the denominated currency? Answer: Each transaction currency pair is composed of transaction currency/denominated currency. The front of the currency pair is the transaction currency, and the back is the denominated currency. For example: In the BTC/USDT trading currency pair, BTC is the trading currency and USDT is the quotation currency. The transaction volume is calculated based on the transaction currency. The total transaction amount is calculated based on the denominated currency. |
+| 2. Rest access restriction? Answer: 1. A single IP is restricted to 1200 visits per minute. If it exceeds 1200 times, it will be locked for 1 hour, and will be automatically unlocked after one hour. 2. A single user is restricted to 20 visits per second, and more than 20 requests within one second will be considered invalid. |
+| 3. WebSocket access restriction? Answer: A single user is restricted to 50 visits per second, and more than 50 requests in one second will be regarded as invalid. |
+| 4. What is the use of the generated key? Answer: The key is the key used to operate the API, and the API key needs to be provided when calling the API interface. The private key is only displayed once when it is just generated, and it needs to be regenerated if it is forgotten. |
+| 5. Can the candlestick chart obtain data from months or one year ago? Answer: The system candlestick chart only provides 1000 pieces of data at most. If you want to obtain longer data, you need to use the unit of hour or day to obtain it. |
+| 6. Does the IP of the API need to be bound? Answer: 1. The IP binding of the API effectively prevents servers other than this IP from calling their own authority for transaction operations. 2. After the IP is bound, it can only be accessed by the bound IP. If it is not bound, the access to the IP is not restricted. |
+| 7. Does the API support withdrawals? Answer: No, withdrawals must be made on the FAMEEX official website. |
+| 8. Can the public key and private key be provided to others? Answer: It is not recommended, it will cause asset loss. |
+| 9. Frequent signature failures? • Check whether the API Key is valid, copied correctly, and whether there is a whitelist of bound IP; • Check whether the timestamp is UTC time; • Check whether the parameters are sorted alphabetically; • Check the code; • Check the signature code It should be hex; • Check whether it is submitted in a form ; • Check whether the url has a signature field, and whether the POST data format is json format; • Check whether the signature result is URI-encoded. |
+| 10. Return login-required? • Check whether the parameter account-id is returned by the /v1/account/accounts interface instead of the filled UID; • Check whether the request includes the business parameters into the signature; • Check whether the request includes parameters Sort in the order of the ASCII code table. |
+| 11. Return gateway-internal-error? Check whether the request declares Content-Type: application/json in the header. |
