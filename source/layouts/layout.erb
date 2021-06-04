@@ -76,22 +76,22 @@ under the License.
             <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
             //<ul class="nav_ul">
             //  <li>
-            //    <a href="/apidocs/spot/en/" id="v1_url">v1</a>
+            //    <a href="/docs/api/spot/en/" id="v1_url">v1</a>
             //  </li>
             //  <li>
-            //    <a href="/apidocs/spot/en/" id="v2_url">v2</a>
+            //    <a href="/docs/api/spot/en/" id="v2_url">v2</a>
             //  </li>
             </ul>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/apidocs/spot/cn/" id="btn_spot" class="current">现货/杠杆</a>
+            <a href="/docs/api/spot/cn/" id="btn_spot" class="current">现货/杠杆</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/apidocs/swap/cn/" id="btn_swap" class="">U本位合约</a>
+            <a href="/docs/api/swap/cn/" id="btn_swap" class="">U本位合约</a>
           </span>
         </div>
       </div>
-      <a href="/apidocs/spot/en/" class="lang" id="lang_box" style="display: block;">English</a>
+      <a href="/docs/api/spot/en/" class="lang" id="lang_box" style="display: block;">English</a>
     </header>
     <div class="toc-wrapper">
       <% if language_tabs.any? %>
@@ -185,13 +185,13 @@ under the License.
         //v1_url.href = '/docs/spot/v1/en/';
         //v2_url.href = '/docs/spot/v2/en/';
       }
-      if(location.href.indexOf('apidocs/swap') > 0){
+      if(location.href.indexOf('api/swap') > 0){
         btn_spot.className = '';
         btn_swap.className = 'current';
-      } else if(location.href.indexOf('apidocs/spot') > 0){
+      } else if(location.href.indexOf('api/spot') > 0){
         btn_spot.className = 'current';
         btn_swap.className = '';
-      } else if(location.href.indexOf('apidocs/voptions') > 0){
+      } else if(location.href.indexOf('api/voptions') > 0){
         btn_spot.className = '';
         btn_swap.className = '';
       } else{
