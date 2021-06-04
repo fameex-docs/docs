@@ -54,13 +54,13 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 0;
+  top: 60px;
   left: 0;
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: normal;
 
   // language selector for mobile devices
   .lang-selector {
@@ -85,18 +85,20 @@ html, body {
       background: $nav-bg;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      padding: 6px 0 6px 30px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
+      transition: all 300ms;
+      margin-top: 30px;
     }
 
     &:before {
       position: absolute;
-      top: 17px;
+      top: 40px;
       left: $nav-padding;
       color: $nav-text;
       @extend %icon-search;
@@ -141,7 +143,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 45px;
   }
 
   li {
@@ -630,4 +632,74 @@ html, body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
+}
+
+header {
+  position: fixed;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 26px;
+  height: 60px;
+  left: 0;
+  top: 0;
+  background: #0D0D0D;
+  box-shadow: 0 1px 0 0 #000;
+  z-index: 100;
+}
+header .logo {
+  width: 160px;
+  height: 33px;
+}
+header .lang {
+  display: none;
+  width: 78px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border: 1px solid #383F66;
+  color: #EABE00;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 300ms;
+}
+header .lang:hover {
+  border-color: #EABE00;
+}
+header .flex_box {
+  -ms-flex: 1;
+  flex: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+header .nav_box {
+  position: relative;
+  margin-left: 56px;
+}
+header .nav_box .nav_cell {
+  position: relative;
+}
+header .nav_box .nav_tab {
+  font-size: 16px;
+  line-height: 59px;
+}
+header .nav_box .nav_tab a {
+  color: #FFFFFF;
+  display: inline-block;
+  padding: 0 20px;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+}
+header .nav_box .nav_tab a:hover {
+  color: #EABE00;
+}
+header .nav_box .nav_tab a.current {
+  // color: #FFF;
+  color: #EABE00;
+  border-color: #EABE00;
 }

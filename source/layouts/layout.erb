@@ -22,6 +22,11 @@ under the License.
     end
   end
 %>
+<%
+  t_reg = /t\(([^\)]+)\)/
+  current_page.data.title = current_page.data.title.gsub(t_reg){|t| eval(t)}
+  page_content = page_content.gsub(t_reg){|t| eval(t)}
+%>
 
 <!doctype html>
 <html>
@@ -29,6 +34,7 @@ under the License.
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/images/favicon.ico" rel="icon" type="image/ico">
     <title><%= current_page.data.title || "API Documentation" %></title>
 
     <style media="screen">
@@ -62,8 +68,32 @@ under the License.
         <%= image_tag('navbar.png') %>
       </span>
     </a>
+    <header>
+      <div class="flex_box">
+        <a href="https://www.fameex.com/" class="LG" id="LG"><img src="/images/logo.png" class="logo" alt="Logo"></a>
+        <div class="nav_box">
+          <span class="nav_cell" style="display: none">
+            <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
+            //<ul class="nav_ul">
+            //  <li>
+            //    <a href="/apidocs/spot/en/" id="v1_url">v1</a>
+            //  </li>
+            //  <li>
+            //    <a href="/apidocs/spot/en/" id="v2_url">v2</a>
+            //  </li>
+            </ul>
+          </span>
+          <span class="nav_cell nav_tab">
+            <a href="/apidocs/spot/cn/" id="btn_spot" class="current">现货/杠杆</a>
+          </span>
+          <span class="nav_cell nav_tab">
+            <a href="/apidocs/swap/cn/" id="btn_swap" class="">U本位合约</a>
+          </span>
+        </div>
+      </div>
+      <a href="/apidocs/spot/en/" class="lang" id="lang_box" style="display: block;">English</a>
+    </header>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -100,7 +130,7 @@ under the License.
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
           <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
+            <li><%= footer.gsub(t_reg){|t| eval(t)} %></li>
           <% end %>
         </ul>
       <% end %>
@@ -124,5 +154,66 @@ under the License.
         <% end %>
       </div>
     </div>
+    <script>
+      const LG = document.getElementById('LG');
+      const lang_btn = document.getElementById('lang_box');
+      const btn_spot = document.getElementById('btn_spot');
+      const btn_swap = document.getElementById('btn_swap');
+      const v1_url = document.getElementById('v1_url');
+      //const v2_url = document.getElementById('v2_url');
+      const url = GetUrlRelativePath();
+      if(url.indexOf('cn') != -1){
+        // for the Chinese Language env.
+        lang_btn.innerHTML = 'English';
+        btn_spot.innerHTML = '现货/杠杆';
+        btn_swap.innerHTML = 'U本位合约';
+        LG.href = "https://www.fameex.com/";
+        lang_btn.href = url.replace('cn/', 'en/');
+        btn_spot.href = btn_spot.href.replace('en/', 'cn/');
+        btn_swap.href = btn_swap.href.replace('en/', 'cn/');
+        //v1_url.href = '/docs/spot/v1/cn/';
+        //v2_url.href = '/docs/spot/v2/cn/';
+      }else{
+        // for the English Language env.
+        lang_btn.innerHTML = '简体中文';
+        btn_spot.innerHTML = 'Spot/Margin';
+        btn_swap.innerHTML = 'USDⓈ-M Futures';
+        LG.href = "https://www.fameex.com/";
+        lang_btn.href = url.replace('en/', 'cn/');
+        btn_spot.href = btn_spot.href.replace('cn/', 'en/');
+        btn_swap.href = btn_swap.href.replace('cn/', 'en/');
+        //v1_url.href = '/docs/spot/v1/en/';
+        //v2_url.href = '/docs/spot/v2/en/';
+      }
+      if(location.href.indexOf('apidocs/swap') > 0){
+        btn_spot.className = '';
+        btn_swap.className = 'current';
+      } else if(location.href.indexOf('apidocs/spot') > 0){
+        btn_spot.className = 'current';
+        btn_swap.className = '';
+      } else if(location.href.indexOf('apidocs/voptions') > 0){
+        btn_spot.className = '';
+        btn_swap.className = '';
+      } else{
+        btn_spot.className = '';
+        btn_swap.className = '';
+      }
+      // language botton
+      lang_btn.style.display = 'block';
+
+      function GetUrlRelativePath(){
+        let url = document.location.toString();
+        let arrUrl = url.split("//");
+        let start = arrUrl[1].indexOf("/");
+        let relUrl = arrUrl[1].substring(start);
+        if(relUrl.indexOf("?") != -1){
+          relUrl = relUrl.split("?")[0];
+        }
+        if(relUrl.indexOf("#") != -1){
+          relUrl = relUrl.split("#")[0];
+        }
+        return relUrl;
+  　　}
+    </script>
   </body>
 </html>

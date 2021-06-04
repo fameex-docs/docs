@@ -39,6 +39,10 @@ end
 activate :relative_assets
 set :relative_links, true
 
+# i18n
+activate :i18n, :langs => [:cn, :en], :mount_at_root => :cn
+  # , :path => "/apidocs/:locale/"
+
 # Build Configuration
 configure :build do
   # We do want to hash woff and woff2 as there's a bug where woff2 will use
@@ -51,7 +55,7 @@ configure :build do
   # out the following two lines has been known to help
   activate :minify_css
   activate :minify_javascript
-  # activate :gzip
+  activate :gzip
 end
 
 # Deploy Configuration
