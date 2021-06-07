@@ -1190,6 +1190,57 @@ no
 }
 ```
 
+## Adjust contract leverage
+
+Speed limit rule: 20 times/2s
+
+`Function Description`
+
+This interface adjusts the contract leverage.
+
+`Request path`
+
+/swap-api/v1/wallet/leverage/adjust
+
+curl `https://api.fameex.com/swap-api/v1/wallet/leverage/adjust`
+
+`Routing parameters`
+
+no
+
+`Post parameters`
+
+| parameter    | Do you have to | type of data | Remarks                                       |
+| ------------ | -------------- | ------------ | --------------------------------------------- |
+| contractCode | Yes            | string       | Contract code, for example "BTC-USDT"         |
+| leverage     | Yes            | int          | Leverage                                      |
+| marginMode   | Yes            | string       | Position type 1: Full position 2: By position |
+
+`Return value`
+
+| Field Name   | type of data | Remarks         |
+| ------------ | ------------ | --------------- |
+| code         | int          | 200, normal     |
+| msg          | string       | success, normal |
+| data         | object       | return value    |
+| userid       | string       | User id         |
+| contractCode | string       | Contract code   |
+| leverage     | int          | Leverage        |
+
+`Return example`
+
+``` json
+{
+  "code": 200,
+  "data": {
+    "userId": "32102739",
+    "contractCode": "BTC-USDT",
+    "leverage": 5
+  },
+  "msg": "success"
+}
+```
+
 # U contract wallet API interface
 
 ## Get contract account assets
@@ -1347,57 +1398,6 @@ no
         }
     ],
     "msg": "success"
-}
-```
-
-## Adjust contract leverage
-
-Speed limit rule: 20 times/2s
-
-`Function Description`
-
-This interface adjusts the contract leverage.
-
-`Request path`
-
-/swap-api/v1/wallet/leverage/adjust
-
-curl `https://api.fameex.com/swap-api/v1/wallet/leverage/adjust`
-
-`Routing parameters`
-
-no
-
-`Post parameters`
-
-| parameter    | Do you have to | type of data | Remarks                                       |
-| ------------ | -------------- | ------------ | --------------------------------------------- |
-| contractCode | Yes            | string       | Contract code, for example "BTC-USDT"         |
-| leverage     | Yes            | int          | Leverage                                      |
-| marginMode   | Yes            | string       | Position type 1: Full position 2: By position |
-
-`Return value`
-
-| Field Name   | type of data | Remarks         |
-| ------------ | ------------ | --------------- |
-| code         | int          | 200, normal     |
-| msg          | string       | success, normal |
-| data         | object       | return value    |
-| userid       | string       | User id         |
-| contractCode | string       | Contract code   |
-| leverage     | int          | Leverage        |
-
-`Return example`
-
-``` json
-{
-  "code": 200,
-  "data": {
-    "userId": "32102739",
-    "contractCode": "BTC-USDT",
-    "leverage": 5
-  },
-  "msg": "success"
 }
 ```
 

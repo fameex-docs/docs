@@ -1190,6 +1190,57 @@ curl `https://api.fameex.com/swap-api/v1/last_trades`
 }
 ```
 
+## 调整合约杠杆倍数
+
+限速规则：20 次/2s
+
+`功能说明`
+
+此接口调整合约杠杆倍数。
+
+`请求路径`
+
+/swap-api/v1/wallet/leverage/adjust
+
+curl `https://api.fameex.com/swap-api/v1/wallet/leverage/adjust`
+
+`路由参数`
+
+无
+
+`Post参数`
+
+| 参数         | 是否必须 | 数据类型 | 备注                   |
+| ------------ | -------- | -------- | ---------------------- |
+| contractCode | 是       | string   | 合约代码, 例"BTC-USDT" |
+| leverage     | 是       | int      | 杠杆倍数               |
+| marginMode   | 是       | string   | 仓位类型 1:全仓 2:逐仓 |
+
+`返回值`
+
+| 字段名称     | 数据类型 | 备注         |
+| ------------ | -------- | ------------ |
+| code         | int      | 200, 正常    |
+| msg          | string   | success,正常 |
+| data         | object   | 返回值       |
+| userid       | string   | 用户 id      |
+| contractCode | string   | 合约代码     |
+| leverage     | int      | 杠杆倍数     |
+
+`返回示例`
+
+```json
+{
+  "code": 200,
+  "data": {
+    "userId": "32102739",
+    "contractCode": "BTC-USDT",
+    "leverage": 5
+  },
+  "msg": "success"
+}
+```
+
 # U 合约钱包 API 接口
 
 ## 获取合约账户资产
@@ -1346,57 +1397,6 @@ curl `https://api.fameex.com/swap-api/v1/wallet/pos`
       "userId": "99213512"
     }
   ],
-  "msg": "success"
-}
-```
-
-## 调整合约杠杆倍数
-
-限速规则：20 次/2s
-
-`功能说明`
-
-此接口调整合约杠杆倍数。
-
-`请求路径`
-
-/swap-api/v1/wallet/leverage/adjust
-
-curl `https://api.fameex.com/swap-api/v1/wallet/leverage/adjust`
-
-`路由参数`
-
-无
-
-`Post参数`
-
-| 参数         | 是否必须 | 数据类型 | 备注                   |
-| ------------ | -------- | -------- | ---------------------- |
-| contractCode | 是       | string   | 合约代码, 例"BTC-USDT" |
-| leverage     | 是       | int      | 杠杆倍数               |
-| marginMode   | 是       | string   | 仓位类型 1:全仓 2:逐仓 |
-
-`返回值`
-
-| 字段名称     | 数据类型 | 备注         |
-| ------------ | -------- | ------------ |
-| code         | int      | 200, 正常    |
-| msg          | string   | success,正常 |
-| data         | object   | 返回值       |
-| userid       | string   | 用户 id      |
-| contractCode | string   | 合约代码     |
-| leverage     | int      | 杠杆倍数     |
-
-`返回示例`
-
-```json
-{
-  "code": 200,
-  "data": {
-    "userId": "32102739",
-    "contractCode": "BTC-USDT",
-    "leverage": 5
-  },
   "msg": "success"
 }
 ```

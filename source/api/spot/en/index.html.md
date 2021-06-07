@@ -1854,8 +1854,8 @@ no
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | currency  | Yes            | string       | Currency type                                                |
 | amount    | Yes            | string       | Quantity                                                     |
-| from      | Yes            | string       | Transfer account: spot spot account, otc fiat currency account, l2c margin account |
-| to        | Yes            | string       | Transfer account: spot spot account, otc fiat currency account, l2c margin account |
+| from      | Yes            | string       | Transfer account: spot spot account, otc fiat currency account, l2c margin account, swap USDT-futures account |
+| to        | Yes            | string       | Transfer account: spot spot account, otc fiat currency account, l2c margin account, swap USDT-futures account |
 | fromPair  | no             | string       | The outgoing currency pair during the mutual transfer between margin account currency pairs, for example: BTC_USDT |
 | toPair    | no             | string       | The transferred currency pair during the mutual transfer between margin account currency pairs, for example: ETH_USDT |
 

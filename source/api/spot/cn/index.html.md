@@ -1862,8 +1862,8 @@ curl `https://api.fameex.com/v1/api/account/transfer`
 | -------- | -------- | -------- | ----------------------------------------------- |
 | currency | 是       | string   | 币种类型                                        |
 | amount   | 是       | string   | 数量                                            |
-| from     | 是       | string   | 转出账户: spot 现货账户, otc 法币账户，l2c 杠杆账户 |
-| to       | 是       | string   | 转入账户: spot 现货账户, otc 法币账户，l2c 杠杆账户 |
+| from     | 是       | string   | 转出账户: spot 现货账户, otc 法币账户，l2c 杠杆账户，swap U合约账户 |
+| to       | 是       | string   | 转入账户: spot 现货账户, otc 法币账户，l2c 杠杆账户，swap U合约账户 |
 | fromPair | 否       | string   | 杠杆账户币对间互转时的转出币对，例:BTC_USDT     |
 | toPair   | 否       | string   | 杠杆账户币对间互转时的转入币对,例:ETH_USDT      |
 
