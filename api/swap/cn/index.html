@@ -408,6 +408,9 @@
                   <li>
                     <a href="#31ece0e16d" class="toc-h2 toc-link" data-title="获取最近成交明细">获取最近成交明细</a>
                   </li>
+                  <li>
+                    <a href="#4125a44110" class="toc-h2 toc-link" data-title="调整合约杠杆倍数">调整合约杠杆倍数</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -418,9 +421,6 @@
                   </li>
                   <li>
                     <a href="#4940f6c10e" class="toc-h2 toc-link" data-title="获取合约账户持仓">获取合约账户持仓</a>
-                  </li>
-                  <li>
-                    <a href="#4125a44110" class="toc-h2 toc-link" data-title="调整合约杠杆倍数">调整合约杠杆倍数</a>
                   </li>
               </ul>
           </li>
@@ -2680,6 +2680,104 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='4125a44110'>调整合约杠杆倍数</h2>
+<p>限速规则：20 次/2s</p>
+
+<p><code>功能说明</code></p>
+
+<p>此接口调整合约杠杆倍数。</p>
+
+<p><code>请求路径</code></p>
+
+<p>/swap-api/v1/wallet/leverage/adjust</p>
+
+<p>curl <code>https://api.fameex.com/swap-api/v1/wallet/leverage/adjust</code></p>
+
+<p><code>路由参数</code></p>
+
+<p>无</p>
+
+<p><code>Post参数</code></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contractCode</td>
+<td>是</td>
+<td>string</td>
+<td>合约代码, 例&quot;BTC-USDT&quot;</td>
+</tr>
+<tr>
+<td>leverage</td>
+<td>是</td>
+<td>int</td>
+<td>杠杆倍数</td>
+</tr>
+<tr>
+<td>marginMode</td>
+<td>是</td>
+<td>string</td>
+<td>仓位类型 1:全仓 2:逐仓</td>
+</tr>
+</tbody></table>
+
+<p><code>返回值</code></p>
+
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>备注</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>200, 正常</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>success,正常</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>返回值</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>string</td>
+<td>用户 id</td>
+</tr>
+<tr>
+<td>contractCode</td>
+<td>string</td>
+<td>合约代码</td>
+</tr>
+<tr>
+<td>leverage</td>
+<td>int</td>
+<td>杠杆倍数</td>
+</tr>
+</tbody></table>
+
+<p><code>返回示例</code></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32102739"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='u-api-2'>U 合约钱包 API 接口</h1><h2 id='506cbf527e'>获取合约账户资产</h2>
 <p>限速规则：20 次/2s</p>
 
@@ -2984,104 +3082,6 @@
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='4125a44110'>调整合约杠杆倍数</h2>
-<p>限速规则：20 次/2s</p>
-
-<p><code>功能说明</code></p>
-
-<p>此接口调整合约杠杆倍数。</p>
-
-<p><code>请求路径</code></p>
-
-<p>/swap-api/v1/wallet/leverage/adjust</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/wallet/leverage/adjust</code></p>
-
-<p><code>路由参数</code></p>
-
-<p>无</p>
-
-<p><code>Post参数</code></p>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>是否必须</th>
-<th>数据类型</th>
-<th>备注</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>contractCode</td>
-<td>是</td>
-<td>string</td>
-<td>合约代码, 例&quot;BTC-USDT&quot;</td>
-</tr>
-<tr>
-<td>leverage</td>
-<td>是</td>
-<td>int</td>
-<td>杠杆倍数</td>
-</tr>
-<tr>
-<td>marginMode</td>
-<td>是</td>
-<td>string</td>
-<td>仓位类型 1:全仓 2:逐仓</td>
-</tr>
-</tbody></table>
-
-<p><code>返回值</code></p>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>备注</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>200, 正常</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>success,正常</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>返回值</td>
-</tr>
-<tr>
-<td>userid</td>
-<td>string</td>
-<td>用户 id</td>
-</tr>
-<tr>
-<td>contractCode</td>
-<td>string</td>
-<td>合约代码</td>
-</tr>
-<tr>
-<td>leverage</td>
-<td>int</td>
-<td>杠杆倍数</td>
-</tr>
-</tbody></table>
-
-<p><code>返回示例</code></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32102739"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='a38a81c9d5'>错误信息</h1>
 <table><thead>
 <tr>
@@ -3206,7 +3206,7 @@
         // for the English Language env.
         lang_btn.innerHTML = '简体中文';
         btn_spot.innerHTML = 'Spot/Margin';
-        btn_swap.innerHTML = 'USDⓈ-M Futures';
+        btn_swap.innerHTML = 'USDT Futures';
         LG.href = "https://www.fameex.com/";
         lang_btn.href = url.replace('en/', 'cn/');
         btn_spot.href = btn_spot.href.replace('cn/', 'en/');
