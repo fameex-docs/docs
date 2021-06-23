@@ -26,21 +26,21 @@ meta:
 **2021-05-27**
 
 - Contract interface update:
-  - Added U contract order interface `/swap-api/v1/order`
-  - Added U contract cancellation interface `/swap-api/v1/cancel_order`
-  - Added U contract condition cancellation interface `/swap-api/v1/cancel_cond_orders`
-  - Added U contract to obtain single currency pair market data interface `/swap-api/v1/ticker`
-  - Added U contract to get all currency pair market data interface `/swap-api/v1/tickers`
-  - Added U contract to obtain order list interface `/swap-api/v1/orders`
-  - Added U contract to obtain order information interface `/swap-api/v1/order_info`
-  - Added U contract to obtain transaction details list interface `/swap-api/v1/trades`
-  - Added U contract to get the latest transaction details list interface `/swap-api/v1/last_trades`
-  - Added U contract to obtain in-depth data interface `/swap-api/v1/depth`
-  - Added U contract to obtain K-line data interface `/swap-api/v1/kline`
-  - Added U contract to obtain all currency pairs and configuration interface `/swap-api/v1/symbols`
-  - Added U contract to obtain contract account asset interface `/swap-api/v1/wallet/asset`
-  - Added U contract to obtain contract position interface `/swap-api/v1/wallet/pos`
-  - Added U contract adjustment leverage multiple interface `/swap-api/v1/wallet/leverage/adjust`
+  - Added U futures order interface `/swap-api/v1/order`
+  - Added U futures cancellation interface `/swap-api/v1/cancel_order`
+  - Added U futures condition cancellation interface `/swap-api/v1/cancel_cond_orders`
+  - Added U futures to obtain single currency pair market data interface `/swap-api/v1/ticker`
+  - Added U futures to get all currency pair market data interface `/swap-api/v1/tickers`
+  - Added U futures to obtain order list interface `/swap-api/v1/orders`
+  - Added U futures to obtain order information interface `/swap-api/v1/order_info`
+  - Added U futures to obtain transaction details list interface `/swap-api/v1/trades`
+  - Added U futures to get the latest transaction details list interface `/swap-api/v1/last_trades`
+  - Added U futures to obtain in-depth data interface `/swap-api/v1/depth`
+  - Added U futures to obtain K-line data interface `/swap-api/v1/kline`
+  - Added U futures to obtain all currency pairs and configuration interface `/swap-api/v1/symbols`
+  - Added U futures to obtain contract account asset interface `/swap-api/v1/wallet/asset`
+  - Added U futures to obtain contract position interface `/swap-api/v1/wallet/pos`
+  - Added U futures adjustment leverage multiple interface `/swap-api/v1/wallet/leverage/adjust`
 
 # Introduction
 
@@ -79,21 +79,21 @@ All requests are based on the Https protocol, and the contentType in the header 
 
 In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.
 
-## Frequency limiting rules
+## Restriction rules
 
 **Limit frequency:** The limit of each interface is different.
 
 A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.
 
-| Frequency limiting rules                        | type of data                  | Remarks |
+| Frequency limiting rules                        |Type                 | Remarks |
 | ----------------------------------------------- | ----------------------------- | ------- |
 | Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no      |
 
-## Request header settings
+## Header setting
 
 The parameters of the request header are as follows:
 
-| parameter        | type of data | Remarks                                      |
+| parameter        |Type| Remarks                                      |
 | ---------------- | ------------ | -------------------------------------------- |
 | AccessKey        | string       | The Accesskey you applied for                |
 | SignatureMethod  | string       | HmacSHA256                                   |
@@ -166,7 +166,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks                            |
+| Field Name |Type| Remarks                            |
 | ---------- | ------------ | ---------------------------------- |
 | code       | int          | 200, normal                        |
 | ts         | int64        | Request time, seconds              |
@@ -188,7 +188,7 @@ Speed limit rule: 20 times/2s
 
 `Description`
 
-Obtain all currency pairs and configurations of the U contract.
+Obtain all currency pairs and configurations of the U futures.
 
 `Request path`
 
@@ -206,7 +206,7 @@ no
 
 `Return value`
 
-| Field Name        | type of data | Remarks                                            |
+| Field Name        |Type| Remarks                                            |
 | ----------------- | ------------ | -------------------------------------------------- |
 | code              | int          | 200, normal                                        |
 | msg               | string       | success, normal                                    |
@@ -338,7 +338,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                                |
+| parameter    |Mandatory|Type| Remarks                                                |
 | ------------ | -------------- | ------------ | ------------------------------------------------------ |
 | contractCode | Yes            | string       | Contract code, for example "BTC-USDT"                  |
 | period       | Yes            | string       | 时间粒度 例（ "1","5","15","30","60","120","240","1D") |
@@ -347,7 +347,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks                             |
+| Field Name |Type| Remarks                             |
 | ---------- | ------------ | ----------------------------------- |
 | code       | int          | 200, normal                         |
 | msg        | string       | success, normal                     |
@@ -427,7 +427,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                       |
+| parameter    |Mandatory|Type| Remarks                                       |
 | ------------ | -------------- | ------------ | --------------------------------------------- |
 | contractCode | Yes            | string       | Contract code, for example "BTC-USDT"         |
 | step         | Yes            | string       | In-depth price aggregation type (step0~step4) |
@@ -435,7 +435,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks                                   |
+| Field Name |Type| Remarks                                   |
 | ---------- | ------------ | ----------------------------------------- |
 | code       | int          | 200, normal                               |
 | msg        | string       | success, normal                           |
@@ -491,13 +491,13 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                       |
+| parameter    |Mandatory|Type| Remarks                       |
 | ------------ | -------------- | ------------ | ----------------------------- |
 | contractCode | Yes            | string       | Contract code (e.g. BTC-USDT) |
 
 `Return value`
 
-| Field Name   | type of data | Remarks                                     |
+| Field Name   |Type| Remarks                                     |
 | ------------ | ------------ | ------------------------------------------- |
 | code         | int          | 200, normal                                 |
 | msg          | string       | success, normal                             |
@@ -558,7 +558,7 @@ no
 
 `Return value`
 
-| Field Name   | type of data | Remarks                                     |
+| Field Name   |Type| Remarks                                     |
 | ------------ | ------------ | ------------------------------------------- |
 | code         | int          | 200, normal                                 |
 | msg          | string       | success, normal                             |
@@ -621,15 +621,15 @@ no
 }
 ```
 
-# U contract trading API interface
+# U futures trading API interface
 
-## Contract order
+## Futures orders
 
 Speed limit rule: 100 times/2s
 
 `Function Description`
 
-This interface provides the U contract order function.
+This interface provides the U futures order function.
 
 `Request path`
 
@@ -643,7 +643,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                                      |
+| parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
 | leverage     | Yes            | int          | Leverage                                                     |
 | marginMode   | Yes            | int          | Margin mode 1-full position 2-position by position           |
@@ -659,7 +659,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks                               |
+| Field Name |Type| Remarks                               |
 | ---------- | ------------ | ------------------------------------- |
 | code       | int          | 200, normal                           |
 | msg        | string       | success, normal                       |
@@ -697,7 +697,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                                      |
+| parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
 | orderid      | Yes            | string       | Order ID (orderId and clientOid must and can only choose one to fill in) |
 | clientOid    | Yes            | string       | User-made order ID (orderId and clientOid must and can only choose one to fill in) |
@@ -705,7 +705,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks                      |
+| Field Name |Type| Remarks                      |
 | ---------- | ------------ | ---------------------------- |
 | code       | int          | 200, normal                  |
 | msg        | string       | success, normal              |
@@ -723,7 +723,7 @@ no
 }
 ```
 
-## Cancellation of contract conditions
+## Futures limit cancellation
 
 Speed limit rule: 100 times/2s
 
@@ -743,7 +743,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                                      |
+| parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
 | contractCode | Yes            | string       | Contract code (e.g. BTC-USDT)                                |
 | side         | no             | string       | Order Direction 1-Buy 2-Sell                                 |
@@ -752,7 +752,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks         |
+| Field Name |Type| Remarks         |
 | ---------- | ------------ | --------------- |
 | code       | int          | 200, normal     |
 | msg        | string       | success, normal |
@@ -790,7 +790,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                                      |
+| parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
 | contractCode | Yes            | string       | Contract code (e.g. BTC-USDT)                                |
 | orderId      | no             | string       | Order ID (orderId and clientOid must and can only choose one to fill in) |
@@ -798,7 +798,7 @@ no
 
 `Return value`
 
-| Field Name      | type of data | Remarks                                                      |
+| Field Name      |Type| Remarks                                                      |
 | --------------- | ------------ | ------------------------------------------------------------ |
 | code            | int          | 200, normal                                                  |
 | msg             | string       | success, normal                                              |
@@ -886,7 +886,7 @@ no
 
 `Routing parameters`
 
-| parameter       | Do you have to | type of data | Remarks                                                      |
+| parameter       |Mandatory|Type| Remarks                                                      |
 | --------------- | -------------- | ------------ | ------------------------------------------------------------ |
 | contractCode    | Yes            | string       | Contract code (e.g. BTC-USDT)                                |
 | side            | no             | int          | Trading direction: 0 buy, 1 sell, -1 all                     |
@@ -906,7 +906,7 @@ no
 
 `Return value`
 
-| Field Name      | type of data | Remarks                                                      |
+| Field Name      |Type| Remarks                                                      |
 | --------------- | ------------ | ------------------------------------------------------------ |
 | code            | int          | 200, normal                                                  |
 | msg             | string       | success, normal                                              |
@@ -1032,7 +1032,7 @@ no
 
 `Post parameters`
 
-| parameter       | Do you have to | type of data | Remarks                                                      |
+| parameter       |Mandatory|Type| Remarks                                                      |
 | --------------- | -------------- | ------------ | ------------------------------------------------------------ |
 | contractCode    | no             | string       | Contract code (e.g. BTC-USDT)                                |
 | orderId         | no             | string       | Order ID                                                     |
@@ -1048,7 +1048,7 @@ no
 
 `Return value`
 
-| Field Name      | type of data | Remarks                                                      |
+| Field Name      |Type| Remarks                                                      |
 | --------------- | ------------ | ------------------------------------------------------------ |
 | code            | int          | 200, normal                                                  |
 | msg             | string       | success, normal                                              |
@@ -1153,7 +1153,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                                    |
+| parameter    |Mandatory|Type| Remarks                                                    |
 | ------------ | -------------- | ------------ | ---------------------------------------------------------- |
 | contractCode | Yes            | string       | Contract code, for example "BTC-USDT"                      |
 | accountType  | Yes            | string       | Account type, "swap"                                       |
@@ -1161,7 +1161,7 @@ no
 
 `Return value`
 
-| Field Name | type of data | Remarks                                  |
+| Field Name |Type| Remarks                                  |
 | ---------- | ------------ | ---------------------------------------- |
 | code       | int          | 200, normal                              |
 | msg        | string       | success, normal                          |
@@ -1190,7 +1190,7 @@ no
 }
 ```
 
-## Adjust contract leverage
+## Adjust leverage
 
 Speed limit rule: 20 times/2s
 
@@ -1210,7 +1210,7 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                                       |
+| parameter    |Mandatory|Type| Remarks                                       |
 | ------------ | -------------- | ------------ | --------------------------------------------- |
 | contractCode | Yes            | string       | Contract code, for example "BTC-USDT"         |
 | leverage     | Yes            | int          | Leverage                                      |
@@ -1218,7 +1218,7 @@ no
 
 `Return value`
 
-| Field Name   | type of data | Remarks         |
+| Field Name   |Type| Remarks         |
 | ------------ | ------------ | --------------- |
 | code         | int          | 200, normal     |
 | msg          | string       | success, normal |
@@ -1241,9 +1241,9 @@ no
 }
 ```
 
-# U contract wallet API interface
+# U futures wallet API interface
 
-## Get contract account assets
+## Get futures wallet
 
 Speed limit rule: 20 times/2s
 
@@ -1267,7 +1267,7 @@ no
 
 `Return value`
 
-| Field Name    | type of data | Remarks                                               |
+| Field Name    |Type| Remarks                                               |
 | ------------- | ------------ | ----------------------------------------------------- |
 | code          | int          | 200, normal                                           |
 | msg           | string       | success, normal                                       |
@@ -1324,7 +1324,7 @@ no
 }
 ```
 
-## Get contract account positions
+## Get futures positions
 
 Speed limit rule: 20 times/2s
 
@@ -1344,13 +1344,13 @@ no
 
 `Post parameters`
 
-| parameter    | Do you have to | type of data | Remarks                               |
+| parameter    |Mandatory|Type| Remarks                               |
 | ------------ | -------------- | ------------ | ------------------------------------- |
 | contractCode | Yes            | string       | Contract code, for example "BTC-USDT" |
 
 `Return value`
 
-| Field Name     | type of data | Remarks                                                      |
+| Field Name     |Type| Remarks                                                      |
 | -------------- | ------------ | ------------------------------------------------------------ |
 | code           | int          | 200, normal                                                  |
 | msg            | string       | success, normal                                              |

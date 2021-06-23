@@ -115,21 +115,21 @@ All requests are based on the Https protocol, and the contentType in the header 
 
 In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.
 
-## Frequency limiting rules
+## Restriction rules
 
 **Limit frequency:** The limit of each interface is different.
 
 A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.
 
-| Frequency limiting rules                        | type of data                  | Remarks |
+| Frequency limiting rules                        | Type                  | Remarks |
 | ----------------------------------------------- | ----------------------------- | ------- |
 | Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no      |
 
-## Request header settings
+## Header setting
 
 The parameters of the request header are as follows:
 
-| parameter        | type of data | Remarks                                      |
+| parameter        | Type | Remarks                                      |
 | ---------------- | ------------ | -------------------------------------------- |
 | AccessKey        | string       | The Accesskey you applied for                |
 | SignatureMethod  | string       | HmacSHA256                                   |
@@ -200,13 +200,13 @@ websocket
 }
 ```
 
-| parameter | Do you have to | type of data | Remarks                    |
+| parameter | Mandatory | Type | Remarks                    |
 | --------- | -------------- | ------------ | -------------------------- |
 | on        | Yes            | string       | Message type ("heartBeat") |
 
 `Return Value`
 
-| Field Name | type of data | Remarks                    |
+| Field Name | Type | Remarks                    |
 | ---------- | ------------ | -------------------------- |
 | type       | string       | Message type ("heartBeat") |
 
@@ -241,7 +241,7 @@ Request example`
 Parameter
 ```
 
-| parameter | Do you have to | type of data | Remarks                       |
+| parameter | Mandatory | Type | Remarks                       |
 | --------- | -------------- | ------------ | ----------------------------- |
 | on        | Yes            | string       | Message type ("Login")        |
 | AccessKey | Yes            | string       | AccessKey applied for         |
@@ -249,7 +249,7 @@ Parameter
 
 `Return Value`
 
-| Field Name | type of data | Remarks                |
+| Field Name | Type | Remarks                |
 | ---------- | ------------ | ---------------------- |
 | code       | int          | 200, normal            |
 | msg        | string       | Remarks                |
@@ -290,7 +290,7 @@ websocket
 Parameter
 ```
 
-| parameter | Do you have to | type of data | Remarks                                                |
+| parameter | Mandatory | Type | Remarks                                                |
 | --------- | -------------- | ------------ | ------------------------------------------------------ |
 | on        | Yes            | string       | Message type ("register")                              |
 | type      | Yes            | string       | Registration type ("kLineData")                        |
@@ -326,7 +326,7 @@ websocket
 Parameter
 ```
 
-| parameter | Do you have to | type of data | Remarks           |
+| parameter | Mandatory | Type | Remarks           |
 | --------- | -------------- | ------------ | ----------------- |
 | on        | Yes            | string       | Message type      |
 | type      | Yes            | string       | Registration Type |
@@ -362,7 +362,7 @@ websocket
 Parameter
 ```
 
-| parameter | Do you have to | type of data | Remarks                                  |
+| parameter | Mandatory | Type | Remarks                                  |
 | --------- | -------------- | ------------ | ---------------------------------------- |
 | on        | Yes            | string       | Message type                             |
 | type      | Yes            | string       | Registration Type                        |
@@ -374,7 +374,7 @@ Parameter
 
 no
 
-## Push homepage quotation
+## Push coin pair depth list
 
 `Description`
 
@@ -394,7 +394,7 @@ no
 
 `Return Value`
 
-| Field Name          | type of data | Remarks                                  |
+| Field Name          | Type | Remarks                                  |
 | ------------------- | ------------ | ---------------------------------------- |
 | type                | string       | Message type                             |
 | base_quote          | string       | Currency pair key                        |
@@ -453,7 +453,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                  |
+| Field Name | Type | Remarks                                  |
 | ---------- | ------------ | ---------------------------------------- |
 | type       | string       | Message type ("transDepth")              |
 | base       | string       | Trading currency in the trading pair     |
@@ -512,7 +512,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                                      |
+| Field Name | Type | Remarks                                                      |
 | ---------- | ------------ | ------------------------------------------------------------ |
 | type       | string       | Message type ("kLineData")                                   |
 | time       | int64        | K-line timestamp (push according to registered K-line service) |
@@ -558,7 +558,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                     |
+| Field Name | Type | Remarks                                     |
 | ---------- | ------------ | ------------------------------------------- |
 | type       | string       | Message type                                |
 | base       | string       | Trading currency in the trading pair        |
@@ -604,7 +604,7 @@ no
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                                      |
+| Field Name  | Type | Remarks                                                      |
 | ----------- | ------------ | ------------------------------------------------------------ |
 | type        | string       | Message type ("myTransDepth")                                |
 | orderId     | string       | Order id                                                     |
@@ -664,7 +664,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                            |
+| Field Name | Type | Remarks                            |
 | ---------- | ------------ | ---------------------------------- |
 | type       | string       | Message type ("myOrderPartCancel") |
 | orderId    | string       | Order id                           |
@@ -702,7 +702,7 @@ websocket
 Parameter
 ```
 
-| parameter | Do you have to | type of data | Remarks           |
+| parameter | Mandatory | Type | Remarks           |
 | --------- | -------------- | ------------ | ----------------- |
 | on        | Yes            | string       | Message type      |
 | type      | Yes            | string       | Registration Type |
@@ -737,7 +737,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                            |
+| Field Name | Type | Remarks                            |
 | ---------- | ------------ | ---------------------------------- |
 | code       | int          | 200, normal                        |
 | ts         | int64        | Request time, seconds              |
@@ -777,7 +777,7 @@ no
 
 `Return Value`
 
-| Field Name      | type of data | Remarks                                                      |
+| Field Name      | Type | Remarks                                                      |
 | --------------- | ------------ | ------------------------------------------------------------ |
 | code            | int          | 200, normal                                                  |
 | ts              | int64        | Request time, seconds                                        |
@@ -836,7 +836,7 @@ no
 
 `Return Value`
 
-| Field Name                | type of data | Remarks                                                      |
+| Field Name                | Type | Remarks                                                      |
 | ------------------------- | ------------ | ------------------------------------------------------------ |
 | code                      | int          | 200, normal                                                  |
 | msg                       | string       | Description of the return value this time                    |
@@ -946,7 +946,7 @@ curl `https://api.fameex.com/v1/market/history/kline`
 
 `Routing parameters`
 
-| parameter   | Do you have to | type of data | Remarks                                                     |
+| parameter   | Mandatory | Type | Remarks                                                     |
 | ----------- | -------------- | ------------ | ----------------------------------------------------------- |
 | pairName    | Yes            | string       | Currency pair, for example "ETH_BTC"                        |
 | granularity | Yes            | string       | 时间粒度 例（ "1","5","15","30","60","120","240","1D","1W") |
@@ -959,7 +959,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                                |
+| Field Name | Type | Remarks                                                |
 | ---------- | ------------ | ------------------------------------------------------ |
 | code       | int          | Return value status                                    |
 | time       | int64        | Timestamp                                              |
@@ -1006,7 +1006,7 @@ curl `https://api.fameex.com/v1/market/depth`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                                            |
+| parameter | Mandatory | Type | Remarks                                            |
 | --------- | -------------- | ------------ | -------------------------------------------------- |
 | pairName  | Yes            | string       | For example: BTC_USDT                              |
 | size      | no             | string       | Return the number of depth gears, up to 200        |
@@ -1018,7 +1018,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                        |
+| Field Name | Type | Remarks                        |
 | ---------- | ------------ | ------------------------------ |
 | code       | int          | 200, normal                    |
 | msg        | string       | Remarks                        |
@@ -1074,7 +1074,7 @@ curl `https://api.fameex.com/v1/market/history/trade`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | pairName  | Yes            | string       | For example, the name of the currency pair: BTC_USDT         |
 | size      | no             | string       | The maximum is 100, if not filled in, 100 will be returned by default |
@@ -1085,7 +1085,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                         |
+| Field Name | Type | Remarks                                         |
 | ---------- | ------------ | ----------------------------------------------- |
 | code       | int          | 200, normal                                     |
 | msg        | string       | Remarks                                         |
@@ -1130,7 +1130,7 @@ curl `https://api.fameex.com/v1/market/history/kline24h`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                                      |
+| parameter | Mandatory | Type | Remarks                                      |
 | --------- | -------------- | ------------ | -------------------------------------------- |
 | pairName  | Yes            | string       | Trading currency pair, for example "ETH_BTC" |
 
@@ -1140,7 +1140,7 @@ no
 
 `Return Value`
 
-| Field Name          | type of data | Remarks                                                      |
+| Field Name          | Type | Remarks                                                      |
 | ------------------- | ------------ | ------------------------------------------------------------ |
 | code                | int          | 200, normal                                                  |
 | pairName            | string       | For example, the name of the currency pair: "OMG_ETH"        |
@@ -1199,7 +1199,7 @@ no
 
 `Return Value`
 
-| Field Name          | type of data | Remarks                                                      |
+| Field Name          | Type | Remarks                                                      |
 | ------------------- | ------------ | ------------------------------------------------------------ |
 | code                | int          | 200, normal                                                  |
 | pairName            | string       | For example, the name of the currency pair: "OMG_ETH"        |
@@ -1248,9 +1248,9 @@ no
 }
 ```
 
-# Coin trading API interface
+# Exchange API interface
 
-## Currency order
+## New order
 
 Speed limit rule: 100 times/2s
 
@@ -1270,7 +1270,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                  |
+| parameter | Mandatory | Type | Remarks                                  |
 | --------- | -------------- | ------------ | ---------------------------------------- |
 | base      | Yes            | string       | Trading currency in the trading pair     |
 | quote     | Yes            | string       | Denominated currency in the trading pair |
@@ -1280,7 +1280,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                 |
+| Field Name | Type | Remarks                 |
 | ---------- | ------------ | ----------------------- |
 | code       | int          | 200, normal             |
 | msg        | string       | Information Description |
@@ -1296,7 +1296,7 @@ no
 }
 ```
 
-## Currency withdrawal order
+## Cancel Order
 
 Speed limit rule: 100 times/2s
 
@@ -1316,7 +1316,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                  |
+| parameter | Mandatory | Type | Remarks                                  |
 | --------- | -------------- | ------------ | ---------------------------------------- |
 | orderid   | Yes            | string       | Order id                                 |
 | base      | Yes            | string       | Trading currency in the trading pair     |
@@ -1324,7 +1324,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                |
+| Field Name | Type | Remarks                |
 | ---------- | ------------ | ---------------------- |
 | code       | int          | 200, normal            |
 | msg        | string       | Remarks                |
@@ -1340,7 +1340,7 @@ no
 }
 ```
 
-## Batch withdrawal of coins
+## Batch cancellation
 
 Speed limit rule: 100 times/2s
 
@@ -1360,7 +1360,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                            |
+| parameter | Mandatory | Type | Remarks                                            |
 | --------- | -------------- | ------------ | -------------------------------------------------- |
 | buyType   | Yes            | int          | Buying and selling direction 0 buy, 1 sell, -1 all |
 | base      | Yes            | string       | Trading currency in the trading pair               |
@@ -1370,7 +1370,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks     |
+| Field Name | Type | Remarks     |
 | ---------- | ------------ | ----------- |
 | code       | int          | 200, normal |
 | msg        | string       | SUCCESS     |
@@ -1402,7 +1402,7 @@ no
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                                               |
+| parameter | Mandatory | Type | Remarks                                               |
 | --------- | -------------- | ------------ | ----------------------------------------------------- |
 | orderId   | Yes            | string       | Order id                                              |
 | pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT) |
@@ -1413,7 +1413,7 @@ no
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                                      |
+| Field Name  | Type | Remarks                                                      |
 | ----------- | ------------ | ------------------------------------------------------------ |
 | code        | int          | Return value status                                          |
 | msg         | string       | Return value description                                     |
@@ -1478,7 +1478,7 @@ no
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | type      | Yes            | string       | 0 all, 1 completed, 2 not completed, 3 cancelled, 4 cancelled and completed |
 | buyType   | Yes            | string       | Trading direction: 0 buy, 1 sell, -1 all                     |
@@ -1494,7 +1494,7 @@ no
 
 `Return Value`
 
-| Field Name     | type of data | Remarks                                                      |
+| Field Name     | Type | Remarks                                                      |
 | -------------- | ------------ | ------------------------------------------------------------ |
 | code           | int          | Return value status                                          |
 | msg            | string       | Return value description                                     |
@@ -1581,7 +1581,7 @@ curl `https://api.fameex.com/v1/api/spot/fills`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | pairName  | Yes            | string       | Token name (e.g. BTC_UDST)                                   |
 | orderId   | no             | string       | Order id                                                     |
@@ -1597,7 +1597,7 @@ no
 
 `Return Value`
 
-| Field Name    | type of data | Remarks                                               |
+| Field Name    | Type | Remarks                                               |
 | ------------- | ------------ | ----------------------------------------------------- |
 | code          | int          | Return value status                                   |
 | msg           | string       | Return value description                              |
@@ -1661,7 +1661,7 @@ curl `https://api.fameex.com /v1/api/orders_pending`
 
 `Routing parameters
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT)        |
 | pageno    | Yes            | string       | Pagination use, the first few pages, starting from the first page |
@@ -1673,7 +1673,7 @@ no
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                               |
+| Field Name  | Type | Remarks                                               |
 | ----------- | ------------ | ----------------------------------------------------- |
 | code        | int          | Return value status                                   |
 | msg         | string       | Return value description                              |
@@ -1718,7 +1718,7 @@ no
 
 # Wallet API interface
 
-## Get wallet account information
+## Get wallet info
 
 Speed limit rule: 20 times/2s
 
@@ -1742,7 +1742,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                                      |
+| Field Name | Type | Remarks                                                      |
 | ---------- | ------------ | ------------------------------------------------------------ |
 | code       | int          | 200, normal                                                  |
 | data       | list         | Return value, currency account data                          |
@@ -1781,7 +1781,7 @@ no
 }
 ```
 
-## Get the details of a certain currency of the wallet account
+## Get the details of single currency
 
 Speed limit rule: 20 times/2s
 
@@ -1797,7 +1797,7 @@ curl `https://api.fameex.com/v1/api/account/wallet/currency`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks            |
+| parameter | Mandatory | Type | Remarks            |
 | --------- | -------------- | ------------ | ------------------ |
 | currency  | Yes            | string       | Currency, e.g. BTC |
 
@@ -1807,7 +1807,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                               |
+| Field Name | Type | Remarks                                               |
 | ---------- | ------------ | ----------------------------------------------------- |
 | code       | int          | 200, normal                                           |
 | msg        | string       | Description of the return value this time             |
@@ -1830,7 +1830,7 @@ no
 }
 ```
 
-## Fund transfer
+## Transfer
 
 Speed limit rule: 1 time/2s
 
@@ -1850,7 +1850,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | currency  | Yes            | string       | Currency type                                                |
 | amount    | Yes            | string       | Quantity                                                     |
@@ -1861,7 +1861,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                                           |
+| Field Name | Type | Remarks                                           |
 | ---------- | ------------ | ------------------------------------------------- |
 | code       | int          | 200, normal                                       |
 | msg        | string       | success, normal                                   |
@@ -1902,7 +1902,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | tradeType | no             | int          | Transaction type: 0. All; 2. Buy; 3. Sell; 4. Actual fee     |
 | currency  | no             | string       | Example of currency name: ETH                                |
@@ -1913,7 +1913,7 @@ no
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                          |
+| Field Name  | Type | Remarks                                          |
 | ----------- | ------------ | ------------------------------------------------ |
 | code        | int          | 200, normal                                      |
 | msg         | string       | success, normal                                  |
@@ -1985,7 +1985,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                             |
+| parameter | Mandatory | Type | Remarks                                             |
 | --------- | -------------- | ------------ | --------------------------------------------------- |
 | tradeType | no             | int          | Transaction type: 0. All; 1. Withdrawal; 2. Deposit |
 | currency  | no             | string       | Example of currency name: ETH                       |
@@ -1996,7 +1996,7 @@ no
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                                      |
+| Field Name  | Type | Remarks                                                      |
 | ----------- | ------------ | ------------------------------------------------------------ |
 | code        | int          | 200, normal                                                  |
 | msg         | string       | success, normal                                              |
@@ -2098,7 +2098,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                                   |
+| parameter | Mandatory | Type | Remarks                                                   |
 | --------- | -------------- | ------------ | --------------------------------------------------------- |
 | tradeType | no             | int          | Transaction type: 0. All; 1. Transfer in; 2. Transfer out |
 | currency  | no             | string       | Example of currency name: ETH                             |
@@ -2109,7 +2109,7 @@ no
 
 `Return Value`
 
-| Field Name   | type of data | Remarks                                                      |
+| Field Name   | Type | Remarks                                                      |
 | ------------ | ------------ | ------------------------------------------------------------ |
 | code         | int          | 200, normal                                                  |
 | msg          | string       | success, normal                                              |
@@ -2185,7 +2185,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                            |
+| parameter | Mandatory | Type | Remarks                                            |
 | --------- | -------------- | ------------ | -------------------------------------------------- |
 | tradeType | no             | int          | Transaction type: 0. All; 1. Rebate; 2. Activities |
 | currency  | no             | string       | Example of currency name: ETH                      |
@@ -2196,7 +2196,7 @@ no
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                    |
+| Field Name  | Type | Remarks                                    |
 | ----------- | ------------ | ------------------------------------------ |
 | code        | int          | 200, normal                                |
 | msg         | string       | success, normal                            |
@@ -2252,7 +2252,7 @@ curl `https://api.fameex.com/v1/api/account/deposit/address`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks            |
+| parameter | Mandatory | Type | Remarks            |
 | --------- | -------------- | ------------ | ------------------ |
 | coinType  | Yes            | string       | Currency type USDT |
 | chainType | Yes            | string       | Chain type ERC20   |
@@ -2263,7 +2263,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks           |
+| Field Name | Type | Remarks           |
 | ---------- | ------------ | ----------------- |
 | code       | int          | 200, normal       |
 | request    | map          | Request parameter |
@@ -2316,7 +2316,7 @@ no
 
 `Return Value`
 
-| Field Name     | type of data | Remarks                                                      |
+| Field Name     | Type | Remarks                                                      |
 | -------------- | ------------ | ------------------------------------------------------------ |
 | code           | int          | 200, normal                                                  |
 | data           | list         | Return value, margin account data                            |
@@ -2399,7 +2399,7 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 
 `Routing parameters`
 
-| parameter | Do you have to | type of data | Remarks                         |
+| parameter | Mandatory | Type | Remarks                         |
 | --------- | -------------- | ------------ | ------------------------------- |
 | pairName  | Yes            | string       | Currency pair, example BTC_USDT |
 
@@ -2409,7 +2409,7 @@ no
 
 `Return Value`
 
-| Field Name     | type of data | Remarks                                     |
+| Field Name     | Type | Remarks                                     |
 | -------------- | ------------ | ------------------------------------------- |
 | code           | int          | 200, normal                                 |
 | data           | list         | Return value, margin account data           |
@@ -2476,7 +2476,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                  |
+| parameter | Mandatory | Type | Remarks                                  |
 | --------- | -------------- | ------------ | ---------------------------------------- |
 | base      | Yes            | string       | Trading currency in the trading pair     |
 | quote     | Yes            | string       | Denominated currency in the trading pair |
@@ -2486,7 +2486,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks                 |
+| Field Name | Type | Remarks                 |
 | ---------- | ------------ | ----------------------- |
 | code       | int          | 200, normal             |
 | msg        | string       | Information Description |
@@ -2522,13 +2522,13 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks  |
+| parameter | Mandatory | Type | Remarks  |
 | --------- | -------------- | ------------ | -------- |
 | orderId   | Yes            | string       | Order id |
 
 `Return Value`
 
-| Field Name | type of data | Remarks                |
+| Field Name | Type | Remarks                |
 | ---------- | ------------ | ---------------------- |
 | code       | int          | 200, normal            |
 | msg        | string       | Remarks                |
@@ -2564,7 +2564,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                            |
+| parameter | Mandatory | Type | Remarks                                            |
 | --------- | -------------- | ------------ | -------------------------------------------------- |
 | buyType   | Yes            | int          | Buying and selling direction 0 buy, 1 sell, -1 all |
 | base      | Yes            | string       | Trading currency in the trading pair               |
@@ -2574,7 +2574,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks     |
+| Field Name | Type | Remarks     |
 | ---------- | ------------ | ----------- |
 | code       | int          | 200, normal |
 | msg        | string       | SUCCESS     |
@@ -2606,7 +2606,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                                      |
+| parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
 | pageno    | Yes            | int          | Paging usage, which page                                     |
 | pageSize  | Yes            | int          | Paging usage, number per page (0 <pageSize ≤ 500)            |
@@ -2619,7 +2619,7 @@ no
 
 `Return Value`
 
-| Field Name     | type of data | Remarks                                                      |
+| Field Name     | Type | Remarks                                                      |
 | -------------- | ------------ | ------------------------------------------------------------ |
 | code           | int          | Return value status                                          |
 | msg            | string       | Return value description                                     |
@@ -2719,14 +2719,14 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                               |
+| parameter | Mandatory | Type | Remarks                                               |
 | --------- | -------------- | ------------ | ----------------------------------------------------- |
 | orderId   | Yes            | string       | Order id                                              |
 | pairName  | Yes            | string       | The name of the currency pair (for example: BTC_USDT) |
 
 `Return Value`
 
-| Field Name  | type of data | Remarks                                                      |
+| Field Name  | Type | Remarks                                                      |
 | ----------- | ------------ | ------------------------------------------------------------ |
 | code        | int          | Return value status                                          |
 | msg         | string       | Return value description                                     |
@@ -2791,7 +2791,7 @@ no
 
 `Post Parameter`
 
-| parameter   | Do you have to | type of data | Remarks                                                      |
+| parameter   | Mandatory | Type | Remarks                                                      |
 | ----------- | -------------- | ------------ | ------------------------------------------------------------ |
 | pairName    | Yes            | string       | Token name (e.g. BTC_UDST)                                   |
 | buyType     | Yes            | int          | Trading direction: 0 buy, 1 sell, -1 all                     |
@@ -2804,7 +2804,7 @@ no
 
 `Return Value`
 
-| Field Name    | type of data | Remarks                                                   |
+| Field Name    | Type | Remarks                                                   |
 | ------------- | ------------ | --------------------------------------------------------- |
 | code          | int          | Return value status                                       |
 | msg           | string       | Return value description                                  |
@@ -2881,13 +2881,13 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                 |
+| parameter | Mandatory | Type | Remarks                                 |
 | --------- | -------------- | ------------ | --------------------------------------- |
 | pairName  | no             | string       | Example of currency pair name: ETH_USDT |
 
 `Return Value`
 
-| Field Name               | type of data | Remarks                                           |
+| Field Name               | Type | Remarks                                           |
 | ------------------------ | ------------ | ------------------------------------------------- |
 | code                     | int          | 200, normal                                       |
 | msg                      | string       | success, normal                                   |
@@ -2957,14 +2957,14 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                 |
+| parameter | Mandatory | Type | Remarks                                 |
 | --------- | -------------- | ------------ | --------------------------------------- |
 | pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
 | currency  | Yes            | string       | Example of currency name: ETH           |
 
 `Return Value`
 
-| Field Name        | type of data | Remarks                                          |
+| Field Name        | Type | Remarks                                          |
 | ----------------- | ------------ | ------------------------------------------------ |
 | code              | int          | 200, normal                                      |
 | msg               | string       | success, normal                                  |
@@ -3009,7 +3009,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                 |
+| parameter | Mandatory | Type | Remarks                                 |
 | --------- | -------------- | ------------ | --------------------------------------- |
 | pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
 | currency  | Yes            | string       | Example of currency name: ETH           |
@@ -3017,7 +3017,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks         |
+| Field Name | Type | Remarks         |
 | ---------- | ------------ | --------------- |
 | code       | int          | 200, normal     |
 | msg        | string       | success, normal |
@@ -3053,14 +3053,14 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                 |
+| parameter | Mandatory | Type | Remarks                                 |
 | --------- | -------------- | ------------ | --------------------------------------- |
 | pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
 | currency  | Yes            | string       | Example of currency name: ETH           |
 
 `Return Value`
 
-| Field Name     | type of data | Remarks                                                      |
+| Field Name     | Type | Remarks                                                      |
 | -------------- | ------------ | ------------------------------------------------------------ |
 | code           | int          | 200, normal                                                  |
 | msg            | string       | success, normal                                              |
@@ -3105,7 +3105,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                 |
+| parameter | Mandatory | Type | Remarks                                 |
 | --------- | -------------- | ------------ | --------------------------------------- |
 | pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
 | currency  | Yes            | string       | Currency name                           |
@@ -3113,7 +3113,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks         |
+| Field Name | Type | Remarks         |
 | ---------- | ------------ | --------------- |
 | code       | int          | 200, normal     |
 | msg        | string       | success, normal |
@@ -3149,7 +3149,7 @@ no
 
 `Post Parameter`
 
-| parameter | Do you have to | type of data | Remarks                                 |
+| parameter | Mandatory | Type | Remarks                                 |
 | --------- | -------------- | ------------ | --------------------------------------- |
 | pairName  | Yes            | string       | Example of currency pair name: ETH_USDT |
 | currency  | Yes            | string       | Example of currency name: ETH           |
@@ -3158,7 +3158,7 @@ no
 
 `Return Value`
 
-| Field Name     | type of data | Remarks                                           |
+| Field Name     | Type | Remarks                                           |
 | -------------- | ------------ | ------------------------------------------------- |
 | code           | int          | 200, normal                                       |
 | msg            | string       | success, normal                                   |
@@ -3234,7 +3234,7 @@ no
 
 `Post Parameter`
 
-| parameter  | Do you have to | type of data | Remarks                                                      |
+| parameter  | Mandatory | Type | Remarks                                                      |
 | ---------- | -------------- | ------------ | ------------------------------------------------------------ |
 | pageno     | Yes            | int          | page number                                                  |
 | pageSize   | Yes            | int          | Display quantity per page (0 <pageSize ≤ 500)                |
@@ -3244,7 +3244,7 @@ no
 
 `Return Value`
 
-| Field Name | type of data | Remarks            |
+| Field Name | Type | Remarks            |
 | ---------- | ------------ | ------------------ |
 | ledger_id  | string       | Bill ID            |
 | coinPair   | string       | Currency pair      |
