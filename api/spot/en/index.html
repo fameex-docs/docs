@@ -648,9 +648,13 @@
 
 <p>Official customer service mailbox: <a href="mailto:Service@mail.fameex.info">Service@mail.fameex.info</a></p>
 
-<p>Official Weibo: https://m.weibo.cn/u/7130914300</p>
+<p>Official Weibo: <a href="https://weibo.com/fameexgroup">https://weibo.com/fameexgroup</a></p>
 
-<p>Official Twitter: https://twitter.com/FameexGroup</p>
+<p>Official Twitter: <a href="https://twitter.com/FameexGroup">https://twitter.com/FameexGroup</a></p>
+
+<p>Official Telegram: <a href="https://t.me/fameexgroup">https://t.me/fameexgroup</a></p>
+
+<p>Official Facebook: <a href="https://www.facebook.com/FameexOfficial">https://www.facebook.com/FameexOfficial</a></p>
 
 <p>We will make the most authoritative answer for you.</p>
 <h1 id='access-instructions'>Access instructions</h1><h2 id='access-urls'>Access URLs</h2>
@@ -835,14 +839,14 @@
 
 <p>websocket</p>
 
-<p>Request example<code>
+<p><code>Request example</code>
 {
   &quot;op&quot;: &quot;login&quot;,
-  &quot;AccessKey&quot;: &quot;***&quot;,
-  &quot;sign&quot;: &quot;***&quot;
+  &quot;AccessKey&quot;: &quot;<strong><em>&quot;,
+  &quot;sign&quot;: &quot;</em></strong>&quot;
 }
 Parameter
-</code>``</p>
+```</p>
 
 <table><thead>
 <tr>
@@ -923,8 +927,9 @@ Parameter
   </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"KTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span><span class="err">Parameter</span><span class="w">
 </span></code></pre></div>
+<p><code>Parameter</code></p>
+
 <table><thead>
 <tr>
 <th>parameter</th>
@@ -986,8 +991,9 @@ Parameter
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"register"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"homemarket"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span><span class="err">Parameter</span><span class="w">
 </span></code></pre></div>
+<p><code>Parameter</code></p>
+
 <table><thead>
 <tr>
 <th>parameter</th>
@@ -1034,8 +1040,9 @@ Parameter
   </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"percision"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span><span class="err">Parameter</span><span class="w">
 </span></code></pre></div>
+<p><code>Parameter</code></p>
+
 <table><thead>
 <tr>
 <th>parameter</th>
@@ -1615,8 +1622,9 @@ Parameter
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unregister"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"homemarket"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span><span class="err">Parameter</span><span class="w">
 </span></code></pre></div>
+<p><code>Parameter</code></p>
+
 <table><thead>
 <tr>
 <th>parameter</th>
@@ -1985,7 +1993,7 @@ Parameter
 
 <p><code>Request path</code></p>
 
-<p>GET/v1/market/history/kline</p>
+<p>GET /v1/market/history/kline</p>
 
 <p>curl <code>https://api.fameex.com/v1/market/history/kline</code></p>
 
@@ -2009,7 +2017,7 @@ Parameter
 <td>granularity</td>
 <td>Yes</td>
 <td>string</td>
-<td>时间粒度 例（ &quot;1&quot;,&quot;5&quot;,&quot;15&quot;,&quot;30&quot;,&quot;60&quot;,&quot;120&quot;,&quot;240&quot;,&quot;1D&quot;,&quot;1W&quot;)</td>
+<td>Time granularity,like（ &quot;1&quot;,&quot;5&quot;,&quot;15&quot;,&quot;30&quot;,&quot;60&quot;,&quot;120&quot;,&quot;240&quot;,&quot;1D&quot;,&quot;1W&quot;)</td>
 </tr>
 <tr>
 <td>startTime</td>
@@ -2232,7 +2240,7 @@ Parameter
 
 <p><code>Request path</code></p>
 
-<p>GET/v1/market/history/trade</p>
+<p>GET /v1/market/history/trade</p>
 
 <p>curl <code>https://api.fameex.com/v1/market/history/trade</code></p>
 
@@ -2831,7 +2839,7 @@ Parameter
 
 <p>curl <code>https://api.fameex.com/v1/api/spot/orderdetail</code></p>
 
-<p><code>headersParameter</code></p>
+<p><code>Headers Parameter</code></p>
 
 <p>no</p>
 
@@ -2993,7 +3001,7 @@ Parameter
 
 <p>curl <code>https://api.fameex.com/v1/api/spot/orderlist</code></p>
 
-<p><code>headersParameter</code></p>
+<p><code>Headers Parameter</code></p>
 
 <p>no</p>
 
@@ -3434,7 +3442,7 @@ Parameter
 
 <p>curl <code>https://api.fameex.com /v1/api/orders_pending</code></p>
 
-<p>`Routing parameters</p>
+<p><code>Routing parameters</code></p>
 
 <table><thead>
 <tr>
