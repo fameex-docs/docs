@@ -346,10 +346,10 @@
                     <a href="#access-urls" class="toc-h2 toc-link" data-title="Access URLs">Access URLs</a>
                   </li>
                   <li>
-                    <a href="#frequency-limiting-rules" class="toc-h2 toc-link" data-title="Frequency limiting rules">Frequency limiting rules</a>
+                    <a href="#restriction-rules" class="toc-h2 toc-link" data-title="Restriction rules">Restriction rules</a>
                   </li>
                   <li>
-                    <a href="#request-header-settings" class="toc-h2 toc-link" data-title="Request header settings">Request header settings</a>
+                    <a href="#header-setting" class="toc-h2 toc-link" data-title="Header setting">Header setting</a>
                   </li>
                   <li>
                     <a href="#signature" class="toc-h2 toc-link" data-title="signature">signature</a>
@@ -385,16 +385,16 @@
               </ul>
           </li>
           <li>
-            <a href="#u-contract-trading-api-interface" class="toc-h1 toc-link" data-title="U contract trading API interface">U contract trading API interface</a>
+            <a href="#u-futures-trading-api-interface" class="toc-h1 toc-link" data-title="U futures trading API interface">U futures trading API interface</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#contract-order" class="toc-h2 toc-link" data-title="Contract order">Contract order</a>
+                    <a href="#futures-orders" class="toc-h2 toc-link" data-title="Futures orders">Futures orders</a>
                   </li>
                   <li>
                     <a href="#contract-cancellation" class="toc-h2 toc-link" data-title="Contract cancellation">Contract cancellation</a>
                   </li>
                   <li>
-                    <a href="#cancellation-of-contract-conditions" class="toc-h2 toc-link" data-title="Cancellation of contract conditions">Cancellation of contract conditions</a>
+                    <a href="#futures-limit-cancellation" class="toc-h2 toc-link" data-title="Futures limit cancellation">Futures limit cancellation</a>
                   </li>
                   <li>
                     <a href="#get-order-information" class="toc-h2 toc-link" data-title="Get order information">Get order information</a>
@@ -409,18 +409,18 @@
                     <a href="#get-the-latest-transaction-details" class="toc-h2 toc-link" data-title="Get the latest transaction details">Get the latest transaction details</a>
                   </li>
                   <li>
-                    <a href="#adjust-contract-leverage" class="toc-h2 toc-link" data-title="Adjust contract leverage">Adjust contract leverage</a>
+                    <a href="#adjust-leverage" class="toc-h2 toc-link" data-title="Adjust leverage">Adjust leverage</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#u-contract-wallet-api-interface" class="toc-h1 toc-link" data-title="U contract wallet API interface">U contract wallet API interface</a>
+            <a href="#u-futures-wallet-api-interface" class="toc-h1 toc-link" data-title="U futures wallet API interface">U futures wallet API interface</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-contract-account-assets" class="toc-h2 toc-link" data-title="Get contract account assets">Get contract account assets</a>
+                    <a href="#get-futures-wallet" class="toc-h2 toc-link" data-title="Get futures wallet">Get futures wallet</a>
                   </li>
                   <li>
-                    <a href="#get-contract-account-positions" class="toc-h2 toc-link" data-title="Get contract account positions">Get contract account positions</a>
+                    <a href="#get-futures-positions" class="toc-h2 toc-link" data-title="Get futures positions">Get futures positions</a>
                   </li>
               </ul>
           </li>
@@ -445,21 +445,21 @@
 <li>Contract interface update:
 
 <ul>
-<li>Added U contract order interface <code>/swap-api/v1/order</code></li>
-<li>Added U contract cancellation interface <code>/swap-api/v1/cancel_order</code></li>
-<li>Added U contract condition cancellation interface <code>/swap-api/v1/cancel_cond_orders</code></li>
-<li>Added U contract to obtain single currency pair market data interface <code>/swap-api/v1/ticker</code></li>
-<li>Added U contract to get all currency pair market data interface <code>/swap-api/v1/tickers</code></li>
-<li>Added U contract to obtain order list interface <code>/swap-api/v1/orders</code></li>
-<li>Added U contract to obtain order information interface <code>/swap-api/v1/order_info</code></li>
-<li>Added U contract to obtain transaction details list interface <code>/swap-api/v1/trades</code></li>
-<li>Added U contract to get the latest transaction details list interface <code>/swap-api/v1/last_trades</code></li>
-<li>Added U contract to obtain in-depth data interface <code>/swap-api/v1/depth</code></li>
-<li>Added U contract to obtain K-line data interface <code>/swap-api/v1/kline</code></li>
-<li>Added U contract to obtain all currency pairs and configuration interface <code>/swap-api/v1/symbols</code></li>
-<li>Added U contract to obtain contract account asset interface <code>/swap-api/v1/wallet/asset</code></li>
-<li>Added U contract to obtain contract position interface <code>/swap-api/v1/wallet/pos</code></li>
-<li>Added U contract adjustment leverage multiple interface <code>/swap-api/v1/wallet/leverage/adjust</code></li>
+<li>Added U futures order interface <code>/swap-api/v1/order</code></li>
+<li>Added U futures cancellation interface <code>/swap-api/v1/cancel_order</code></li>
+<li>Added U futures condition cancellation interface <code>/swap-api/v1/cancel_cond_orders</code></li>
+<li>Added U futures to obtain single currency pair market data interface <code>/swap-api/v1/ticker</code></li>
+<li>Added U futures to get all currency pair market data interface <code>/swap-api/v1/tickers</code></li>
+<li>Added U futures to obtain order list interface <code>/swap-api/v1/orders</code></li>
+<li>Added U futures to obtain order information interface <code>/swap-api/v1/order_info</code></li>
+<li>Added U futures to obtain transaction details list interface <code>/swap-api/v1/trades</code></li>
+<li>Added U futures to get the latest transaction details list interface <code>/swap-api/v1/last_trades</code></li>
+<li>Added U futures to obtain in-depth data interface <code>/swap-api/v1/depth</code></li>
+<li>Added U futures to obtain K-line data interface <code>/swap-api/v1/kline</code></li>
+<li>Added U futures to obtain all currency pairs and configuration interface <code>/swap-api/v1/symbols</code></li>
+<li>Added U futures to obtain contract account asset interface <code>/swap-api/v1/wallet/asset</code></li>
+<li>Added U futures to obtain contract position interface <code>/swap-api/v1/wallet/pos</code></li>
+<li>Added U futures adjustment leverage multiple interface <code>/swap-api/v1/wallet/leverage/adjust</code></li>
 </ul></li>
 </ul>
 <h1 id='introduction'>Introduction</h1>
@@ -504,7 +504,7 @@
 <p>All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:&#39;application/json&#39;</p>
 
 <p>In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.</p>
-<h2 id='frequency-limiting-rules'>Frequency limiting rules</h2>
+<h2 id='restriction-rules'>Restriction rules</h2>
 <p><strong>Limit frequency:</strong> The limit of each interface is different.</p>
 
 <p>A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.</p>
@@ -512,7 +512,7 @@
 <table><thead>
 <tr>
 <th>Frequency limiting rules</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -522,13 +522,13 @@
 <td>no</td>
 </tr>
 </tbody></table>
-<h2 id='request-header-settings'>Request header settings</h2>
+<h2 id='header-setting'>Header setting</h2>
 <p>The parameters of the request header are as follows:</p>
 
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -627,7 +627,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -659,7 +659,7 @@
 
 <p><code>Description</code></p>
 
-<p>Obtain all currency pairs and configurations of the U contract.</p>
+<p>Obtain all currency pairs and configurations of the U futures.</p>
 
 <p><code>Request path</code></p>
 
@@ -680,7 +680,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -887,8 +887,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -923,7 +923,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1044,8 +1044,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1074,7 +1074,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1151,8 +1151,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1169,7 +1169,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1283,7 +1283,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1397,12 +1397,12 @@
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='u-contract-trading-api-interface'>U contract trading API interface</h1><h2 id='contract-order'>Contract order</h2>
+</span></code></pre></div><h1 id='u-futures-trading-api-interface'>U futures trading API interface</h1><h2 id='futures-orders'>Futures orders</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><code>Function Description</code></p>
 
-<p>This interface provides the U contract order function.</p>
+<p>This interface provides the U futures order function.</p>
 
 <p><code>Request path</code></p>
 
@@ -1419,8 +1419,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1497,7 +1497,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1556,8 +1556,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1586,7 +1586,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1623,7 +1623,7 @@
     </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='cancellation-of-contract-conditions'>Cancellation of contract conditions</h2>
+</span></code></pre></div><h2 id='futures-limit-cancellation'>Futures limit cancellation</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -1645,8 +1645,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1681,7 +1681,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1728,8 +1728,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1758,7 +1758,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1963,8 +1963,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2045,7 +2045,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2304,8 +2304,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2382,7 +2382,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2592,8 +2592,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2622,7 +2622,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2682,7 +2682,7 @@
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='adjust-contract-leverage'>Adjust contract leverage</h2>
+</span></code></pre></div><h2 id='adjust-leverage'>Adjust leverage</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -2704,8 +2704,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2734,7 +2734,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2780,7 +2780,7 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='u-contract-wallet-api-interface'>U contract wallet API interface</h1><h2 id='get-contract-account-assets'>Get contract account assets</h2>
+</span></code></pre></div><h1 id='u-futures-wallet-api-interface'>U futures wallet API interface</h1><h2 id='get-futures-wallet'>Get futures wallet</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -2806,7 +2806,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2918,7 +2918,7 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='get-contract-account-positions'>Get contract account positions</h2>
+</span></code></pre></div><h2 id='get-futures-positions'>Get futures positions</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -2940,8 +2940,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2958,7 +2958,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>

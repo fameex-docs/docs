@@ -346,10 +346,10 @@
                     <a href="#access-urls" class="toc-h2 toc-link" data-title="Access URLs">Access URLs</a>
                   </li>
                   <li>
-                    <a href="#frequency-limiting-rules" class="toc-h2 toc-link" data-title="Frequency limiting rules">Frequency limiting rules</a>
+                    <a href="#restriction-rules" class="toc-h2 toc-link" data-title="Restriction rules">Restriction rules</a>
                   </li>
                   <li>
-                    <a href="#request-header-settings" class="toc-h2 toc-link" data-title="Request header settings">Request header settings</a>
+                    <a href="#header-setting" class="toc-h2 toc-link" data-title="Header setting">Header setting</a>
                   </li>
                   <li>
                     <a href="#signature" class="toc-h2 toc-link" data-title="signature">signature</a>
@@ -375,7 +375,7 @@
                     <a href="#register-in-depth-quotes" class="toc-h2 toc-link" data-title="Register in-depth quotes">Register in-depth quotes</a>
                   </li>
                   <li>
-                    <a href="#push-homepage-quotation" class="toc-h2 toc-link" data-title="Push homepage quotation">Push homepage quotation</a>
+                    <a href="#push-coin-pair-depth-list" class="toc-h2 toc-link" data-title="Push coin pair depth list">Push coin pair depth list</a>
                   </li>
                   <li>
                     <a href="#push-the-depth-list-of-currency-pairs" class="toc-h2 toc-link" data-title="Push the depth list of currency pairs">Push the depth list of currency pairs</a>
@@ -432,16 +432,16 @@
               </ul>
           </li>
           <li>
-            <a href="#coin-trading-api-interface" class="toc-h1 toc-link" data-title="Coin trading API interface">Coin trading API interface</a>
+            <a href="#exchange-api-interface" class="toc-h1 toc-link" data-title="Exchange API interface">Exchange API interface</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#currency-order" class="toc-h2 toc-link" data-title="Currency order">Currency order</a>
+                    <a href="#new-order" class="toc-h2 toc-link" data-title="New order">New order</a>
                   </li>
                   <li>
-                    <a href="#currency-withdrawal-order" class="toc-h2 toc-link" data-title="Currency withdrawal order">Currency withdrawal order</a>
+                    <a href="#cancel-order" class="toc-h2 toc-link" data-title="Cancel Order">Cancel Order</a>
                   </li>
                   <li>
-                    <a href="#batch-withdrawal-of-coins" class="toc-h2 toc-link" data-title="Batch withdrawal of coins">Batch withdrawal of coins</a>
+                    <a href="#batch-cancellation" class="toc-h2 toc-link" data-title="Batch cancellation">Batch cancellation</a>
                   </li>
                   <li>
                     <a href="#get-order-details" class="toc-h2 toc-link" data-title="Get order details">Get order details</a>
@@ -461,13 +461,13 @@
             <a href="#wallet-api-interface" class="toc-h1 toc-link" data-title="Wallet API interface">Wallet API interface</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-wallet-account-information" class="toc-h2 toc-link" data-title="Get wallet account information">Get wallet account information</a>
+                    <a href="#get-wallet-info" class="toc-h2 toc-link" data-title="Get wallet info">Get wallet info</a>
                   </li>
                   <li>
-                    <a href="#get-the-details-of-a-certain-currency-of-the-wallet-account" class="toc-h2 toc-link" data-title="Get the details of a certain currency of the wallet account">Get the details of a certain currency of the wallet account</a>
+                    <a href="#get-the-details-of-single-currency" class="toc-h2 toc-link" data-title="Get the details of single currency">Get the details of single currency</a>
                   </li>
                   <li>
-                    <a href="#fund-transfer" class="toc-h2 toc-link" data-title="Fund transfer">Fund transfer</a>
+                    <a href="#transfer" class="toc-h2 toc-link" data-title="Transfer">Transfer</a>
                   </li>
                   <li>
                     <a href="#get-a-transaction-bill-for-a-spot-account" class="toc-h2 toc-link" data-title="Get a transaction bill for a spot account">Get a transaction bill for a spot account</a>
@@ -673,7 +673,7 @@
 <p>All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:&#39;application/json&#39;</p>
 
 <p>In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.</p>
-<h2 id='frequency-limiting-rules'>Frequency limiting rules</h2>
+<h2 id='restriction-rules'>Restriction rules</h2>
 <p><strong>Limit frequency:</strong> The limit of each interface is different.</p>
 
 <p>A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.</p>
@@ -681,7 +681,7 @@
 <table><thead>
 <tr>
 <th>Frequency limiting rules</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -691,13 +691,13 @@
 <td>no</td>
 </tr>
 </tbody></table>
-<h2 id='request-header-settings'>Request header settings</h2>
+<h2 id='header-setting'>Header setting</h2>
 <p>The parameters of the request header are as follows:</p>
 
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -789,8 +789,8 @@
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -807,7 +807,7 @@
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -847,8 +847,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -877,7 +877,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -928,8 +928,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -991,8 +991,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1039,8 +1039,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1079,7 +1079,7 @@ Parameter
 <p><code>Return Value</code></p>
 
 <p>no</p>
-<h2 id='push-homepage-quotation'>Push homepage quotation</h2>
+<h2 id='push-coin-pair-depth-list'>Push coin pair depth list</h2>
 <p><code>Description</code></p>
 
 <p>This interface pushes homepage market data</p>
@@ -1101,7 +1101,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1213,7 +1213,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1309,7 +1309,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1384,7 +1384,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1459,7 +1459,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1576,7 +1576,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1620,8 +1620,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1668,7 +1668,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1721,7 +1721,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1825,7 +1825,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -1994,8 +1994,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2034,7 +2034,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2114,8 +2114,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2148,7 +2148,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2241,8 +2241,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2269,7 +2269,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2347,8 +2347,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2369,7 +2369,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2473,7 +2473,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2565,7 +2565,7 @@ Parameter
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='coin-trading-api-interface'>Coin trading API interface</h1><h2 id='currency-order'>Currency order</h2>
+</span></code></pre></div><h1 id='exchange-api-interface'>Exchange API interface</h1><h2 id='new-order'>New order</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><code>Function description</code></p>
@@ -2587,8 +2587,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2629,7 +2629,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2656,7 +2656,7 @@ Parameter
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='currency-withdrawal-order'>Currency withdrawal order</h2>
+</span></code></pre></div><h2 id='cancel-order'>Cancel Order</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><code>Function description</code></p>
@@ -2678,8 +2678,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2708,7 +2708,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2735,7 +2735,7 @@ Parameter
     </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='batch-withdrawal-of-coins'>Batch withdrawal of coins</h2>
+</span></code></pre></div><h2 id='batch-cancellation'>Batch cancellation</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><code>Function description</code></p>
@@ -2757,8 +2757,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2799,7 +2799,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2840,8 +2840,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -2868,7 +2868,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3002,8 +3002,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3060,7 +3060,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3256,8 +3256,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3314,7 +3314,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3439,8 +3439,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3473,7 +3473,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3567,7 +3567,7 @@ Parameter
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='wallet-api-interface'>Wallet API interface</h1><h2 id='get-wallet-account-information'>Get wallet account information</h2>
+</span></code></pre></div><h1 id='wallet-api-interface'>Wallet API interface</h1><h2 id='get-wallet-info'>Get wallet info</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function description</code></p>
@@ -3593,7 +3593,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3663,7 +3663,7 @@ Parameter
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85942975"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='get-the-details-of-a-certain-currency-of-the-wallet-account'>Get the details of a certain currency of the wallet account</h2>
+</span></code></pre></div><h2 id='get-the-details-of-single-currency'>Get the details of single currency</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function description</code></p>
@@ -3681,8 +3681,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3703,7 +3703,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3749,7 +3749,7 @@ Parameter
     </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='fund-transfer'>Fund transfer</h2>
+</span></code></pre></div><h2 id='transfer'>Transfer</h2>
 <p>Speed limit rule: 1 time/2s</p>
 
 <p><code>Function description</code></p>
@@ -3771,8 +3771,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3819,7 +3819,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3881,8 +3881,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -3929,7 +3929,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4042,8 +4042,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4090,7 +4090,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4251,8 +4251,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4299,7 +4299,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4432,8 +4432,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4480,7 +4480,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4577,8 +4577,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4605,7 +4605,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4679,7 +4679,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4829,8 +4829,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4851,7 +4851,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -4995,8 +4995,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5037,7 +5037,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5086,8 +5086,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5104,7 +5104,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5153,8 +5153,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5195,7 +5195,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5236,8 +5236,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5296,7 +5296,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5513,8 +5513,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5537,7 +5537,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5671,8 +5671,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5731,7 +5731,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5873,8 +5873,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5891,7 +5891,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -5998,8 +5998,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6022,7 +6022,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6096,8 +6096,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6126,7 +6126,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6175,8 +6175,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6199,7 +6199,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6273,8 +6273,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6303,7 +6303,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6352,8 +6352,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6388,7 +6388,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6517,8 +6517,8 @@ Parameter
 <table><thead>
 <tr>
 <th>parameter</th>
-<th>Do you have to</th>
-<th>type of data</th>
+<th>Mandatory</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
@@ -6559,7 +6559,7 @@ Parameter
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>type of data</th>
+<th>Type</th>
 <th>Remarks</th>
 </tr>
 </thead><tbody>
