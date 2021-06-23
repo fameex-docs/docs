@@ -60,9 +60,13 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 官方客服邮箱：Service@mail.fameex.info
 
-官方微博：https://m.weibo.cn/u/7130914300
+官方微博：[https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
 
-官方 Twitter：https://twitter.com/FameexGroup
+官方Twitter：[https://twitter.com/FameexGroup](https://twitter.com/FameexGroup)
+
+官方Telegram：[https://t.me/fameexgroup](https://t.me/fameexgroup)
+
+官方Facebook：[https://www.facebook.com/FameexOfficial](https://www.facebook.com/FameexOfficial)
 
 我们将为您做出最权威的解答。
 

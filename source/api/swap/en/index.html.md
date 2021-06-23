@@ -60,9 +60,13 @@ Our contact information is as follows:
 
 Official customer service mailbox: [Service@mail.fameex.info](mailto:Service@mail.fameex.info)
 
-Official Weibo: https://m.weibo.cn/u/7130914300
+Official Weibo: [https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
 
-Official Twitter: https://twitter.com/FameexGroup
+Official Twitter: [https://twitter.com/FameexGroup](https://twitter.com/FameexGroup)
+
+Official Telegram: [https://t.me/fameexgroup](https://t.me/fameexgroup)
+
+Official Facebook: [https://www.facebook.com/FameexOfficial](https://www.facebook.com/FameexOfficial)
 
 We will make the most authoritative answer for you.
 
@@ -621,7 +625,7 @@ no
 }
 ```
 
-# U futures trading API interface
+# U futures Exchange API interface
 
 ## Futures orders
 

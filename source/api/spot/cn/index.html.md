@@ -92,9 +92,13 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 官方客服邮箱：Service@mail.fameex.info
 
-官方微博：https://m.weibo.cn/u/7130914300
+官方微博：[https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
 
-官方 Twitter：https://twitter.com/FameexGroup
+官方Twitter：[https://twitter.com/FameexGroup](https://twitter.com/FameexGroup)
+
+官方Telegram：[https://t.me/fameexgroup](https://t.me/fameexgroup)
+
+官方Facebook：[https://www.facebook.com/FameexOfficial](https://www.facebook.com/FameexOfficial)
 
 我们将为您做出最权威的解答。
 
@@ -874,7 +878,6 @@ curl `https://api.fameex.com/v1/common/currencys`
         "isQuote": 1,
         "currencyDetail": {
           "ERC20": {
-            //链类型的名称
             "id": 49,
             "chainType": "ERC20",
             "currencyRecharge": {
@@ -1667,7 +1670,7 @@ curl `https://api.fameex.com/v1/api/spot/fills`
 
 curl `https://api.fameex.com /v1/api/orders_pending`
 
-`路由参数
+`路由参数`
 
 | 参数     | 是否必须 | 数据类型 | 备注                                  |
 | -------- | -------- | -------- | ------------------------------------- |
@@ -2187,7 +2190,7 @@ POST /v1/api/spot/record/others
 
 curl `https://api.fameex.com/v1/api/spot/record/others`
 
-``路由参数`
+`路由参数`
 
 无
 
@@ -2546,7 +2549,7 @@ curl `https://api.fameex.com/v1/api/lever/orders/cancel`
 
 ```json
 {
-  "code": 200, //成功
+  "code": 200,
   "msg": "success",
   "orderId": "10541638782567317504"
 }

@@ -88,17 +88,19 @@ API trading permissions allow you to quickly obtain the latest market quotations
 
 FAMEEX official website homepage: [www.fameex.com](http://www.fameex.com)
 
-
-
 If you have any questions during use, please contact FAMEEX official customer service,
 
 Our contact information is as follows:
 
 Official customer service mailbox: [Service@mail.fameex.info](mailto:Service@mail.fameex.info)
 
-Official Weibo: https://m.weibo.cn/u/7130914300
+Official Weibo: [https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
 
-Official Twitter: https://twitter.com/FameexGroup
+Official Twitter: [https://twitter.com/FameexGroup](https://twitter.com/FameexGroup)
+
+Official Telegram: [https://t.me/fameexgroup](https://t.me/fameexgroup)
+
+Official Facebook: [https://www.facebook.com/FameexOfficial](https://www.facebook.com/FameexOfficial)
 
 We will make the most authoritative answer for you.
 
@@ -232,7 +234,7 @@ wss://[www.fameex.com/push](http://www.fameex.com/push)
 
 websocket
 
-Request example`
+`Request example`
 {
   "op": "login",
   "AccessKey": "***",
@@ -287,8 +289,8 @@ websocket
   "quote": "***",
   "KTime": "***"
 }
-Parameter
 ```
+`Parameter`
 
 | parameter | Mandatory | Type | Remarks                                                |
 | --------- | -------------- | ------------ | ------------------------------------------------------ |
@@ -323,8 +325,9 @@ websocket
   "op": "register",
   "type": "homemarket"
 }
-Parameter
 ```
+
+`Parameter`
 
 | parameter | Mandatory | Type | Remarks           |
 | --------- | -------------- | ------------ | ----------------- |
@@ -359,8 +362,9 @@ websocket
   "quote": "***",
   "percision": 0
 }
-Parameter
 ```
+
+`Parameter`
 
 | parameter | Mandatory | Type | Remarks                                  |
 | --------- | -------------- | ------------ | ---------------------------------------- |
@@ -699,8 +703,9 @@ websocket
   "op": "unregister",
   "type": "homemarket"
 }
-Parameter
 ```
+
+`Parameter`
 
 | parameter | Mandatory | Type | Remarks           |
 | --------- | -------------- | ------------ | ----------------- |
@@ -940,7 +945,7 @@ This interface obtains historical K-line data.
 
 `Request path`
 
-GET/v1/market/history/kline
+GET /v1/market/history/kline
 
 curl `https://api.fameex.com/v1/market/history/kline`
 
@@ -949,7 +954,7 @@ curl `https://api.fameex.com/v1/market/history/kline`
 | parameter   | Mandatory | Type | Remarks                                                     |
 | ----------- | -------------- | ------------ | ----------------------------------------------------------- |
 | pairName    | Yes            | string       | Currency pair, for example "ETH_BTC"                        |
-| granularity | Yes            | string       | 时间粒度 例（ "1","5","15","30","60","120","240","1D","1W") |
+| granularity | Yes            | string       | Time granularity,like（ "1","5","15","30","60","120","240","1D","1W") |
 | startTime   | no             | string       | Start time, timestamp (unit: seconds)                       |
 | endTime     | no             | string       | End time, timestamp (unit: seconds)                         |
 
@@ -1068,7 +1073,7 @@ This interface returns the transaction detail record of the specified trading pa
 
 `Request path`
 
-GET/v1/market/history/trade
+GET /v1/market/history/trade
 
 curl `https://api.fameex.com/v1/market/history/trade`
 
@@ -1396,7 +1401,7 @@ This interface obtains the specified order information through the order ID.
 
 curl `https://api.fameex.com/v1/api/spot/orderdetail`
 
-`headersParameter`
+`Headers Parameter`
 
 no
 
@@ -1472,7 +1477,7 @@ This interface obtains and lists your current order information (the order infor
 
 curl `https://api.fameex.com/v1/api/spot/orderlist`
 
-`headersParameter`
+`Headers Parameter`
 
 no
 
@@ -1659,7 +1664,7 @@ This interface gets all your current transaction order information. This request
 
 curl `https://api.fameex.com /v1/api/orders_pending`
 
-`Routing parameters
+`Routing parameters`
 
 | parameter | Mandatory | Type | Remarks                                                      |
 | --------- | -------------- | ------------ | ------------------------------------------------------------ |
