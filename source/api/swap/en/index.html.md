@@ -25,7 +25,7 @@ meta:
 
 **2021-05-27**
 
-- Contract interface update:
+- Futures interface update:
   - Added U futures order interface `/swap-api/v1/order`
   - Added U futures cancellation interface `/swap-api/v1/cancel_order`
   - Added U futures condition cancellation interface `/swap-api/v1/cancel_cond_orders`
@@ -38,8 +38,8 @@ meta:
   - Added U futures to obtain in-depth data interface `/swap-api/v1/depth`
   - Added U futures to obtain K-line data interface `/swap-api/v1/kline`
   - Added U futures to obtain all currency pairs and configuration interface `/swap-api/v1/symbols`
-  - Added U futures to obtain contract account asset interface `/swap-api/v1/wallet/asset`
-  - Added U futures to obtain contract position interface `/swap-api/v1/wallet/pos`
+  - Added U futures to obtain futures account asset interface `/swap-api/v1/wallet/asset`
+  - Added U futures to obtain futures position interface `/swap-api/v1/wallet/pos`
   - Added U futures adjustment leverage multiple interface `/swap-api/v1/wallet/leverage/adjust`
 
 # Introduction
@@ -150,33 +150,25 @@ The secretKey is generated when the user applies for the API Key. For example: 5
 
 Speed limit rule: 20 times/2s
 
-`Description`
+**Description**
 
 Get the current system time, in seconds
 
-`Request path`
+**Request path:**
 
 /v1/common/timestamp
 
 curl `https://api.fameex.com/v1/common/timestamp`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 no
 
-`Return value`
-
-| Field Name |Type| Remarks                            |
-| ---------- | ------------ | ---------------------------------- |
-| code       | int          | 200, normal                        |
-| ts         | int64        | Request time, seconds              |
-| data       | int64        | Return value, current time, second |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -186,53 +178,37 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name |Type| Remarks                            |
+| ---------- | ------------ | ---------------------------------- |
+| code       | int          | 200, normal                        |
+| ts         | int64        | Request time, seconds              |
+| data       | int64        | Return value, current time, second |
+
 ## Get all currency pairs and configurations
 
 Speed limit rule: 20 times/2s
 
-`Description`
+**Description**
 
 Obtain all currency pairs and configurations of the U futures.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/symbols
 
 curl `https://api.fameex.com/swap-api/v1/symbols`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 no
 
-`Return value`
-
-| Field Name        |Type| Remarks                                            |
-| ----------------- | ------------ | -------------------------------------------------- |
-| code              | int          | 200, normal                                        |
-| msg               | string       | success, normal                                    |
-| data              | object array | Return value, contract currency pair configuration |
-| base              | string       | Transaction currency                               |
-| quote             | string       | Denominated currency                               |
-| leverMultiple     | int          | Maximum leverage                                   |
-| quotePrecision    | int          | Price display digits                               |
-| limitMarketAmount | int          | Minimum number of transactions                     |
-| basePrecision     | int          | Number of display digits                           |
-| defaultLeverage   | int          | Default leverage                                   |
-| riskRate          | string       | Contract risk reserve                              |
-| marginRateGear    | object array | Gear information                                   |
-| gear              | string       | Gradient gear                                      |
-| start             | string       | Starting position of the position                  |
-| end               | string       | End of position                                    |
-| leverMultiple     | int          | Maximum leverage                                   |
-| initRate          | string       | Initial margin rate                                |
-| warnRate          | string       | Early warning margin rate                          |
-| maintenanceRate   | string       | Maintenance margin rate                            |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -320,6 +296,30 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name        |Type| Remarks                                            |
+| ----------------- | ------------ | -------------------------------------------------- |
+| code              | int          | 200, normal                                        |
+| msg               | string       | success, normal                                    |
+| data              | object array | Return value, contract currency pair configuration |
+| base              | string       | Transaction currency                               |
+| quote             | string       | Denominated currency                               |
+| leverMultiple     | int          | Maximum leverage                                   |
+| quotePrecision    | int          | Price display digits                               |
+| limitMarketAmount | int          | Minimum number of transactions                     |
+| basePrecision     | int          | Number of display digits                           |
+| defaultLeverage   | int          | Default leverage                                   |
+| riskRate          | string       | Contract risk reserve                              |
+| marginRateGear    | object array | Gear information                                   |
+| gear              | string       | Gradient gear                                      |
+| start             | string       | Starting position of the position                  |
+| end               | string       | End of position                                    |
+| leverMultiple     | int          | Maximum leverage                                   |
+| initRate          | string       | Initial margin rate                                |
+| warnRate          | string       | Early warning margin rate                          |
+| maintenanceRate   | string       | Maintenance margin rate                            |
+
 # Quote API interface
 
 ## Get k-line data
@@ -330,17 +330,17 @@ Speed limit rule: 20 times/2s
 
 This interface obtains historical K-line data.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/kline
 
 curl `https://api.fameex.com/swap-api/v1/kline`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                                |
 | ------------ | -------------- | ------------ | ------------------------------------------------------ |
@@ -349,22 +349,7 @@ no
 | startTime    | no             | int64        | Start time, timestamp (unit: seconds)                  |
 | endTime      | no             | int64        | End time, timestamp (unit: seconds)                    |
 
-`Return value`
-
-| Field Name |Type| Remarks                             |
-| ---------- | ------------ | ----------------------------------- |
-| code       | int          | 200, normal                         |
-| msg        | string       | success, normal                     |
-| data       | object       | Return value, bar data              |
-| time       | int64        | Start timestamp                     |
-| open       | string       | Opening price                       |
-| low        | string       | Lowest price                        |
-| hight      | string       | Highest price                       |
-| close      | string       | Closing price                       |
-| amount     | string       | Trading currency volume             |
-| volume     | string       | Denominated currency trading volume |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -411,6 +396,21 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name |Type| Remarks                             |
+| ---------- | ------------ | ----------------------------------- |
+| code       | int          | 200, normal                         |
+| msg        | string       | success, normal                     |
+| data       | object       | Return value, bar data              |
+| time       | int64        | Start timestamp                     |
+| open       | string       | Opening price                       |
+| low        | string       | Lowest price                        |
+| hight      | string       | Highest price                       |
+| close      | string       | Closing price                       |
+| amount     | string       | Trading currency volume             |
+| volume     | string       | Denominated currency trading volume |
+
 ## Market Depth Data
 
 Speed limit rule: 20 times/2s
@@ -419,17 +419,17 @@ Speed limit rule: 20 times/2s
 
 This interface returns the current market depth data of the specified trading pair.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/depth
 
 curl `https://api.fameex.com/swap-api/v1/depth`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                       |
 | ------------ | -------------- | ------------ | --------------------------------------------- |
@@ -437,17 +437,7 @@ no
 | step         | Yes            | string       | In-depth price aggregation type (step0~step4) |
 | size         | Yes            | int          | Return the number of depths (1<=size<= 100)   |
 
-`Return value`
-
-| Field Name |Type| Remarks                                   |
-| ---------- | ------------ | ----------------------------------------- |
-| code       | int          | 200, normal                               |
-| msg        | string       | success, normal                           |
-| data       | object       | Return data: market depth data            |
-| bids       | string array | All current buy orders [price, quantity]  |
-| asks       | string array | All current sell orders [price, quantity] |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -475,6 +465,16 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name |Type| Remarks                                   |
+| ---------- | ------------ | ----------------------------------------- |
+| code       | int          | 200, normal                               |
+| msg        | string       | success, normal                           |
+| data       | object       | Return data: market depth data            |
+| bids       | string array | All current buy orders [price, quantity]  |
+| asks       | string array | All current sell orders [price, quantity] |
+
 ## Get market data of a single currency pair
 
 Speed limit rule: 20 times/2s
@@ -483,41 +483,23 @@ Speed limit rule: 20 times/2s
 
 This interface returns to get the market data of a single currency pair within 24 hours.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/ticker
 
 curl `https://api.fameex.com/swap-api/v1/ticker`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                       |
 | ------------ | -------------- | ------------ | ----------------------------- |
 | contractCode | Yes            | string       | Contract code (e.g. BTC-USDT) |
 
-`Return value`
-
-| Field Name   |Type| Remarks                                     |
-| ------------ | ------------ | ------------------------------------------- |
-| code         | int          | 200, normal                                 |
-| msg          | string       | success, normal                             |
-| data         | object array | Return data: single currency pair market    |
-| contractCode | string       | Contract code                               |
-| gain         | string       | 24-hour increase                            |
-| open         | string       | 24-hour opening price                       |
-| low          | string       | Lowest price in 24 hours                    |
-| high         | string       | 24 hours highest price                      |
-| close        | string       | Latest transaction price                    |
-| amount       | string       | 24-hour trading currency volume             |
-| volume       | string       | 24-hour denominated currency trading volume |
-| bid          | string       | Buy one price                               |
-| ask          | int64        | Sell one price                              |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -538,35 +520,13 @@ no
 }
 ```
 
-## Get all currency pair market data
-
-Speed limit rule: 20 times/2s
-
-`Function Description`
-
-This interface returns a summary of the market data for the last 24 hours, and the data value time interval is 24-hour rolling.
-
-`Request path`
-
-/swap-api/v1/tickers
-
-curl `https://api.fameex.com/swap-api/v1/tickers`
-
-`Routing parameters`
-
-no
-
-`Post parameters`
-
-no
-
-`Return value`
+**Return value:**
 
 | Field Name   |Type| Remarks                                     |
 | ------------ | ------------ | ------------------------------------------- |
 | code         | int          | 200, normal                                 |
 | msg          | string       | success, normal                             |
-| data         | object array | Return data: market data                    |
+| data         | object array | Return data: single currency pair market    |
 | contractCode | string       | Contract code                               |
 | gain         | string       | 24-hour increase                            |
 | open         | string       | 24-hour opening price                       |
@@ -578,7 +538,29 @@ no
 | bid          | string       | Buy one price                               |
 | ask          | int64        | Sell one price                              |
 
-`Return example`
+## Get all currency pair market data
+
+Speed limit rule: 20 times/2s
+
+`Function Description`
+
+This interface returns a summary of the market data for the last 24 hours, and the data value time interval is 24-hour rolling.
+
+**Request path:**
+
+/swap-api/v1/tickers
+
+curl `https://api.fameex.com/swap-api/v1/tickers`
+
+**Routing parameters:**
+
+no
+
+**Post parameters:**
+
+no
+
+> **Return example:**
 
 ``` json
 {
@@ -625,6 +607,24 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name   |Type| Remarks                                     |
+| ------------ | ------------ | ------------------------------------------- |
+| code         | int          | 200, normal                                 |
+| msg          | string       | success, normal                             |
+| data         | object array | Return data: market data                    |
+| contractCode | string       | Contract code                               |
+| gain         | string       | 24-hour increase                            |
+| open         | string       | 24-hour opening price                       |
+| low          | string       | Lowest price in 24 hours                    |
+| high         | string       | 24 hours highest price                      |
+| close        | string       | Latest transaction price                    |
+| amount       | string       | 24-hour trading currency volume             |
+| volume       | string       | 24-hour denominated currency trading volume |
+| bid          | string       | Buy one price                               |
+| ask          | int64        | Sell one price                              |
+
 # U futures Exchange API interface
 
 ## Futures orders
@@ -635,17 +635,17 @@ Speed limit rule: 100 times/2s
 
 This interface provides the U futures order function.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/order
 
 curl `https://api.fameex.com/swap-api/v1/order`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
@@ -661,17 +661,7 @@ no
 | workingType  | no             | int          | Conditional price trigger type 1-latest price 2-mark price   |
 | closeType    | no             | int          | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
 
-`Return value`
-
-| Field Name |Type| Remarks                               |
-| ---------- | ------------ | ------------------------------------- |
-| code       | int          | 200, normal                           |
-| msg        | string       | success, normal                       |
-| data       | object       | Return information: order information |
-| orderId    | string       | Order ID                              |
-| clientOid  | string       | User-made order ID                    |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -681,7 +671,17 @@ no
 }
 ```
 
-## Contract cancellation
+**Return value:**
+
+| Field Name |Type| Remarks                               |
+| ---------- | ------------ | ------------------------------------- |
+| code       | int          | 200, normal                           |
+| msg        | string       | success, normal                       |
+| data       | object       | Return information: order information |
+| orderId    | string       | Order ID                              |
+| clientOid  | string       | User-made order ID                    |
+
+## Futures cancellation
 
 Speed limit rule: 100 times/2s
 
@@ -689,17 +689,17 @@ Speed limit rule: 100 times/2s
 
 This interface provides the function of canceling unfilled orders.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/cancel_order
 
 curl `https://api.fameex.com/swap-api/v1/cancel_order`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
@@ -707,17 +707,7 @@ no
 | clientOid    | Yes            | string       | User-made order ID (orderId and clientOid must and can only choose one to fill in) |
 | contractCode | Yes            | string       | Contract code (e.g. BTC-USDT)                                |
 
-`Return value`
-
-| Field Name |Type| Remarks                      |
-| ---------- | ------------ | ---------------------------- |
-| code       | int          | 200, normal                  |
-| msg        | string       | success, normal              |
-| data       | object       | Return information: order id |
-| orderId    | string       | Order ID                     |
-| clientOid  | string       | User-made order ID           |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -727,6 +717,16 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name |Type| Remarks                      |
+| ---------- | ------------ | ---------------------------- |
+| code       | int          | 200, normal                  |
+| msg        | string       | success, normal              |
+| data       | object       | Return information: order id |
+| orderId    | string       | Order ID                     |
+| clientOid  | string       | User-made order ID           |
+
 ## Futures limit cancellation
 
 Speed limit rule: 100 times/2s
@@ -735,17 +735,17 @@ Speed limit rule: 100 times/2s
 
 This interface provides the function of canceling uncompleted orders of a specified type.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/cancel_cond_orders
 
 curl `https://api.fameex.com/swap-api/v1/cancel_cond_orders`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
@@ -754,14 +754,7 @@ no
 | offset       | no             | int          | Kaiping direction 1-open 2-level                             |
 | orderTypes   | no             | int array    | List of Order Types 1-Limit Price 2- Market Price 3- Limit Price Take Profit 4- Market Price Stop Profit 5- Limit Price Stop Loss 6 Market Price Stop Loss 7- Maker Only (eg, [1,2,3]) |
 
-`Return value`
-
-| Field Name |Type| Remarks         |
-| ---------- | ------------ | --------------- |
-| code       | int          | 200, normal     |
-| msg        | string       | success, normal |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -769,6 +762,13 @@ no
     "msg": "success"
 }
 ```
+
+**Return value:**
+
+| Field Name |Type| Remarks         |
+| ---------- | ------------ | --------------- |
+| code       | int          | 200, normal     |
+| msg        | string       | success, normal |
 
 ## Get order information
 
@@ -778,7 +778,7 @@ Speed limit rule: 20 times/2s
 
 This interface obtains the specified order information through the order ID.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/order_info
 
@@ -788,11 +788,11 @@ curl `https://api.fameex.com/swap-api/v1/order_info`
 
 no
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                                      |
 | ------------ | -------------- | ------------ | ------------------------------------------------------------ |
@@ -800,41 +800,7 @@ no
 | orderId      | no             | string       | Order ID (orderId and clientOid must and can only choose one to fill in) |
 | clientOid    | no             | string       | User-made order ID (orderId and clientOid must and can only choose one to fill in) |
 
-`Return value`
-
-| Field Name      |Type| Remarks                                                      |
-| --------------- | ------------ | ------------------------------------------------------------ |
-| code            | int          | 200, normal                                                  |
-| msg             | string       | success, normal                                              |
-| data            | object       | Return information: Order details                            |
-| contractCode    | string       | Contract code                                                |
-| marginMode      | int          | Margin mode 1-full position 2-position by position           |
-| orderId         | string       | Order ID                                                     |
-| clientOid       | string       | User-made order ID                                           |
-| side            | int          | Order Direction 1-Buy 2-Sell                                 |
-| orderType       | int          | Order Type 1-Limit Price 2-Market Price 3-Limit Price Take Profit 4-Market Price Take Profit 5-Limit Price Stop Loss 6-Market Price Stop Loss 7-Maker Only |
-| offset          | int          | Kaiping direction 1-open 2-level                             |
-| price           | string       | Commission price                                             |
-| amount          | string       | Number of orders                                             |
-| filledAmount    | string       | Number of transactions                                       |
-| filledMoney     | string       | Transaction amount                                           |
-| filledFee       | string       | Transaction fee                                              |
-| feeCurrency     | string       | Transaction fee currency                                     |
-| triggerPrice    | string       | Order trigger price                                          |
-| triggerType     | string       | Order trigger type gte-greater than or equal to lte-less than or equal to |
-| triggerState    | int          | Trigger status 1-trigger successful                          |
-| workingType     | int          | Conditional price trigger type 1-latest price 2-mark price   |
-| leverage        | int          | Leverage                                                     |
-| liquidationType | int          | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up |
-| state           | int          | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled |
-| accountType     | string       | account type                                                 |
-| platform        | string       | Platform source                                              |
-| cancelType      | int          | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation 4-Liquidation Cancellation 5-Lightening Cancellation |
-| closeType       | int64        | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
-| createTime      | int64        | Creation time                                                |
-| updateTime      | int64        | Status update time                                           |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -870,55 +836,13 @@ no
 }
 ```
 
-## Get a list of orders
-
-Speed limit rule: 20 times/2s
-
-`Function Description`
-
-This interface obtains and lists your current order information (the order information of the last 3 months). This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
-
-`Request path`
-
-/v1/api/spot/orderlist
-
-curl `https://api.fameex.com/v1/api/spot/orderlist`
-
-`Headers parameter`
-
-no
-
-`Routing parameters`
-
-| parameter       |Mandatory|Type| Remarks                                                      |
-| --------------- | -------------- | ------------ | ------------------------------------------------------------ |
-| contractCode    | Yes            | string       | Contract code (e.g. BTC-USDT)                                |
-| side            | no             | int          | Trading direction: 0 buy, 1 sell, -1 all                     |
-| offset          | no             | int          | The name of the currency pair (for example: BTC_USDT)        |
-| closeType       | no             | int          | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
-| liquidationType | no             | int          | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up |
-| orderTypes      | no             | int array    | List of Order Types 1-Limit Price 2- Market Price 3- Limit Price Take Profit 4- Market Price Stop Profit 5- Limit Price Stop Loss 6 Market Price Stop Loss 7- Maker Only (such as [1,2,3]) |
-| state           | Yes            | int          | Order status 7-uncompleted 8-completed 9-completed or partially cancelled |
-| pageno          | Yes            | int          | Paging usage, which page                                     |
-| pageSize        | Yes            | int          | Paging usage, number per page (0 <pageSize ≤ 500)            |
-| startTime       | no             | int64        | Timestamp, query the start time of the order in seconds      |
-| endTime         | no             | int64        | Timestamp, query the end time of the order in seconds        |
-
-`Post parameters`
-
-no
-
-`Return value`
+**Return value:**
 
 | Field Name      |Type| Remarks                                                      |
 | --------------- | ------------ | ------------------------------------------------------------ |
 | code            | int          | 200, normal                                                  |
 | msg             | string       | success, normal                                              |
-| data            | object       | Return information: Order                                    |
-| pageno          | int          | Pagination, the first few pages (1<=pageNum)                 |
-| pageSize        | int          | Pagination, the number of pages (1<=pageSize<= 500)          |
-| total           | int64        | Total number                                                 |
-| orders          | object array | Order list                                                   |
+| data            | object       | Return information: Order details                            |
 | contractCode    | string       | Contract code                                                |
 | marginMode      | int          | Margin mode 1-full position 2-position by position           |
 | orderId         | string       | Order ID                                                     |
@@ -946,7 +870,43 @@ no
 | createTime      | int64        | Creation time                                                |
 | updateTime      | int64        | Status update time                                           |
 
-`Return example`
+## Get a list of orders
+
+Speed limit rule: 20 times/2s
+
+`Function Description`
+
+This interface obtains and lists your current order information (the order information of the last 3 months). This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
+
+**Request path:**
+
+/v1/api/spot/orderlist
+
+curl `https://api.fameex.com/v1/api/spot/orderlist`
+
+`Headers parameter`
+
+no
+
+**Routing parameters:**
+
+| parameter       |Mandatory|Type| Remarks                                                      |
+| --------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| contractCode    | Yes            | string       | Contract code (e.g. BTC-USDT)                                |
+| side            | no             | int          | Trading direction: 0 buy, 1 sell, -1 all                     |
+| offset          | no             | int          | The name of the currency pair (for example: BTC_USDT)        |
+| closeType       | no             | int          | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
+| liquidationType | no             | int          | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up |
+| orderTypes      | no             | int array    | List of Order Types 1-Limit Price 2- Market Price 3- Limit Price Take Profit 4- Market Price Stop Profit 5- Limit Price Stop Loss 6 Market Price Stop Loss 7- Maker Only (such as [1,2,3]) |
+| state           | Yes            | int          | Order status 7-uncompleted 8-completed 9-completed or partially cancelled |
+| pageno          | Yes            | int          | Paging usage, which page                                     |
+| pageSize        | Yes            | int          | Paging usage, number per page (0 <pageSize ≤ 500)            |
+| startTime       | no             | int64        | Timestamp, query the start time of the order in seconds      |
+| endTime         | no             | int64        | Timestamp, query the end time of the order in seconds        |
+
+**Post parameters:**
+
+> **Return example:**
 
 ``` json
 {
@@ -1016,6 +976,46 @@ no
 }
 ```
 
+no
+
+**Return value:**
+
+| Field Name      |Type| Remarks                                                      |
+| --------------- | ------------ | ------------------------------------------------------------ |
+| code            | int          | 200, normal                                                  |
+| msg             | string       | success, normal                                              |
+| data            | object       | Return information: Order                                    |
+| pageno          | int          | Pagination, the first few pages (1<=pageNum)                 |
+| pageSize        | int          | Pagination, the number of pages (1<=pageSize<= 500)          |
+| total           | int64        | Total number                                                 |
+| orders          | object array | Order list                                                   |
+| contractCode    | string       | Contract code                                                |
+| marginMode      | int          | Margin mode 1-full position 2-position by position           |
+| orderId         | string       | Order ID                                                     |
+| clientOid       | string       | User-made order ID                                           |
+| side            | int          | Order Direction 1-Buy 2-Sell                                 |
+| orderType       | int          | Order Type 1-Limit Price 2-Market Price 3-Limit Price Take Profit 4-Market Price Take Profit 5-Limit Price Stop Loss 6-Market Price Stop Loss 7-Maker Only |
+| offset          | int          | Kaiping direction 1-open 2-level                             |
+| price           | string       | Commission price                                             |
+| amount          | string       | Number of orders                                             |
+| filledAmount    | string       | Number of transactions                                       |
+| filledMoney     | string       | Transaction amount                                           |
+| filledFee       | string       | Transaction fee                                              |
+| feeCurrency     | string       | Transaction fee currency                                     |
+| triggerPrice    | string       | Order trigger price                                          |
+| triggerType     | string       | Order trigger type gte-greater than or equal to lte-less than or equal to |
+| triggerState    | int          | Trigger status 1-trigger successful                          |
+| workingType     | int          | Conditional price trigger type 1-latest price 2-mark price   |
+| leverage        | int          | Leverage                                                     |
+| liquidationType | int          | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up |
+| state           | int          | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled |
+| accountType     | string       | account type                                                 |
+| platform        | string       | Platform source                                              |
+| cancelType      | int          | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation 4-Liquidation Cancellation 5-Lightening Cancellation |
+| closeType       | int64        | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
+| createTime      | int64        | Creation time                                                |
+| updateTime      | int64        | Status update time                                           |
+
 ## Get transaction details
 
 Speed limit rule: 20 times/2s
@@ -1024,17 +1024,17 @@ Speed limit rule: 20 times/2s
 
 This interface gets all your current transaction order information. This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/trades
 
 curl `https://api.fameex.com/swap-api/v1/trades`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter       |Mandatory|Type| Remarks                                                      |
 | --------------- | -------------- | ------------ | ------------------------------------------------------------ |
@@ -1050,38 +1050,7 @@ no
 | startTime       | no             | int64        | Start timestamp, seconds                                     |
 | endTime         | no             | int64        | End timestamp, seconds                                       |
 
-`Return value`
-
-| Field Name      |Type| Remarks                                                      |
-| --------------- | ------------ | ------------------------------------------------------------ |
-| code            | int          | 200, normal                                                  |
-| msg             | string       | success, normal                                              |
-| data            | string       | Return value, transaction details                            |
-| pageno          | int          | Pagination, the first few pages (1<=pageNum)                 |
-| pageSize        | int          | Pagination, the number of pages (1<=pageSize<= 500)          |
-| total           | int64        | Total number                                                 |
-| contractCode    | string       | Contract code                                                |
-| tradeId         | string       | Order ID                                                     |
-| orderId         | string       | Order ID                                                     |
-| userId          | string       | User ID                                                      |
-| side            | int          | Order Direction 1-Buy 2-Sell                                 |
-| orderType       | int          | Order Type 1-Limit Price 2-Market Price 3-Limit Price Take Profit 4-Market Price Take Profit 5-Limit Price Stop Loss 6-Market Price Stop Loss 7-Maker Only |
-| offset          | int          | Kaiping direction 1-open 2-level                             |
-| price           | string       | the deal price                                               |
-| amount          | string       | The number of transactions                                   |
-| feeCurrency     | string       | Transaction fee currency                                     |
-| feeRate         | string       | Actual handling fee rate                                     |
-| fee             | string       | Handling fee                                                 |
-| profitReal      | string       | Realized profit and loss                                     |
-| liquidationType | int          | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up |
-| accountType     | string       | account type                                                 |
-| platform        | string       | Platform source                                              |
-| role            | int          | Character type 1-maker 2-taker                               |
-| selftrade       | int          | Whether self-deal 1-self-deal                                |
-| closeType       | int          | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
-| createTime      | int64        | Creation time                                                |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -1137,6 +1106,37 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name      |Type| Remarks                                                      |
+| --------------- | ------------ | ------------------------------------------------------------ |
+| code            | int          | 200, normal                                                  |
+| msg             | string       | success, normal                                              |
+| data            | string       | Return value, transaction details                            |
+| pageno          | int          | Pagination, the first few pages (1<=pageNum)                 |
+| pageSize        | int          | Pagination, the number of pages (1<=pageSize<= 500)          |
+| total           | int64        | Total number                                                 |
+| contractCode    | string       | Contract code                                                |
+| tradeId         | string       | Order ID                                                     |
+| orderId         | string       | Order ID                                                     |
+| userId          | string       | User ID                                                      |
+| side            | int          | Order Direction 1-Buy 2-Sell                                 |
+| orderType       | int          | Order Type 1-Limit Price 2-Market Price 3-Limit Price Take Profit 4-Market Price Take Profit 5-Limit Price Stop Loss 6-Market Price Stop Loss 7-Maker Only |
+| offset          | int          | Kaiping direction 1-open 2-level                             |
+| price           | string       | the deal price                                               |
+| amount          | string       | The number of transactions                                   |
+| feeCurrency     | string       | Transaction fee currency                                     |
+| feeRate         | string       | Actual handling fee rate                                     |
+| fee             | string       | Handling fee                                                 |
+| profitReal      | string       | Realized profit and loss                                     |
+| liquidationType | int          | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up |
+| accountType     | string       | account type                                                 |
+| platform        | string       | Platform source                                              |
+| role            | int          | Character type 1-maker 2-taker                               |
+| selftrade       | int          | Whether self-deal 1-self-deal                                |
+| closeType       | int          | Types of closing positions 1-ordinary closing 2-quick closing 3-one-click closing 4-system closing |
+| createTime      | int64        | Creation time                                                |
+
 ## Get the latest transaction details
 
 Speed limit rule: 20 times/2s
@@ -1145,17 +1145,17 @@ Speed limit rule: 20 times/2s
 
 This interface gets you to get the information of the most recently traded order.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/last_trades
 
 curl `https://api.fameex.com/swap-api/v1/last_trades`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                                    |
 | ------------ | -------------- | ------------ | ---------------------------------------------------------- |
@@ -1163,20 +1163,7 @@ no
 | accountType  | Yes            | string       | Account type, "swap"                                       |
 | size         | Yes            | int          | The number of returned transaction details (1<=size<= 100) |
 
-`Return value`
-
-| Field Name |Type| Remarks                                  |
-| ---------- | ------------ | ---------------------------------------- |
-| code       | int          | 200, normal                              |
-| msg        | string       | success, normal                          |
-| data       | object       | Return value, recent transaction details |
-| tradeId    | string       | Order ID                                 |
-| side       | int          | Order Direction 1-Buy 2-Sell             |
-| price      | string       | the deal price                           |
-| amount     | string       | The number of transactions               |
-| createTime | int64        | Creation time                            |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -1194,25 +1181,38 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name |Type| Remarks                                  |
+| ---------- | ------------ | ---------------------------------------- |
+| code       | int          | 200, normal                              |
+| msg        | string       | success, normal                          |
+| data       | object       | Return value, recent transaction details |
+| tradeId    | string       | Order ID                                 |
+| side       | int          | Order Direction 1-Buy 2-Sell             |
+| price      | string       | the deal price                           |
+| amount     | string       | The number of transactions               |
+| createTime | int64        | Creation time                            |
+
 ## Adjust leverage
 
 Speed limit rule: 20 times/2s
 
 `Function Description`
 
-This interface adjusts the contract leverage.
+This interface adjusts the futures leverage.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/wallet/leverage/adjust
 
 curl `https://api.fameex.com/swap-api/v1/wallet/leverage/adjust`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                                       |
 | ------------ | -------------- | ------------ | --------------------------------------------- |
@@ -1220,18 +1220,7 @@ no
 | leverage     | Yes            | int          | Leverage                                      |
 | marginMode   | Yes            | string       | Position type 1: Full position 2: By position |
 
-`Return value`
-
-| Field Name   |Type| Remarks         |
-| ------------ | ------------ | --------------- |
-| code         | int          | 200, normal     |
-| msg          | string       | success, normal |
-| data         | object       | return value    |
-| userid       | string       | User id         |
-| contractCode | string       | Contract code   |
-| leverage     | int          | Leverage        |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -1245,6 +1234,17 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name   |Type| Remarks         |
+| ------------ | ------------ | --------------- |
+| code         | int          | 200, normal     |
+| msg          | string       | success, normal |
+| data         | object       | return value    |
+| userid       | string       | User id         |
+| contractCode | string       | Contract code   |
+| leverage     | int          | Leverage        |
+
 # U futures wallet API interface
 
 ## Get futures wallet
@@ -1253,42 +1253,23 @@ Speed limit rule: 20 times/2s
 
 `Function Description`
 
-This interface obtains wallet contract account data.
+This interface obtains wallet futures account data.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/wallet/asset
 
 curl `https://api.fameex.com/swap-api/v1/wallet/asset`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 no
 
-`Return value`
-
-| Field Name    |Type| Remarks                                               |
-| ------------- | ------------ | ----------------------------------------------------- |
-| code          | int          | 200, normal                                           |
-| msg           | string       | success, normal                                       |
-| data          | object       | Return value, contract account data                   |
-| available     | string       | Available                                             |
-| balance       | string       | Account Balance                                       |
-| userid        | string       | User id                                               |
-| valuation     | string       | The margin balance is converted into other            |
-| btcValuation  | string       | Margin balance is equivalent to BTC                   |
-| totalFrozen   | string       | Freeze all                                            |
-| marginBalance | string       | Margin balance                                        |
-| frozenList    | object array | Return position information                           |
-| contractCode  | string       | Contract code                                         |
-| frozen        | string       | freeze                                                |
-| get           | int          | Position direction 1: Long position 2: Short position |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -1328,55 +1309,50 @@ no
 }
 ```
 
+**Return value:**
+
+| Field Name    |Type| Remarks                                               |
+| ------------- | ------------ | ----------------------------------------------------- |
+| code          | int          | 200, normal                                           |
+| msg           | string       | success, normal                                       |
+| data          | object       | Return value, contract account data                   |
+| available     | string       | Available                                             |
+| balance       | string       | Account Balance                                       |
+| userid        | string       | User id                                               |
+| valuation     | string       | The margin balance is converted into other            |
+| btcValuation  | string       | Margin balance is equivalent to BTC                   |
+| totalFrozen   | string       | Freeze all                                            |
+| marginBalance | string       | Margin balance                                        |
+| frozenList    | object array | Return position information                           |
+| contractCode  | string       | Contract code                                         |
+| frozen        | string       | freeze                                                |
+| get           | int          | Position direction 1: Long position 2: Short position |
+
 ## Get futures positions
 
 Speed limit rule: 20 times/2s
 
 `Function Description`
 
-This interface obtains the user's contract account position.
+This interface obtains the user's futures account position.
 
-`Request path`
+**Request path:**
 
 /swap-api/v1/wallet/pos
 
 curl `https://api.fameex.com/swap-api/v1/wallet/pos`
 
-`Routing parameters`
+**Routing parameters:**
 
 no
 
-`Post parameters`
+**Post parameters:**
 
 | parameter    |Mandatory|Type| Remarks                               |
 | ------------ | -------------- | ------------ | ------------------------------------- |
 | contractCode | Yes            | string       | Contract code, for example "BTC-USDT" |
 
-`Return value`
-
-| Field Name     |Type| Remarks                                                      |
-| -------------- | ------------ | ------------------------------------------------------------ |
-| code           | int          | 200, normal                                                  |
-| msg            | string       | success, normal                                              |
-| data           | object       | Return value, contract account data                          |
-| currency       | string       | Asset currency                                               |
-| isolatedMargin | string       | Margin for each position (full position margin needs to be calculated by the front end (real-time change): (MarkPrice*Pos)/Leverage = [rounded]) |
-| leverage       | int          | Leverage                                                     |
-| liquidation    | string       | Estimated Strong Parity                                      |
-| marginMode     | int          | Position type 1: Full position 2: By position                |
-| openPriceAvg   | string       | Average opening price                                        |
-| openTime       | int64        | Position opening time, second-level timestamp                |
-| post           | object array | Return position information                                  |
-| posAvailable   | string       | Closeable position                                           |
-| get            | int          | Position direction (1: long position 2: short position)      |
-| posValue       | string       | Position value                                               |
-| profitReal     | string       | Total realized profit and loss                               |
-| profitUnreal   | string       | Unrealized profit and loss                                   |
-| rivalScore     | string       | Counterparty Lighten Up Index                                |
-| contractCode   | string       | Contract code                                                |
-| userId         | string       | User ID                                                      |
-
-`Return example`
+> **Return example:**
 
 ``` json
 {
@@ -1404,6 +1380,30 @@ no
     "msg": "success"
 }
 ```
+
+**Return value:**
+
+| Field Name     |Type| Remarks                                                      |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| code           | int          | 200, normal                                                  |
+| msg            | string       | success, normal                                              |
+| data           | object       | Return value, contract account data                          |
+| currency       | string       | Asset currency                                               |
+| isolatedMargin | string       | Margin for each position (full position margin needs to be calculated by the front end (real-time change): (MarkPrice*Pos)/Leverage = [rounded]) |
+| leverage       | int          | Leverage                                                     |
+| liquidation    | string       | Estimated Strong Parity                                      |
+| marginMode     | int          | Position type 1: Full position 2: By position                |
+| openPriceAvg   | string       | Average opening price                                        |
+| openTime       | int64        | Position opening time, second-level timestamp                |
+| post           | object array | Return position information                                  |
+| posAvailable   | string       | Closeable position                                           |
+| get            | int          | Position direction (1: long position 2: short position)      |
+| posValue       | string       | Position value                                               |
+| profitReal     | string       | Total realized profit and loss                               |
+| profitUnreal   | string       | Unrealized profit and loss                                   |
+| rivalScore     | string       | Counterparty Lighten Up Index                                |
+| contractCode   | string       | Contract code                                                |
+| userId         | string       | User ID                                                      |
 
 # Error message
 
