@@ -703,3 +703,25 @@ header .nav_box .nav_tab a.current {
   color: #EABE00;
   border-color: #EABE00;
 }
+
+@media (max-width: $phone-width) {
+  header .logo {
+    width: 90px;
+    height: 18.5px;
+  }
+  header .nav_box {
+      position: relative;
+      margin-left: 15px;
+  }
+  header .nav_box .nav_tab {
+      font-size: 12px;
+      line-height: 18.5px;
+  }
+  header .nav_box .nav_tab a {
+      color: #FFFFFF;
+      display: inline-block;
+      padding: 0 5px;
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+  }
+}
