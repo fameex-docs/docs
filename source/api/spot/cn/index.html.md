@@ -1068,11 +1068,11 @@ curl `https://api.fameex.com/v1/market/depth`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                              |
-| -------- | -------- | -------- | --------------------------------- |
-| pairName | 是       | string   | 币对 例如: BTC_USDT               |
-| size     | 否       | string   | 返回深度档位数量，最多返回 200    |
-| depth    | 否       | string   | 深度价格小数位数，例如：-2,-1,0,1 |
+| 参数   | 是否必须 | 数据类型 | 备注                              |
+| ------ | -------- | -------- | --------------------------------- |
+| symbol | 是       | string   | 币对 例如: BTC-USDT               |
+| step   | 是       | string   | 深度的价格聚合度类型(step0~step4) |
+| size   | 是       | int      | 返回深度的数量(1<=size<= 100)     |
 
 > **返回示例：**
 
@@ -1080,42 +1080,29 @@ curl `https://api.fameex.com/v1/market/depth`
 {
   "code": 200,
   "msg": "success",
-  "data": [
-    {
-      "symbol": "BTC-USDT",
-      "gain": "1",
-      "open": "1",
-      "low": "1",
-      "high": "1",
-      "close": "1",
-      "amount": "1",
-      "volume": "1",
-      "quotePrice": "1",
-      "bid": "1",
-      "ask": "1"
-    }
-  ]
+  "data": {
+    "time": "1640058358",
+    "bids": [
+      ["100", "0.1"],
+      ["101", "0.2"]
+    ],
+    "asks": [
+      ["101", "0.05"],
+      ["102", "0.04"]
+    ]
+  }
 }
 ```
 
 **返回值：**
 
-| 字段名称   | 数据类型 | 备注                   |
-| ---------- | -------- | ---------------------- |
-| code       | int      | 返回值状态             |
-| msg        | string   | 返回值描述             |
-| data       | array    | 返回数据：市场深度数据 |
-| symbol     | string   | 币对名称               |
-| gain       | string   | 24 小时涨幅            |
-| open       | string   | 24 小时开盘价          |
-| low        | string   | 24 小时最低价          |
-| high       | string   | 24 小时最高价          |
-| close      | string   | 最新成交价             |
-| amount     | string   | 24 小时交易币成交量    |
-| volume     | string   | 24 小时计价币成交量    |
-| quotePrice | string   | 计价币价格             |
-| bid        | string   | 买一价                 |
-| ask        | string   | 卖一价                 |
+| 字段名称 | 数据类型      | 备注                        |
+| -------- | ------------- | --------------------------- |
+| code     | int           | 返回值状态                  |
+| msg      | string        | 返回值描述                  |
+| data     | array         | 返回数据：市场深度数据      |
+| bids     | decimal array | 当前的所有买单 [价格，数量] |
+| asks     | decimal array | 当前的所有卖单 [价格，数量] |
 
 ## 获取成交数据
 

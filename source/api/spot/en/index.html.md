@@ -770,7 +770,7 @@ websocket
 | op         | string    | Message type ("unsub")                     |
 | topic      | string    | Subscribe to topics ("spot.market.ticker") |
 
-# Basic API interface
+# General Info
 
 ## Get current system time
 
@@ -987,7 +987,7 @@ no
 | state in currencyRecharge | int    | Deposit status 1-open 2-close                                                         |
 | state in currencyWithdraw | int    | Withdrawal status 1-open 2-close                                                      |
 
-# Quote API interface
+# Market Data Endpoints
 
 ## Obtain k-line data
 
@@ -1069,11 +1069,11 @@ No
 
 **Post parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                            |
-| :-------- | :------------- | :-------- | :------------------------------------------------- |
-| pairName  | Yes            | string    | For example: BTC_USDT                              |
-| size      | No             | string    | Return the number of depth gears, up to 200        |
-| depth     | No             | string    | Depth price decimal places, for example: -2,-1,0,1 |
+| Parameter | Do you have to | Data type | Remarks                                       |
+| :-------- | :------------- | :-------- | :-------------------------------------------- |
+| pairName  | Yes            | string    | For example: BTC-USDT                         |
+| setp      | YES            | string    | Price aggregation type of depth (step0~step4) |
+| size      | YES            | int       | Orders depth quantity((1<=size<= 100))        |
 
 > **Return example:**
 
@@ -1081,42 +1081,29 @@ No
 {
   "code": 200,
   "msg": "success",
-  "data": [
-    {
-      "symbol": "BTC-USDT",
-      "gain": "1",
-      "open": "1",
-      "low": "1",
-      "high": "1",
-      "close": "1",
-      "amount": "1",
-      "volume": "1",
-      "quotePrice": "1",
-      "bid": "1",
-      "ask": "1"
-    }
-  ]
+  "data": {
+    "time": "1640058358",
+    "bids": [
+      ["100", "0.1"],
+      ["101", "0.2"]
+    ],
+    "asks": [
+      ["101", "0.05"],
+      ["102", "0.04"]
+    ]
+  }
 }
 ```
 
 **Return value:**
 
-| Field name | Data type | Remarks                                     |
-| :--------- | :-------- | :------------------------------------------ |
-| code       | int       | Return value status                         |
-| msg        | string    | Return value description                    |
-| data       | array     | Return data: market depth data              |
-| symbol     | string    | Currency pair name                          |
-| gain       | string    | 24-hour increase                            |
-| open       | string    | 24-hour opening price                       |
-| low        | string    | Lowest price in 24 hours                    |
-| high       | string    | Highest price in 24 hours                   |
-| close      | string    | Latest transaction price                    |
-| amount     | string    | 24-hour trading currency volume             |
-| volume     | string    | 24-hour denominated currency trading volume |
-| quotePrice | string    | Denominated currency price                  |
-| bid        | string    | Buy one price                               |
-| ask        | string    | Sell one price                              |
+| Field name | Data type     | Remarks                                                                          |
+| :--------- | :------------ | :------------------------------------------------------------------------------- |
+| code       | int           | Return value status                                                              |
+| msg        | string        | Return value description                                                         |
+| data       | array         | Return data: market depth data                                                   |
+| bids       | decimal array | An array containing 2 elements. The offer price and quantity for each bid order. |
+| asks       | decimal array | An array containing 2 elements. The ask price and quantity for each ask order.   |
 
 ## Get transaction data
 
@@ -1302,7 +1289,7 @@ No
 | bid        | string       | Buy one price                                          |
 | ask        | string       | Sell one price                                         |
 
-# Exchange API interface
+# Exchange API Endpoints
 
 ## New order
 
@@ -1738,7 +1725,7 @@ This interface gets all your current transaction order information. This request
 
 /v1/api/orders_pending
 
-curl `https://api.fameex.com /v1/api/orders_pending`
+curl `https://api.fameex.com/v1/api/orders_pending`
 
 **Routing parameters:**
 
@@ -1797,7 +1784,7 @@ No
 | state       | int       | 1 Not effective 2 Not completed 3 Partially completed |
 | time        | int64     | Time (unit: nanosecond)                               |
 
-# Wallet API interface
+# Wallet API Endpoints
 
 ## Get wallet info
 
@@ -2460,7 +2447,7 @@ no
 | baseInterest   | string | Transaction currency interest                                                    |
 | quoteInterest  | string | Denominated currency interest                                                    |
 
-# Margin trading API interface
+# Margin trading API Endpoints
 
 ## Get the details of a currency pair under a margin account
 

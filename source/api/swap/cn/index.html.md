@@ -62,11 +62,11 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 官方微博：[https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
 
-官方Twitter：[https://twitter.com/FameexGroup](https://twitter.com/FameexGroup)
+官方 Twitter：[https://twitter.com/FAMEEXGLOBAL](https://twitter.com/FAMEEXGLOBAL)
 
-官方Telegram：[https://t.me/fameexgroup](https://t.me/fameexgroup)
+官方 Telegram：[https://t.me/fameexgroup](https://t.me/fameexgroup)
 
-官方Facebook：[https://www.facebook.com/FameexOfficial](https://www.facebook.com/FameexOfficial)
+官方 Facebook：[https://www.facebook.com/FAMEEXGLOBAL](https://www.facebook.com/FAMEEXGLOBAL)
 
 我们将为您做出最权威的解答。
 
@@ -164,7 +164,7 @@ curl `https://api.fameex.com/v1/common/timestamp`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 无
 
@@ -204,7 +204,7 @@ curl `https://api.fameex.com/swap-api/v1/symbols`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 无
 
@@ -340,7 +340,7 @@ curl `https://api.fameex.com/swap-api/v1/kline`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                                                   |
 | ------------ | -------- | -------- | ------------------------------------------------------ |
@@ -429,7 +429,7 @@ curl `https://api.fameex.com/swap-api/v1/depth`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                              |
 | ------------ | -------- | -------- | --------------------------------- |
@@ -493,7 +493,7 @@ curl `https://api.fameex.com/swap-api/v1/ticker`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                  |
 | ------------ | -------- | -------- | --------------------- |
@@ -556,7 +556,7 @@ curl `https://api.fameex.com/swap-api/v1/tickers`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 无
 
@@ -645,11 +645,12 @@ curl `https://api.fameex.com/swap-api/v1/order`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                                                                            |
 | ------------ | -------- | -------- | ------------------------------------------------------------------------------- |
 | leverage     | 是       | int      | 杠杆倍数                                                                        |
+| contractCode | 是       | string   | 合约代码(如 BTC-USDT)                                                           |
 | marginMode   | 是       | int      | 保证金模式 1-全仓 2-逐仓                                                        |
 | clientOid    | 否       | string   | 用户自编委托单 ID                                                               |
 | side         | 是       | int      | 委托方向 1-买 2-卖                                                              |
@@ -699,7 +700,7 @@ curl `https://api.fameex.com/swap-api/v1/cancel_order`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                                                         |
 | ------------ | -------- | -------- | ------------------------------------------------------------ |
@@ -745,7 +746,7 @@ curl `https://api.fameex.com/swap-api/v1/cancel_cond_orders`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型  | 备注                                                                                                |
 | ------------ | -------- | --------- | --------------------------------------------------------------------------------------------------- |
@@ -792,7 +793,7 @@ curl `https://api.fameex.com/swap-api/v1/order_info`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                                                         |
 | ------------ | -------- | -------- | ------------------------------------------------------------ |
@@ -880,9 +881,9 @@ curl `https://api.fameex.com/swap-api/v1/order_info`
 
 **请求路径：**
 
-/v1/api/spot/orderlist
+/swap-api/v1/orders
 
-curl `https://api.fameex.com/v1/api/spot/orderlist`
+curl `https://api.fameex.com/swap-api/v1/orders`
 
 `headers参数`
 
@@ -890,11 +891,15 @@ curl `https://api.fameex.com/v1/api/spot/orderlist`
 
 **路由参数：**
 
+无
+
+**Post 参数：**
+
 | 参数            | 是否必须 | 数据类型  | 备注                                                                                              |
 | --------------- | -------- | --------- | ------------------------------------------------------------------------------------------------- |
 | contractCode    | 是       | string    | 合约代码(如 BTC-USDT)                                                                             |
-| side            | 否       | int       | 买卖方向: 0 买, 1 卖, -1 全部                                                                     |
-| offset          | 否       | int       | 币对名称（例:BTC_USDT）                                                                           |
+| side            | 否       | int       | 委托方向 1-买 2-卖                                                                                |
+| offset          | 否       | int       | 开平方向 1-开 2-平                                                                                |
 | closeType       | 否       | int       | 平仓类型 1-普通平仓 2-快速平仓 3-一键平仓 4-系统平仓                                              |
 | liquidationType | 否       | int       | 强平类型 1-爆仓 2-减仓 3-止盈减仓                                                                 |
 | orderTypes      | 否       | int array | 委托类型列表 1-限价 2-市价 3-限价止盈 4-市价止盈 5-限价止损 6-市价止损 7-只做 Maker （如[1,2,3]） |
@@ -903,10 +908,6 @@ curl `https://api.fameex.com/v1/api/spot/orderlist`
 | pageSize        | 是       | int       | 分页使用, 每页数量 (0 < pageSize ≤ 500)                                                           |
 | startTime       | 否       | int64     | 时间戳,查询订单的开始时间 秒                                                                      |
 | endTime         | 否       | int64     | 时间戳,查询订单的结束时间 秒                                                                      |
-
-**Post参数：**
-
-无
 
 > **返回示例：**
 
@@ -1034,7 +1035,7 @@ curl `https://api.fameex.com/swap-api/v1/trades`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数            | 是否必须 | 数据类型  | 备注                                                                                             |
 | --------------- | -------- | --------- | ------------------------------------------------------------------------------------------------ |
@@ -1155,7 +1156,7 @@ curl `https://api.fameex.com/swap-api/v1/last_trades`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                              |
 | ------------ | -------- | -------- | --------------------------------- |
@@ -1212,7 +1213,7 @@ curl `https://api.fameex.com/swap-api/v1/wallet/leverage/adjust`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                   |
 | ------------ | -------- | -------- | ---------------------- |
@@ -1265,7 +1266,7 @@ curl `https://api.fameex.com/swap-api/v1/wallet/asset`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 无
 
@@ -1346,7 +1347,7 @@ curl `https://api.fameex.com/swap-api/v1/wallet/pos`
 
 无
 
-**Post参数：**
+**Post 参数：**
 
 | 参数         | 是否必须 | 数据类型 | 备注                   |
 | ------------ | -------- | -------- | ---------------------- |
@@ -1421,6 +1422,8 @@ curl `https://api.fameex.com/swap-api/v1/wallet/pos`
 | 112020  | 签名方式错误                                      |
 | 112021  | 签名版本错误                                      |
 | 112022  | 签名时间戳错误                                    |
+| 112047  | 现货 API 接口暂时不可访问                         |
+| 112048  | 期货 API 接口暂时不可访问                         |
 
 # 常见问题
 
