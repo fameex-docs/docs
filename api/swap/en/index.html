@@ -357,7 +357,7 @@
               </ul>
           </li>
           <li>
-            <a href="#basic-api-interface" class="toc-h1 toc-link" data-title="Basic API interface">Basic API interface</a>
+            <a href="#general-info" class="toc-h1 toc-link" data-title="General Info">General Info</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-current-system-time" class="toc-h2 toc-link" data-title="Get current system time">Get current system time</a>
@@ -368,7 +368,7 @@
               </ul>
           </li>
           <li>
-            <a href="#quote-api-interface" class="toc-h1 toc-link" data-title="Quote API interface">Quote API interface</a>
+            <a href="#market-data-endpoints" class="toc-h1 toc-link" data-title="Market Data Endpoints">Market Data Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-k-line-data" class="toc-h2 toc-link" data-title="Get k-line data">Get k-line data</a>
@@ -385,7 +385,7 @@
               </ul>
           </li>
           <li>
-            <a href="#u-futures-exchange-api-interface" class="toc-h1 toc-link" data-title="U futures Exchange API interface">U futures Exchange API interface</a>
+            <a href="#u-futures-exchange-endpoints" class="toc-h1 toc-link" data-title="U futures Exchange Endpoints">U futures Exchange Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#futures-orders" class="toc-h2 toc-link" data-title="Futures orders">Futures orders</a>
@@ -414,7 +414,7 @@
               </ul>
           </li>
           <li>
-            <a href="#u-futures-wallet-api-interface" class="toc-h1 toc-link" data-title="U futures wallet API interface">U futures wallet API interface</a>
+            <a href="#u-futures-wallet-api-endpoints" class="toc-h1 toc-link" data-title="U futures wallet API Endpoints">U futures wallet API Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-futures-wallet" class="toc-h2 toc-link" data-title="Get futures wallet">Get futures wallet</a>
@@ -481,11 +481,11 @@
 
 <p>Official Weibo: <a href="https://weibo.com/fameexgroup">https://weibo.com/fameexgroup</a></p>
 
-<p>Official Twitter: <a href="https://twitter.com/FameexGroup">https://twitter.com/FameexGroup</a></p>
+<p>Official Twitter: <a href="https://twitter.com/FAMEEXGLOBAL">https://twitter.com/FAMEEXGLOBAL</a></p>
 
 <p>Official Telegram: <a href="https://t.me/fameexgroup">https://t.me/fameexgroup</a></p>
 
-<p>Official Facebook: <a href="https://www.facebook.com/FameexOfficial">https://www.facebook.com/FameexOfficial</a></p>
+<p>Official Facebook: <a href="https://www.facebook.com/FAMEEXGLOBAL">https://www.facebook.com/FAMEEXGLOBAL</a></p>
 
 <p>We will make the most authoritative answer for you.</p>
 <h1 id='access-instructions'>Access instructions</h1><h2 id='access-urls'>Access URLs</h2>
@@ -605,7 +605,7 @@
 <p>The body refers to the string of the request body (without blank characters, such as \n,\r,\t). If the request has no body (usually a GET request), the body can be omitted. E.g:<code>{&quot;orderId&quot;:&quot;377454671037440&quot;}</code></p>
 
 <p>The secretKey is generated when the user applies for the API Key. For example: 533d6e70-21b2-eb5c-f801-c128021c70a1</p>
-<h1 id='basic-api-interface'>Basic API interface</h1><h2 id='get-current-system-time'>Get current system time</h2>
+<h1 id='general-info'>General Info</h1><h2 id='get-current-system-time'>Get current system time</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><strong>Description</strong></p>
@@ -685,87 +685,87 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultLeverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"initPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitMarketAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"basePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"riskRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"forceLiquidationTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderLimitRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitsA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00125"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitsB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00125"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isEffect"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effectTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marginRateGear"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"defaultLeverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"initPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitMarketAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"basePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"riskRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"forceLiquidationTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderLimitRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"buyMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"buyMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sellMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sellMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitsA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00125"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitsB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00125"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isEffect"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"effectTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marginRateGear"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"gear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"warnRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"maintenanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.008"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"gear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0526"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"warnRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"maintenanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+          </span><span class="nl">"gear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"warnRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maintenanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.008"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BIRD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"defaultLeverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"initPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitMarketAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"basePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"riskRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"forceLiquidationTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderLimitRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"buyMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"buyMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sellMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sellMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitsA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.01"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitsB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isEffect"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"effectTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marginRateGear"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"gear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"warnRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"maintenanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+          </span><span class="nl">"gear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0526"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"warnRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maintenanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BIRD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultLeverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"initPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitMarketAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"basePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"riskRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"forceLiquidationTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderLimitRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellMinPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellMaxPricePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitsA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitsB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isEffect"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effectTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marginRateGear"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"gear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"leverMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"warnRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maintenanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -873,7 +873,7 @@
 <td>Maintenance margin rate</td>
 </tr>
 </tbody></table>
-<h1 id='quote-api-interface'>Quote API interface</h1><h2 id='get-k-line-data'>Get k-line data</h2>
+<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='get-k-line-data'>Get k-line data</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -930,46 +930,46 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622019900</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2851.66"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2861.23"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2863.5"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2850"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"671.194"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"959418.48168"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622020200</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2862.38"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2861.39"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2866.76"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2856.65"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"933.28"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1335716.34709"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622020500</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2860.22"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2869.23"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2869.23"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2852.38"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"661.23"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"946152.16526"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622106000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2760.33"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2769.59"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2760.33"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1150.02"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1590741.62857"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622019900</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2851.66"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2861.23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2863.5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2850"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"671.194"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"959418.48168"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622020200</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2862.38"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2861.39"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2866.76"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2856.65"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"933.28"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1335716.34709"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622020500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2860.22"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2869.23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2869.23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2852.38"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"661.23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"946152.16526"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622106000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2760.33"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2769.59"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2760.33"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1150.02"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1590741.62857"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -1180,20 +1180,20 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0303966087182331"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2849.66"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2635.7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2886"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"330297.294"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454347003.61788"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.02"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0303966087182331"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2849.66"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2635.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2886"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"330297.294"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454347003.61788"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.02"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -1296,46 +1296,46 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI-USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7183"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAL-USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.203"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASH-USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.47"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7183"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAL-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.203"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASH-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.47"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -1413,7 +1413,7 @@
 <td>Sell one price</td>
 </tr>
 </tbody></table>
-<h1 id='u-futures-exchange-api-interface'>U futures Exchange API interface</h1><h2 id='futures-orders'>Futures orders</h2>
+<h1 id='u-futures-exchange-endpoints'>U futures Exchange Endpoints</h1><h2 id='futures-orders'>Futures orders</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -1603,9 +1603,9 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -1700,8 +1700,8 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -1782,32 +1782,32 @@
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945218469888"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.5786"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"filledFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06303144"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"workingType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945218469888"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.5786"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filledFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06303144"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"workingType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -2066,69 +2066,69 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945218469888"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.5786"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"filledFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06303144"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"workingType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10613096118414213120"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49630"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.003"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"filledFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"workingType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1620976393</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1620979562</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"pageNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945218469888"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.5786"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06303144"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"workingType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10613096118414213120"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49630"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"workingType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1620976393</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1620979562</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"pageNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>no</p>
@@ -2407,55 +2407,55 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"pageNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945239465984"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945218469888"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39394.65"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06303144"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"profitReal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.16321"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"selfTrade"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10613109942471122944"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10613109942445932544"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50162.33"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04012987"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"profitReal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"selfTrade"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1620979689</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"pageNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945239465984"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10617388945218469888"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39394.65"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06303144"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"profitReal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.16321"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"selfTrade"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1621999883</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10613109942471122944"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10613109942445932544"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50162.33"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04012987"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"profitReal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"selfTrade"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1620979689</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -2652,14 +2652,14 @@
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10385145101749346304"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566628635</span><span class="p">,</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10385145101749346304"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566628635</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -2812,7 +2812,7 @@
 <td>Leverage</td>
 </tr>
 </tbody></table>
-<h1 id='u-futures-wallet-api-interface'>U futures wallet API interface</h1><h2 id='get-futures-wallet'>Get futures wallet</h2>
+<h1 id='u-futures-wallet-api-endpoints'>U futures wallet API Endpoints</h1><h2 id='get-futures-wallet'>Get futures wallet</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function Description</code></p>
@@ -2837,39 +2837,39 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31090571"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26.97550799"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"valuation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"btcValuation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marginBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"totalFrozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"frozenList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31090571"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26.97550799"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valuation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"btcValuation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalFrozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"frozenList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -2991,28 +2991,28 @@
 <p><strong>Return example:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isolatedMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"liquidation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"openPriceAvg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"openTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1616663132</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"pos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"posAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"posValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"profitReal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"profitUnreal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-50"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rivalScore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMG-USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99213512"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isolatedMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openPriceAvg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1616663132</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"posAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"posValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"profitReal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"profitUnreal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-50"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rivalScore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMG-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99213512"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -3174,6 +3174,14 @@
 <tr>
 <td>112022</td>
 <td>Signature timestamp error</td>
+</tr>
+<tr>
+<td>112047</td>
+<td>The spot API interface is temporarily inaccessible</td>
+</tr>
+<tr>
+<td>112048</td>
+<td>The futures API interface is temporarily inaccessible</td>
 </tr>
 </tbody></table>
 <h1 id='common-problem'>common problem</h1>

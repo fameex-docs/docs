@@ -386,7 +386,7 @@
               </ul>
           </li>
           <li>
-            <a href="#basic-api-interface" class="toc-h1 toc-link" data-title="Basic API interface">Basic API interface</a>
+            <a href="#general-info" class="toc-h1 toc-link" data-title="General Info">General Info</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-current-system-time" class="toc-h2 toc-link" data-title="Get current system time">Get current system time</a>
@@ -400,7 +400,7 @@
               </ul>
           </li>
           <li>
-            <a href="#quote-api-interface" class="toc-h1 toc-link" data-title="Quote API interface">Quote API interface</a>
+            <a href="#market-data-endpoints" class="toc-h1 toc-link" data-title="Market Data Endpoints">Market Data Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#obtain-k-line-data" class="toc-h2 toc-link" data-title="Obtain k-line data">Obtain k-line data</a>
@@ -420,7 +420,7 @@
               </ul>
           </li>
           <li>
-            <a href="#exchange-api-interface" class="toc-h1 toc-link" data-title="Exchange API interface">Exchange API interface</a>
+            <a href="#exchange-api-endpoints" class="toc-h1 toc-link" data-title="Exchange API Endpoints">Exchange API Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#new-order" class="toc-h2 toc-link" data-title="New order">New order</a>
@@ -446,7 +446,7 @@
               </ul>
           </li>
           <li>
-            <a href="#wallet-api-interface" class="toc-h1 toc-link" data-title="Wallet API interface">Wallet API interface</a>
+            <a href="#wallet-api-endpoints" class="toc-h1 toc-link" data-title="Wallet API Endpoints">Wallet API Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-wallet-info" class="toc-h2 toc-link" data-title="Get wallet info">Get wallet info</a>
@@ -478,7 +478,7 @@
               </ul>
           </li>
           <li>
-            <a href="#margin-trading-api-interface" class="toc-h1 toc-link" data-title="Margin trading API interface">Margin trading API interface</a>
+            <a href="#margin-trading-api-endpoints" class="toc-h1 toc-link" data-title="Margin trading API Endpoints">Margin trading API Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-the-details-of-a-currency-pair-under-a-margin-account" class="toc-h2 toc-link" data-title="Get the details of a currency pair under a margin account">Get the details of a currency pair under a margin account</a>
@@ -1929,7 +1929,7 @@
 <td>Subscribe to topics (&quot;spot.market.ticker&quot;)</td>
 </tr>
 </tbody></table>
-<h1 id='basic-api-interface'>Basic API interface</h1><h2 id='get-current-system-time'>Get current system time</h2>
+<h1 id='general-info'>General Info</h1><h2 id='get-current-system-time'>Get current system time</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><strong>Description:</strong></p>
@@ -2269,7 +2269,7 @@
 <td>Withdrawal status 1-open 2-close</td>
 </tr>
 </tbody></table>
-<h1 id='quote-api-interface'>Quote API interface</h1><h2 id='obtain-k-line-data'>Obtain k-line data</h2>
+<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='obtain-k-line-data'>Obtain k-line data</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><strong>Function Description:</strong></p>
@@ -2422,19 +2422,19 @@
 <td style="text-align: left">pairName</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">For example: BTC_USDT</td>
+<td style="text-align: left">For example: BTC-USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">setp</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Price aggregation type of depth (step0~step4)</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
-<td style="text-align: left">No</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Return the number of depth gears, up to 200</td>
-</tr>
-<tr>
-<td style="text-align: left">depth</td>
-<td style="text-align: left">No</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Depth price decimal places, for example: -2,-1,0,1</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Orders depth quantity((1&lt;=size&lt;= 100))</td>
 </tr>
 </tbody></table>
 
@@ -2444,21 +2444,17 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"quotePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1640058358"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"101"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"101"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"102"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Return value:</strong></p>
@@ -2486,59 +2482,14 @@
 <td style="text-align: left">Return data: market depth data</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Currency pair name</td>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">decimal array</td>
+<td style="text-align: left">An array containing 2 elements. The offer price and quantity for each bid order.</td>
 </tr>
 <tr>
-<td style="text-align: left">gain</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour increase</td>
-</tr>
-<tr>
-<td style="text-align: left">open</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">low</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Lowest price in 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">high</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Highest price in 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Latest transaction price</td>
-</tr>
-<tr>
-<td style="text-align: left">amount</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour trading currency volume</td>
-</tr>
-<tr>
-<td style="text-align: left">volume</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour denominated currency trading volume</td>
-</tr>
-<tr>
-<td style="text-align: left">quotePrice</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Denominated currency price</td>
-</tr>
-<tr>
-<td style="text-align: left">bid</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Buy one price</td>
-</tr>
-<tr>
-<td style="text-align: left">ask</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Sell one price</td>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">decimal array</td>
+<td style="text-align: left">An array containing 2 elements. The ask price and quantity for each ask order.</td>
 </tr>
 </tbody></table>
 <h2 id='get-transaction-data'>Get transaction data</h2>
@@ -2899,7 +2850,7 @@
 <td style="text-align: left">Sell one price</td>
 </tr>
 </tbody></table>
-<h1 id='exchange-api-interface'>Exchange API interface</h1><h2 id='new-order'>New order</h2>
+<h1 id='exchange-api-endpoints'>Exchange API Endpoints</h1><h2 id='new-order'>New order</h2>
 <p>Speed limit rule: 100 times/2s</p>
 
 <p><strong>Function Description:</strong></p>
@@ -3993,7 +3944,7 @@
 
 <p>/v1/api/orders_pending</p>
 
-<p>curl <code>https://api.fameex.com /v1/api/orders_pending</code></p>
+<p>curl <code>https://api.fameex.com/v1/api/orders_pending</code></p>
 
 <p><strong>Routing parameters:</strong></p>
 
@@ -4130,7 +4081,7 @@
 <td style="text-align: left">Time (unit: nanosecond)</td>
 </tr>
 </tbody></table>
-<h1 id='wallet-api-interface'>Wallet API interface</h1><h2 id='get-wallet-info'>Get wallet info</h2>
+<h1 id='wallet-api-endpoints'>Wallet API Endpoints</h1><h2 id='get-wallet-info'>Get wallet info</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><strong>Function description:</strong></p>
@@ -5392,7 +5343,7 @@
 <td>Denominated currency interest</td>
 </tr>
 </tbody></table>
-<h1 id='margin-trading-api-interface'>Margin trading API interface</h1><h2 id='get-the-details-of-a-currency-pair-under-a-margin-account'>Get the details of a currency pair under a margin account</h2>
+<h1 id='margin-trading-api-endpoints'>Margin trading API Endpoints</h1><h2 id='get-the-details-of-a-currency-pair-under-a-margin-account'>Get the details of a currency pair under a margin account</h2>
 <p>Speed limit rule: 1 time/2s</p>
 
 <p><strong>Function description:</strong></p>

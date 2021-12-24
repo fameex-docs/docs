@@ -481,11 +481,11 @@
 
 <p>官方微博：<a href="https://weibo.com/fameexgroup">https://weibo.com/fameexgroup</a></p>
 
-<p>官方Twitter：<a href="https://twitter.com/FameexGroup">https://twitter.com/FameexGroup</a></p>
+<p>官方 Twitter：<a href="https://twitter.com/FAMEEXGLOBAL">https://twitter.com/FAMEEXGLOBAL</a></p>
 
-<p>官方Telegram：<a href="https://t.me/fameexgroup">https://t.me/fameexgroup</a></p>
+<p>官方 Telegram：<a href="https://t.me/fameexgroup">https://t.me/fameexgroup</a></p>
 
-<p>官方Facebook：<a href="https://www.facebook.com/FameexOfficial">https://www.facebook.com/FameexOfficial</a></p>
+<p>官方 Facebook：<a href="https://www.facebook.com/FAMEEXGLOBAL">https://www.facebook.com/FAMEEXGLOBAL</a></p>
 
 <p>我们将为您做出最权威的解答。</p>
 <h1 id='2d07d50c97'>接入说明</h1><h2 id='urls'>接入 URLs</h2>
@@ -620,7 +620,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <p>无</p>
 
@@ -675,7 +675,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <p>无</p>
 
@@ -888,7 +888,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1047,7 +1047,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1156,7 +1156,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1286,7 +1286,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <p>无</p>
 
@@ -1428,7 +1428,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1443,6 +1443,12 @@
 <td>是</td>
 <td>int</td>
 <td>杠杆倍数</td>
+</tr>
+<tr>
+<td>contractCode</td>
+<td>是</td>
+<td>string</td>
+<td>合约代码(如 BTC-USDT)</td>
 </tr>
 <tr>
 <td>marginMode</td>
@@ -1567,7 +1573,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1658,7 +1664,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1743,7 +1749,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -1972,15 +1978,19 @@
 
 <p><strong>请求路径：</strong></p>
 
-<p>/v1/api/spot/orderlist</p>
+<p>/swap-api/v1/orders</p>
 
-<p>curl <code>https://api.fameex.com/v1/api/spot/orderlist</code></p>
+<p>curl <code>https://api.fameex.com/swap-api/v1/orders</code></p>
 
 <p><code>headers参数</code></p>
 
 <p>无</p>
 
 <p><strong>路由参数：</strong></p>
+
+<p>无</p>
+
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -2000,13 +2010,13 @@
 <td>side</td>
 <td>否</td>
 <td>int</td>
-<td>买卖方向: 0 买, 1 卖, -1 全部</td>
+<td>委托方向 1-买 2-卖</td>
 </tr>
 <tr>
 <td>offset</td>
 <td>否</td>
 <td>int</td>
-<td>币对名称（例:BTC_USDT）</td>
+<td>开平方向 1-开 2-平</td>
 </tr>
 <tr>
 <td>closeType</td>
@@ -2057,10 +2067,6 @@
 <td>时间戳,查询订单的结束时间 秒</td>
 </tr>
 </tbody></table>
-
-<p><strong>Post参数：</strong></p>
-
-<p>无</p>
 
 <blockquote>
 <p><strong>返回示例：</strong></p>
@@ -2323,7 +2329,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -2613,7 +2619,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -2727,7 +2733,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -2827,7 +2833,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <p>无</p>
 
@@ -2967,7 +2973,7 @@
 
 <p>无</p>
 
-<p><strong>Post参数：</strong></p>
+<p><strong>Post 参数：</strong></p>
 
 <table><thead>
 <tr>
@@ -3172,6 +3178,14 @@
 <tr>
 <td>112022</td>
 <td>签名时间戳错误</td>
+</tr>
+<tr>
+<td>112047</td>
+<td>现货 API 接口暂时不可访问</td>
+</tr>
+<tr>
+<td>112048</td>
+<td>期货 API 接口暂时不可访问</td>
 </tr>
 </tbody></table>
 <h1 id='0adb1147b3'>常见问题</h1>
