@@ -23,9 +23,15 @@ meta:
 
 # 更新日志
 
-**2021-05-27**
+## 2022-03-30
 
-- 合约接口更新：
+- 新增合约接口：
+  - GET `/swap-api/v2/orderbook` 获取深度信息
+  - GET `/swap-api/v2/tickers` 获取 24 小时滚动窗口价格变动数据
+
+## 2021-05-27
+
+- 新增合约接口：
   - 新增 U 合约下单接口 `/swap-api/v1/order`
   - 新增 U 合约撤单接口 `/swap-api/v1/cancel_order`
   - 新增 U 合约条件撤单接口 `/swap-api/v1/cancel_cond_orders`
@@ -320,7 +326,7 @@ curl `https://api.fameex.com/swap-api/v1/symbols`
 | warnRate          | string       | 预警保证金率        |
 | maintenanceRate   | string       | 维持保证金率        |
 
-# 行情 API 接口
+# 行情接口
 
 ## 获取 k 线数据
 
@@ -411,219 +417,112 @@ curl `https://api.fameex.com/swap-api/v1/kline`
 | amount   | string   | 交易币成交量    |
 | volume   | string   | 计价币成交量    |
 
-## 市场深度数据
+## 深度信息
 
-限速规则：20 次/2s
+> 请求示例
 
-**功能说明：**
-
-此接口返回指定交易对的当前市场深度数据。
-
-**请求路径：**
-
-/swap-api/v1/depth
-
-curl `https://api.fameex.com/swap-api/v1/depth`
-
-**路由参数：**
-
-无
-
-**Post 参数：**
-
-| 参数         | 是否必须 | 数据类型 | 备注                              |
-| ------------ | -------- | -------- | --------------------------------- |
-| contractCode | 是       | string   | 合约代码, 例"BTC-USDT"            |
-| step         | 是       | string   | 深度的价格聚合度类型(step0~step4) |
-| size         | 是       | int      | 返回深度的数量(1<=size<= 100)     |
-
-> **返回示例：**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "base": "omg",
-    "quote": "usdt",
-    "buyList": [
-      {
-        "price": "10.00",
-        "count": "0.6",
-        "orderCount": 1
-      }
-    ],
-    "sellList": [
-      {
-        "price": "11.00",
-        "count": "1",
-        "orderCount": 1
-      }
-    ],
-    "timestamp": 0
-  }
-}
+```curl
+curl --request GET 'https://api.fameex.com/swap-api/v2/orderbook?symbol=BTC-USDT'
 ```
 
-**返回值：**
-
-| 字段名称 | 数据类型     | 备注                        |
-| -------- | ------------ | --------------------------- |
-| code     | int          | 200,正常                    |
-| msg      | string       | success，正常               |
-| data     | object       | 返回数据：市场深度数据      |
-| bids     | string array | 当前的所有买单 [价格，数量] |
-| asks     | string array | 当前的所有卖单 [价格，数量] |
-
-## 获取单币对行情数据
-
-限速规则：20 次/2s
-
-**功能说明：**
-
-此接口返回获取单币对 24h 内行情数据。
-
-**请求路径：**
-
-/swap-api/v1/ticker
-
-curl `https://api.fameex.com/swap-api/v1/ticker`
-
-**路由参数：**
-
-无
-
-**Post 参数：**
-
-| 参数         | 是否必须 | 数据类型 | 备注                  |
-| ------------ | -------- | -------- | --------------------- |
-| contractCode | 是       | string   | 合约代码(如 BTC-USDT) |
-
-> **返回示例：**
+> 响应
 
 ```json
 {
-  "code": 200,
-  "msg": "ok",
-  "data": {
-    "contractCode": "ETH-USDT",
-    "gain": "-0.0303966087182331",
-    "open": "2849.66",
-    "low": "2635.7",
-    "high": "2886",
-    "close": "2763.04",
-    "amount": "330297.294",
-    "volume": "454347003.61788",
-    "bid": "2763.02",
-    "ask": "2763.04"
-  }
-}
-```
-
-**返回值：**
-
-| 字段名称     | 数据类型     | 备注                 |
-| ------------ | ------------ | -------------------- |
-| code         | int          | 200,正常             |
-| msg          | string       | success,正常         |
-| data         | object array | 返回数据：单币对行情 |
-| contractCode | string       | 合约代码             |
-| gain         | string       | 24 小时涨幅          |
-| open         | string       | 24 小时开盘价        |
-| low          | string       | 24 小时最低价        |
-| high         | string       | 24 小时最高价        |
-| close        | string       | 最新成交价           |
-| amount       | string       | 24 小时交易币成交量  |
-| volume       | string       | 24 小时计价币成交量  |
-| bid          | string       | 买一价               |
-| ask          | int64        | 卖一价               |
-
-## 获取全部币对行情数据
-
-限速规则：20 次/2s
-
-**功能说明：**
-
-此接口返回最近 24 小时的行情数据汇总，数据取值时间区间为 24 小时滚动。
-
-**请求路径：**
-
-/swap-api/v1/tickers
-
-curl `https://api.fameex.com/swap-api/v1/tickers`
-
-**路由参数：**
-
-无
-
-**Post 参数：**
-
-无
-
-> **返回示例：**
-
-```json
-{
-  "code": 200,
-  "msg": "ok",
-  "data": [
-    {
-      "contractCode": "UNI-USDT",
-      "gain": "0",
-      "open": "33.7203",
-      "low": "33.7203",
-      "high": "33.7203",
-      "close": "33.7203",
-      "amount": "0",
-      "volume": "0",
-      "bid": "33.7183",
-      "ask": "33.7203"
-    },
-    {
-      "contractCode": "BAL-USDT",
-      "gain": "0",
-      "open": "49.192",
-      "low": "49.192",
-      "high": "49.192",
-      "close": "49.192",
-      "amount": "0",
-      "volume": "0",
-      "bid": "49.192",
-      "ask": "49.203"
-    },
-    {
-      "contractCode": "DASH-USDT",
-      "gain": "0",
-      "open": "296.46",
-      "low": "296.46",
-      "high": "296.46",
-      "close": "296.46",
-      "amount": "0",
-      "volume": "0",
-      "bid": "296.46",
-      "ask": "296.47"
-    }
+  "ticker_id": "ETC-USDT",
+  "timestamp": 1648539997000,
+  "bids": [
+    ["35", "0.7"],
+    ["34", "0.1"]
+  ],
+  "asks": [
+    ["36", "0.2"],
+    ["37", "0.1"]
   ]
 }
 ```
 
-**返回值：**
+### HTTP 请求
 
-| 字段名称     | 数据类型     | 备注                |
-| ------------ | ------------ | ------------------- |
-| code         | int          | 200,正常            |
-| msg          | string       | success,正常        |
-| data         | object array | 返回数据：行情数据  |
-| contractCode | string       | 合约代码            |
-| gain         | string       | 24 小时涨幅         |
-| open         | string       | 24 小时开盘价       |
-| low          | string       | 24 小时最低价       |
-| high         | string       | 24 小时最高价       |
-| close        | string       | 最新成交价          |
-| amount       | string       | 24 小时交易币成交量 |
-| volume       | string       | 24 小时计价币成交量 |
-| bid          | string       | 买一价              |
-| ask          | int64        | 卖一价              |
+GET `/swap-api/v2/orderbook`
+
+### 请求参数
+
+| 参数   | 是否必须 | 数据类型 | 说明                        |
+| ------ | -------- | -------- | --------------------------- |
+| symbol | YES      | string   | 示例例: "BTC-USDT"          |
+| limit  | NO       | int      | 可选值:[5, 10, 20, 50, 100] |
+
+### 响应参数
+
+| 参数      | 数据类型 | 说明                                            |
+| :-------- | :------- | :---------------------------------------------- |
+| ticker_id | string   | 币对名称                                        |
+| timestamp | int      | 当前时间                                        |
+| bids      | string   | bid 的价格和數量信息，最优 bid 价格由上到下排列 |
+| asks      | string   | ask 的价格和數量信息，最优 ask 价格由上到下排列 |
+
+## 24hr 价格变动情况
+
+> 请求示例
+
+```curl
+curl --request GET 'https://api.fameex.com/swap-api/v2/tickers?symbol=ETH-USDT'
+```
+
+> 响应
+
+```json
+[
+  {
+    "ticker_id": "ETH-USDT",
+    "base_currency": "ETH",
+    "quote_currency": "USDT",
+    "last_price": "3500.7",
+    "base_volume": "0.06",
+    "quote_volume": "209.042",
+    "bid": "3500.7",
+    "ask": "3600.7",
+    "high": "3500.7",
+    "low": "3400.7",
+    "product_type": "Perpetual",
+    "open_interest": "0.06",
+    "index_price": "3407.072",
+    "funding_rate": "0.00125",
+    "next_funding_rate_timestam": 1648598400000
+  }
+]
+```
+
+### HTTP 请求
+
+GET `/swap-api/v2/tickers`
+
+### 请求参数
+
+| 参数   | 是否必须 | 数据类型 | 说明             |
+| ------ | -------- | -------- | ---------------- |
+| symbol | NO       | string   | 示例: "ETH-USDT" |
+
+### 响应参数
+
+| 参数                       | 数据类型 | 说明                 |
+| :------------------------- | :------- | :------------------- |
+| ticker_id                  | string   | 币对名称             |
+| base_currency              | string   | 交易币               |
+| quote_currency             | string   | 计价币               |
+| last_price                 | string   | 最新成交价           |
+| base_volume                | string   | 成交量               |
+| quote_volume               | string   | 成交额               |
+| bid                        | string   | 最优买价             |
+| ask                        | string   | 最优卖价             |
+| high                       | string   | 24 小时最高价        |
+| low                        | string   | 24 小时最低价        |
+| product_type               | string   | 合约类型             |
+| open_interest              | string   | 未平仓合约数量       |
+| index_price                | string   | 指数价格             |
+| funding_rate               | string   | 资金费率             |
+| next_funding_rate_timestam | int      | 下次结算资金费用时间 |
 
 # U 合约交易 API 接口
 

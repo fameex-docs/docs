@@ -21,9 +21,15 @@ meta:
     content: FAMEEX,API,Documentation
 ---
 
-# Update log
+# Change Log
 
-**2021-05-27**
+## 2022-03-30
+
+- New endpoint for USDⓈ-M Futures:
+  - GET `/swap-api/v2/orderbook` to query order book.
+  - GET `/swap-api/v2/tickers` to query 24 hour rolling window price change statistics.
+
+## 2021-05-27
 
 - Futures interface update:
   - Added U futures order interface `/swap-api/v1/order`
@@ -74,7 +80,7 @@ We will make the most authoritative answer for you.
 
 ## Access URLs
 
-| Access URLs               | Remarks                 |
+| Access URLs               | Description             |
 | ------------------------- | ----------------------- |
 | `https://api.fameex.com`  | RESTFUL API             |
 | `wss://www.fameex.com/ws` | WebSocket Feed (quotes) |
@@ -89,15 +95,15 @@ In view of the high latency and poor stability, it is not recommended to access 
 
 A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.
 
-| Frequency limiting rules                        | Type                          | Remarks |
-| ----------------------------------------------- | ----------------------------- | ------- |
-| Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no      |
+| Frequency limiting rules                        | Type                          | Description |
+| ----------------------------------------------- | ----------------------------- | ----------- |
+| Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no          |
 
 ## Header setting
 
 The parameters of the request header are as follows:
 
-| parameter        | Type   | Remarks                                      |
+| Name             | Type   | Description                                  |
 | ---------------- | ------ | -------------------------------------------- |
 | AccessKey        | string | The Accesskey you applied for                |
 | SignatureMethod  | string | HmacSHA256                                   |
@@ -180,7 +186,7 @@ no
 
 **Return value:**
 
-| Field Name | Type  | Remarks                            |
+| Field Name | Type  | Description                        |
 | ---------- | ----- | ---------------------------------- |
 | code       | int   | 200, normal                        |
 | ts         | int64 | Request time, seconds              |
@@ -298,7 +304,7 @@ no
 
 **Return value:**
 
-| Field Name        | Type         | Remarks                                            |
+| Field Name        | Type         | Description                                        |
 | ----------------- | ------------ | -------------------------------------------------- |
 | code              | int          | 200, normal                                        |
 | msg               | string       | success, normal                                    |
@@ -342,7 +348,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                                                |
+| Name         | Mandatory | Type   | Description                                            |
 | ------------ | --------- | ------ | ------------------------------------------------------ |
 | contractCode | Yes       | string | Contract code, for example "BTC-USDT"                  |
 | period       | Yes       | string | 时间粒度 例（ "1","5","15","30","60","120","240","1D") |
@@ -398,7 +404,7 @@ no
 
 **Return value:**
 
-| Field Name | Type   | Remarks                             |
+| Field Name | Type   | Description                         |
 | ---------- | ------ | ----------------------------------- |
 | code       | int    | 200, normal                         |
 | msg        | string | success, normal                     |
@@ -411,219 +417,112 @@ no
 | amount     | string | Trading currency volume             |
 | volume     | string | Denominated currency trading volume |
 
-## Market Depth Data
+## Order Book
 
-Speed limit rule: 20 times/2s
+**HTTP Request**
 
-`Function Description`
+GET `/swap-api/v2/orderbook`
 
-This interface returns the current market depth data of the specified trading pair.
+> Request
 
-**Request path:**
-
-/swap-api/v1/depth
-
-curl `https://api.fameex.com/swap-api/v1/depth`
-
-**Routing parameters:**
-
-no
-
-**Post parameters:**
-
-| parameter    | Mandatory | Type   | Remarks                                       |
-| ------------ | --------- | ------ | --------------------------------------------- |
-| contractCode | Yes       | string | Contract code, for example "BTC-USDT"         |
-| step         | Yes       | string | In-depth price aggregation type (step0~step4) |
-| size         | Yes       | int    | Return the number of depths (1<=size<= 100)   |
-
-> **Return example:**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "base": "omg",
-    "quote": "usdt",
-    "buyList": [
-      {
-        "price": "10.00",
-        "count": "0.6",
-        "orderCount": 1
-      }
-    ],
-    "sellList": [
-      {
-        "price": "11.00",
-        "count": "1",
-        "orderCount": 1
-      }
-    ],
-    "timestamp": 0
-  }
-}
+```curl
+curl --request GET 'https://api.fameex.com/swap-api/v2/orderbook?symbol=ETH-USDT'
 ```
 
-**Return value:**
-
-| Field Name | Type         | Remarks                                   |
-| ---------- | ------------ | ----------------------------------------- |
-| code       | int          | 200, normal                               |
-| msg        | string       | success, normal                           |
-| data       | object       | Return data: market depth data            |
-| bids       | string array | All current buy orders [price, quantity]  |
-| asks       | string array | All current sell orders [price, quantity] |
-
-## Get market data of a single currency pair
-
-Speed limit rule: 20 times/2s
-
-`Function Description`
-
-This interface returns to get the market data of a single currency pair within 24 hours.
-
-**Request path:**
-
-/swap-api/v1/ticker
-
-curl `https://api.fameex.com/swap-api/v1/ticker`
-
-**Routing parameters:**
-
-no
-
-**Post parameters:**
-
-| parameter    | Mandatory | Type   | Remarks                       |
-| ------------ | --------- | ------ | ----------------------------- |
-| contractCode | Yes       | string | Contract code (e.g. BTC-USDT) |
-
-> **Return example:**
+> Response
 
 ```json
 {
-  "code": 200,
-  "msg": "ok",
-  "data": {
-    "contractCode": "ETH-USDT",
-    "gain": "-0.0303966087182331",
-    "open": "2849.66",
-    "low": "2635.7",
-    "high": "2886",
-    "close": "2763.04",
-    "amount": "330297.294",
-    "volume": "454347003.61788",
-    "bid": "2763.02",
-    "ask": "2763.04"
-  }
-}
-```
-
-**Return value:**
-
-| Field Name   | Type         | Remarks                                     |
-| ------------ | ------------ | ------------------------------------------- |
-| code         | int          | 200, normal                                 |
-| msg          | string       | success, normal                             |
-| data         | object array | Return data: single currency pair market    |
-| contractCode | string       | Contract code                               |
-| gain         | string       | 24-hour increase                            |
-| open         | string       | 24-hour opening price                       |
-| low          | string       | Lowest price in 24 hours                    |
-| high         | string       | 24 hours highest price                      |
-| close        | string       | Latest transaction price                    |
-| amount       | string       | 24-hour trading currency volume             |
-| volume       | string       | 24-hour denominated currency trading volume |
-| bid          | string       | Buy one price                               |
-| ask          | int64        | Sell one price                              |
-
-## Get all currency pair market data
-
-Speed limit rule: 20 times/2s
-
-`Function Description`
-
-This interface returns a summary of the market data for the last 24 hours, and the data value time interval is 24-hour rolling.
-
-**Request path:**
-
-/swap-api/v1/tickers
-
-curl `https://api.fameex.com/swap-api/v1/tickers`
-
-**Routing parameters:**
-
-no
-
-**Post parameters:**
-
-no
-
-> **Return example:**
-
-```json
-{
-  "code": 200,
-  "msg": "ok",
-  "data": [
-    {
-      "contractCode": "UNI-USDT",
-      "gain": "0",
-      "open": "33.7203",
-      "low": "33.7203",
-      "high": "33.7203",
-      "close": "33.7203",
-      "amount": "0",
-      "volume": "0",
-      "bid": "33.7183",
-      "ask": "33.7203"
-    },
-    {
-      "contractCode": "BAL-USDT",
-      "gain": "0",
-      "open": "49.192",
-      "low": "49.192",
-      "high": "49.192",
-      "close": "49.192",
-      "amount": "0",
-      "volume": "0",
-      "bid": "49.192",
-      "ask": "49.203"
-    },
-    {
-      "contractCode": "DASH-USDT",
-      "gain": "0",
-      "open": "296.46",
-      "low": "296.46",
-      "high": "296.46",
-      "close": "296.46",
-      "amount": "0",
-      "volume": "0",
-      "bid": "296.46",
-      "ask": "296.47"
-    }
+  "ticker_id": "ETC-USDT",
+  "timestamp": 1648539997000,
+  "bids": [
+    ["35", "0.7"],
+    ["34", "0.1"]
+  ],
+  "asks": [
+    ["36", "0.2"],
+    ["37", "0.1"]
   ]
 }
 ```
 
-**Return value:**
+### Parameters
 
-| Field Name   | Type         | Remarks                                     |
-| ------------ | ------------ | ------------------------------------------- |
-| code         | int          | 200, normal                                 |
-| msg          | string       | success, normal                             |
-| data         | object array | Return data: market data                    |
-| contractCode | string       | Contract code                               |
-| gain         | string       | 24-hour increase                            |
-| open         | string       | 24-hour opening price                       |
-| low          | string       | Lowest price in 24 hours                    |
-| high         | string       | 24 hours highest price                      |
-| close        | string       | Latest transaction price                    |
-| amount       | string       | 24-hour trading currency volume             |
-| volume       | string       | 24-hour denominated currency trading volume |
-| bid          | string       | Buy one price                               |
-| ask          | int64        | Sell one price                              |
+| Name   | Mandatory | Type   | Description                                 |
+| :----- | :-------- | :----- | :------------------------------------------ |
+| symbol | YES       | string | Name of the trading pair, example: ETH-USDT |
+| limit  | NO        | int    | Default value is 100                        |
+
+### Response
+
+| Name      | Type   | Description                                                            |
+| :-------- | :----- | :--------------------------------------------------------------------- |
+| ticker_id | string | Name of the trading pair                                               |
+| timestamp | int    | Current time, unit in millisecond                                      |
+| bids      | string | Bid price and quantity, with best bid prices ranked from top to bottom |
+| asks      | string | Ask price and quantity, with best ask prices ranked from top to bottom |
+
+## 24hr Ticker Price Change Statistics
+
+**HTTP Request**
+
+GET `/swap-api/v2/tickers`
+
+> Request
+
+```curl
+curl --request GET 'https://api.fameex.com/swap-api/v2/tickers?symbol=ETH-USDT'
+```
+
+> Response
+
+```json
+[
+  {
+    "ticker_id": "ETH-USDT",
+    "base_currency": "ETH",
+    "quote_currency": "USDT",
+    "last_price": "3500.7",
+    "base_volume": "0.06",
+    "quote_volume": "209.042",
+    "bid": "3500.7",
+    "ask": "3600.7",
+    "high": "3500.7",
+    "low": "3400.7",
+    "product_type": "Perpetual",
+    "open_interest": "0.06",
+    "index_price": "3407.072",
+    "funding_rate": "0.00125",
+    "next_funding_rate_timestam": 1648598400000
+  }
+]
+```
+
+### Parameters
+
+| Name   | Mandatory | Type   | Description                                 |
+| ------ | --------- | ------ | ------------------------------------------- |
+| symbol | NO        | string | Name of the trading pair, example: ETH-USDT |
+
+### Response
+
+| Name                       | Type   | Description                               |
+| :------------------------- | :----- | :---------------------------------------- |
+| ticker_id                  | string | Name of the trading pair                  |
+| base_currency              | string | base                                      |
+| quote_currency             | string | quote                                     |
+| last_price                 | string | Latest transaction price                  |
+| base_volume                | string | Trading volume in the last 24 hours       |
+| quote_volume               | string | Trading quote volume in the last 24 hours |
+| bid                        | string | Purchase price of the first order         |
+| ask                        | string | Selling price of the first order          |
+| high                       | string | The highest price in the last 24 hours    |
+| low                        | string | Lowest price in the last 24 hours         |
+| product_type               | string | futures type                              |
+| open_interest              | string | Open interest                             |
+| index_price                | string | Index price                               |
+| funding_rate               | string | Funding rate                              |
+| next_funding_rate_timestam | int    | Next settlement time of capital cost      |
 
 # U futures Exchange Endpoints
 
@@ -647,7 +546,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                                                                                                                                                    |
+| Name         | Mandatory | Type   | Description                                                                                                                                                |
 | ------------ | --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | leverage     | Yes       | int    | Leverage                                                                                                                                                   |
 | marginMode   | Yes       | int    | Margin mode 1-full position 2-position by position                                                                                                         |
@@ -673,13 +572,13 @@ no
 
 **Return value:**
 
-| Field Name | Type   | Remarks                               |
-| ---------- | ------ | ------------------------------------- |
-| code       | int    | 200, normal                           |
-| msg        | string | success, normal                       |
-| data       | object | Return information: order information |
-| orderId    | string | Order ID                              |
-| clientOid  | string | User-made order ID                    |
+| Name      | Type   | Description                           |
+| --------- | ------ | ------------------------------------- |
+| code      | int    | 200, normal                           |
+| msg       | string | success, normal                       |
+| data      | object | Return information: order information |
+| orderId   | string | Order ID                              |
+| clientOid | string | User-made order ID                    |
 
 ## Futures cancellation
 
@@ -701,7 +600,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                                                                            |
+| Name         | Mandatory | Type   | Description                                                                        |
 | ------------ | --------- | ------ | ---------------------------------------------------------------------------------- |
 | orderid      | Yes       | string | Order ID (orderId and clientOid must and can only choose one to fill in)           |
 | clientOid    | Yes       | string | User-made order ID (orderId and clientOid must and can only choose one to fill in) |
@@ -719,7 +618,7 @@ no
 
 **Return value:**
 
-| Field Name | Type   | Remarks                      |
+| Field Name | Type   | Description                  |
 | ---------- | ------ | ---------------------------- |
 | code       | int    | 200, normal                  |
 | msg        | string | success, normal              |
@@ -747,7 +646,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type      | Remarks                                                                                                                                                                                |
+| Name         | Mandatory | Type      | Description                                                                                                                                                                            |
 | ------------ | --------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | contractCode | Yes       | string    | Contract code (e.g. BTC-USDT)                                                                                                                                                          |
 | side         | no        | string    | Order Direction 1-Buy 2-Sell                                                                                                                                                           |
@@ -765,7 +664,7 @@ no
 
 **Return value:**
 
-| Field Name | Type   | Remarks         |
+| Field Name | Type   | Description     |
 | ---------- | ------ | --------------- |
 | code       | int    | 200, normal     |
 | msg        | string | success, normal |
@@ -794,7 +693,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                                                                            |
+| Name         | Mandatory | Type   | Description                                                                        |
 | ------------ | --------- | ------ | ---------------------------------------------------------------------------------- |
 | contractCode | Yes       | string | Contract code (e.g. BTC-USDT)                                                      |
 | orderId      | no        | string | Order ID (orderId and clientOid must and can only choose one to fill in)           |
@@ -838,7 +737,7 @@ no
 
 **Return value:**
 
-| Field Name      | Type   | Remarks                                                                                                                                                    |
+| Field Name      | Type   | Description                                                                                                                                                |
 | --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | code            | int    | 200, normal                                                                                                                                                |
 | msg             | string | success, normal                                                                                                                                            |
@@ -890,7 +789,7 @@ no
 
 **Routing parameters:**
 
-| parameter       | Mandatory | Type      | Remarks                                                                                                                                                                                    |
+| Name            | Mandatory | Type      | Description                                                                                                                                                                                |
 | --------------- | --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | contractCode    | Yes       | string    | Contract code (e.g. BTC-USDT)                                                                                                                                                              |
 | side            | no        | int       | Trading direction: 0 buy, 1 sell, -1 all                                                                                                                                                   |
@@ -980,7 +879,7 @@ no
 
 **Return value:**
 
-| Field Name      | Type         | Remarks                                                                                                                                                    |
+| Field Name      | Type         | Description                                                                                                                                                |
 | --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | code            | int          | 200, normal                                                                                                                                                |
 | msg             | string       | success, normal                                                                                                                                            |
@@ -1036,7 +935,7 @@ no
 
 **Post parameters:**
 
-| parameter       | Mandatory | Type      | Remarks                                                                                                                                                                                    |
+| Name            | Mandatory | Type      | Description                                                                                                                                                                                |
 | --------------- | --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | contractCode    | no        | string    | Contract code (e.g. BTC-USDT)                                                                                                                                                              |
 | orderId         | no        | string    | Order ID                                                                                                                                                                                   |
@@ -1108,7 +1007,7 @@ no
 
 **Return value:**
 
-| Field Name      | Type   | Remarks                                                                                                                                                    |
+| Field Name      | Type   | Description                                                                                                                                                |
 | --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | code            | int    | 200, normal                                                                                                                                                |
 | msg             | string | success, normal                                                                                                                                            |
@@ -1157,7 +1056,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                                                    |
+| Name         | Mandatory | Type   | Description                                                |
 | ------------ | --------- | ------ | ---------------------------------------------------------- |
 | contractCode | Yes       | string | Contract code, for example "BTC-USDT"                      |
 | accountType  | Yes       | string | Account type, "swap"                                       |
@@ -1183,7 +1082,7 @@ no
 
 **Return value:**
 
-| Field Name | Type   | Remarks                                  |
+| Field Name | Type   | Description                              |
 | ---------- | ------ | ---------------------------------------- |
 | code       | int    | 200, normal                              |
 | msg        | string | success, normal                          |
@@ -1214,7 +1113,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                                       |
+| Name         | Mandatory | Type   | Description                                   |
 | ------------ | --------- | ------ | --------------------------------------------- |
 | contractCode | Yes       | string | Contract code, for example "BTC-USDT"         |
 | leverage     | Yes       | int    | Leverage                                      |
@@ -1236,7 +1135,7 @@ no
 
 **Return value:**
 
-| Field Name   | Type   | Remarks         |
+| Field Name   | Type   | Description     |
 | ------------ | ------ | --------------- |
 | code         | int    | 200, normal     |
 | msg          | string | success, normal |
@@ -1311,7 +1210,7 @@ no
 
 **Return value:**
 
-| Field Name    | Type         | Remarks                                               |
+| Field Name    | Type         | Description                                           |
 | ------------- | ------------ | ----------------------------------------------------- |
 | code          | int          | 200, normal                                           |
 | msg           | string       | success, normal                                       |
@@ -1348,7 +1247,7 @@ no
 
 **Post parameters:**
 
-| parameter    | Mandatory | Type   | Remarks                               |
+| Name         | Mandatory | Type   | Description                           |
 | ------------ | --------- | ------ | ------------------------------------- |
 | contractCode | Yes       | string | Contract code, for example "BTC-USDT" |
 
@@ -1383,7 +1282,7 @@ no
 
 **Return value:**
 
-| Field Name     | Type         | Remarks                                                                                                                                           |
+| Field Name     | Type         | Description                                                                                                                                       |
 | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | code           | int          | 200, normal                                                                                                                                       |
 | msg            | string       | success, normal                                                                                                                                   |
@@ -1407,7 +1306,7 @@ no
 
 # Error message
 
-| code   | Remarks                                                                                  |
+| code   | Description                                                                              |
 | ------ | ---------------------------------------------------------------------------------------- |
 | 200    | normal                                                                                   |
 | 112002 | API single key traffic exceeds limit                                                     |

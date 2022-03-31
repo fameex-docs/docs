@@ -23,7 +23,15 @@ meta:
 
 # 更新日志
 
-**2021-08-24**
+## 2021-03-30
+
+- 新增现货行情接口:
+  - GET `/api/v2/orderbook` 获取深度信息
+  - GET `/api/v2/trades` 获取近期成交
+  - GET `/api/v2/ticker/24hr` 获取 24 小时滚动窗口价格变动数据
+  - GET `/api/v2/ticker/price` 获取交易对最新价格
+
+## 2021-08-24
 
 - Websocket 行情推送更新：
 
@@ -63,7 +71,7 @@ meta:
   - 修改获取杠杆委托单详情接口 `/v1/api/lever/orders/detail`
   - 修改获取杠杆成交明细接口 `/v1/api/lever/deals`
 
-**2020-12-22**
+## 2020-12-22
 
 - 钱包接口更新：
   - 删除所有币种的提币记录接口 `v1/api/account/withdrawal/history`
@@ -76,7 +84,7 @@ meta:
   - 新增查询现货账户其他账单接口 `v1/api/spot/record/others`
   - 修改资金划转接口参数接口 `v1/api/account/transfer`
 
-**2020-11-16**
+## 2020-11-16
 
 - 币币交易接口更新：
   - 更新获取订单列表 `v1/api/spot/orderlist`为获取委托单列表
@@ -84,12 +92,12 @@ meta:
   - 更新获取杠杆订单列表 `v1/api/lever/orders`为获取杠杆订单列表
   - 更新获取杠杆订单详情 `v1/api/lever/orders/detail`为获取杠杆委托单详情
 
-**2020-10-30**
+## 2020-10-30
 
 - 钱包接口更新：
   - 修改资金划转功能接口 `v1/api/account/transfer`
 
-**2020-10-29**
+## 2020-10-29
 
 - 钱包接口更新：
   - 新增杠杆挂单功能接口 `v1/api/lever/orders/place`
@@ -99,7 +107,7 @@ meta:
   - 新增获取杠杆账户委托单详情功能接口 `v1/api/lever/orders/detail`
   - 新增获取杠杆配置功能接口 `v1/api/lever/pair/config`
 
-**2020-10-28**
+## 2020-10-28
 
 - 钱包接口更新：
   - 新增获取杠杆账户账单接口 `v1/api/lever/ledger`
@@ -108,7 +116,7 @@ meta:
   - 新增获取杠杆账户特定币对，特定币种下借币的提示参数接口 `v1/api/lever/borrow`
   - 新增获取杠杆账户特定币对，特定币种下借币接口 `v1/api/lever/borrowparam`
 
-**2020-10-27**
+## 2020-10-27
 
 - 钱包接口更新：
   - 新增获取杠杆账户信息接口 `v1/api/lever/accounts`
@@ -146,7 +154,7 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 ## 接入 URLs
 
-| 接入 URLs                 | 备注                   |
+| 接入 URLs                 | 说明                   |
 | ------------------------- | ---------------------- |
 | `https://api.fameex.com`  | RESTFUL API            |
 | `wss://www.fameex.com/ws` | WebSocket Feed（行情） |
@@ -161,7 +169,7 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 单个 API Key 维度限制，建议行情 API 访问也要加上签名，否则限频会更严格。
 
-| 限频规则                               | 数据类型               | 备注 |
+| 限频规则                               | 数据类型               | 说明 |
 | -------------------------------------- | ---------------------- | ---- |
 | 对每个 AccessKey 及每个 url 的频率限制 | 20 次/2s（大部分接口） | 无   |
 
@@ -169,7 +177,7 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 请求头(header)的参数如下：
 
-| 参数             | 数据类型 | 备注                       |
+| 参数             | 数据类型 | 说明                       |
 | ---------------- | -------- | -------------------------- |
 | AccessKey        | string   | 您申请的 Accesskey         |
 | SignatureMethod  | string   | HmacSHA256                 |
@@ -242,7 +250,7 @@ websocket
 
 **参数：**
 
-| 参数 | 是否必须 | 数据类型 | 备注             |
+| 参数 | 是否必须 | 数据类型 | 说明             |
 | ---- | -------- | -------- | ---------------- |
 | op   | 是       | string   | 消息类型("ping") |
 
@@ -255,9 +263,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注             |
+| 字段名称 | 数据类型 | 说明             |
 | -------- | -------- | ---------------- |
 | code     | int      | 200,正常         |
 | op       | string   | 消息类型("pong") |
@@ -291,7 +299,7 @@ websocket
 
 **参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                  |
+| 参数      | 是否必须 | 数据类型 | 说明                  |
 | --------- | -------- | -------- | --------------------- |
 | op        | 是       | string   | 消息类型("req")       |
 | topic     | 是       | string   | 请求主题("auth")      |
@@ -309,9 +317,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注             |
+| 字段名称 | 数据类型 | 说明             |
 | -------- | -------- | ---------------- |
 | code     | int      | 200, 正常        |
 | op       | string   | 消息类型("req")  |
@@ -346,7 +354,7 @@ websocket
 
 **参数：**
 
-| 参数   | 是否必须 | 数据类型 | 备注                                  |
+| 参数   | 是否必须 | 数据类型 | 说明                                  |
 | ------ | -------- | -------- | ------------------------------------- |
 | op     | 是       | string   | 消息类型("sub")                       |
 | topic  | 是       | string   | 订阅主题("spot.market.kline")         |
@@ -375,9 +383,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注                                  |
+| 字段名称 | 数据类型 | 说明                                  |
 | -------- | -------- | ------------------------------------- |
 | code     | int      | 200, 正常                             |
 | op       | string   | 消息类型("sub")                       |
@@ -421,7 +429,7 @@ websocket
 
 **参数：**
 
-| 参数   | 是否必须 | 数据类型 | 备注                          |
+| 参数   | 是否必须 | 数据类型 | 说明                          |
 | ------ | -------- | -------- | ----------------------------- |
 | op     | 是       | string   | 消息类型("sub")               |
 | topic  | 是       | string   | 订阅主题("spot.market.kline") |
@@ -449,9 +457,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称   | 数据类型 | 备注                           |
+| 字段名称   | 数据类型 | 说明                           |
 | ---------- | -------- | ------------------------------ |
 | code       | int      | 200, 正常                      |
 | op         | string   | 消息类型("sub")                |
@@ -495,7 +503,7 @@ websocket
 
 **参数：**
 
-| 参数   | 是否必须 | 数据类型 | 备注                              |
+| 参数   | 是否必须 | 数据类型 | 说明                              |
 | ------ | -------- | -------- | --------------------------------- |
 | op     | 是       | string   | 消息类型("sub")                   |
 | topic  | 是       | string   | 订阅主题("spot.market.ticker")    |
@@ -520,9 +528,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注                              |
+| 字段名称 | 数据类型 | 说明                              |
 | -------- | -------- | --------------------------------- |
 | code     | int      | 200, 正常                         |
 | op       | string   | 消息类型("sub")                   |
@@ -562,7 +570,7 @@ websocket
 
 **参数：**
 
-| 参数   | 是否必须 | 数据类型 | 备注                               |
+| 参数   | 是否必须 | 数据类型 | 说明                               |
 | ------ | -------- | -------- | ---------------------------------- |
 | op     | 是       | string   | 消息类型("sub")                    |
 | topic  | 是       | string   | 订阅主题("spot.market.last_trade") |
@@ -589,9 +597,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称   | 数据类型 | 备注                               |
+| 字段名称   | 数据类型 | 说明                               |
 | ---------- | -------- | ---------------------------------- |
 | code       | int      | 200, 正常                          |
 | op         | string   | 消息类型("sub")                    |
@@ -632,7 +640,7 @@ websocket
 
 **参数：**
 
-| 参数   | 是否必须 | 数据类型 | 备注                       |
+| 参数   | 是否必须 | 数据类型 | 说明                       |
 | ------ | -------- | -------- | -------------------------- |
 | op     | 是       | string   | 消息类型("sub")            |
 | topic  | 是       | string   | 订阅主题("spot.orders")    |
@@ -676,9 +684,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型 | 备注                                                                         |
+| 字段名称        | 数据类型 | 说明                                                                         |
 | --------------- | -------- | ---------------------------------------------------------------------------- |
 | code            | int      | 200, 正常                                                                    |
 | op              | string   | 消息类型("sub")                                                              |
@@ -741,7 +749,7 @@ websocket
 
 **参数：**
 
-| 参数       | 是否必须 | 数据类型 | 备注                                                        |
+| 参数       | 是否必须 | 数据类型 | 说明                                                        |
 | ---------- | -------- | -------- | ----------------------------------------------------------- |
 | op         | 是       | string   | 消息类型("unsub")                                           |
 | topic      | 是       | string   | 订阅主题("spot.orders")                                     |
@@ -761,9 +769,9 @@ websocket
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 参数  | 数据类型 | 备注                           |
+| 参数  | 数据类型 | 说明                           |
 | ----- | -------- | ------------------------------ |
 | code  | int      | 200, 正常 =                    |
 | op    | string   | 消息类型("unsub")              |
@@ -803,9 +811,9 @@ curl `https://api.fameex.com/v1/common/timestamp`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注                |
+| 字段名称 | 数据类型 | 说明                |
 | -------- | -------- | ------------------- |
 | code     | int      | 200, 正常           |
 | ts       | int64    | 请求时间, 秒        |
@@ -854,9 +862,9 @@ curl `https://api.fameex.com/v1/common/symbols`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型 | 备注                                   |
+| 字段名称        | 数据类型 | 说明                                   |
 | --------------- | -------- | -------------------------------------- |
 | code            | int      | 返回值状态                             |
 | ts              | int64    | 请求时间, 秒                           |
@@ -966,9 +974,9 @@ curl `https://api.fameex.com/v1/common/currencys`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称                    | 数据类型 | 备注                                |
+| 字段名称                    | 数据类型 | 说明                                |
 | --------------------------- | -------- | ----------------------------------- |
 | code                        | int      | 200, 正常                           |
 | msg                         | string   | 此次返回值说明                      |
@@ -986,9 +994,109 @@ curl `https://api.fameex.com/v1/common/currencys`
 | currencyRecharge 里的 state | int      | 充币的状态 1-开启 2-关闭            |
 | currencyWithdraw 里的 state | int      | 提币的状态 1-开启 2-关闭            |
 
-# 行情 API 接口
+# 行情接口
 
-## 获取 k 线数据
+## 深度信息
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/orderbook?symbol=BTC-USDT&limit=5'
+```
+
+> 响应
+
+```json
+{
+  "timestamp": 1648456620000,
+  "bids": [
+    [
+      "50006.1", // 价格
+      "0.024" // 挂单量
+    ]
+  ],
+  "asks": [
+    [
+      "50006.34", // 价格
+      "0.01" // 挂单量
+    ]
+  ]
+}
+```
+
+### HTTP 请求
+
+GET `/api/v2/orderbook`
+
+### 请求参数
+
+| 参数   | 是否必须 | 数据类型 | 说明                        |
+| ------ | -------- | -------- | --------------------------- |
+| symbol | YES      | string   | 示例例: "BTC-USDT"          |
+| limit  | NO       | int      | 可选值:[5, 10, 20, 50, 100] |
+
+### 响应参数
+
+| 参数      | 数据类型 | 说明                                            |
+| --------- | -------- | ----------------------------------------------- |
+| timestamp | int      | 当前时间                                        |
+| bids      | string   | bid 的价格和數量信息，最优 bid 价格由上到下排列 |
+| asks      | string   | ask 的价格和數量信息，最优 ask 价格由上到下排列 |
+
+## 近期成交列表
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/trades?symbol=BTC-USDT'
+```
+
+> 响应
+
+```json
+[
+  {
+    "trade_id": 728356542914519040,
+    "price": "71000",
+    "base_volume": "0.001",
+    "quote_volume": "71",
+    "timestamp": 1648456620000,
+    "type": "sell"
+  },
+  {
+    "trade_id": 728342639237160960,
+    "price": "70727.2",
+    "base_volume": "0.001",
+    "quote_volume": "70.7272",
+    "timestamp": 1648453305000,
+    "type": "buy"
+  }
+]
+```
+
+### HTTP 请求
+
+GET `/api/v2/trades`
+
+### 请求参数
+
+| 参数   | 是否必须 | 数据类型 | 说明                  |
+| ------ | -------- | -------- | --------------------- |
+| symbol | YES      | string   | 示例例: "BTC-USDT"    |
+| limit  | NO       | int      | 默认 100; 最大值 100. |
+
+### 响应参数
+
+| 参数         | 数据类型 | 说明               |
+| ------------ | -------- | ------------------ |
+| trade_id     | int      | 成交单 ID          |
+| price        | string   | 成交价             |
+| base_volume  | string   | 成交量             |
+| quote_volume | string   | 成交额             |
+| timestamp    | int      | 成交时间, 毫秒(ms) |
+| type         | string   | 买卖方向           |
+
+## K 线数据
 
 限速规则：20 次/2s
 
@@ -1008,7 +1116,7 @@ curl `https://api.fameex.com/v1/market/history/kline`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                                                        |
+| 参数      | 是否必须 | 数据类型 | 说明                                                        |
 | --------- | -------- | -------- | ----------------------------------------------------------- |
 | symbol    | 是       | string   | 币对名称, 例"ETH-BTC"                                       |
 | period    | 是       | string   | 时间粒度 例（ "1","5","15","30","60","120","240","1D","1W") |
@@ -1035,9 +1143,9 @@ curl `https://api.fameex.com/v1/market/history/kline`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注         |
+| 字段名称 | 数据类型 | 说明         |
 | -------- | -------- | ------------ |
 | code     | int      | 返回值状态   |
 | time     | int64    | 时间戳       |
@@ -1048,245 +1156,109 @@ curl `https://api.fameex.com/v1/market/history/kline`
 | hight    | string   | 最高价       |
 | volume   | string   | 计价币成交量 |
 
-## 市场深度数据
+## 24hr 价格变动情况
 
-限速规则：20 次/2s
+> 请求示例
 
-**功能说明：**
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/ticker/24hr'
+```
 
-此接口返回指定交易对的当前市场深度数据。
+> 响应
 
-**请求路径：**
+```json
+[
+  {
+    "trading_pairs": "XLM-BTC",
+    "last_price": "0.01",
+    "lowest_ask": "0",
+    "highest_bid": "0",
+    "base_volume": "0",
+    "quote_volume": "0",
+    "price_change_percent_24h": "0",
+    "highest_price_24h": "0.01",
+    "lowest_price_24h": "0.01"
+  },
+  {
+    "trading_pairs": "WINK-USDT",
+    "last_price": "6.48",
+    "lowest_ask": "6.48",
+    "highest_bid": "6.47",
+    "base_volume": "0.15432",
+    "quote_volume": "0.9999936",
+    "price_change_percent_24h": "0",
+    "highest_price_24h": "6.48",
+    "lowest_price_24h": "6.48"
+  }
+]
+```
 
-/v1/market/depth
+### HTTP 请求
 
-curl `https://api.fameex.com/v1/market/depth`
+GET `/api/v2/ticker/24hr`
 
-**路由参数：**
+### 请求参数
 
-无
+| 参数   | 是否必须 | 数据类型 | 说明               |
+| :----- | :------- | :------- | :----------------- |
+| symbol | NO       | string   | 示例例: "BTC-USDT" |
 
-**Post 参数：**
+### 响应参数
 
-| 参数   | 是否必须 | 数据类型 | 备注                              |
-| ------ | -------- | -------- | --------------------------------- |
-| symbol | 是       | string   | 币对 例如: BTC-USDT               |
-| step   | 是       | string   | 深度的价格聚合度类型(step0~step4) |
-| size   | 是       | int      | 返回深度的数量(1<=size<= 100)     |
+| 参数                     | 数据类型 | 说明          |
+| :----------------------- | :------- | :------------ |
+| trading_pairs            | string   | 币对名称      |
+| last_price               | string   | 最新成交价    |
+| lowest_ask               | string   | 最佳卖价      |
+| highest_bid              | string   | 最佳买价      |
+| base_volume              | string   | 成交量        |
+| quote_volume             | string   | 成交额        |
+| price_change_percent_24h | string   | 24 小时涨幅   |
+| highest_price_24h        | string   | 24 小时最高价 |
+| lowest_price_24h         | string   | 24 小时最低价 |
 
-> **返回示例：**
+## 最新价格
+
+### HTTP 请求
+
+GET `/api/v2/ticker/price`
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/ticker/price'
+```
+
+> 响应
 
 ```json
 {
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "time": "1640058358",
-    "bids": [
-      ["100", "0.1"],
-      ["101", "0.2"]
-    ],
-    "asks": [
-      ["101", "0.05"],
-      ["102", "0.04"]
-    ]
+  "ETH-USDT": {
+    "last_price": "1097.8",
+    "base_volume": "0",
+    "quote_volume": "0"
+  },
+  "WINK-USDT": {
+    "last_price": "6.48",
+    "base_volume": "0.15432",
+    "quote_volume": "0.9999936"
   }
 }
 ```
 
-**返回值：**
+### 请求参数
 
-| 字段名称 | 数据类型      | 备注                        |
-| -------- | ------------- | --------------------------- |
-| code     | int           | 返回值状态                  |
-| msg      | string        | 返回值描述                  |
-| data     | array         | 返回数据：市场深度数据      |
-| bids     | decimal array | 当前的所有买单 [价格，数量] |
-| asks     | decimal array | 当前的所有卖单 [价格，数量] |
+| 参数   | 是否必须 | 数据类型 | 说明               |
+| ------ | -------- | -------- | ------------------ |
+| symbol | NO       | string   | 示例例: "BTC-USDT" |
 
-## 获取成交数据
+### 响应参数
 
-限速规则：20 次/2s
-
-**功能说明：**
-
-此接口返回指定交易对的成交明细记录。
-
-**请求路径：**
-
-v1/market/history/trade
-
-curl `https://api.fameex.com/v1/market/history/trade`
-
-**路由参数：**
-
-无
-
-**Post 参数：**
-
-| 参数   | 是否必须 | 数据类型 | 备注                              |
-| ------ | -------- | -------- | --------------------------------- |
-| symbol | 是       | string   | 币对名称 例如: BTC-USDT           |
-| size   | 是       | int      | 返回的成交明细数量(1<=size<= 100) |
-
-> **返回示例：**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": [
-    {
-      "tradeId": "10401466572658466816",
-      "side": 1,
-      "price": "1234546",
-      "amount": "123456",
-      "createTime": 1629854950
-    }
-  ]
-}
-```
-
-**返回值：**
-
-| 字段名称   | 数据类型     | 备注                     |
-| ---------- | ------------ | ------------------------ |
-| code       | int          | 200,正常                 |
-| msg        | string       | 备注                     |
-| data       | object array | 返回值,最新成交记录列表  |
-| tradeId    | string       | 成交订单 id              |
-| side       | int          | 委托方向 1-买 2-卖       |
-| price      | string       | 成交价格                 |
-| count      | string       | 成交数量                 |
-| createTime | int64        | 成交时间 时间戳 单位：秒 |
-
-## 获取某个 ticker 信息
-
-限速规则：20 次/2s
-
-**功能说明：**
-
-此接口返回最近 24 小时的行情数据汇总，数据取值时间区间为 24 小时滚动。
-
-**请求路径：**
-
-/v1/market/history/kline24h
-
-curl `https://api.fameex.com/v1/market/history/kline24h`
-
-**路由参数：**
-
-无
-
-**Post 参数：**
-
-| 参数   | 是否必须 | 数据类型 | 备注                   |
-| ------ | -------- | -------- | ---------------------- |
-| symbol | 是       | string   | 交易币对, 例"BTC-USDT" |
-
-> **返回示例：**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "symbol": "BTC-USDT",
-    "gain": "0.0048",
-    "open": "00477",
-    "low": "00478",
-    "high": "00479",
-    "close": "0.0048",
-    "amount": "0.00482",
-    "volume": "10",
-    "quotePrice": "0.02405",
-    "bid": "1",
-    "ask": "1"
-  }
-}
-```
-
-**返回值：**
-
-| 字段名称   | 数据类型 | 备注                     |
-| ---------- | -------- | ------------------------ |
-| code       | int      | 200,正常                 |
-| data       | object   | 行情数据                 |
-| symbol     | string   | 币对名称 例如:"BTC-USDT" |
-| gain       | string   | 24 小时涨幅              |
-| open       | string   | 24 小时开盘价            |
-| low        | string   | 24 小时最低价            |
-| high       | string   | 24 小时最高价            |
-| close      | string   | 最新成交价               |
-| amount     | string   | 24 小时交易币成交量      |
-| volume     | string   | 24 小时计价币成交量      |
-| quotePrice | string   | 计价币价格               |
-| bid        | string   | 买一价                   |
-| ask        | string   | 卖一价                   |
-
-## 获取全部 ticker 信息
-
-限速规则：20 次/2s
-
-**功能说明：**
-
-此接口返回最近 24 小时的行情数据汇总，数据取值时间区间为 24 小时滚动。
-
-**请求路径：**
-
-/v1/market/history/kline24h/all
-
-curl `https://api.fameex.com/v1/market/history/kline24h/all`
-
-**路由参数：**
-
-无
-
-**Post 参数：**
-
-无
-
-> **返回示例：**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": [
-    {
-      "symbol": "BTC-USDT",
-      "gain": "0.0048",
-      "open": "00477",
-      "low": "00478",
-      "high": "00479",
-      "close": "0.0048",
-      "amount": "0.00482",
-      "volume": "10",
-      "quotePrice": "0.02405",
-      "bid": "1",
-      "ask": "1"
-    }
-  ]
-}
-```
-
-**返回值：**
-
-| 字段名称   | 数据类型     | 备注                     |
-| ---------- | ------------ | ------------------------ |
-| code       | int          | 200,正常                 |
-| data       | object array | 行情数据列表             |
-| symbol     | string       | 币对名称 例如:"BTC-USDT" |
-| gain       | string       | 24 小时涨幅              |
-| open       | string       | 24 小时开盘价            |
-| low        | string       | 24 小时最低价            |
-| high       | string       | 24 小时最高价            |
-| close      | string       | 最新成交价               |
-| amount     | string       | 24 小时交易币成交量      |
-| volume     | string       | 24 小时计价币成交量      |
-| quotePrice | string       | 计价币价格               |
-| bid        | string       | 买一价                   |
-| ask        | string       | 卖一价                   |
+| 参数         | 数据类型 | 说明       |
+| :----------- | :------- | :--------- |
+| last_price   | string   | 最新成交价 |
+| base_volume  | string   | 成交量     |
+| quote_volume | string   | 成交额     |
 
 # 币币交易 API 接口
 
@@ -1310,7 +1282,7 @@ curl `https://api.fameex.com/v1/api/spot/orders`
 
 **Post 参数：**
 
-| 参数         | 是否必须 | 数据类型 | 备注                                                      |
+| 参数         | 是否必须 | 数据类型 | 说明                                                      |
 | ------------ | -------- | -------- | --------------------------------------------------------- |
 | symbol       | 是       | string   | 币对名称 例如:"BTC-USDT"                                  |
 | clientOid    | 否       | string   | 用户自编委托单 ID                                         |
@@ -1334,9 +1306,9 @@ curl `https://api.fameex.com/v1/api/spot/orders`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型 | 备注              |
+| 字段名称  | 数据类型 | 说明              |
 | --------- | -------- | ----------------- |
 | code      | int      | 200, 正常         |
 | msg       | string   | 信息说明          |
@@ -1364,7 +1336,7 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                                                         |
+| 参数      | 是否必须 | 数据类型 | 说明                                                         |
 | --------- | -------- | -------- | ------------------------------------------------------------ |
 | symbol    | 是       | string   | 币对名称 例如:"BTC-USDT"                                     |
 | orderid   | 否       | string   | 委托单 ID(orderId 和 clientOid 必须且只能选一个填写)         |
@@ -1382,12 +1354,12 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型 | 备注              |
+| 字段名称  | 数据类型 | 说明              |
 | --------- | -------- | ----------------- |
 | code      | int      | 200, 正常         |
-| msg       | string   | 备注              |
+| msg       | string   | 说明              |
 | data      | object   | 返回委托单信息    |
 | orderId   | string   | 委托单 ID         |
 | clientOid | string   | 用户自编委托单 ID |
@@ -1412,7 +1384,7 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders_all`
 
 **Post 参数：**
 
-| 参数       | 是否必须 | 数据类型 | 备注                                                              |
+| 参数       | 是否必须 | 数据类型 | 说明                                                              |
 | ---------- | -------- | -------- | ----------------------------------------------------------------- |
 | symbol     | 是       | string   | 币对名称 例如:"BTC-USDT"                                          |
 | orderIds   | 否       | array    | 委托单 ID 列表(orderId 和 clientOid 必须且只能选一个填写)         |
@@ -1431,12 +1403,12 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders_all`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型     | 备注              |
+| 字段名称  | 数据类型     | 说明              |
 | --------- | ------------ | ----------------- |
 | code      | int          | 200,正常          |
-| msg       | string       | 备注              |
+| msg       | string       | 说明              |
 | data      | object array | 批量撤单详情      |
 | code      | array        | 批量撤单详情      |
 | orderId   | string       | 委托单 ID         |
@@ -1462,7 +1434,7 @@ curl `https://api.fameex.com/v1/api/spot/orderdetail`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                                                         |
+| 参数      | 是否必须 | 数据类型 | 说明                                                         |
 | --------- | -------- | -------- | ------------------------------------------------------------ |
 | symbol    | 是       | string   | 币对名称,例如“BTC-USDT”                                      |
 | orderId   | 否       | string   | 委托单 ID(orderId 和 clientOid 必须且只能选一个填写)         |
@@ -1486,9 +1458,9 @@ curl `https://api.fameex.com/v1/api/spot/orderdetail`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型 | 备注                                                                         |
+| 字段名称        | 数据类型 | 说明                                                                         |
 | --------------- | -------- | ---------------------------------------------------------------------------- |
 | code            | int      | 返回值状态                                                                   |
 | msg             | string   | 返回值描述                                                                   |
@@ -1543,7 +1515,7 @@ curl `https://api.fameex.com/v1/api/spot/orderlist`
 
 **Post 参数：**
 
-| 参数         | 是否必须 | 数据类型  | 备注                                                          |
+| 参数         | 是否必须 | 数据类型  | 说明                                                          |
 | ------------ | -------- | --------- | ------------------------------------------------------------- |
 | base         | 否       | string    | 交易币(大写，例如“BTC”)                                       |
 | quote        | 否       | string    | 计价币(大写，例如“USDT”)                                      |
@@ -1582,9 +1554,9 @@ curl `https://api.fameex.com/v1/api/spot/orderlist`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型     | 备注                                                                         |
+| 字段名称        | 数据类型     | 说明                                                                         |
 | --------------- | ------------ | ---------------------------------------------------------------------------- |
 | code            | int          | 返回值状态                                                                   |
 | msg             | string       | 返回值描述                                                                   |
@@ -1639,7 +1611,7 @@ curl `https://api.fameex.com/v1/api/spot/fills`
 
 **Post 参数：**
 
-| 参数         | 是否必须 | 数据类型  | 备注                                                          |
+| 参数         | 是否必须 | 数据类型  | 说明                                                          |
 | ------------ | -------- | --------- | ------------------------------------------------------------- |
 | base         | 否       | string    | 交易币(大写，例如“BTC”)                                       |
 | quote        | 否       | string    | 计价币(大写，例如“USDT”)                                      |
@@ -1685,9 +1657,9 @@ curl `https://api.fameex.com/v1/api/spot/fills`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型     | 备注                                                      |
+| 字段名称        | 数据类型     | 说明                                                      |
 | --------------- | ------------ | --------------------------------------------------------- |
 | code            | int          | 返回值状态                                                |
 | msg             | string       | 返回值描述                                                |
@@ -1732,7 +1704,7 @@ curl `https://api.fameex.com /v1/api/orders_pending`
 
 **路由参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                                   |
+| 参数     | 是否必须 | 数据类型 | 说明                                   |
 | -------- | -------- | -------- | -------------------------------------- |
 | pairName | 是       | string   | 币对名称（例:BTC_USDT）                |
 | pageNum  | 是       | string   | 分页使用, 第几页,从第一页开始          |
@@ -1769,9 +1741,9 @@ curl `https://api.fameex.com /v1/api/orders_pending`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称    | 数据类型 | 备注                         |
+| 字段名称    | 数据类型 | 说明                         |
 | ----------- | -------- | ---------------------------- |
 | code        | int      | 返回值状态                   |
 | msg         | string   | 返回值描述                   |
@@ -1839,9 +1811,9 @@ curl `https://api.fameex.com/v1/api/account/wallet`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称   | 数据类型 | 备注                                             |
+| 字段名称   | 数据类型 | 说明                                             |
 | ---------- | -------- | ------------------------------------------------ |
 | code       | int      | 200, 正常                                        |
 | data       | list     | 返回值,币币账户数据                              |
@@ -1868,7 +1840,7 @@ curl `https://api.fameex.com/v1/api/account/wallet/currency`
 
 **路由参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注         |
+| 参数     | 是否必须 | 数据类型 | 说明         |
 | -------- | -------- | -------- | ------------ |
 | currency | 是       | string   | 币种, 例 BTC |
 
@@ -1890,9 +1862,9 @@ curl `https://api.fameex.com/v1/api/account/wallet/currency`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型 | 备注                            |
+| 字段名称  | 数据类型 | 说明                            |
 | --------- | -------- | ------------------------------- |
 | code      | int      | 200, 正常                       |
 | msg       | string   | 此次返回值说明                  |
@@ -1921,7 +1893,7 @@ curl `https://api.fameex.com/v1/api/account/transfer`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                                                                 |
+| 参数     | 是否必须 | 数据类型 | 说明                                                                 |
 | -------- | -------- | -------- | -------------------------------------------------------------------- |
 | currency | 是       | string   | 币种类型                                                             |
 | amount   | 是       | string   | 数量                                                                 |
@@ -1943,9 +1915,9 @@ curl `https://api.fameex.com/v1/api/account/transfer`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注                   |
+| 字段名称 | 数据类型 | 说明                   |
 | -------- | -------- | ---------------------- |
 | code     | int      | 200, 正常              |
 | msg      | string   | success,正常           |
@@ -1973,7 +1945,7 @@ curl `https://api.fameex.com/v1/api/spot/record/trade`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                                           |
+| 参数      | 是否必须 | 数据类型 | 说明                                           |
 | --------- | -------- | -------- | ---------------------------------------------- |
 | tradeType | 否       | int      | 交易类型：0.全部；2.买入；3.卖出；4.实收手续费 |
 | currency  | 否       | string   | 币种名称 例:ETH                                |
@@ -2021,9 +1993,9 @@ curl `https://api.fameex.com/v1/api/spot/record/trade`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称    | 数据类型 | 备注                                   |
+| 字段名称    | 数据类型 | 说明                                   |
 | ----------- | -------- | -------------------------------------- |
 | code        | int      | 200, 正常                              |
 | msg         | string   | success,正常                           |
@@ -2056,7 +2028,7 @@ curl `https://api.fameex.com/v1/api/spot/record/chargewithdraw`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                             |
+| 参数      | 是否必须 | 数据类型 | 说明                             |
 | --------- | -------- | -------- | -------------------------------- |
 | tradeType | 否       | int      | 交易类型：0.全部；1.提币；2.充币 |
 | currency  | 否       | string   | 币种名称 例:ETH                  |
@@ -2127,9 +2099,9 @@ curl `https://api.fameex.com/v1/api/spot/record/chargewithdraw`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称    | 数据类型 | 备注                                                                                                                                                                                         |
+| 字段名称    | 数据类型 | 说明                                                                                                                                                                                         |
 | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | code        | int      | 200, 正常                                                                                                                                                                                    |
 | msg         | string   | success,正常                                                                                                                                                                                 |
@@ -2167,7 +2139,7 @@ curl `https://api.fameex.com/v1/api/spot/record/trans`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                             |
+| 参数      | 是否必须 | 数据类型 | 说明                             |
 | --------- | -------- | -------- | -------------------------------- |
 | tradeType | 否       | int      | 交易类型：0.全部；1.转入；2.转出 |
 | currency  | 否       | string   | 币种名称 例:ETH                  |
@@ -2215,9 +2187,9 @@ curl `https://api.fameex.com/v1/api/spot/record/trans`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称     | 数据类型 | 备注                             |
+| 字段名称     | 数据类型 | 说明                             |
 | ------------ | -------- | -------------------------------- |
 | code         | int      | 200, 正常                        |
 | msg          | string   | success,正常                     |
@@ -2254,7 +2226,7 @@ curl `https://api.fameex.com/v1/api/spot/record/others`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                             |
+| 参数      | 是否必须 | 数据类型 | 说明                             |
 | --------- | -------- | -------- | -------------------------------- |
 | tradeType | 否       | int      | 交易类型：0.全部；1.返佣；2.活动 |
 | currency  | 否       | string   | 币种名称 例:ETH                  |
@@ -2290,9 +2262,9 @@ curl `https://api.fameex.com/v1/api/spot/record/others`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称    | 数据类型 | 备注                     |
+| 字段名称    | 数据类型 | 说明                     |
 | ----------- | -------- | ------------------------ |
 | code        | int      | 200, 正常                |
 | msg         | string   | success,正常             |
@@ -2321,7 +2293,7 @@ curl `https://api.fameex.com/v1/api/account/deposit/address`
 
 **路由参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注          |
+| 参数      | 是否必须 | 数据类型 | 说明          |
 | --------- | -------- | -------- | ------------- |
 | coinType  | 是       | string   | 币种类型 USDT |
 | chainType | 是       | string   | 链类型 ERC20  |
@@ -2351,9 +2323,9 @@ curl `https://api.fameex.com/v1/api/account/deposit/address`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注      |
+| 字段名称 | 数据类型 | 说明      |
 | -------- | -------- | --------- |
 | code     | int      | 200, 正常 |
 | request  | map      | 请求参数  |
@@ -2428,9 +2400,9 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称       | 数据类型 | 备注                                             |
+| 字段名称       | 数据类型 | 说明                                             |
 | -------------- | -------- | ------------------------------------------------ |
 | code           | int      | 200, 正常                                        |
 | data           | list     | 返回值,杠杆账户数据                              |
@@ -2468,7 +2440,7 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 
 **路由参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注              |
+| 参数     | 是否必须 | 数据类型 | 说明              |
 | -------- | -------- | -------- | ----------------- |
 | pairName | 是       | string   | 币对, 例 BTC_USDT |
 
@@ -2503,9 +2475,9 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称       | 数据类型 | 备注                 |
+| 字段名称       | 数据类型 | 说明                 |
 | -------------- | -------- | -------------------- |
 | code           | int      | 200, 正常            |
 | data           | list     | 返回值,杠杆账户数据  |
@@ -2547,7 +2519,7 @@ curl `https://api.fameex.com/v1/api/lever/orders/place`
 
 **Post 参数：**
 
-| 参数         | 是否必须 | 数据类型 | 备注                                                      |
+| 参数         | 是否必须 | 数据类型 | 说明                                                      |
 | ------------ | -------- | -------- | --------------------------------------------------------- |
 | symbol       | 是       | string   | 币对名称 例如:"BTC-USDT"                                  |
 | clientOid    | 否       | string   | 用户自编委托单 ID                                         |
@@ -2571,9 +2543,9 @@ curl `https://api.fameex.com/v1/api/lever/orders/place`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型 | 备注              |
+| 字段名称  | 数据类型 | 说明              |
 | --------- | -------- | ----------------- |
 | code      | int      | 200, 正常         |
 | msg       | string   | 信息说明          |
@@ -2601,7 +2573,7 @@ curl `https://api.fameex.com/v1/api/lever/orders/cancel`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                                                         |
+| 参数      | 是否必须 | 数据类型 | 说明                                                         |
 | --------- | -------- | -------- | ------------------------------------------------------------ |
 | symbol    | 是       | string   | 币对名称 例如:"BTC-USDT"                                     |
 | orderid   | 否       | string   | 委托单 ID(orderId 和 clientOid 必须且只能选一个填写)         |
@@ -2619,12 +2591,12 @@ curl `https://api.fameex.com/v1/api/lever/orders/cancel`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型 | 备注              |
+| 字段名称  | 数据类型 | 说明              |
 | --------- | -------- | ----------------- |
 | code      | int      | 200, 正常         |
-| msg       | string   | 备注              |
+| msg       | string   | 说明              |
 | data      | object   | 返回委托单信息    |
 | orderId   | string   | 委托单 ID         |
 | clientOid | string   | 用户自编委托单 ID |
@@ -2649,7 +2621,7 @@ curl `https://api.fameex.com/v1/api/lever/orders/batch_cancel`
 
 **Post 参数：**
 
-| 参数       | 是否必须 | 数据类型 | 备注                                                              |
+| 参数       | 是否必须 | 数据类型 | 说明                                                              |
 | ---------- | -------- | -------- | ----------------------------------------------------------------- |
 | symbol     | 是       | string   | 币对名称 例如:"BTC-USDT"                                          |
 | orderIds   | 否       | array    | 委托单 ID 列表(orderId 和 clientOid 必须且只能选一个填写)         |
@@ -2668,12 +2640,12 @@ curl `https://api.fameex.com/v1/api/lever/orders/batch_cancel`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型     | 备注              |
+| 字段名称  | 数据类型     | 说明              |
 | --------- | ------------ | ----------------- |
 | code      | int          | 200,正常          |
-| msg       | string       | 备注              |
+| msg       | string       | 说明              |
 | data      | object array | 批量撤单详情      |
 | code      | array        | 批量撤单详情      |
 | orderId   | string       | 委托单 ID         |
@@ -2699,7 +2671,7 @@ curl `https://api.fameex.com/v1/api/lever/orders`
 
 **Post 参数：**
 
-| 参数         | 是否必须 | 数据类型  | 备注                                                          |
+| 参数         | 是否必须 | 数据类型  | 说明                                                          |
 | ------------ | -------- | --------- | ------------------------------------------------------------- |
 | base         | 是       | string    | 交易币(大写，例如“BTC”)                                       |
 | quote        | 是       | string    | 计价币(大写，例如“USDT”)                                      |
@@ -2738,9 +2710,9 @@ curl `https://api.fameex.com/v1/api/lever/orders`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型     | 备注                                                                         |
+| 字段名称        | 数据类型     | 说明                                                                         |
 | --------------- | ------------ | ---------------------------------------------------------------------------- |
 | code            | int          | 返回值状态                                                                   |
 | msg             | string       | 返回值描述                                                                   |
@@ -2775,9 +2747,9 @@ curl `https://api.fameex.com/v1/api/lever/orders`
 | createTime      | int64        | 创建时间                                                                     |
 | updateTime      | int64        | 状态更新时间                                                                 |
 
-**返回值：**
+### 响应参数
 
-| 字段名称       | 数据类型 | 备注                                                                                                          |
+| 字段名称       | 数据类型 | 说明                                                                                                          |
 | -------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | code           | int      | 返回值状态                                                                                                    |
 | msg            | string   | 返回值描述                                                                                                    |
@@ -2829,7 +2801,7 @@ curl `https://api.fameex.com/v1/api/lever/orders/detail`
 
 **Post 参数：**
 
-| 参数      | 是否必须 | 数据类型 | 备注                                                         |
+| 参数      | 是否必须 | 数据类型 | 说明                                                         |
 | --------- | -------- | -------- | ------------------------------------------------------------ |
 | symbol    | 是       | string   | 币对名称,例如“BTC-USDT”                                      |
 | orderId   | 否       | string   | 委托单 ID(orderId 和 clientOid 必须且只能选一个填写)         |
@@ -2853,9 +2825,9 @@ curl `https://api.fameex.com/v1/api/lever/orders/detail`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型 | 备注                                                                         |
+| 字段名称        | 数据类型 | 说明                                                                         |
 | --------------- | -------- | ---------------------------------------------------------------------------- |
 | code            | int      | 返回值状态                                                                   |
 | msg             | string   | 返回值描述                                                                   |
@@ -2886,9 +2858,9 @@ curl `https://api.fameex.com/v1/api/lever/orders/detail`
 | createTime      | int64    | 创建时间                                                                     |
 | updateTime      | int64    | 状态更新时间                                                                 |
 
-**返回值：**
+### 响应参数
 
-| 字段名称    | 数据类型 | 备注                                                                                         |
+| 字段名称    | 数据类型 | 说明                                                                                         |
 | ----------- | -------- | -------------------------------------------------------------------------------------------- |
 | code        | int      | 返回值状态                                                                                   |
 | msg         | string   | 返回值描述                                                                                   |
@@ -2928,7 +2900,7 @@ curl `https://api.fameex.com/v1/api/lever/deals`
 
 **Post 参数：**
 
-| 参数         | 是否必须 | 数据类型  | 备注                                                          |
+| 参数         | 是否必须 | 数据类型  | 说明                                                          |
 | ------------ | -------- | --------- | ------------------------------------------------------------- |
 | base         | 否       | string    | 交易币(大写，例如“BTC”)                                       |
 | quote        | 否       | string    | 计价币(大写，例如“USDT”)                                      |
@@ -2974,9 +2946,9 @@ curl `https://api.fameex.com/v1/api/lever/deals`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称        | 数据类型     | 备注                                                      |
+| 字段名称        | 数据类型     | 说明                                                      |
 | --------------- | ------------ | --------------------------------------------------------- |
 | code            | int          | 返回值状态                                                |
 | msg             | string       | 返回值描述                                                |
@@ -3005,9 +2977,9 @@ curl `https://api.fameex.com/v1/api/lever/deals`
 | selfTrade       | int          | 是否自成交 1-自成交                                       |
 | createTime      | int64        | 创建时间                                                  |
 
-**返回值：**
+### 响应参数
 
-| 字段名称      | 数据类型 | 备注                             |
+| 字段名称      | 数据类型 | 说明                             |
 | ------------- | -------- | -------------------------------- |
 | code          | int      | 返回值状态                       |
 | msg           | string   | 返回值描述                       |
@@ -3046,7 +3018,7 @@ curl `https://api.fameex.com/v1/api/lever/pair/config`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
+| 参数     | 是否必须 | 数据类型 | 说明                 |
 | -------- | -------- | -------- | -------------------- |
 | pairName | 否       | string   | 币对名称 例:ETH_USDT |
 
@@ -3088,9 +3060,9 @@ curl `https://api.fameex.com/v1/api/lever/pair/config`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称                 | 数据类型 | 备注                |
+| 字段名称                 | 数据类型 | 说明                |
 | ------------------------ | -------- | ------------------- |
 | code                     | int      | 200, 正常           |
 | msg                      | string   | success,正常        |
@@ -3122,7 +3094,7 @@ curl `https://api.fameex.com/v1/api/lever/borrowparam`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
+| 参数     | 是否必须 | 数据类型 | 说明                 |
 | -------- | -------- | -------- | -------------------- |
 | pairName | 是       | string   | 币对名称 例:ETH_USDT |
 | currency | 是       | string   | 币种名称 例:ETH      |
@@ -3142,9 +3114,9 @@ curl `https://api.fameex.com/v1/api/lever/borrowparam`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称          | 数据类型 | 备注                |
+| 字段名称          | 数据类型 | 说明                |
 | ----------------- | -------- | ------------------- |
 | code              | int      | 200, 正常           |
 | msg               | string   | success,正常        |
@@ -3174,7 +3146,7 @@ curl `https://api.fameex.com/v1/api/lever/borrow`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
+| 参数     | 是否必须 | 数据类型 | 说明                 |
 | -------- | -------- | -------- | -------------------- |
 | pairName | 是       | string   | 币对名称 例:ETH_USDT |
 | currency | 是       | string   | 币种名称 例:ETH      |
@@ -3190,9 +3162,9 @@ curl `https://api.fameex.com/v1/api/lever/borrow`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注         |
+| 字段名称 | 数据类型 | 说明         |
 | -------- | -------- | ------------ |
 | code     | int      | 200, 正常    |
 | msg      | string   | success,正常 |
@@ -3218,7 +3190,7 @@ curl `https://api.fameex.com/v1/api/lever/repayparam`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
+| 参数     | 是否必须 | 数据类型 | 说明                 |
 | -------- | -------- | -------- | -------------------- |
 | pairName | 是       | string   | 币对名称 例:ETH_USDT |
 | currency | 是       | string   | 币种名称 例:ETH      |
@@ -3238,9 +3210,9 @@ curl `https://api.fameex.com/v1/api/lever/repayparam`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称       | 数据类型 | 备注                     |
+| 字段名称       | 数据类型 | 说明                     |
 | -------------- | -------- | ------------------------ |
 | code           | int      | 200, 正常                |
 | msg            | string   | success,正常             |
@@ -3270,7 +3242,7 @@ curl `https://api.fameex.com/v1/api/lever/repay`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
+| 参数     | 是否必须 | 数据类型 | 说明                 |
 | -------- | -------- | -------- | -------------------- |
 | pairName | 是       | string   | 币对名称 例:ETH_USDT |
 | currency | 是       | string   | 币种名称             |
@@ -3286,9 +3258,9 @@ curl `https://api.fameex.com/v1/api/lever/repay`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称 | 数据类型 | 备注         |
+| 字段名称 | 数据类型 | 说明         |
 | -------- | -------- | ------------ |
 | code     | int      | 200, 正常    |
 | msg      | string   | success,正常 |
@@ -3314,7 +3286,7 @@ curl `https://api.fameex.com/v1/api/lever/record/borrow_repay`
 
 **Post 参数：**
 
-| 参数     | 是否必须 | 数据类型 | 备注                 |
+| 参数     | 是否必须 | 数据类型 | 说明                 |
 | -------- | -------- | -------- | -------------------- |
 | pairName | 是       | string   | 币对名称 例:ETH_USDT |
 | currency | 是       | string   | 币种名称 例:ETH      |
@@ -3361,9 +3333,9 @@ curl `https://api.fameex.com/v1/api/lever/record/borrow_repay`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称       | 数据类型 | 备注                         |
+| 字段名称       | 数据类型 | 说明                         |
 | -------------- | -------- | ---------------------------- |
 | code           | int      | 200, 正常                    |
 | msg            | string   | success,正常                 |
@@ -3399,7 +3371,7 @@ curl `https://api.fameex.com/v1/api/lever/ledger`
 
 **Post 参数：**
 
-| 参数       | 是否必须 | 数据类型 | 备注                                                                                                         |
+| 参数       | 是否必须 | 数据类型 | 说明                                                                                                         |
 | ---------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------ |
 | pageNum    | 是       | int      | 页码                                                                                                         |
 | pageSize   | 是       | int      | 每页显示数量 (0 < pageSize ≤ 500)                                                                            |
@@ -3438,9 +3410,9 @@ curl `https://api.fameex.com/v1/api/lever/ledger`
 }
 ```
 
-**返回值：**
+### 响应参数
 
-| 字段名称  | 数据类型 | 备注         |
+| 字段名称  | 数据类型 | 说明         |
 | --------- | -------- | ------------ |
 | ledger_id | string   | 账单 ID      |
 | coinPair  | string   | 币对         |
@@ -3452,13 +3424,13 @@ curl `https://api.fameex.com/v1/api/lever/ledger`
 
 # 错误信息
 
-| code 码 | 备注                                              |
+| code 码 | 说明                                              |
 | ------- | ------------------------------------------------- |
 | 200     | 正常                                              |
 | 112002  | API 单个 Key 流量超限                             |
 | 112005  | API 请求频率超限                                  |
 | 112007  | API-Key 创建失败                                  |
-| 112008  | API-Key 备注名称已存在                            |
+| 112008  | API-Key 说明名称已存在                            |
 | 112009  | API-Key 创建数量超限（单个用户最多创建 5 个 API） |
 | 112010  | API-Key 失效（单个 Key 的时限为 60 天自然日）     |
 | 112011  | API 请求 IP 访问受限（绑定 IP 与请求 IP 不一致）  |

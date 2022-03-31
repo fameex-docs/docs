@@ -21,9 +21,17 @@ meta:
     content: FAMEEX,API,Documentation
 ---
 
-# Update log
+# Change Log
 
-**2021-08-24**
+## 2021-03-30
+
+- New endpoint for Market Data:
+  - GET `/api/v2/orderbook` to query order book.
+  - GET `/api/v2/trades` to query recent trades.
+  - GET `/api/v2/ticker/24hr` to query 24 hour rolling window price change statistics.
+  - GET `/api/v2/ticker/price` to get latest price for a symbol.
+
+## 2021-08-24
 
 - Websocket market push update:
 
@@ -64,7 +72,7 @@ meta:
   - Modify the interface for obtaining the details of leveraged orders `/v1/api/lever/orders/detail`
   - Modify the interface for obtaining leveraged transaction details `/v1/api/lever/deals`
 
-**2020-12-22**
+## 2020-12-22
 
 - Wallet interface update:
   - Delete the withdrawal record interface of all currencies `v1/api/account/withdrawal/history`
@@ -77,7 +85,7 @@ meta:
   - Added an interface for querying other bills of spot accounts `v1/api/spot/record/others`
   - Modify the fund transfer interface parameter interface `v1/api/account/transfer`
 
-**2020-11-16**
+## 2020-11-16
 
 - Coin trading interface update:
   - Update obtain a list of orders `v1/api/spot/orderlist`to obtain a list of orders
@@ -85,12 +93,12 @@ meta:
   - Updated list of orders to obtain leverage `v1/api/lever/orders`to obtain a list of orders lever
   - Update get order details leverage `v1/api/lever/orders/detail`to acquire a lever Order details
 
-**2020-10-30**
+## 2020-10-30
 
 - Wallet interface update:
   - Modify the fund transfer function interface `v1/api/account/transfer`
 
-**2020-10-29**
+## 2020-10-29
 
 - Wallet interface update:
   - Added function interface for leveraged pending orders `v1/api/lever/orders/place`
@@ -100,7 +108,7 @@ meta:
   - Added a function interface for obtaining the details of a margin account order `v1/api/lever/orders/detail`
   - Added function interface for obtaining leverage configuration `v1/api/lever/pair/config`
 
-**2020-10-28**
+## 2020-10-28
 
 - Wallet interface update:
   - Added an interface for obtaining a margin account statement `v1/api/lever/ledger`
@@ -109,7 +117,7 @@ meta:
   - Added a new interface for obtaining specific currency pairs in a margin account, and a prompt parameter interface for borrowing currency in a specific currency `v1/api/lever/borrow`
   - Added interface for obtaining specific currency pairs in margin accounts and borrowing currency in specific currencies `v1/api/lever/borrowparam`
 
-**2020-10-27**
+## 2020-10-27
 
 - Wallet interface update:
   - Added an interface for obtaining margin account information `v1/api/lever/accounts`
@@ -147,7 +155,7 @@ We will make the most authoritative answer for you.
 
 ## Access URLs
 
-| Access URLs               | Remarks                 |
+| Access URLs               | Description             |
 | ------------------------- | ----------------------- |
 | `https://api.fameex.com`  | RESTFUL API             |
 | `wss://www.fameex.com/ws` | WebSocket Feed (quotes) |
@@ -162,15 +170,15 @@ In view of the high latency and poor stability, it is not recommended to access 
 
 A single API Key dimension is restricted. It is recommended to add a signature to the market API access, otherwise the frequency limit will be stricter.
 
-| Frequency limiting rules                        | Type                          | Remarks |
-| ----------------------------------------------- | ----------------------------- | ------- |
-| Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no      |
+| Frequency limiting rules                        | Type                          | Description |
+| ----------------------------------------------- | ----------------------------- | ----------- |
+| Frequency limit for each AccessKey and each URL | 20 times/2s (most interfaces) | no          |
 
 ## Header setting
 
 The parameters of the request header are as follows:
 
-| parameter        | Type   | Remarks                                      |
+| Name             | Type   | Description                                  |
 | ---------------- | ------ | -------------------------------------------- |
 | AccessKey        | string | The Accesskey you applied for                |
 | SignatureMethod  | string | HmacSHA256                                   |
@@ -243,9 +251,9 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks               |
-| :-------- | :------------- | :-------- | :-------------------- |
-| on        | Yes            | string    | Message type ("ping") |
+| Name | Mandatory | Type   | Description           |
+| :--- | :-------- | :----- | :-------------------- |
+| on   | Yes       | string | Message type ("ping") |
 
 > **Return example:**
 
@@ -256,12 +264,12 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks               |
-| :--------- | :-------- | :-------------------- |
-| code       | int       | 200, normal           |
-| on         | string    | Message type ("pong") |
+| Name | Type   | Description           |
+| :--- | :----- | :-------------------- |
+| code | int    | 200, normal           |
+| on   | string | Message type ("pong") |
 
 ## Login information
 
@@ -292,13 +300,13 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks                       |
-| :-------- | :------------- | :-------- | :---------------------------- |
-| on        | Yes            | string    | Message type ("req")          |
-| topic     | Yes            | string    | Request subject ("auth")      |
-| params    | Yes            | object    | Parameter                     |
-| accessKey | Yes            | string    | AccessKey applied for         |
-| platform  | Yes            | string    | Platform source (WEB/APP/API) |
+| Name      | Mandatory | Type   | Description                   |
+| :-------- | :-------- | :----- | :---------------------------- |
+| on        | Yes       | string | Message type ("req")          |
+| topic     | Yes       | string | Request subject ("auth")      |
+| params    | Yes       | object | Parameter                     |
+| accessKey | Yes       | string | AccessKey applied for         |
+| platform  | Yes       | string | Platform source (WEB/APP/API) |
 
 > **Return example:**
 
@@ -310,13 +318,13 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                  |
-| :--------- | :-------- | :----------------------- |
-| code       | int       | 200, normal              |
-| on         | string    | Message type ("req")     |
-| topic      | string    | Request subject ("auth") |
+| Name  | Type   | Description              |
+| :---- | :----- | :----------------------- |
+| code  | int    | 200, normal              |
+| on    | string | Message type ("req")     |
+| topic | string | Request subject ("auth") |
 
 ## Push K line information
 
@@ -347,13 +355,13 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks                                                 |
-| :-------- | :------------- | :-------- | :------------------------------------------------------ |
-| on        | Yes            | string    | Message type ("sub")                                    |
-| topic     | Yes            | string    | Subscribe to topic ("spot.market.kline")                |
-| params    | Yes            | object    | Parameter                                               |
-| symbol    | Yes            | string    | The name of the currency pair (for example, "BTC-USDT") |
-| period    | Yes            | string    | K-line time granularity (1,5,15,30,60,120,240,1D)       |
+| Name   | Mandatory | Type   | Description                                             |
+| :----- | :-------- | :----- | :------------------------------------------------------ |
+| on     | Yes       | string | Message type ("sub")                                    |
+| topic  | Yes       | string | Subscribe to topic ("spot.market.kline")                |
+| params | Yes       | object | Parameter                                               |
+| symbol | Yes       | string | The name of the currency pair (for example, "BTC-USDT") |
+| period | Yes       | string | K-line time granularity (1,5,15,30,60,120,240,1D)       |
 
 > **Return example:**
 
@@ -376,23 +384,23 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                                                 |
-| :--------- | :-------- | :------------------------------------------------------ |
-| code       | int       | 200, normal                                             |
-| on         | string    | Message type ("sub")                                    |
-| topic      | string    | Request subject ("spot.market.kline")                   |
-| data       | object    | Return data entity                                      |
-| symbol     | string    | The name of the currency pair (for example, "BTC-USDT") |
-| period     | string    | K-line time granularity (1,5,15,30,60,120,240,1D)       |
-| time       | int64     | Start timestamp, seconds                                |
-| open       | string    | Opening price                                           |
-| low        | string    | Lowest price                                            |
-| high       | string    | Highest price                                           |
-| close      | string    | Latest price                                            |
-| amount     | string    | Trading currency volume                                 |
-| volume     | string    | Denominated currency trading volume                     |
+| Name   | Type   | Description                                             |
+| :----- | :----- | :------------------------------------------------------ |
+| code   | int    | 200, normal                                             |
+| on     | string | Message type ("sub")                                    |
+| topic  | string | Request subject ("spot.market.kline")                   |
+| data   | object | Return data entity                                      |
+| symbol | string | The name of the currency pair (for example, "BTC-USDT") |
+| period | string | K-line time granularity (1,5,15,30,60,120,240,1D)       |
+| time   | int64  | Start timestamp, seconds                                |
+| open   | string | Opening price                                           |
+| low    | string | Lowest price                                            |
+| high   | string | Highest price                                           |
+| close  | string | Latest price                                            |
+| amount | string | Trading currency volume                                 |
+| volume | string | Denominated currency trading volume                     |
 
 ## Push homepage quotation
 
@@ -422,12 +430,12 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks                                                 |
-| :-------- | :------------- | :-------- | :------------------------------------------------------ |
-| on        | Yes            | string    | Message type ("sub")                                    |
-| topic     | Yes            | string    | Subscribe to topic ("spot.market.kline")                |
-| params    | Yes            | object    | Parameter                                               |
-| symbol    | Yes            | string    | The name of the currency pair (for example, "BTC-USDT") |
+| Name   | Mandatory | Type   | Description                                             |
+| :----- | :-------- | :----- | :------------------------------------------------------ |
+| on     | Yes       | string | Message type ("sub")                                    |
+| topic  | Yes       | string | Subscribe to topic ("spot.market.kline")                |
+| params | Yes       | object | Parameter                                               |
+| symbol | Yes       | string | The name of the currency pair (for example, "BTC-USDT") |
 
 > **Return example:**
 
@@ -450,22 +458,22 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                                                 |
-| :--------- | :-------- | :------------------------------------------------------ |
-| code       | int       | 200, normal                                             |
-| on         | string    | Message type ("sub")                                    |
-| topic      | string    | Request subject ("spot.market.ticker")                  |
-| data       | object    | Return data entity                                      |
-| symbol     | string    | The name of the currency pair (for example, "BTC-USDT") |
-| open       | string    | 24-hour opening price                                   |
-| low        | string    | Lowest price in 24 hours                                |
-| high       | string    | Highest price in 24 hours                               |
-| close      | string    | Latest transaction price                                |
-| amount     | string    | 24-hour trading currency volume                         |
-| volume     | string    | 24-hour denominated currency trading volume             |
-| quotePrice | string    | Denominated currency price                              |
+| Name       | Type   | Description                                             |
+| :--------- | :----- | :------------------------------------------------------ |
+| code       | int    | 200, normal                                             |
+| on         | string | Message type ("sub")                                    |
+| topic      | string | Request subject ("spot.market.ticker")                  |
+| data       | object | Return data entity                                      |
+| symbol     | string | The name of the currency pair (for example, "BTC-USDT") |
+| open       | string | 24-hour opening price                                   |
+| low        | string | Lowest price in 24 hours                                |
+| high       | string | Highest price in 24 hours                               |
+| close      | string | Latest transaction price                                |
+| amount     | string | 24-hour trading currency volume                         |
+| volume     | string | 24-hour denominated currency trading volume             |
+| quotePrice | string | Denominated currency price                              |
 
 ## Push in-depth quotations
 
@@ -496,13 +504,13 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks                                                 |
-| :-------- | :------------- | :-------- | :------------------------------------------------------ |
-| on        | Yes            | string    | Message type ("sub")                                    |
-| topic     | Yes            | string    | Subscribe to topic ("spot.market.ticker")               |
-| params    | Yes            | object    | Parameter                                               |
-| symbol    | Yes            | string    | The name of the currency pair (for example, "BTC-USDT") |
-| step      | Yes            | string    | In-depth price aggregation type (step0~step4)           |
+| Name   | Mandatory | Type   | Description                                             |
+| :----- | :-------- | :----- | :------------------------------------------------------ |
+| on     | Yes       | string | Message type ("sub")                                    |
+| topic  | Yes       | string | Subscribe to topic ("spot.market.ticker")               |
+| params | Yes       | object | Parameter                                               |
+| symbol | Yes       | string | The name of the currency pair (for example, "BTC-USDT") |
+| step   | Yes       | string | In-depth price aggregation type (step0~step4)           |
 
 > **Return example:**
 
@@ -521,19 +529,19 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                                                 |
-| :--------- | :-------- | :------------------------------------------------------ |
-| code       | int       | 200, normal                                             |
-| on         | string    | Message type ("sub")                                    |
-| topic      | string    | Request subject ("spot.market.depth")                   |
-| data       | object    | Return data entity                                      |
-| symbol     | string    | The name of the currency pair (for example, "BTC-USDT") |
-| step       | string    | In-depth price aggregation type (step0~step4)           |
-| time       | string    | Timestamp, seconds                                      |
-| bids       | array     | All current buy orders [price, quantity]                |
-| asks       | array     | All current sell orders [price, quantity]               |
+| Name   | Type   | Description                                             |
+| :----- | :----- | :------------------------------------------------------ |
+| code   | int    | 200, normal                                             |
+| on     | string | Message type ("sub")                                    |
+| topic  | string | Request subject ("spot.market.depth")                   |
+| data   | object | Return data entity                                      |
+| symbol | string | The name of the currency pair (for example, "BTC-USDT") |
+| step   | string | In-depth price aggregation type (step0~step4)           |
+| time   | string | Timestamp, seconds                                      |
+| bids   | array  | All current buy orders [price, quantity]                |
+| asks   | array  | All current sell orders [price, quantity]               |
 
 ## Push the latest transaction order quotation
 
@@ -563,12 +571,12 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks                                                 |
-| :-------- | :------------- | :-------- | :------------------------------------------------------ |
-| on        | Yes            | string    | Message type ("sub")                                    |
-| topic     | Yes            | string    | Subscribe to topic ("spot.market.last_trade")           |
-| params    | Yes            | object    | Parameter                                               |
-| symbol    | Yes            | string    | The name of the currency pair (for example, "BTC-USDT") |
+| Name   | Mandatory | Type   | Description                                             |
+| :----- | :-------- | :----- | :------------------------------------------------------ |
+| on     | Yes       | string | Message type ("sub")                                    |
+| topic  | Yes       | string | Subscribe to topic ("spot.market.last_trade")           |
+| params | Yes       | object | Parameter                                               |
+| symbol | Yes       | string | The name of the currency pair (for example, "BTC-USDT") |
 
 > **Return example:**
 
@@ -590,20 +598,20 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                                                 |
-| :--------- | :-------- | :------------------------------------------------------ |
-| code       | int       | 200, normal                                             |
-| on         | string    | Message type ("sub")                                    |
-| topic      | string    | Request subject ("spot.market.last_trade")              |
-| data       | object    | Return data entity                                      |
-| symbol     | string    | The name of the currency pair (for example, "BTC-USDT") |
-| tradeId    | string    | Order ID                                                |
-| side       | string    | Order Direction 1-Buy 2-Sell                            |
-| price      | array     | Transaction price                                       |
-| amount     | array     | Number of transactions                                  |
-| createTime | int64     | Creation timestamp, seconds                             |
+| Name       | Type   | Description                                             |
+| :--------- | :----- | :------------------------------------------------------ |
+| code       | int    | 200, normal                                             |
+| on         | string | Message type ("sub")                                    |
+| topic      | string | Request subject ("spot.market.last_trade")              |
+| data       | object | Return data entity                                      |
+| symbol     | string | The name of the currency pair (for example, "BTC-USDT") |
+| tradeId    | string | Order ID                                                |
+| side       | string | Order Direction 1-Buy 2-Sell                            |
+| price      | array  | Transaction price                                       |
+| amount     | array  | Number of transactions                                  |
+| createTime | int64  | Creation timestamp, seconds                             |
 
 ## Push order transaction or cancellation
 
@@ -633,12 +641,12 @@ websocket
 
 **parameter:**
 
-| Parameter | Do you have to | Data type | Remarks                                                 |
-| :-------- | :------------- | :-------- | :------------------------------------------------------ |
-| on        | Yes            | string    | Message type ("sub")                                    |
-| topic     | Yes            | string    | Subscribe to topics ("spot.orders")                     |
-| params    | Yes            | object    | Parameter                                               |
-| symbol    | Yes            | string    | The name of the currency pair (for example, "BTC-USDT") |
+| Name   | Mandatory | Type   | Description                                             |
+| :----- | :-------- | :----- | :------------------------------------------------------ |
+| on     | Yes       | string | Message type ("sub")                                    |
+| topic  | Yes       | string | Subscribe to topics ("spot.orders")                     |
+| params | Yes       | object | Parameter                                               |
+| symbol | Yes       | string | The name of the currency pair (for example, "BTC-USDT") |
 
 > **Return example:**
 
@@ -677,39 +685,39 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type | Remarks                                                                                                                               |
-| :-------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| code            | int       | 200, normal                                                                                                                           |
-| on              | string    | Message type ("sub")                                                                                                                  |
-| topic           | string    | Request subject ("spot.orders")                                                                                                       |
-| data            | object    | Return data entity                                                                                                                    |
-| symbol          | string    | The name of the currency pair (for example, "BTC-USDT")                                                                               |
-| orderId         | string    | Order order ID                                                                                                                        |
-| clientOid       | string    | User-made order ID                                                                                                                    |
-| side            | int       | Order direction 1-buy 2-sell                                                                                                          |
-| orderType       | int       | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only                                     |
-| price           | string    | Order price                                                                                                                           |
-| amount          | string    | Number of orders                                                                                                                      |
-| money           | string    | Entrusted amount (when buying at market price)                                                                                        |
-| filledAmount    | sting     | Number of transactions                                                                                                                |
-| filledMoney     | sting     | Transaction amount                                                                                                                    |
-| filledFee       | string    | Transaction fee                                                                                                                       |
-| feeCurrency     | string    | Transaction fee currency                                                                                                              |
-| triggerPrice    | string    | Order trigger price                                                                                                                   |
-| triggerType     | string    | Order trigger type gte-greater than or equal to lte-less than or equal to                                                             |
-| triggerState    | int       | Trigger status 1-trigger successful                                                                                                   |
-| liquidationType | int       | Forced liquidation type 1-liquidation                                                                                                 |
-| strategyId      | string    | Strategy Id                                                                                                                           |
-| strategyType    | int       | Strategy type                                                                                                                         |
-| strategyName    | string    | Strategy name                                                                                                                         |
-| state           | int       | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled |
-| accountType     | string    | Account type                                                                                                                          |
-| platform        | int       | Platform source                                                                                                                       |
-| cancelType      | int       | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation                                            |
-| createTime      | int64     | Order time stamp, seconds                                                                                                             |
-| updateTime      | int64     | Status update timestamp, seconds                                                                                                      |
+| Name            | Type   | Description                                                                                                                           |
+| :-------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| code            | int    | 200, normal                                                                                                                           |
+| on              | string | Message type ("sub")                                                                                                                  |
+| topic           | string | Request subject ("spot.orders")                                                                                                       |
+| data            | object | Return data entity                                                                                                                    |
+| symbol          | string | The name of the currency pair (for example, "BTC-USDT")                                                                               |
+| orderId         | string | Order order ID                                                                                                                        |
+| clientOid       | string | User-made order ID                                                                                                                    |
+| side            | int    | Order direction 1-buy 2-sell                                                                                                          |
+| orderType       | int    | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only                                     |
+| price           | string | Order price                                                                                                                           |
+| amount          | string | Number of orders                                                                                                                      |
+| money           | string | Entrusted amount (when buying at market price)                                                                                        |
+| filledAmount    | sting  | Number of transactions                                                                                                                |
+| filledMoney     | sting  | Transaction amount                                                                                                                    |
+| filledFee       | string | Transaction fee                                                                                                                       |
+| feeCurrency     | string | Transaction fee currency                                                                                                              |
+| triggerPrice    | string | Order trigger price                                                                                                                   |
+| triggerType     | string | Order trigger type gte-greater than or equal to lte-less than or equal to                                                             |
+| triggerState    | int    | Trigger status 1-trigger successful                                                                                                   |
+| liquidationType | int    | Forced liquidation type 1-liquidation                                                                                                 |
+| strategyId      | string | Strategy Id                                                                                                                           |
+| strategyType    | int    | Strategy type                                                                                                                         |
+| strategyName    | string | Strategy name                                                                                                                         |
+| state           | int    | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled |
+| accountType     | string | Account type                                                                                                                          |
+| platform        | int    | Platform source                                                                                                                       |
+| cancelType      | int    | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation                                            |
+| createTime      | int64  | Order time stamp, seconds                                                                                                             |
+| updateTime      | int64  | Status update timestamp, seconds                                                                                                      |
 
 ## Cancel homepage quotes
 
@@ -742,15 +750,15 @@ websocket
 
 **parameter:**
 
-| Parameter  | Do you have to | Data type | Remarks                                                          |
-| :--------- | :------------- | :-------- | :--------------------------------------------------------------- |
-| op         | YES            | string    | Message type ("unsub")                                           |
-| topic      | YES            | string    | Subscribe to topics ("spot.market.ticker")                       |
-| params     | YES            | object    | Parameter                                                        |
-| symbol     | NO             | string    | The name of the currency pair (for example, "BTC-USDT")          |
-| step       | NO             | string    | In-depth price aggregation type (step0~step4)                    |
-| period     | NO             | string    | Time granularity（ "1","5","15","30","60","120","240","1D","1W") |
-| activityId | NO             | string    | Activity ID                                                      |
+| Name       | Mandatory | Type   | Description                                                      |
+| :--------- | :-------- | :----- | :--------------------------------------------------------------- |
+| op         | YES       | string | Message type ("unsub")                                           |
+| topic      | YES       | string | Subscribe to topics ("spot.market.ticker")                       |
+| params     | YES       | object | Parameter                                                        |
+| symbol     | NO        | string | The name of the currency pair (for example, "BTC-USDT")          |
+| step       | NO        | string | In-depth price aggregation type (step0~step4)                    |
+| period     | NO        | string | Time granularity（ "1","5","15","30","60","120","240","1D","1W") |
+| activityId | NO        | string | Activity ID                                                      |
 
 > **Return example:**
 
@@ -762,13 +770,13 @@ websocket
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                                    |
-| ---------- | --------- | ------------------------------------------ |
-| code       | int       | 200, normal                                |
-| op         | string    | Message type ("unsub")                     |
-| topic      | string    | Subscribe to topics ("spot.market.ticker") |
+| Name  | Type   | Description                                |
+| ----- | ------ | ------------------------------------------ |
+| code  | int    | 200, normal                                |
+| op    | string | Message type ("unsub")                     |
+| topic | string | Subscribe to topics ("spot.market.ticker") |
 
 # General Info
 
@@ -804,13 +812,13 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type  | Remarks                            |
-| ---------- | ----- | ---------------------------------- |
-| code       | int   | 200, normal                        |
-| ts         | int64 | Request time, seconds              |
-| data       | int64 | Return value, current time, second |
+| Name | Type  | Description                        |
+| ---- | ----- | ---------------------------------- |
+| code | int   | 200, normal                        |
+| ts   | int64 | Request time, seconds              |
+| data | int64 | Return value, current time, second |
 
 ## Get all trading currency pairs
 
@@ -855,9 +863,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name      | Type   | Remarks                                                                                        |
+| Name            | Type   | Description                                                                                    |
 | --------------- | ------ | ---------------------------------------------------------------------------------------------- |
 | code            | int    | 200, normal                                                                                    |
 | ts              | int64  | Request time, seconds                                                                          |
@@ -967,9 +975,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name                | Type   | Remarks                                                                               |
+| Name                      | Type   | Description                                                                           |
 | ------------------------- | ------ | ------------------------------------------------------------------------------------- |
 | code                      | int    | 200, normal                                                                           |
 | msg                       | string | Description of the return value this time                                             |
@@ -989,7 +997,107 @@ no
 
 # Market Data Endpoints
 
-## Obtain k-line data
+## Order Book
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/orderbook?symbol=BTC-USDT&limit=5'
+```
+
+> Response
+
+```json
+{
+  "timestamp": 1648456620000,
+  "bids": [
+    [
+      "50006.1", // PRICE
+      "0.024" // QTY
+    ]
+  ],
+  "asks": [
+    [
+      "50006.34", // PRICE
+      "0.01" // QTY
+    ]
+  ]
+}
+```
+
+### HTTP Request
+
+GET `/api/v2/orderbook`
+
+### Parameters
+
+| Name   | Mandatory | Type   | Description                                 |
+| :----- | :-------- | :----- | :------------------------------------------ |
+| symbol | YES       | string | Name of the trading pair, example: BTC-USDT |
+| limit  | NO        | int    | Default value is 100                        |
+
+### Response
+
+| Name      | Type   | Description                                                            |
+| :-------- | :----- | :--------------------------------------------------------------------- |
+| timestamp | int    | Current time, unit in millisecond                                      |
+| bids      | string | Bid price and quantity, with best bid prices ranked from top to bottom |
+| asks      | string | Ask price and quantity, with best ask prices ranked from top to bottom |
+
+## Recent Trades List
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/trades?symbol=BTC-USDT'
+```
+
+> Response
+
+```json
+[
+  {
+    "trade_id": 728356542914519040,
+    "price": "71000",
+    "base_volume": "0.001",
+    "quote_volume": "71",
+    "timestamp": 1648456620000,
+    "type": "sell"
+  },
+  {
+    "trade_id": 728342639237160960,
+    "price": "70727.2",
+    "base_volume": "0.001",
+    "quote_volume": "70.7272",
+    "timestamp": 1648453305000,
+    "type": "buy"
+  }
+]
+```
+
+### HTTP Request
+
+GET `/api/v2/trades`
+
+### Parameters
+
+| Name   | Mandatory | Type   | Description                                 |
+| ------ | --------- | ------ | ------------------------------------------- |
+| symbol | YES       | string | Name of the trading pair, example: BTC-USDT |
+| limit  | NO        | int    | Default value is 100, max 100               |
+
+### Response
+
+| Name         | Type   | Description                            |
+| ------------ | ------ | -------------------------------------- |
+| trade_id     | int    | Order ID                               |
+| price        | string | Order price                            |
+| base_volume  | string | Trading volume                         |
+| quote_volume | string | Trading quote volume                   |
+| timestamp    | int    | Current timestamp, unit in millisecond |
+| type         | string | buy and sell direction                 |
+
+## Kline/Candlestick Data
 
 Speed limit rule: 20 times/2s
 
@@ -1009,12 +1117,12 @@ No
 
 **Post parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                                          |
-| :-------- | :------------- | :-------- | :--------------------------------------------------------------- |
-| symbol    | Yes            | string    | The name of the currency pair, for example "ETH-BTC"             |
-| period    | Yes            | string    | Time granularity（ "1","5","15","30","60","120","240","1D","1W") |
-| startTime | No             | int64     | Start time, timestamp (unit: seconds)                            |
-| endTime   | No             | int64     | End time, timestamp (unit: seconds)                              |
+| Name      | Mandatory | Type   | Description                                                      |
+| :-------- | :-------- | :----- | :--------------------------------------------------------------- |
+| symbol    | Yes       | string | The name of the currency pair, for example "ETH-BTC"             |
+| period    | Yes       | string | Time granularity（ "1","5","15","30","60","120","240","1D","1W") |
+| startTime | No        | int64  | Start time, timestamp (unit: seconds)                            |
+| endTime   | No        | int64  | End time, timestamp (unit: seconds)                              |
 
 > **Return example:**
 
@@ -1036,258 +1144,122 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                             |
-| :--------- | :-------- | :---------------------------------- |
-| code       | int       | Return value status                 |
-| time       | int64     | Timestamp                           |
-| amount     | string    | Trading currency volume             |
-| open       | string    | Opening price                       |
-| close      | string    | Closing price                       |
-| low        | string    | Lowest price                        |
-| hight      | string    | Highest price                       |
-| volume     | string    | Denominated currency trading volume |
+| Name   | Type   | Description                         |
+| :----- | :----- | :---------------------------------- |
+| code   | int    | Return value status                 |
+| time   | int64  | Timestamp                           |
+| amount | string | Trading currency volume             |
+| open   | string | Opening price                       |
+| close  | string | Closing price                       |
+| low    | string | Lowest price                        |
+| hight  | string | Highest price                       |
+| volume | string | Denominated currency trading volume |
 
-## Market Depth Data
+## 24hr Ticker Price Change Statistics
 
-Speed limit rule: 20 times/2s
+> Request
 
-**Function Description:**
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/ticker/24hr'
+```
 
-This interface returns the current market depth data of the specified trading pair.
+> Response
 
-**Request path:**
+```json
+[
+  {
+    "trading_pairs": "XLM-BTC",
+    "last_price": "0.01",
+    "lowest_ask": "0",
+    "highest_bid": "0",
+    "base_volume": "0",
+    "quote_volume": "0",
+    "price_change_percent_24h": "0",
+    "highest_price_24h": "0.01",
+    "lowest_price_24h": "0.01"
+  },
+  {
+    "trading_pairs": "WINK-USDT",
+    "last_price": "6.48",
+    "lowest_ask": "6.48",
+    "highest_bid": "6.47",
+    "base_volume": "0.15432",
+    "quote_volume": "0.9999936",
+    "price_change_percent_24h": "0",
+    "highest_price_24h": "6.48",
+    "lowest_price_24h": "6.48"
+  }
+]
+```
 
-/v1/market/depth
+### HTTP Request
 
-curl `https://api.fameex.com/v1/market/depth`
+GET `/api/v2/ticker/24hr`
 
-**Routing parameters:**
+### Parameters
 
-No
+| Name   | Mandatory | Type   | Description                                 |
+| ------ | --------- | ------ | ------------------------------------------- |
+| symbol | NO        | string | Name of the trading pair, example: BTC-USDT |
 
-**Post parameters:**
+### Response
 
-| Parameter | Do you have to | Data type | Remarks                                       |
-| :-------- | :------------- | :-------- | :-------------------------------------------- |
-| pairName  | Yes            | string    | For example: BTC-USDT                         |
-| setp      | YES            | string    | Price aggregation type of depth (step0~step4) |
-| size      | YES            | int       | Orders depth quantity((1<=size<= 100))        |
+| Name                     | Type   | Description              |
+| :----------------------- | :----- | :----------------------- |
+| trading_pairs            | string | Name of the trading pair |
+| last_price               | string | Last traded price        |
+| lowest_ask               | string | Best ask price           |
+| highest_bid              | string | Best bid price           |
+| base_volume              | string | Trading volume           |
+| quote_volume             | string | Trading quote volume     |
+| price_change_percent_24h | string | 24 hour increase         |
+| highest_price_24h        | string | High price               |
+| lowest_price_24h         | string | Low price                |
 
-> **Return example:**
+## Symbol Price Ticker
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/api/v2/ticker/price'
+```
+
+> Response
 
 ```json
 {
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "time": "1640058358",
-    "bids": [
-      ["100", "0.1"],
-      ["101", "0.2"]
-    ],
-    "asks": [
-      ["101", "0.05"],
-      ["102", "0.04"]
-    ]
+  "ETH-USDT": {
+    "last_price": "1097.8",
+    "base_volume": "0",
+    "quote_volume": "0"
+  },
+  "WINK-USDT": {
+    "last_price": "6.48",
+    "base_volume": "0.15432",
+    "quote_volume": "0.9999936"
   }
 }
 ```
 
-**Return value:**
+### HTTP Request
 
-| Field name | Data type     | Remarks                                                                          |
-| :--------- | :------------ | :------------------------------------------------------------------------------- |
-| code       | int           | Return value status                                                              |
-| msg        | string        | Return value description                                                         |
-| data       | array         | Return data: market depth data                                                   |
-| bids       | decimal array | An array containing 2 elements. The offer price and quantity for each bid order. |
-| asks       | decimal array | An array containing 2 elements. The ask price and quantity for each ask order.   |
+GET `/api/v2/ticker/price`
 
-## Get transaction data
+### Parameters
 
-Speed limit rule: 20 times/2s
+| Name   | Mandatory | Type   | Description                                 |
+| :----- | :-------- | :----- | :------------------------------------------ |
+| symbol | NO        | string | Name of the trading pair, example: BTC-USDT |
 
-**Function Description:**
+### Response
 
-This interface returns the transaction detail record of the specified trading pair.
-
-**Request path:**
-
-v1/market/history/trade
-
-curl `https://api.fameex.com/v1/market/history/trade`
-
-**Routing parameters:**
-
-No
-
-**Post parameters:**
-
-| Parameter | Do you have to | Data type | Remarks                                                |
-| :-------- | :------------- | :-------- | :----------------------------------------------------- |
-| symbol    | Yes            | string    | For example, the name of the currency pair: BTC-USDT   |
-| size      | Yes            | int       | Returned number of transaction details (1<=size<= 100) |
-
-> **Return example:**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": [
-    {
-      "tradeId": "10401466572658466816",
-      "side": 1,
-      "price": "1234546",
-      "amount": "123456",
-      "createTime": 1629854950
-    }
-  ]
-}
-```
-
-**Return value:**
-
-| Field name | Data type    | Remarks                                          |
-| :--------- | :----------- | :----------------------------------------------- |
-| code       | int          | 200, normal                                      |
-| msg        | string       | Remarks                                          |
-| data       | object array | Return value, the latest transaction record list |
-| tradeId    | string       | Transaction order id                             |
-| side       | int          | Order Direction 1-Buy 2-Sell                     |
-| price      | string       | Transaction price                                |
-| count      | string       | Number of transactions                           |
-| createTime | int64        | Time stamp unit of transaction time: second      |
-
-## Get a ticker information
-
-Speed limit rule: 20 times/2s
-
-**Function Description:**
-
-This interface returns a summary of the market data of the last 24 hours, and the data value time interval is a 24-hour rolling.
-
-**Request path:**
-
-/v1/market/history/kline24h
-
-curl `https://api.fameex.com/v1/market/history/kline24h`
-
-**Routing parameters:**
-
-No
-
-**Post parameters:**
-
-| Parameter | Do you have to | Data type | Remarks                                       |
-| :-------- | :------------- | :-------- | :-------------------------------------------- |
-| symbol    | Yes            | string    | Trading currency pair, for example "BTC-USDT" |
-
-> **Return example:**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "symbol": "BTC-USDT",
-    "gain": "0.0048",
-    "open": "00477",
-    "low": "00478",
-    "high": "00479",
-    "close": "0.0048",
-    "amount": "0.00482",
-    "volume": "10",
-    "quotePrice": "0.02405",
-    "bid": "1",
-    "ask": "1"
-  }
-}
-```
-
-**Return value:**
-
-| Field name | Data type | Remarks                                                |
-| :--------- | :-------- | :----------------------------------------------------- |
-| code       | int       | 200, normal                                            |
-| data       | object    | Market data                                            |
-| symbol     | string    | For example, the name of the currency pair: "BTC-USDT" |
-| gain       | string    | 24-hour increase                                       |
-| open       | string    | 24-hour opening price                                  |
-| low        | string    | Lowest price in 24 hours                               |
-| high       | string    | Highest price in 24 hours                              |
-| close      | string    | Latest transaction price                               |
-| amount     | string    | 24-hour trading currency volume                        |
-| volume     | string    | 24-hour denominated currency trading volume            |
-| quotePrice | string    | Denominated currency price                             |
-| bid        | string    | Buy one price                                          |
-| ask        | string    | Sell one price                                         |
-
-## Get all ticker information
-
-Speed limit rule: 20 times/2s
-
-**Function Description:**
-
-This interface returns a summary of the market data of the last 24 hours, and the data value time interval is a 24-hour rolling.
-
-**Request path:**
-
-/v1/market/history/kline24h/all
-
-curl `https://api.fameex.com/v1/market/history/kline24h/all`
-
-**Routing parameters:**
-
-No
-
-**Post parameters:**
-
-No
-
-> **Return example:**
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": [
-    {
-      "symbol": "BTC-USDT",
-      "gain": "0.0048",
-      "open": "00477",
-      "low": "00478",
-      "high": "00479",
-      "close": "0.0048",
-      "amount": "0.00482",
-      "volume": "10",
-      "quotePrice": "0.02405",
-      "bid": "1",
-      "ask": "1"
-    }
-  ]
-}
-```
-
-**Return value:**
-
-| Field name | Data type    | Remarks                                                |
-| :--------- | :----------- | :----------------------------------------------------- |
-| code       | int          | 200, normal                                            |
-| data       | object array | List of market data                                    |
-| symbol     | string       | For example, the name of the currency pair: "BTC-USDT" |
-| gain       | string       | 24-hour increase                                       |
-| open       | string       | 24-hour opening price                                  |
-| low        | string       | Lowest price in 24 hours                               |
-| high       | string       | Highest price in 24 hours                              |
-| close      | string       | Latest transaction price                               |
-| amount     | string       | 24-hour trading currency volume                        |
-| volume     | string       | 24-hour denominated currency trading volume            |
-| quotePrice | string       | Denominated currency price                             |
-| bid        | string       | Buy one price                                          |
-| ask        | string       | Sell one price                                         |
+| Name         | Type   | Description          |
+| :----------- | :----- | :------------------- |
+| last_price   | string | Last traded price    |
+| base_volume  | string | Trading volume       |
+| quote_volume | string | Trading quote volume |
 
 # Exchange API Endpoints
 
@@ -1311,16 +1283,16 @@ No
 
 **Post parameters:**
 
-| Parameter    | Do you have to | Data type | Remarks                                                                                           |
-| :----------- | :------------- | :-------- | :------------------------------------------------------------------------------------------------ |
-| symbol       | Yes            | string    | For example, the name of the currency pair: "BTC-USDT"                                            |
-| clientOid    | No             | string    | User-made order ID                                                                                |
-| side         | Yes            | int       | Order Direction 1-Buy 2-Sell                                                                      |
-| orderType    | Yes            | int       | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only |
-| price        | No             | string    | Commission price                                                                                  |
-| amount       | Yes            | string    | Entrusted quantity (trading amount when buying at market price)                                   |
-| triggerPrice | No             | string    | Trigger price                                                                                     |
-| backRatio    | No             | string    | Track the percentage of commissioned callbacks                                                    |
+| Name         | Mandatory | Type   | Description                                                                                       |
+| :----------- | :-------- | :----- | :------------------------------------------------------------------------------------------------ |
+| symbol       | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                                            |
+| clientOid    | No        | string | User-made order ID                                                                                |
+| side         | Yes       | int    | Order Direction 1-Buy 2-Sell                                                                      |
+| orderType    | Yes       | int    | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only |
+| price        | No        | string | Commission price                                                                                  |
+| amount       | Yes       | string | Entrusted quantity (trading amount when buying at market price)                                   |
+| triggerPrice | No        | string | Trigger price                                                                                     |
+| backRatio    | No        | string | Track the percentage of commissioned callbacks                                                    |
 
 > **Return example:**
 
@@ -1335,15 +1307,15 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                 |
-| :--------- | :-------- | :---------------------- |
-| code       | int       | 200, normal             |
-| msg        | string    | Information Description |
-| data       | object    | Order information       |
-| orderId    | string    | Order ID                |
-| clientOid  | string    | User-made order ID      |
+| Name      | Type   | Description             |
+| :-------- | :----- | :---------------------- |
+| code      | int    | 200, normal             |
+| msg       | string | Information Description |
+| data      | object | Order information       |
+| orderId   | string | Order ID                |
+| clientOid | string | User-made order ID      |
 
 ## Cancel Order
 
@@ -1365,11 +1337,11 @@ No
 
 **Post parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                                               |
-| :-------- | :------------- | :-------- | :-------------------------------------------------------------------- |
-| symbol    | Yes            | string    | For example, the name of the currency pair: "BTC-USDT"                |
-| orderid   | No             | string    | Order ID (orderId and clientOid must and can only be filled in)       |
-| clientOid | No             | string    | User-made order ID (orderId and clientOid must be filled in only one) |
+| Name      | Mandatory | Type   | Description                                                           |
+| :-------- | :-------- | :----- | :-------------------------------------------------------------------- |
+| symbol    | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                |
+| orderid   | No        | string | Order ID (orderId and clientOid must and can only be filled in)       |
+| clientOid | No        | string | User-made order ID (orderId and clientOid must be filled in only one) |
 
 > **Return example:**
 
@@ -1383,15 +1355,15 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                  |
-| :--------- | :-------- | :----------------------- |
-| code       | int       | 200, normal              |
-| msg        | string    | Remarks                  |
-| data       | object    | Return order information |
-| orderId    | string    | Order ID                 |
-| clientOid  | string    | User-made order ID       |
+| Name      | Type   | Description              |
+| :-------- | :----- | :----------------------- |
+| code      | int    | 200, normal              |
+| msg       | string | Description              |
+| data      | object | Return order information |
+| orderId   | string | Order ID                 |
+| clientOid | string | User-made order ID       |
 
 ## Batch cancellation
 
@@ -1413,11 +1385,11 @@ No
 
 **Post parameters:**
 
-| Parameter  | Do you have to | Data type | Remarks                                                                    |
-| :--------- | :------------- | :-------- | :------------------------------------------------------------------------- |
-| symbol     | Yes            | string    | For example, the name of the currency pair: "BTC-USDT"                     |
-| orderIds   | No             | array     | Order ID list (orderId and clientOid must be filled in only one)           |
-| clientOids | No             | array     | User-made order ID list (orderId and clientOid must be filled in only one) |
+| Name       | Mandatory | Type   | Description                                                                |
+| :--------- | :-------- | :----- | :------------------------------------------------------------------------- |
+| symbol     | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                     |
+| orderIds   | No        | array  | Order ID list (orderId and clientOid must be filled in only one)           |
+| clientOids | No        | array  | User-made order ID list (orderId and clientOid must be filled in only one) |
 
 ```json
 {
@@ -1432,16 +1404,16 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type    | Remarks                    |
-| :--------- | :----------- | :------------------------- |
-| code       | int          | 200, normal                |
-| msg        | string       | Remarks                    |
-| data       | object array | Batch cancellation details |
-| code       | array        | Batch cancellation details |
-| orderId    | string       | Order ID                   |
-| clientOid  | string       | User-made order ID         |
+| Name      | Type         | Description                |
+| :-------- | :----------- | :------------------------- |
+| code      | int          | 200, normal                |
+| msg       | string       | Description                |
+| data      | object array | Batch cancellation details |
+| code      | array        | Batch cancellation details |
+| orderId   | string       | Order ID                   |
+| clientOid | string       | User-made order ID         |
 
 ## Get order details
 
@@ -1463,11 +1435,11 @@ No
 
 **Post parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                                               |
-| :-------- | :------------- | :-------- | :-------------------------------------------------------------------- |
-| symbol    | Yes            | string    | The name of the currency pair, such as "BTC-USDT"                     |
-| orderId   | No             | string    | Order ID (orderId and clientOid must and can only be filled in)       |
-| clientOid | No             | string    | User-made order ID (orderId and clientOid must be filled in only one) |
+| Name      | Mandatory | Type   | Description                                                           |
+| :-------- | :-------- | :----- | :-------------------------------------------------------------------- |
+| symbol    | Yes       | string | The name of the currency pair, such as "BTC-USDT"                     |
+| orderId   | No        | string | Order ID (orderId and clientOid must and can only be filled in)       |
+| clientOid | No        | string | User-made order ID (orderId and clientOid must be filled in only one) |
 
 > **Return example:**
 
@@ -1487,38 +1459,38 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type | Remarks                                                                                                                                         |
-| :-------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
-| code            | int       | Return value status                                                                                                                             |
-| msg             | string    | Return value description                                                                                                                        |
-| data            | object    | Return value, order details                                                                                                                     |
-| orderId         | string    | Order ID                                                                                                                                        |
-| clientOid       | string    | User-made order ID                                                                                                                              |
-| symbol          | string    | The name of the currency pair (for example: BTC-USDT)                                                                                           |
-| side            | int       | Order Direction 1-Buy 2-Sell                                                                                                                    |
-| orderType       | int       | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only                                               |
-| price           | string    | Commission price                                                                                                                                |
-| amount          | string    | Number of orders                                                                                                                                |
-| money           | string    | Entrusted amount (when buying at market price)                                                                                                  |
-| filledAmount    | string    | Number of transactions                                                                                                                          |
-| filledMoney     | string    | Transaction amount                                                                                                                              |
-| filledFee       | string    | Transaction fee                                                                                                                                 |
-| feeCurrency     | string    | Transaction fee currency                                                                                                                        |
-| triggerPrice    | string    | Order trigger price                                                                                                                             |
-| triggerType     | string    | Order trigger type gte-greater than or equal to lte-less than or equal to                                                                       |
-| triggerState    | int       | Trigger status 1-trigger successful                                                                                                             |
-| liquidationType | int       | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up                                                                         |
-| strategyId      | string    | Strategy Id                                                                                                                                     |
-| strategyType    | int       | Strategy type                                                                                                                                   |
-| strategyName    | string    | Set the name of the strategy                                                                                                                    |
-| state           | int       | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled           |
-| accountType     | string    | Account type                                                                                                                                    |
-| platform        | string    | Platform source                                                                                                                                 |
-| cancelType      | int       | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation 4-Liquidation Cancellation 5-Lightening Cancellation |
-| createTime      | int64     | Creation time                                                                                                                                   |
-| updateTime      | int64     | Status update time                                                                                                                              |
+| Name            | Type   | Description                                                                                                                                     |
+| :-------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+| code            | int    | Return value status                                                                                                                             |
+| msg             | string | Return value description                                                                                                                        |
+| data            | object | Return value, order details                                                                                                                     |
+| orderId         | string | Order ID                                                                                                                                        |
+| clientOid       | string | User-made order ID                                                                                                                              |
+| symbol          | string | The name of the currency pair (for example: BTC-USDT)                                                                                           |
+| side            | int    | Order Direction 1-Buy 2-Sell                                                                                                                    |
+| orderType       | int    | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only                                               |
+| price           | string | Commission price                                                                                                                                |
+| amount          | string | Number of orders                                                                                                                                |
+| money           | string | Entrusted amount (when buying at market price)                                                                                                  |
+| filledAmount    | string | Number of transactions                                                                                                                          |
+| filledMoney     | string | Transaction amount                                                                                                                              |
+| filledFee       | string | Transaction fee                                                                                                                                 |
+| feeCurrency     | string | Transaction fee currency                                                                                                                        |
+| triggerPrice    | string | Order trigger price                                                                                                                             |
+| triggerType     | string | Order trigger type gte-greater than or equal to lte-less than or equal to                                                                       |
+| triggerState    | int    | Trigger status 1-trigger successful                                                                                                             |
+| liquidationType | int    | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up                                                                         |
+| strategyId      | string | Strategy Id                                                                                                                                     |
+| strategyType    | int    | Strategy type                                                                                                                                   |
+| strategyName    | string | Set the name of the strategy                                                                                                                    |
+| state           | int    | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled           |
+| accountType     | string | Account type                                                                                                                                    |
+| platform        | string | Platform source                                                                                                                                 |
+| cancelType      | int    | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation 4-Liquidation Cancellation 5-Lightening Cancellation |
+| createTime      | int64  | Creation time                                                                                                                                   |
+| updateTime      | int64  | Status update time                                                                                                                              |
 
 ## Get a list of orders
 
@@ -1540,19 +1512,19 @@ No
 
 **Post parameters:**
 
-| Parameter    | Do you have to | Data type | Remarks                                                                                                     |
-| :----------- | :------------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
-| base         | Yes            | string    | Transaction currency (uppercase, such as "BTC")                                                             |
-| quote        | Yes            | string    | Denominated currency (uppercase, such as "USDT")                                                            |
-| side         | Yes            | string    | Order Direction 1-Buy 2-Sell                                                                                |
-| orderTypes   | Yes            | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
-| state        | Yes            | string    | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                   |
-| pageno       | No             | string    | Pagination, the first few pages (1<=pageNum)                                                                |
-| pageSize     | No             | string    | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
-| startTime    | Yes            | string    | Start timestamp, seconds                                                                                    |
-| endTime      | Yes            | string    | End timestamp, seconds                                                                                      |
-| strategyId   | No             | string    | Strategy Id                                                                                                 |
-| strategyType | No             | string    | Strategy type                                                                                               |
+| Name         | Mandatory | Type      | Description                                                                                                 |
+| :----------- | :-------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
+| base         | Yes       | string    | Transaction currency (uppercase, such as "BTC")                                                             |
+| quote        | Yes       | string    | Denominated currency (uppercase, such as "USDT")                                                            |
+| side         | Yes       | string    | Order Direction 1-Buy 2-Sell                                                                                |
+| orderTypes   | Yes       | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
+| state        | Yes       | string    | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                   |
+| pageno       | No        | string    | Pagination, the first few pages (1<=pageNum)                                                                |
+| pageSize     | No        | string    | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
+| startTime    | Yes       | string    | Start timestamp, seconds                                                                                    |
+| endTime      | Yes       | string    | End timestamp, seconds                                                                                      |
+| strategyId   | No        | string    | Strategy Id                                                                                                 |
+| strategyType | No        | string    | Strategy type                                                                                               |
 
 > **Return example:**
 
@@ -1579,9 +1551,9 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type    | Remarks                                                                                                                                         |
+| Name            | Type         | Description                                                                                                                                     |
 | :-------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
 | code            | int          | Return value status                                                                                                                             |
 | msg             | string       | Return value description                                                                                                                        |
@@ -1636,19 +1608,19 @@ No
 
 **Post parameters:**
 
-| Parameter    | Do you have to | Data type | Remarks                                                                                                     |
-| :----------- | :------------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
-| base         | No             | string    | Transaction currency (uppercase, such as "BTC")                                                             |
-| quote        | No             | string    | Denominated currency (uppercase, such as "USDT")                                                            |
-| orderId      | No             | string    | Order ID                                                                                                    |
-| side         | No             | int       | Order Direction 1-Buy 2-Sell                                                                                |
-| orderTypes   | No             | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
-| pageno       | Yes            | int       | Pagination, the first few pages (1<=pageNum)                                                                |
-| pageSize     | Yes            | int       | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
-| startTime    | No             | int64     | Start timestamp, seconds                                                                                    |
-| endTime      | No             | int64     | End timestamp, seconds                                                                                      |
-| strategyId   | No             | string    | Strategy Id                                                                                                 |
-| strategyType | No             | int       | Strategy type                                                                                               |
+| Name         | Mandatory | Type      | Description                                                                                                 |
+| :----------- | :-------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
+| base         | No        | string    | Transaction currency (uppercase, such as "BTC")                                                             |
+| quote        | No        | string    | Denominated currency (uppercase, such as "USDT")                                                            |
+| orderId      | No        | string    | Order ID                                                                                                    |
+| side         | No        | int       | Order Direction 1-Buy 2-Sell                                                                                |
+| orderTypes   | No        | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
+| pageno       | Yes       | int       | Pagination, the first few pages (1<=pageNum)                                                                |
+| pageSize     | Yes       | int       | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
+| startTime    | No        | int64     | Start timestamp, seconds                                                                                    |
+| endTime      | No        | int64     | End timestamp, seconds                                                                                      |
+| strategyId   | No        | string    | Strategy Id                                                                                                 |
+| strategyType | No        | int       | Strategy type                                                                                               |
 
 > **Return example:**
 
@@ -1682,9 +1654,9 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type    | Remarks                                                                                           |
+| Name            | Type         | Description                                                                                       |
 | :-------------- | :----------- | :------------------------------------------------------------------------------------------------ |
 | code            | int          | Return value status                                                                               |
 | msg             | string       | Return value description                                                                          |
@@ -1729,11 +1701,11 @@ curl `https://api.fameex.com/v1/api/orders_pending`
 
 **Routing parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                                       |
-| :-------- | :------------- | :-------- | :------------------------------------------------------------ |
-| pairName  | Yes            | string    | The name of the currency pair (for example: BTC_USDT)         |
-| pageno    | Yes            | string    | Paging use, the first few pages, starting from the first page |
-| pageSize  | Yes            | string    | Paging usage, number per page (0< pageSize ≤ 500)             |
+| Name     | Mandatory | Type   | Description                                                   |
+| :------- | :-------- | :----- | :------------------------------------------------------------ |
+| pairName | Yes       | string | The name of the currency pair (for example: BTC_USDT)         |
+| pageno   | Yes       | string | Paging use, the first few pages, starting from the first page |
+| pageSize | Yes       | string | Paging usage, number per page (0< pageSize ≤ 500)             |
 
 **Post parameters:**
 
@@ -1766,23 +1738,23 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name  | Data type | Remarks                                               |
-| :---------- | :-------- | :---------------------------------------------------- |
-| code        | int       | Return value status                                   |
-| msg         | string    | Return value description                              |
-| data        | string    | Return value, transaction details                     |
-| pairName    | string    | The name of the currency pair (for example: BTC_USDT) |
-| orderId     | string    | Order number                                          |
-| buyClass    | int       | Transaction type: 0 limit transaction                 |
-| buyType     | int       | Trading direction: 0 buy, 1 sell                      |
-| price       | string    | Commission price                                      |
-| count       | string    | Number of orders                                      |
-| dealedCount | string    | Number of transactions                                |
-| dealedMoney | string    | Transaction amount                                    |
-| state       | int       | 1 Not effective 2 Not completed 3 Partially completed |
-| time        | int64     | Time (unit: nanosecond)                               |
+| Name        | Type   | Description                                           |
+| :---------- | :----- | :---------------------------------------------------- |
+| code        | int    | Return value status                                   |
+| msg         | string | Return value description                              |
+| data        | string | Return value, transaction details                     |
+| pairName    | string | The name of the currency pair (for example: BTC_USDT) |
+| orderId     | string | Order number                                          |
+| buyClass    | int    | Transaction type: 0 limit transaction                 |
+| buyType     | int    | Trading direction: 0 buy, 1 sell                      |
+| price       | string | Commission price                                      |
+| count       | string | Number of orders                                      |
+| dealedCount | string | Number of transactions                                |
+| dealedMoney | string | Transaction amount                                    |
+| state       | int    | 1 Not effective 2 Not completed 3 Partially completed |
+| time        | int64  | Time (unit: nanosecond)                               |
 
 # Wallet API Endpoints
 
@@ -1836,9 +1808,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks                                                             |
+| Name       | Type   | Description                                                         |
 | ---------- | ------ | ------------------------------------------------------------------- |
 | code       | int    | 200, normal                                                         |
 | data       | list   | Return value, currency account data                                 |
@@ -1865,9 +1837,9 @@ curl `https://api.fameex.com/v1/api/account/wallet/currency`
 
 **Routing parameters:**
 
-| parameter | Mandatory | Type   | Remarks            |
-| --------- | --------- | ------ | ------------------ |
-| currency  | Yes       | string | Currency, e.g. BTC |
+| Name     | Mandatory | Type   | Description        |
+| -------- | --------- | ------ | ------------------ |
+| currency | Yes       | string | Currency, e.g. BTC |
 
 **Post Parameter:**
 
@@ -1887,16 +1859,16 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks                                               |
-| ---------- | ------ | ----------------------------------------------------- |
-| code       | int    | 200, normal                                           |
-| msg        | string | Description of the return value this time             |
-| userid     | string | User id                                               |
-| data       | map    | Return value, currency account, details of a currency |
-| available  | string | Available Balance                                     |
-| hold       | string | Frozen amount                                         |
+| Name      | Type   | Description                                           |
+| --------- | ------ | ----------------------------------------------------- |
+| code      | int    | 200, normal                                           |
+| msg       | string | Description of the return value this time             |
+| userid    | string | User id                                               |
+| data      | map    | Return value, currency account, details of a currency |
+| available | string | Available Balance                                     |
+| hold      | string | Frozen amount                                         |
 
 ## Transfer
 
@@ -1918,14 +1890,14 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                                                                                               |
-| --------- | --------- | ------ | --------------------------------------------------------------------------------------------------------------------- |
-| currency  | Yes       | string | Currency type                                                                                                         |
-| amount    | Yes       | string | Quantity                                                                                                              |
-| from      | Yes       | string | Transfer account: spot spot account, otc fiat currency account, l2c margin account, swap USDT-futures account         |
-| to        | Yes       | string | Transfer account: spot spot account, otc fiat currency account, l2c margin account, swap USDT-futures account         |
-| fromPair  | no        | string | The outgoing currency pair during the mutual transfer between margin account currency pairs, for example: BTC_USDT    |
-| toPair    | no        | string | The transferred currency pair during the mutual transfer between margin account currency pairs, for example: ETH_USDT |
+| Name     | Mandatory | Type   | Description                                                                                                           |
+| -------- | --------- | ------ | --------------------------------------------------------------------------------------------------------------------- |
+| currency | Yes       | string | Currency type                                                                                                         |
+| amount   | Yes       | string | Quantity                                                                                                              |
+| from     | Yes       | string | Transfer account: spot spot account, otc fiat currency account, l2c margin account, swap USDT-futures account         |
+| to       | Yes       | string | Transfer account: spot spot account, otc fiat currency account, l2c margin account, swap USDT-futures account         |
+| fromPair | no        | string | The outgoing currency pair during the mutual transfer between margin account currency pairs, for example: BTC_USDT    |
+| toPair   | no        | string | The transferred currency pair during the mutual transfer between margin account currency pairs, for example: ETH_USDT |
 
 > **Return example:**
 
@@ -1940,15 +1912,15 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks                                           |
-| ---------- | ------ | ------------------------------------------------- |
-| code       | int    | 200, normal                                       |
-| msg        | string | success, normal                                   |
-| data       | object | The response object returned by the fund transfer |
-| orderid    | string | Order id                                          |
-| userid     | string | User id                                           |
+| Name    | Type   | Description                                       |
+| ------- | ------ | ------------------------------------------------- |
+| code    | int    | 200, normal                                       |
+| msg     | string | success, normal                                   |
+| data    | object | The response object returned by the fund transfer |
+| orderid | string | Order id                                          |
+| userid  | string | User id                                           |
 
 ## Get a transaction bill for a spot account
 
@@ -1970,7 +1942,7 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                                             |
+| Name      | Mandatory | Type   | Description                                                         |
 | --------- | --------- | ------ | ------------------------------------------------------------------- |
 | tradeType | no        | int    | Transaction type: 0. All; 2. Buy; 3. Sell; 4. Actual fee            |
 | currency  | no        | string | Example of currency name: ETH                                       |
@@ -2018,9 +1990,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name  | Type   | Remarks                                          |
+| Name        | Type   | Description                                      |
 | ----------- | ------ | ------------------------------------------------ |
 | code        | int    | 200, normal                                      |
 | msg         | string | success, normal                                  |
@@ -2053,7 +2025,7 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                             |
+| Name      | Mandatory | Type   | Description                                         |
 | --------- | --------- | ------ | --------------------------------------------------- |
 | tradeType | no        | int    | Transaction type: 0. All; 1. Withdrawal; 2. Deposit |
 | currency  | no        | string | Example of currency name: ETH                       |
@@ -2124,9 +2096,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name  | Type   | Remarks                                                                                                                                                                                                                                                                            |
+| Name        | Type   | Description                                                                                                                                                                                                                                                                        |
 | ----------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | code        | int    | 200, normal                                                                                                                                                                                                                                                                        |
 | msg         | string | success, normal                                                                                                                                                                                                                                                                    |
@@ -2164,7 +2136,7 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                                   |
+| Name      | Mandatory | Type   | Description                                               |
 | --------- | --------- | ------ | --------------------------------------------------------- |
 | tradeType | no        | int    | Transaction type: 0. All; 1. Transfer in; 2. Transfer out |
 | currency  | no        | string | Example of currency name: ETH                             |
@@ -2212,9 +2184,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name   | Type   | Remarks                                                       |
+| Name         | Type   | Description                                                   |
 | ------------ | ------ | ------------------------------------------------------------- |
 | code         | int    | 200, normal                                                   |
 | msg          | string | success, normal                                               |
@@ -2251,7 +2223,7 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                            |
+| Name      | Mandatory | Type   | Description                                        |
 | --------- | --------- | ------ | -------------------------------------------------- |
 | tradeType | no        | int    | Transaction type: 0. All; 1. Rebate; 2. Activities |
 | currency  | no        | string | Example of currency name: ETH                      |
@@ -2287,9 +2259,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name  | Type   | Remarks                                    |
+| Name        | Type   | Description                                |
 | ----------- | ------ | ------------------------------------------ |
 | code        | int    | 200, normal                                |
 | msg         | string | success, normal                            |
@@ -2318,7 +2290,7 @@ curl `https://api.fameex.com/v1/api/account/deposit/address`
 
 **Routing parameters:**
 
-| parameter | Mandatory | Type   | Remarks            |
+| Name      | Mandatory | Type   | Description        |
 | --------- | --------- | ------ | ------------------ |
 | coinType  | Yes       | string | Currency type USDT |
 | chainType | Yes       | string | Chain type ERC20   |
@@ -2348,15 +2320,15 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks           |
-| ---------- | ------ | ----------------- |
-| code       | int    | 200, normal       |
-| request    | map    | Request parameter |
-| userId     | string | User id           |
-| coinType   | string | Currency          |
-| address    | string | address           |
+| Name     | Type   | Description       |
+| -------- | ------ | ----------------- |
+| code     | int    | 200, normal       |
+| request  | map    | Request parameter |
+| userId   | string | User id           |
+| coinType | string | Currency          |
+| address  | string | address           |
 
 ## Get margin account information
 
@@ -2425,9 +2397,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name     | Type   | Remarks                                                                          |
+| Name           | Type   | Description                                                                      |
 | -------------- | ------ | -------------------------------------------------------------------------------- |
 | code           | int    | 200, normal                                                                      |
 | data           | list   | Return value, margin account data                                                |
@@ -2465,9 +2437,9 @@ curl `https://api.fameex.com/v1/api/lever/accounts`
 
 **Routing parameters:**
 
-| parameter | Mandatory | Type   | Remarks                         |
-| --------- | --------- | ------ | ------------------------------- |
-| pairName  | Yes       | string | Currency pair, example BTC_USDT |
+| Name     | Mandatory | Type   | Description                     |
+| -------- | --------- | ------ | ------------------------------- |
+| pairName | Yes       | string | Currency pair, example BTC_USDT |
 
 **Post Parameter:**
 
@@ -2500,9 +2472,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name     | Type   | Remarks                                     |
+| Name           | Type   | Description                                 |
 | -------------- | ------ | ------------------------------------------- |
 | code           | int    | 200, normal                                 |
 | data           | list   | Return value, margin account data           |
@@ -2544,16 +2516,16 @@ No
 
 **Post parameters:**
 
-| Parameter    | Do you have to | Data type | Remarks                                                                                           |
-| :----------- | :------------- | :-------- | :------------------------------------------------------------------------------------------------ |
-| symbol       | Yes            | string    | For example, the name of the currency pair: "BTC-USDT"                                            |
-| clientOid    | No             | string    | User-made order ID                                                                                |
-| side         | Yes            | int       | Order Direction 1-Buy 2-Sell                                                                      |
-| orderType    | Yes            | int       | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only |
-| price        | No             | string    | Commission price                                                                                  |
-| amount       | Yes            | string    | Entrusted quantity (trading amount when buying at market price)                                   |
-| triggerPrice | No             | string    | Trigger price                                                                                     |
-| backRatio    | No             | string    | Track the percentage of commissioned callbacks                                                    |
+| Name         | Mandatory | Type   | Description                                                                                       |
+| :----------- | :-------- | :----- | :------------------------------------------------------------------------------------------------ |
+| symbol       | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                                            |
+| clientOid    | No        | string | User-made order ID                                                                                |
+| side         | Yes       | int    | Order Direction 1-Buy 2-Sell                                                                      |
+| orderType    | Yes       | int    | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only |
+| price        | No        | string | Commission price                                                                                  |
+| amount       | Yes       | string | Entrusted quantity (trading amount when buying at market price)                                   |
+| triggerPrice | No        | string | Trigger price                                                                                     |
+| backRatio    | No        | string | Track the percentage of commissioned callbacks                                                    |
 
 > **Return example:**
 
@@ -2568,15 +2540,15 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                 |
-| :--------- | :-------- | :---------------------- |
-| code       | int       | 200, normal             |
-| msg        | string    | Information Description |
-| data       | object    | Order information       |
-| orderId    | string    | Order ID                |
-| clientOid  | string    | User-made order ID      |
+| Name      | Type   | Description             |
+| :-------- | :----- | :---------------------- |
+| code      | int    | 200, normal             |
+| msg       | string | Information Description |
+| data      | object | Order information       |
+| orderId   | string | Order ID                |
+| clientOid | string | User-made order ID      |
 
 ## Leverage Cancellation
 
@@ -2598,11 +2570,11 @@ No
 
 **Post parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                                               |
-| :-------- | :------------- | :-------- | :-------------------------------------------------------------------- |
-| symbol    | Yes            | string    | For example, the name of the currency pair: "BTC-USDT"                |
-| orderid   | No             | string    | Order ID (orderId and clientOid must and can only be filled in)       |
-| clientOid | No             | string    | User-made order ID (orderId and clientOid must be filled in only one) |
+| Name      | Mandatory | Type   | Description                                                           |
+| :-------- | :-------- | :----- | :-------------------------------------------------------------------- |
+| symbol    | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                |
+| orderid   | No        | string | Order ID (orderId and clientOid must and can only be filled in)       |
+| clientOid | No        | string | User-made order ID (orderId and clientOid must be filled in only one) |
 
 > **Return example:**
 
@@ -2616,15 +2588,15 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type | Remarks                  |
-| :--------- | :-------- | :----------------------- |
-| code       | int       | 200, normal              |
-| msg        | string    | Remarks                  |
-| data       | object    | Return order information |
-| orderId    | string    | Order ID                 |
-| clientOid  | string    | User-made order ID       |
+| Name      | Type   | Description              |
+| :-------- | :----- | :----------------------- |
+| code      | int    | 200, normal              |
+| msg       | string | Description              |
+| data      | object | Return order information |
+| orderId   | string | Order ID                 |
+| clientOid | string | User-made order ID       |
 
 ## Leverage batch cancellation
 
@@ -2646,11 +2618,11 @@ No
 
 **Post parameters:**
 
-| Parameter  | Do you have to | Data type | Remarks                                                                    |
-| :--------- | :------------- | :-------- | :------------------------------------------------------------------------- |
-| symbol     | Yes            | string    | For example, the name of the currency pair: "BTC-USDT"                     |
-| orderIds   | No             | array     | Order ID list (orderId and clientOid must be filled in only one)           |
-| clientOids | No             | array     | User-made order ID list (orderId and clientOid must be filled in only one) |
+| Name       | Mandatory | Type   | Description                                                                |
+| :--------- | :-------- | :----- | :------------------------------------------------------------------------- |
+| symbol     | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                     |
+| orderIds   | No        | array  | Order ID list (orderId and clientOid must be filled in only one)           |
+| clientOids | No        | array  | User-made order ID list (orderId and clientOid must be filled in only one) |
 
 ```json
 {
@@ -2665,16 +2637,16 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name | Data type    | Remarks                    |
-| :--------- | :----------- | :------------------------- |
-| code       | int          | 200, normal                |
-| msg        | string       | Remarks                    |
-| data       | object array | Batch cancellation details |
-| code       | array        | Batch cancellation details |
-| orderId    | string       | Order ID                   |
-| clientOid  | string       | User-made order ID         |
+| Name      | Type         | Description                |
+| :-------- | :----------- | :------------------------- |
+| code      | int          | 200, normal                |
+| msg       | string       | Description                |
+| data      | object array | Batch cancellation details |
+| code      | array        | Batch cancellation details |
+| orderId   | string       | Order ID                   |
+| clientOid | string       | User-made order ID         |
 
 ## Get a list of leveraged orders
 
@@ -2696,19 +2668,19 @@ No
 
 **Post parameters:**
 
-| Parameter    | Do you have to | Data type | Remarks                                                                                                     |
-| :----------- | :------------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
-| base         | Yes            | string    | Transaction currency (uppercase, such as "BTC")                                                             |
-| quote        | Yes            | string    | Denominated currency (uppercase, such as "USDT")                                                            |
-| side         | Yes            | string    | Order Direction 1-Buy 2-Sell                                                                                |
-| orderTypes   | Yes            | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
-| state        | Yes            | string    | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                   |
-| pageno       | No             | string    | Pagination, the first few pages (1<=pageNum)                                                                |
-| pageSize     | No             | string    | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
-| startTime    | Yes            | string    | Start timestamp, seconds                                                                                    |
-| endTime      | Yes            | string    | End timestamp, seconds                                                                                      |
-| strategyId   | No             | string    | Strategy Id                                                                                                 |
-| strategyType | No             | string    | Strategy type                                                                                               |
+| Name         | Mandatory | Type      | Description                                                                                                 |
+| :----------- | :-------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
+| base         | Yes       | string    | Transaction currency (uppercase, such as "BTC")                                                             |
+| quote        | Yes       | string    | Denominated currency (uppercase, such as "USDT")                                                            |
+| side         | Yes       | string    | Order Direction 1-Buy 2-Sell                                                                                |
+| orderTypes   | Yes       | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
+| state        | Yes       | string    | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                   |
+| pageno       | No        | string    | Pagination, the first few pages (1<=pageNum)                                                                |
+| pageSize     | No        | string    | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
+| startTime    | Yes       | string    | Start timestamp, seconds                                                                                    |
+| endTime      | Yes       | string    | End timestamp, seconds                                                                                      |
+| strategyId   | No        | string    | Strategy Id                                                                                                 |
+| strategyType | No        | string    | Strategy type                                                                                               |
 
 > **Return example:**
 
@@ -2735,9 +2707,9 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type    | Remarks                                                                                                                                         |
+| Name            | Type         | Description                                                                                                                                     |
 | :-------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
 | code            | int          | Return value status                                                                                                                             |
 | msg             | string       | Return value description                                                                                                                        |
@@ -2792,11 +2764,11 @@ No
 
 **Post parameters:**
 
-| Parameter | Do you have to | Data type | Remarks                                                               |
-| :-------- | :------------- | :-------- | :-------------------------------------------------------------------- |
-| symbol    | Yes            | string    | The name of the currency pair, such as "BTC-USDT"                     |
-| orderId   | No             | string    | Order ID (orderId and clientOid must and can only be filled in)       |
-| clientOid | No             | string    | User-made order ID (orderId and clientOid must be filled in only one) |
+| Name      | Mandatory | Type   | Description                                                           |
+| :-------- | :-------- | :----- | :-------------------------------------------------------------------- |
+| symbol    | Yes       | string | The name of the currency pair, such as "BTC-USDT"                     |
+| orderId   | No        | string | Order ID (orderId and clientOid must and can only be filled in)       |
+| clientOid | No        | string | User-made order ID (orderId and clientOid must be filled in only one) |
 
 > **Return example:**
 
@@ -2816,38 +2788,38 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type | Remarks                                                                                                                                         |
-| :-------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
-| code            | int       | Return value status                                                                                                                             |
-| msg             | string    | Return value description                                                                                                                        |
-| data            | object    | Return value, order details                                                                                                                     |
-| orderId         | string    | Order ID                                                                                                                                        |
-| clientOid       | string    | User-made order ID                                                                                                                              |
-| symbol          | string    | The name of the currency pair (for example: BTC-USDT)                                                                                           |
-| side            | int       | Order Direction 1-Buy 2-Sell                                                                                                                    |
-| orderType       | int       | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only                                               |
-| price           | string    | Commission price                                                                                                                                |
-| amount          | string    | Number of orders                                                                                                                                |
-| money           | string    | Entrusted amount (when buying at market price)                                                                                                  |
-| filledAmount    | string    | Number of transactions                                                                                                                          |
-| filledMoney     | string    | Transaction amount                                                                                                                              |
-| filledFee       | string    | Transaction fee                                                                                                                                 |
-| feeCurrency     | string    | Transaction fee currency                                                                                                                        |
-| triggerPrice    | string    | Order trigger price                                                                                                                             |
-| triggerType     | string    | Order trigger type gte-greater than or equal to lte-less than or equal to                                                                       |
-| triggerState    | int       | Trigger status 1-trigger successful                                                                                                             |
-| liquidationType | int       | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up                                                                         |
-| strategyId      | string    | Strategy Id                                                                                                                                     |
-| strategyType    | int       | Strategy type                                                                                                                                   |
-| strategyName    | string    | Set the name of the strategy                                                                                                                    |
-| state           | int       | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled           |
-| accountType     | string    | Account type                                                                                                                                    |
-| platform        | string    | Platform source                                                                                                                                 |
-| cancelType      | int       | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation 4-Liquidation Cancellation 5-Lightening Cancellation |
-| createTime      | int64     | Creation time                                                                                                                                   |
-| updateTime      | int64     | Status update time                                                                                                                              |
+| Name            | Type   | Description                                                                                                                                     |
+| :-------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+| code            | int    | Return value status                                                                                                                             |
+| msg             | string | Return value description                                                                                                                        |
+| data            | object | Return value, order details                                                                                                                     |
+| orderId         | string | Order ID                                                                                                                                        |
+| clientOid       | string | User-made order ID                                                                                                                              |
+| symbol          | string | The name of the currency pair (for example: BTC-USDT)                                                                                           |
+| side            | int    | Order Direction 1-Buy 2-Sell                                                                                                                    |
+| orderType       | int    | Order Type 1-Limit Price 2-Market Price 3-Take Profit and Stop Loss 4-Tracking Order 5-Maker Only                                               |
+| price           | string | Commission price                                                                                                                                |
+| amount          | string | Number of orders                                                                                                                                |
+| money           | string | Entrusted amount (when buying at market price)                                                                                                  |
+| filledAmount    | string | Number of transactions                                                                                                                          |
+| filledMoney     | string | Transaction amount                                                                                                                              |
+| filledFee       | string | Transaction fee                                                                                                                                 |
+| feeCurrency     | string | Transaction fee currency                                                                                                                        |
+| triggerPrice    | string | Order trigger price                                                                                                                             |
+| triggerType     | string | Order trigger type gte-greater than or equal to lte-less than or equal to                                                                       |
+| triggerState    | int    | Trigger status 1-trigger successful                                                                                                             |
+| liquidationType | int    | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up                                                                         |
+| strategyId      | string | Strategy Id                                                                                                                                     |
+| strategyType    | int    | Strategy type                                                                                                                                   |
+| strategyName    | string | Set the name of the strategy                                                                                                                    |
+| state           | int    | Order Status 1- Created 2- Waiting for Transaction 3- Partially Completed 4- Completely Completed 5- Partially Cancelled 6- Cancelled           |
+| accountType     | string | Account type                                                                                                                                    |
+| platform        | string | Platform source                                                                                                                                 |
+| cancelType      | int    | Order Cancellation Type 1-User Cancellation 2-System Cancellation 3-Operation Cancellation 4-Liquidation Cancellation 5-Lightening Cancellation |
+| createTime      | int64  | Creation time                                                                                                                                   |
+| updateTime      | int64  | Status update time                                                                                                                              |
 
 ## Get leveraged transaction details
 
@@ -2869,19 +2841,19 @@ No
 
 **Post parameters:**
 
-| Parameter    | Do you have to | Data type | Remarks                                                                                                     |
-| :----------- | :------------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
-| base         | No             | string    | Transaction currency (uppercase, such as "BTC")                                                             |
-| quote        | No             | string    | Denominated currency (uppercase, such as "USDT")                                                            |
-| orderId      | No             | string    | Order ID                                                                                                    |
-| side         | No             | int       | Order Direction 1-Buy 2-Sell                                                                                |
-| orderTypes   | No             | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
-| pageno       | Yes            | int       | Pagination, the first few pages (1<=pageNum)                                                                |
-| pageSize     | Yes            | int       | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
-| startTime    | No             | int64     | Start timestamp, seconds                                                                                    |
-| endTime      | No             | int64     | End timestamp, seconds                                                                                      |
-| strategyId   | No             | string    | Strategy Id                                                                                                 |
-| strategyType | No             | int       | Strategy type                                                                                               |
+| Name         | Mandatory | Type      | Description                                                                                                 |
+| :----------- | :-------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
+| base         | No        | string    | Transaction currency (uppercase, such as "BTC")                                                             |
+| quote        | No        | string    | Denominated currency (uppercase, such as "USDT")                                                            |
+| orderId      | No        | string    | Order ID                                                                                                    |
+| side         | No        | int       | Order Direction 1-Buy 2-Sell                                                                                |
+| orderTypes   | No        | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
+| pageno       | Yes       | int       | Pagination, the first few pages (1<=pageNum)                                                                |
+| pageSize     | Yes       | int       | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
+| startTime    | No        | int64     | Start timestamp, seconds                                                                                    |
+| endTime      | No        | int64     | End timestamp, seconds                                                                                      |
+| strategyId   | No        | string    | Strategy Id                                                                                                 |
+| strategyType | No        | int       | Strategy type                                                                                               |
 
 > **Return example:**
 
@@ -2915,9 +2887,9 @@ No
 }
 ```
 
-**Return value:**
+### Response
 
-| Field name      | Data type    | Remarks                                                                                           |
+| Name            | Type         | Description                                                                                       |
 | :-------------- | :----------- | :------------------------------------------------------------------------------------------------ |
 | code            | int          | Return value status                                                                               |
 | msg             | string       | Return value description                                                                          |
@@ -2966,9 +2938,9 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                 |
-| --------- | --------- | ------ | --------------------------------------- |
-| pairName  | no        | string | Example of currency pair name: ETH_USDT |
+| Name     | Mandatory | Type   | Description                             |
+| -------- | --------- | ------ | --------------------------------------- |
+| pairName | no        | string | Example of currency pair name: ETH_USDT |
 
 > **Return example:**
 
@@ -3008,9 +2980,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name               | Type   | Remarks                                           |
+| Name                     | Type   | Description                                       |
 | ------------------------ | ------ | ------------------------------------------------- |
 | code                     | int    | 200, normal                                       |
 | msg                      | string | success, normal                                   |
@@ -3042,10 +3014,10 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                 |
-| --------- | --------- | ------ | --------------------------------------- |
-| pairName  | Yes       | string | Example of currency pair name: ETH_USDT |
-| currency  | Yes       | string | Example of currency name: ETH           |
+| Name     | Mandatory | Type   | Description                             |
+| -------- | --------- | ------ | --------------------------------------- |
+| pairName | Yes       | string | Example of currency pair name: ETH_USDT |
+| currency | Yes       | string | Example of currency name: ETH           |
 
 > **Return example:**
 
@@ -3062,9 +3034,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name        | Type   | Remarks                                          |
+| Name              | Type   | Description                                      |
 | ----------------- | ------ | ------------------------------------------------ |
 | code              | int    | 200, normal                                      |
 | msg               | string | success, normal                                  |
@@ -3094,11 +3066,11 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                 |
-| --------- | --------- | ------ | --------------------------------------- |
-| pairName  | Yes       | string | Example of currency pair name: ETH_USDT |
-| currency  | Yes       | string | Example of currency name: ETH           |
-| amount    | Yes       | string | Loan amount                             |
+| Name     | Mandatory | Type   | Description                             |
+| -------- | --------- | ------ | --------------------------------------- |
+| pairName | Yes       | string | Example of currency pair name: ETH_USDT |
+| currency | Yes       | string | Example of currency name: ETH           |
+| amount   | Yes       | string | Loan amount                             |
 
 > **Return example:**
 
@@ -3110,13 +3082,13 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks         |
-| ---------- | ------ | --------------- |
-| code       | int    | 200, normal     |
-| msg        | string | success, normal |
-| data       | array  | Empty string    |
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| code | int    | 200, normal     |
+| msg  | string | success, normal |
+| data | array  | Empty string    |
 
 ## Get leveraged currency parameters
 
@@ -3138,10 +3110,10 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                 |
-| --------- | --------- | ------ | --------------------------------------- |
-| pairName  | Yes       | string | Example of currency pair name: ETH_USDT |
-| currency  | Yes       | string | Example of currency name: ETH           |
+| Name     | Mandatory | Type   | Description                             |
+| -------- | --------- | ------ | --------------------------------------- |
+| pairName | Yes       | string | Example of currency pair name: ETH_USDT |
+| currency | Yes       | string | Example of currency name: ETH           |
 
 > **Return example:**
 
@@ -3158,9 +3130,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name     | Type   | Remarks                                                      |
+| Name           | Type   | Description                                                  |
 | -------------- | ------ | ------------------------------------------------------------ |
 | code           | int    | 200, normal                                                  |
 | msg            | string | success, normal                                              |
@@ -3190,11 +3162,11 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                 |
-| --------- | --------- | ------ | --------------------------------------- |
-| pairName  | Yes       | string | Example of currency pair name: ETH_USDT |
-| currency  | Yes       | string | Currency name                           |
-| amount    | Yes       | string | Refund amount                           |
+| Name     | Mandatory | Type   | Description                             |
+| -------- | --------- | ------ | --------------------------------------- |
+| pairName | Yes       | string | Example of currency pair name: ETH_USDT |
+| currency | Yes       | string | Currency name                           |
+| amount   | Yes       | string | Refund amount                           |
 
 > **Return example:**
 
@@ -3206,13 +3178,13 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks         |
-| ---------- | ------ | --------------- |
-| code       | int    | 200, normal     |
-| msg        | string | success, normal |
-| data       | array  | Empty string    |
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| code | int    | 200, normal     |
+| msg  | string | success, normal |
+| data | array  | Empty string    |
 
 ## Get Margin Account Debit and Return Record
 
@@ -3234,12 +3206,12 @@ no
 
 **Post Parameter:**
 
-| parameter | Mandatory | Type   | Remarks                                 |
-| --------- | --------- | ------ | --------------------------------------- |
-| pairName  | Yes       | string | Example of currency pair name: ETH_USDT |
-| currency  | Yes       | string | Example of currency name: ETH           |
-| pageSize  | Yes       | int    | Display quantity per page               |
-| pageno    | Yes       | int    | page number                             |
+| Name     | Mandatory | Type   | Description                             |
+| -------- | --------- | ------ | --------------------------------------- |
+| pairName | Yes       | string | Example of currency pair name: ETH_USDT |
+| currency | Yes       | string | Example of currency name: ETH           |
+| pageSize | Yes       | int    | Display quantity per page               |
+| pageno   | Yes       | int    | page number                             |
 
 > **Return example:**
 
@@ -3281,9 +3253,9 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name     | Type   | Remarks                                           |
+| Name           | Type   | Description                                       |
 | -------------- | ------ | ------------------------------------------------- |
 | code           | int    | 200, normal                                       |
 | msg            | string | success, normal                                   |
@@ -3319,7 +3291,7 @@ no
 
 **Post Parameter:**
 
-| parameter  | Mandatory | Type   | Remarks                                                                                                                                                                       |
+| Name       | Mandatory | Type   | Description                                                                                                                                                                   |
 | ---------- | --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | pageno     | Yes       | int    | page number                                                                                                                                                                   |
 | pageSize   | Yes       | int    | Display quantity per page (0 <pageSize ≤ 500)                                                                                                                                 |
@@ -3358,21 +3330,21 @@ no
 }
 ```
 
-**Return Value:**
+### Response
 
-| Field Name | Type   | Remarks            |
-| ---------- | ------ | ------------------ |
-| ledger_id  | string | Bill ID            |
-| coinPair   | string | Currency pair      |
-| currency   | string | Currency           |
-| balance    | string | Balance            |
-| amount     | string | Number of changes  |
-| typename   | string | Bill type          |
-| timestamp  | string | Bill creation time |
+| Name      | Type   | Description        |
+| --------- | ------ | ------------------ |
+| ledger_id | string | Bill ID            |
+| coinPair  | string | Currency pair      |
+| currency  | string | Currency           |
+| balance   | string | Balance            |
+| amount    | string | Number of changes  |
+| typename  | string | Bill type          |
+| timestamp | string | Bill creation time |
 
 # Error message
 
-| code   | Remarks                                                                                  |
+| code   | Description                                                                              |
 | ------ | ---------------------------------------------------------------------------------------- |
 | 200    | normal                                                                                   |
 | 112002 | API single key traffic exceeds limit                                                     |
@@ -3389,7 +3361,7 @@ no
 | 112047 | The spot API interface is temporarily inaccessible                                       |
 | 112048 | The futures API interface is temporarily inaccessible                                    |
 
-# common problem
+# Common problem
 
 | common problem                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
