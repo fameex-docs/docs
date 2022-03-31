@@ -334,7 +334,15 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
+            <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2022-03-30" class="toc-h2 toc-link" data-title="2022-03-30">2022-03-30</a>
+                  </li>
+                  <li>
+                    <a href="#2021-05-27" class="toc-h2 toc-link" data-title="2021-05-27">2021-05-27</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -374,13 +382,10 @@
                     <a href="#get-k-line-data" class="toc-h2 toc-link" data-title="Get k-line data">Get k-line data</a>
                   </li>
                   <li>
-                    <a href="#market-depth-data" class="toc-h2 toc-link" data-title="Market Depth Data">Market Depth Data</a>
+                    <a href="#order-book" class="toc-h2 toc-link" data-title="Order Book">Order Book</a>
                   </li>
                   <li>
-                    <a href="#get-market-data-of-a-single-currency-pair" class="toc-h2 toc-link" data-title="Get market data of a single currency pair">Get market data of a single currency pair</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-currency-pair-market-data" class="toc-h2 toc-link" data-title="Get all currency pair market data">Get all currency pair market data</a>
+                    <a href="#24hr-ticker-price-change-statistics" class="toc-h2 toc-link" data-title="24hr Ticker Price Change Statistics">24hr Ticker Price Change Statistics</a>
                   </li>
               </ul>
           </li>
@@ -438,9 +443,16 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='update-log'>Update log</h1>
-<p><strong>2021-05-27</strong></p>
+        <h1 id='change-log'>Change Log</h1><h2 id='2022-03-30'>2022-03-30</h2>
+<ul>
+<li>New endpoint for USDⓈ-M Futures:
 
+<ul>
+<li>GET <code>/swap-api/v2/orderbook</code> to query order book.</li>
+<li>GET <code>/swap-api/v2/tickers</code> to query 24 hour rolling window price change statistics.</li>
+</ul></li>
+</ul>
+<h2 id='2021-05-27'>2021-05-27</h2>
 <ul>
 <li>Futures interface update:
 
@@ -492,7 +504,7 @@
 <table><thead>
 <tr>
 <th>Access URLs</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -517,7 +529,7 @@
 <tr>
 <th>Frequency limiting rules</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -531,9 +543,9 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -641,7 +653,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -774,7 +786,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -894,10 +906,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -978,7 +990,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1032,385 +1044,212 @@
 <td>Denominated currency trading volume</td>
 </tr>
 </tbody></table>
-<h2 id='market-depth-data'>Market Depth Data</h2>
-<p>Speed limit rule: 20 times/2s</p>
+<h2 id='order-book'>Order Book</h2>
+<p><strong>HTTP Request</strong></p>
 
-<p><code>Function Description</code></p>
-
-<p>This interface returns the current market depth data of the specified trading pair.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>/swap-api/v1/depth</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/depth</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>no</p>
-
-<p><strong>Post parameters:</strong></p>
-
-<table><thead>
-<tr>
-<th>parameter</th>
-<th>Mandatory</th>
-<th>Type</th>
-<th>Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>contractCode</td>
-<td>Yes</td>
-<td>string</td>
-<td>Contract code, for example &quot;BTC-USDT&quot;</td>
-</tr>
-<tr>
-<td>step</td>
-<td>Yes</td>
-<td>string</td>
-<td>In-depth price aggregation type (step0~step4)</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Yes</td>
-<td>int</td>
-<td>Return the number of depths (1&lt;=size&lt;= 100)</td>
-</tr>
-</tbody></table>
+<p>GET <code>/swap-api/v2/orderbook</code></p>
 
 <blockquote>
-<p><strong>Return example:</strong></p>
+<p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"omg"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"buyList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"sellList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
-<table><thead>
-<tr>
-<th>Field Name</th>
-<th>Type</th>
-<th>Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>200, normal</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>success, normal</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>Return data: market depth data</td>
-</tr>
-<tr>
-<td>bids</td>
-<td>string array</td>
-<td>All current buy orders [price, quantity]</td>
-</tr>
-<tr>
-<td>asks</td>
-<td>string array</td>
-<td>All current sell orders [price, quantity]</td>
-</tr>
-</tbody></table>
-<h2 id='get-market-data-of-a-single-currency-pair'>Get market data of a single currency pair</h2>
-<p>Speed limit rule: 20 times/2s</p>
-
-<p><code>Function Description</code></p>
-
-<p>This interface returns to get the market data of a single currency pair within 24 hours.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>/swap-api/v1/ticker</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/ticker</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>no</p>
-
-<p><strong>Post parameters:</strong></p>
-
-<table><thead>
-<tr>
-<th>parameter</th>
-<th>Mandatory</th>
-<th>Type</th>
-<th>Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>contractCode</td>
-<td>Yes</td>
-<td>string</td>
-<td>Contract code (e.g. BTC-USDT)</td>
-</tr>
-</tbody></table>
-
+<div class="highlight"><pre class="highlight plaintext"><code>curl --request GET 'https://api.fameex.com/swap-api/v2/orderbook?symbol=ETH-USDT'
+</code></pre></div>
 <blockquote>
-<p><strong>Return example:</strong></p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0303966087182331"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2849.66"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2635.7"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2886"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"330297.294"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454347003.61788"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.02"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
-<table><thead>
-<tr>
-<th>Field Name</th>
-<th>Type</th>
-<th>Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>200, normal</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>success, normal</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object array</td>
-<td>Return data: single currency pair market</td>
-</tr>
-<tr>
-<td>contractCode</td>
-<td>string</td>
-<td>Contract code</td>
-</tr>
-<tr>
-<td>gain</td>
-<td>string</td>
-<td>24-hour increase</td>
-</tr>
-<tr>
-<td>open</td>
-<td>string</td>
-<td>24-hour opening price</td>
-</tr>
-<tr>
-<td>low</td>
-<td>string</td>
-<td>Lowest price in 24 hours</td>
-</tr>
-<tr>
-<td>high</td>
-<td>string</td>
-<td>24 hours highest price</td>
-</tr>
-<tr>
-<td>close</td>
-<td>string</td>
-<td>Latest transaction price</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>string</td>
-<td>24-hour trading currency volume</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>string</td>
-<td>24-hour denominated currency trading volume</td>
-</tr>
-<tr>
-<td>bid</td>
-<td>string</td>
-<td>Buy one price</td>
-</tr>
-<tr>
-<td>ask</td>
-<td>int64</td>
-<td>Sell one price</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-currency-pair-market-data'>Get all currency pair market data</h2>
-<p>Speed limit rule: 20 times/2s</p>
-
-<p><code>Function Description</code></p>
-
-<p>This interface returns a summary of the market data for the last 24 hours, and the data value time interval is 24-hour rolling.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>/swap-api/v1/tickers</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/tickers</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>no</p>
-
-<p><strong>Post parameters:</strong></p>
-
-<p>no</p>
-
-<blockquote>
-<p><strong>Return example:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7183"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAL-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.203"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASH-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.47"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"ticker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC-USDT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648539997000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"35"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.7"</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"34"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"36"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"37"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
-<th>Type</th>
-<th>Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>code</td>
-<td>int</td>
-<td>200, normal</td>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Name of the trading pair, example: ETH-USDT</td>
 </tr>
 <tr>
-<td>msg</td>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Default value is 100</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">ticker_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Name of the trading pair</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Current time, unit in millisecond</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Bid price and quantity, with best bid prices ranked from top to bottom</td>
+</tr>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Ask price and quantity, with best ask prices ranked from top to bottom</td>
+</tr>
+</tbody></table>
+<h2 id='24hr-ticker-price-change-statistics'>24hr Ticker Price Change Statistics</h2>
+<p><strong>HTTP Request</strong></p>
+
+<p>GET <code>/swap-api/v2/tickers</code></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>curl --request GET 'https://api.fameex.com/swap-api/v2/tickers?symbol=ETH-USDT'
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ticker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"209.042"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3600.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3400.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perpetual"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"open_interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"index_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3407.072"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"funding_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00125"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next_funding_rate_timestam"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648598400000</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>NO</td>
 <td>string</td>
-<td>success, normal</td>
+<td>Name of the trading pair, example: ETH-USDT</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">ticker_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Name of the trading pair</td>
 </tr>
 <tr>
-<td>data</td>
-<td>object array</td>
-<td>Return data: market data</td>
+<td style="text-align: left">base_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">base</td>
 </tr>
 <tr>
-<td>contractCode</td>
-<td>string</td>
-<td>Contract code</td>
+<td style="text-align: left">quote_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">quote</td>
 </tr>
 <tr>
-<td>gain</td>
-<td>string</td>
-<td>24-hour increase</td>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Latest transaction price</td>
 </tr>
 <tr>
-<td>open</td>
-<td>string</td>
-<td>24-hour opening price</td>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Trading volume in the last 24 hours</td>
 </tr>
 <tr>
-<td>low</td>
-<td>string</td>
-<td>Lowest price in 24 hours</td>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Trading quote volume in the last 24 hours</td>
 </tr>
 <tr>
-<td>high</td>
-<td>string</td>
-<td>24 hours highest price</td>
+<td style="text-align: left">bid</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Purchase price of the first order</td>
 </tr>
 <tr>
-<td>close</td>
-<td>string</td>
-<td>Latest transaction price</td>
+<td style="text-align: left">ask</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Selling price of the first order</td>
 </tr>
 <tr>
-<td>amount</td>
-<td>string</td>
-<td>24-hour trading currency volume</td>
+<td style="text-align: left">high</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">The highest price in the last 24 hours</td>
 </tr>
 <tr>
-<td>volume</td>
-<td>string</td>
-<td>24-hour denominated currency trading volume</td>
+<td style="text-align: left">low</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Lowest price in the last 24 hours</td>
 </tr>
 <tr>
-<td>bid</td>
-<td>string</td>
-<td>Buy one price</td>
+<td style="text-align: left">product_type</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">futures type</td>
 </tr>
 <tr>
-<td>ask</td>
-<td>int64</td>
-<td>Sell one price</td>
+<td style="text-align: left">open_interest</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Open interest</td>
+</tr>
+<tr>
+<td style="text-align: left">index_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Index price</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_rate</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Funding rate</td>
+</tr>
+<tr>
+<td style="text-align: left">next_funding_rate_timestam</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Next settlement time of capital cost</td>
 </tr>
 </tbody></table>
 <h1 id='u-futures-exchange-endpoints'>U futures Exchange Endpoints</h1><h2 id='futures-orders'>Futures orders</h2>
@@ -1434,10 +1273,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1521,9 +1360,9 @@
 
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1573,10 +1412,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1614,7 +1453,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1664,10 +1503,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1710,7 +1549,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1749,10 +1588,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1816,7 +1655,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1986,10 +1825,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2139,7 +1978,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2329,10 +2168,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2464,7 +2303,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2619,10 +2458,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2668,7 +2507,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2733,10 +2572,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2778,7 +2617,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2878,7 +2717,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2973,10 +2812,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3021,7 +2860,7 @@
 <tr>
 <th>Field Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3124,7 +2963,7 @@
 <table><thead>
 <tr>
 <th>code</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3252,7 +3091,7 @@
         // for the English Language env.
         lang_btn.innerHTML = '简体中文';
         btn_spot.innerHTML = 'Spot/Margin';
-        btn_swap.innerHTML = 'USDT Futures';
+        btn_swap.innerHTML = 'USDⓈ-M Futures';
         LG.href = "https://www.fameex.com/";
         lang_btn.href = url.replace('en/', 'cn/');
         btn_spot.href = btn_spot.href.replace('cn/', 'en/');

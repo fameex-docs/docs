@@ -335,6 +335,14 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2022-03-30" class="toc-h2 toc-link" data-title="2022-03-30">2022-03-30</a>
+                  </li>
+                  <li>
+                    <a href="#2021-05-27" class="toc-h2 toc-link" data-title="2021-05-27">2021-05-27</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#5ea2e0cde2" class="toc-h1 toc-link" data-title="简介">简介</a>
@@ -368,19 +376,16 @@
               </ul>
           </li>
           <li>
-            <a href="#api-2" class="toc-h1 toc-link" data-title="行情 API 接口">行情 API 接口</a>
+            <a href="#ed913b7357" class="toc-h1 toc-link" data-title="行情接口">行情接口</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#k" class="toc-h2 toc-link" data-title="获取 k 线数据">获取 k 线数据</a>
                   </li>
                   <li>
-                    <a href="#0f7bd4961a" class="toc-h2 toc-link" data-title="市场深度数据">市场深度数据</a>
+                    <a href="#38a975b802" class="toc-h2 toc-link" data-title="深度信息">深度信息</a>
                   </li>
                   <li>
-                    <a href="#aed8670f18" class="toc-h2 toc-link" data-title="获取单币对行情数据">获取单币对行情数据</a>
-                  </li>
-                  <li>
-                    <a href="#0c8649c359" class="toc-h2 toc-link" data-title="获取全部币对行情数据">获取全部币对行情数据</a>
+                    <a href="#24hr" class="toc-h2 toc-link" data-title="24hr 价格变动情况">24hr 价格变动情况</a>
                   </li>
               </ul>
           </li>
@@ -438,11 +443,18 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='185368440e'>更新日志</h1>
-<p><strong>2021-05-27</strong></p>
+        <h1 id='185368440e'>更新日志</h1><h2 id='2022-03-30'>2022-03-30</h2>
+<ul>
+<li>新增合约接口：
 
 <ul>
-<li>合约接口更新：
+<li>GET <code>/swap-api/v2/orderbook</code> 获取深度信息</li>
+<li>GET <code>/swap-api/v2/tickers</code> 获取 24 小时滚动窗口价格变动数据</li>
+</ul></li>
+</ul>
+<h2 id='2021-05-27'>2021-05-27</h2>
+<ul>
+<li>新增合约接口：
 
 <ul>
 <li>新增 U 合约下单接口 <code>/swap-api/v1/order</code></li>
@@ -871,7 +883,7 @@
 <td>维持保证金率</td>
 </tr>
 </tbody></table>
-<h1 id='api-2'>行情 API 接口</h1><h2 id='k'>获取 k 线数据</h2>
+<h1 id='ed913b7357'>行情接口</h1><h2 id='k'>获取 k 线数据</h2>
 <p>限速规则：20 次/2s</p>
 
 <p><strong>功能说明：</strong></p>
@@ -1030,385 +1042,208 @@
 <td>计价币成交量</td>
 </tr>
 </tbody></table>
-<h2 id='0f7bd4961a'>市场深度数据</h2>
-<p>限速规则：20 次/2s</p>
-
-<p><strong>功能说明：</strong></p>
-
-<p>此接口返回指定交易对的当前市场深度数据。</p>
-
-<p><strong>请求路径：</strong></p>
-
-<p>/swap-api/v1/depth</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/depth</code></p>
-
-<p><strong>路由参数：</strong></p>
-
-<p>无</p>
-
-<p><strong>Post 参数：</strong></p>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>是否必须</th>
-<th>数据类型</th>
-<th>备注</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>contractCode</td>
-<td>是</td>
-<td>string</td>
-<td>合约代码, 例&quot;BTC-USDT&quot;</td>
-</tr>
-<tr>
-<td>step</td>
-<td>是</td>
-<td>string</td>
-<td>深度的价格聚合度类型(step0~step4)</td>
-</tr>
-<tr>
-<td>size</td>
-<td>是</td>
-<td>int</td>
-<td>返回深度的数量(1&lt;=size&lt;= 100)</td>
-</tr>
-</tbody></table>
-
+<h2 id='38a975b802'>深度信息</h2>
 <blockquote>
-<p><strong>返回示例：</strong></p>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>curl --request GET 'https://api.fameex.com/swap-api/v2/orderbook?symbol=BTC-USDT'
+</code></pre></div>
+<blockquote>
+<p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"omg"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"buyList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"sellList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>返回值：</strong></p>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>备注</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>200,正常</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>success，正常</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>返回数据：市场深度数据</td>
-</tr>
-<tr>
-<td>bids</td>
-<td>string array</td>
-<td>当前的所有买单 [价格，数量]</td>
-</tr>
-<tr>
-<td>asks</td>
-<td>string array</td>
-<td>当前的所有卖单 [价格，数量]</td>
-</tr>
-</tbody></table>
-<h2 id='aed8670f18'>获取单币对行情数据</h2>
-<p>限速规则：20 次/2s</p>
-
-<p><strong>功能说明：</strong></p>
-
-<p>此接口返回获取单币对 24h 内行情数据。</p>
-
-<p><strong>请求路径：</strong></p>
-
-<p>/swap-api/v1/ticker</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/ticker</code></p>
-
-<p><strong>路由参数：</strong></p>
-
-<p>无</p>
-
-<p><strong>Post 参数：</strong></p>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>是否必须</th>
-<th>数据类型</th>
-<th>备注</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>contractCode</td>
-<td>是</td>
-<td>string</td>
-<td>合约代码(如 BTC-USDT)</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p><strong>返回示例：</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0303966087182331"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2849.66"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2635.7"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2886"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"330297.294"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454347003.61788"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.02"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2763.04"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>返回值：</strong></p>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>备注</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>200,正常</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>success,正常</td>
-</tr>
-<tr>
-<td>data</td>
-<td>object array</td>
-<td>返回数据：单币对行情</td>
-</tr>
-<tr>
-<td>contractCode</td>
-<td>string</td>
-<td>合约代码</td>
-</tr>
-<tr>
-<td>gain</td>
-<td>string</td>
-<td>24 小时涨幅</td>
-</tr>
-<tr>
-<td>open</td>
-<td>string</td>
-<td>24 小时开盘价</td>
-</tr>
-<tr>
-<td>low</td>
-<td>string</td>
-<td>24 小时最低价</td>
-</tr>
-<tr>
-<td>high</td>
-<td>string</td>
-<td>24 小时最高价</td>
-</tr>
-<tr>
-<td>close</td>
-<td>string</td>
-<td>最新成交价</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>string</td>
-<td>24 小时交易币成交量</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>string</td>
-<td>24 小时计价币成交量</td>
-</tr>
-<tr>
-<td>bid</td>
-<td>string</td>
-<td>买一价</td>
-</tr>
-<tr>
-<td>ask</td>
-<td>int64</td>
-<td>卖一价</td>
-</tr>
-</tbody></table>
-<h2 id='0c8649c359'>获取全部币对行情数据</h2>
-<p>限速规则：20 次/2s</p>
-
-<p><strong>功能说明：</strong></p>
-
-<p>此接口返回最近 24 小时的行情数据汇总，数据取值时间区间为 24 小时滚动。</p>
-
-<p><strong>请求路径：</strong></p>
-
-<p>/swap-api/v1/tickers</p>
-
-<p>curl <code>https://api.fameex.com/swap-api/v1/tickers</code></p>
-
-<p><strong>路由参数：</strong></p>
-
-<p>无</p>
-
-<p><strong>Post 参数：</strong></p>
-
-<p>无</p>
-
-<blockquote>
-<p><strong>返回示例：</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7183"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.7203"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAL-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.192"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49.203"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASH-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.46"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296.47"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"ticker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC-USDT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648539997000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"35"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.7"</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"34"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"36"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"37"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>返回值：</strong></p>
-
+</span></code></pre></div><h3 id='http'>HTTP 请求</h3>
+<p>GET <code>/swap-api/v2/orderbook</code></p>
+<h3 id='1f9ac54b15'>请求参数</h3>
 <table><thead>
 <tr>
-<th>字段名称</th>
+<th>参数</th>
+<th>是否必须</th>
 <th>数据类型</th>
-<th>备注</th>
+<th>说明</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>code</td>
+<td>symbol</td>
+<td>YES</td>
+<td>string</td>
+<td>示例例: &quot;BTC-USDT&quot;</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>NO</td>
 <td>int</td>
-<td>200,正常</td>
+<td>可选值:[5, 10, 20, 50, 100]</td>
+</tr>
+</tbody></table>
+<h3 id='50faad05f3'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">ticker_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">币对名称</td>
 </tr>
 <tr>
-<td>msg</td>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">当前时间</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">bid 的价格和數量信息，最优 bid 价格由上到下排列</td>
+</tr>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">ask 的价格和數量信息，最优 ask 价格由上到下排列</td>
+</tr>
+</tbody></table>
+<h2 id='24hr'>24hr 价格变动情况</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>curl --request GET 'https://api.fameex.com/swap-api/v2/tickers?symbol=ETH-USDT'
+</code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ticker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"209.042"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3600.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3400.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perpetual"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"open_interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"index_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3407.072"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"funding_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00125"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next_funding_rate_timestam"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648598400000</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-2'>HTTP 请求</h3>
+<p>GET <code>/swap-api/v2/tickers</code></p>
+<h3 id='1f9ac54b15-2'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>NO</td>
 <td>string</td>
-<td>success,正常</td>
+<td>示例: &quot;ETH-USDT&quot;</td>
+</tr>
+</tbody></table>
+<h3 id='50faad05f3-2'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">ticker_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">币对名称</td>
 </tr>
 <tr>
-<td>data</td>
-<td>object array</td>
-<td>返回数据：行情数据</td>
+<td style="text-align: left">base_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">交易币</td>
 </tr>
 <tr>
-<td>contractCode</td>
-<td>string</td>
-<td>合约代码</td>
+<td style="text-align: left">quote_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">计价币</td>
 </tr>
 <tr>
-<td>gain</td>
-<td>string</td>
-<td>24 小时涨幅</td>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最新成交价</td>
 </tr>
 <tr>
-<td>open</td>
-<td>string</td>
-<td>24 小时开盘价</td>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交量</td>
 </tr>
 <tr>
-<td>low</td>
-<td>string</td>
-<td>24 小时最低价</td>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交额</td>
 </tr>
 <tr>
-<td>high</td>
-<td>string</td>
-<td>24 小时最高价</td>
+<td style="text-align: left">bid</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最优买价</td>
 </tr>
 <tr>
-<td>close</td>
-<td>string</td>
-<td>最新成交价</td>
+<td style="text-align: left">ask</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最优卖价</td>
 </tr>
 <tr>
-<td>amount</td>
-<td>string</td>
-<td>24 小时交易币成交量</td>
+<td style="text-align: left">high</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 小时最高价</td>
 </tr>
 <tr>
-<td>volume</td>
-<td>string</td>
-<td>24 小时计价币成交量</td>
+<td style="text-align: left">low</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 小时最低价</td>
 </tr>
 <tr>
-<td>bid</td>
-<td>string</td>
-<td>买一价</td>
+<td style="text-align: left">product_type</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">合约类型</td>
 </tr>
 <tr>
-<td>ask</td>
-<td>int64</td>
-<td>卖一价</td>
+<td style="text-align: left">open_interest</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">未平仓合约数量</td>
+</tr>
+<tr>
+<td style="text-align: left">index_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">指数价格</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_rate</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">资金费率</td>
+</tr>
+<tr>
+<td style="text-align: left">next_funding_rate_timestam</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">下次结算资金费用时间</td>
 </tr>
 </tbody></table>
 <h1 id='u-api'>U 合约交易 API 接口</h1><h2 id='9dc85ffb46'>合约下单</h2>
@@ -3256,7 +3091,7 @@
         // for the English Language env.
         lang_btn.innerHTML = '简体中文';
         btn_spot.innerHTML = 'Spot/Margin';
-        btn_swap.innerHTML = 'USDT Futures';
+        btn_swap.innerHTML = 'USDⓈ-M Futures';
         LG.href = "https://www.fameex.com/";
         lang_btn.href = url.replace('en/', 'cn/');
         btn_spot.href = btn_spot.href.replace('cn/', 'en/');

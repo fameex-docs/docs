@@ -334,7 +334,33 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
+            <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2021-03-30" class="toc-h2 toc-link" data-title="2021-03-30">2021-03-30</a>
+                  </li>
+                  <li>
+                    <a href="#2021-08-24" class="toc-h2 toc-link" data-title="2021-08-24">2021-08-24</a>
+                  </li>
+                  <li>
+                    <a href="#2020-12-22" class="toc-h2 toc-link" data-title="2020-12-22">2020-12-22</a>
+                  </li>
+                  <li>
+                    <a href="#2020-11-16" class="toc-h2 toc-link" data-title="2020-11-16">2020-11-16</a>
+                  </li>
+                  <li>
+                    <a href="#2020-10-30" class="toc-h2 toc-link" data-title="2020-10-30">2020-10-30</a>
+                  </li>
+                  <li>
+                    <a href="#2020-10-29" class="toc-h2 toc-link" data-title="2020-10-29">2020-10-29</a>
+                  </li>
+                  <li>
+                    <a href="#2020-10-28" class="toc-h2 toc-link" data-title="2020-10-28">2020-10-28</a>
+                  </li>
+                  <li>
+                    <a href="#2020-10-27" class="toc-h2 toc-link" data-title="2020-10-27">2020-10-27</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -403,19 +429,19 @@
             <a href="#market-data-endpoints" class="toc-h1 toc-link" data-title="Market Data Endpoints">Market Data Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#obtain-k-line-data" class="toc-h2 toc-link" data-title="Obtain k-line data">Obtain k-line data</a>
+                    <a href="#order-book" class="toc-h2 toc-link" data-title="Order Book">Order Book</a>
                   </li>
                   <li>
-                    <a href="#market-depth-data" class="toc-h2 toc-link" data-title="Market Depth Data">Market Depth Data</a>
+                    <a href="#recent-trades-list" class="toc-h2 toc-link" data-title="Recent Trades List">Recent Trades List</a>
                   </li>
                   <li>
-                    <a href="#get-transaction-data" class="toc-h2 toc-link" data-title="Get transaction data">Get transaction data</a>
+                    <a href="#kline-candlestick-data" class="toc-h2 toc-link" data-title="Kline/Candlestick Data">Kline/Candlestick Data</a>
                   </li>
                   <li>
-                    <a href="#get-a-ticker-information" class="toc-h2 toc-link" data-title="Get a ticker information">Get a ticker information</a>
+                    <a href="#24hr-ticker-price-change-statistics" class="toc-h2 toc-link" data-title="24hr Ticker Price Change Statistics">24hr Ticker Price Change Statistics</a>
                   </li>
                   <li>
-                    <a href="#get-all-ticker-information" class="toc-h2 toc-link" data-title="Get all ticker information">Get all ticker information</a>
+                    <a href="#symbol-price-ticker" class="toc-h2 toc-link" data-title="Symbol Price Ticker">Symbol Price Ticker</a>
                   </li>
               </ul>
           </li>
@@ -528,7 +554,7 @@
             <a href="#error-message" class="toc-h1 toc-link" data-title="Error message">Error message</a>
           </li>
           <li>
-            <a href="#common-problem" class="toc-h1 toc-link" data-title="common problem">common problem</a>
+            <a href="#common-problem" class="toc-h1 toc-link" data-title="Common problem">Common problem</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -538,9 +564,18 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='update-log'>Update log</h1>
-<p><strong>2021-08-24</strong></p>
+        <h1 id='change-log'>Change Log</h1><h2 id='2021-03-30'>2021-03-30</h2>
+<ul>
+<li>New endpoint for Market Data:
 
+<ul>
+<li>GET <code>/api/v2/orderbook</code> to query order book.</li>
+<li>GET <code>/api/v2/trades</code> to query recent trades.</li>
+<li>GET <code>/api/v2/ticker/24hr</code> to query 24 hour rolling window price change statistics.</li>
+<li>GET <code>/api/v2/ticker/price</code> to get latest price for a symbol.</li>
+</ul></li>
+</ul>
+<h2 id='2021-08-24'>2021-08-24</h2>
 <ul>
 <li><p>Websocket market push update:</p>
 
@@ -585,9 +620,7 @@
 <li>Modify the interface for obtaining leveraged transaction details <code>/v1/api/lever/deals</code></li>
 </ul></li>
 </ul>
-
-<p><strong>2020-12-22</strong></p>
-
+<h2 id='2020-12-22'>2020-12-22</h2>
 <ul>
 <li>Wallet interface update:
 
@@ -603,9 +636,7 @@
 <li>Modify the fund transfer interface parameter interface <code>v1/api/account/transfer</code></li>
 </ul></li>
 </ul>
-
-<p><strong>2020-11-16</strong></p>
-
+<h2 id='2020-11-16'>2020-11-16</h2>
 <ul>
 <li>Coin trading interface update:
 
@@ -616,9 +647,7 @@
 <li>Update get order details leverage <code>v1/api/lever/orders/detail</code>to acquire a lever Order details</li>
 </ul></li>
 </ul>
-
-<p><strong>2020-10-30</strong></p>
-
+<h2 id='2020-10-30'>2020-10-30</h2>
 <ul>
 <li>Wallet interface update:
 
@@ -626,9 +655,7 @@
 <li>Modify the fund transfer function interface <code>v1/api/account/transfer</code></li>
 </ul></li>
 </ul>
-
-<p><strong>2020-10-29</strong></p>
-
+<h2 id='2020-10-29'>2020-10-29</h2>
 <ul>
 <li>Wallet interface update:
 
@@ -641,9 +668,7 @@
 <li>Added function interface for obtaining leverage configuration <code>v1/api/lever/pair/config</code></li>
 </ul></li>
 </ul>
-
-<p><strong>2020-10-28</strong></p>
-
+<h2 id='2020-10-28'>2020-10-28</h2>
 <ul>
 <li>Wallet interface update:
 
@@ -655,9 +680,7 @@
 <li>Added interface for obtaining specific currency pairs in margin accounts and borrowing currency in specific currencies <code>v1/api/lever/borrowparam</code></li>
 </ul></li>
 </ul>
-
-<p><strong>2020-10-27</strong></p>
-
+<h2 id='2020-10-27'>2020-10-27</h2>
 <ul>
 <li>Wallet interface update:
 
@@ -696,7 +719,7 @@
 <table><thead>
 <tr>
 <th>Access URLs</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -721,7 +744,7 @@
 <tr>
 <th>Frequency limiting rules</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -735,9 +758,9 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -831,10 +854,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -852,14 +875,12 @@
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pong"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -902,10 +923,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -948,14 +969,12 @@
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1003,10 +1022,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1060,14 +1079,12 @@
     </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.12"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1164,10 +1181,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1215,14 +1232,12 @@
     </span><span class="nl">"quotePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"450.12"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1315,10 +1330,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1368,14 +1383,12 @@
     </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"123.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.2"</span><span class="p">]]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1452,10 +1465,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1502,14 +1515,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1591,10 +1602,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1658,14 +1669,12 @@
     </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">15665546872</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-7'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1845,10 +1854,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1903,14 +1912,12 @@
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot.market.ticker"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-8'>Response</h3>
 <table><thead>
 <tr>
-<th>Field name</th>
-<th>Data type</th>
-<th>Remarks</th>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1958,14 +1965,12 @@
   </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1553254857</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1553254857</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-9'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2024,14 +2029,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2183,14 +2186,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-11'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2269,7 +2270,169 @@
 <td>Withdrawal status 1-open 2-close</td>
 </tr>
 </tbody></table>
-<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='obtain-k-line-data'>Obtain k-line data</h2>
+<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='order-book'>Order Book</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/api/v2/orderbook?symbol=BTC-USDT&amp;limit=5'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648456620000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"50006.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
+      </span><span class="s2">"0.024"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">QTY</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"50006.34"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
+      </span><span class="s2">"0.01"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">QTY</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p>GET <code>/api/v2/orderbook</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Name of the trading pair, example: BTC-USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Default value is 100</td>
+</tr>
+</tbody></table>
+<h3 id='response-12'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Current time, unit in millisecond</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Bid price and quantity, with best bid prices ranked from top to bottom</td>
+</tr>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Ask price and quantity, with best ask prices ranked from top to bottom</td>
+</tr>
+</tbody></table>
+<h2 id='recent-trades-list'>Recent Trades List</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/api/v2/trades?symbol=BTC-USDT'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"trade_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">728356542914519040</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648456620000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"trade_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">728342639237160960</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70727.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.7272"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1648453305000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p>GET <code>/api/v2/trades</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>YES</td>
+<td>string</td>
+<td>Name of the trading pair, example: BTC-USDT</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>NO</td>
+<td>int</td>
+<td>Default value is 100, max 100</td>
+</tr>
+</tbody></table>
+<h3 id='response-13'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trade_id</td>
+<td>int</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>string</td>
+<td>Trading volume</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>string</td>
+<td>Trading quote volume</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>int</td>
+<td>Current timestamp, unit in millisecond</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>buy and sell direction</td>
+</tr>
+</tbody></table>
+<h2 id='kline-candlestick-data'>Kline/Candlestick Data</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><strong>Function Description:</strong></p>
@@ -2290,10 +2453,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2340,14 +2503,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-14'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2391,463 +2552,172 @@
 <td style="text-align: left">Denominated currency trading volume</td>
 </tr>
 </tbody></table>
-<h2 id='market-depth-data'>Market Depth Data</h2>
-<p>Speed limit rule: 20 times/2s</p>
-
-<p><strong>Function Description:</strong></p>
-
-<p>This interface returns the current market depth data of the specified trading pair.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>/v1/market/depth</p>
-
-<p>curl <code>https://api.fameex.com/v1/market/depth</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>No</p>
-
-<p><strong>Post parameters:</strong></p>
-
+<h2 id='24hr-ticker-price-change-statistics'>24hr Ticker Price Change Statistics</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/api/v2/ticker/24hr'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"trading_pairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XLM-BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price_change_percent_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"trading_pairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WINK-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.48"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.48"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.47"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15432"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9999936"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price_change_percent_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.48"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.48"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p>GET <code>/api/v2/ticker/24hr</code></p>
+<h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th>Name</th>
+<th>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">pairName</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">For example: BTC-USDT</td>
-</tr>
-<tr>
-<td style="text-align: left">setp</td>
-<td style="text-align: left">YES</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Price aggregation type of depth (step0~step4)</td>
-</tr>
-<tr>
-<td style="text-align: left">size</td>
-<td style="text-align: left">YES</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Orders depth quantity((1&lt;=size&lt;= 100))</td>
+<td>symbol</td>
+<td>NO</td>
+<td>string</td>
+<td>Name of the trading pair, example: BTC-USDT</td>
 </tr>
 </tbody></table>
-
+<h3 id='response-15'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trading_pairs</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Name of the trading pair</td>
+</tr>
+<tr>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Last traded price</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest_ask</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Best ask price</td>
+</tr>
+<tr>
+<td style="text-align: left">highest_bid</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Best bid price</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Trading volume</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Trading quote volume</td>
+</tr>
+<tr>
+<td style="text-align: left">price_change_percent_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 hour increase</td>
+</tr>
+<tr>
+<td style="text-align: left">highest_price_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">High price</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest_price_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Low price</td>
+</tr>
+</tbody></table>
+<h2 id='symbol-price-ticker'>Symbol Price Ticker</h2>
 <blockquote>
-<p><strong>Return example:</strong></p>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/api/v2/ticker/price'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1640058358"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"101"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"101"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"102"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">]</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"ETH-USDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1097.8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"WINK-USDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.48"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15432"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9999936"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p>GET <code>/api/v2/ticker/price</code></p>
+<h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Return value status</td>
-</tr>
-<tr>
-<td style="text-align: left">msg</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Return value description</td>
-</tr>
-<tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">array</td>
-<td style="text-align: left">Return data: market depth data</td>
-</tr>
-<tr>
-<td style="text-align: left">bids</td>
-<td style="text-align: left">decimal array</td>
-<td style="text-align: left">An array containing 2 elements. The offer price and quantity for each bid order.</td>
-</tr>
-<tr>
-<td style="text-align: left">asks</td>
-<td style="text-align: left">decimal array</td>
-<td style="text-align: left">An array containing 2 elements. The ask price and quantity for each ask order.</td>
-</tr>
-</tbody></table>
-<h2 id='get-transaction-data'>Get transaction data</h2>
-<p>Speed limit rule: 20 times/2s</p>
-
-<p><strong>Function Description:</strong></p>
-
-<p>This interface returns the transaction detail record of the specified trading pair.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>v1/market/history/trade</p>
-
-<p>curl <code>https://api.fameex.com/v1/market/history/trade</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>No</p>
-
-<p><strong>Post parameters:</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">Yes</td>
+<td style="text-align: left">NO</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">For example, the name of the currency pair: BTC-USDT</td>
-</tr>
-<tr>
-<td style="text-align: left">size</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Returned number of transaction details (1&lt;=size&lt;= 100)</td>
+<td style="text-align: left">Name of the trading pair, example: BTC-USDT</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p><strong>Return example:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10401466572658466816"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234546"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629854950</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+<h3 id='response-16'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">200, normal</td>
-</tr>
-<tr>
-<td style="text-align: left">msg</td>
+<td style="text-align: left">last_price</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Remarks</td>
+<td style="text-align: left">Last traded price</td>
 </tr>
 <tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">object array</td>
-<td style="text-align: left">Return value, the latest transaction record list</td>
-</tr>
-<tr>
-<td style="text-align: left">tradeId</td>
+<td style="text-align: left">base_volume</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Transaction order id</td>
+<td style="text-align: left">Trading volume</td>
 </tr>
 <tr>
-<td style="text-align: left">side</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Order Direction 1-Buy 2-Sell</td>
-</tr>
-<tr>
-<td style="text-align: left">price</td>
+<td style="text-align: left">quote_volume</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Transaction price</td>
-</tr>
-<tr>
-<td style="text-align: left">count</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Number of transactions</td>
-</tr>
-<tr>
-<td style="text-align: left">createTime</td>
-<td style="text-align: left">int64</td>
-<td style="text-align: left">Time stamp unit of transaction time: second</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-ticker-information'>Get a ticker information</h2>
-<p>Speed limit rule: 20 times/2s</p>
-
-<p><strong>Function Description:</strong></p>
-
-<p>This interface returns a summary of the market data of the last 24 hours, and the data value time interval is a 24-hour rolling.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>/v1/market/history/kline24h</p>
-
-<p>curl <code>https://api.fameex.com/v1/market/history/kline24h</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>No</p>
-
-<p><strong>Post parameters:</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Trading currency pair, for example &quot;BTC-USDT&quot;</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p><strong>Return example:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0048"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00477"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00478"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00479"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0048"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00482"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quotePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02405"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">200, normal</td>
-</tr>
-<tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">object</td>
-<td style="text-align: left">Market data</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">For example, the name of the currency pair: &quot;BTC-USDT&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left">gain</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour increase</td>
-</tr>
-<tr>
-<td style="text-align: left">open</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">low</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Lowest price in 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">high</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Highest price in 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Latest transaction price</td>
-</tr>
-<tr>
-<td style="text-align: left">amount</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour trading currency volume</td>
-</tr>
-<tr>
-<td style="text-align: left">volume</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour denominated currency trading volume</td>
-</tr>
-<tr>
-<td style="text-align: left">quotePrice</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Denominated currency price</td>
-</tr>
-<tr>
-<td style="text-align: left">bid</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Buy one price</td>
-</tr>
-<tr>
-<td style="text-align: left">ask</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Sell one price</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-ticker-information'>Get all ticker information</h2>
-<p>Speed limit rule: 20 times/2s</p>
-
-<p><strong>Function Description:</strong></p>
-
-<p>This interface returns a summary of the market data of the last 24 hours, and the data value time interval is a 24-hour rolling.</p>
-
-<p><strong>Request path:</strong></p>
-
-<p>/v1/market/history/kline24h/all</p>
-
-<p>curl <code>https://api.fameex.com/v1/market/history/kline24h/all</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<p>No</p>
-
-<p><strong>Post parameters:</strong></p>
-
-<p>No</p>
-
-<blockquote>
-<p><strong>Return example:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"gain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0048"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00477"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00478"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00479"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0048"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00482"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"quotePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02405"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">200, normal</td>
-</tr>
-<tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">object array</td>
-<td style="text-align: left">List of market data</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">For example, the name of the currency pair: &quot;BTC-USDT&quot;</td>
-</tr>
-<tr>
-<td style="text-align: left">gain</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour increase</td>
-</tr>
-<tr>
-<td style="text-align: left">open</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">low</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Lowest price in 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">high</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Highest price in 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Latest transaction price</td>
-</tr>
-<tr>
-<td style="text-align: left">amount</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour trading currency volume</td>
-</tr>
-<tr>
-<td style="text-align: left">volume</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24-hour denominated currency trading volume</td>
-</tr>
-<tr>
-<td style="text-align: left">quotePrice</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Denominated currency price</td>
-</tr>
-<tr>
-<td style="text-align: left">bid</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Buy one price</td>
-</tr>
-<tr>
-<td style="text-align: left">ask</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Sell one price</td>
+<td style="text-align: left">Trading quote volume</td>
 </tr>
 </tbody></table>
 <h1 id='exchange-api-endpoints'>Exchange API Endpoints</h1><h2 id='new-order'>New order</h2>
@@ -2871,10 +2741,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2938,14 +2808,12 @@
     </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-17'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2995,10 +2863,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3031,14 +2899,12 @@
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-18'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3049,7 +2915,7 @@
 <tr>
 <td style="text-align: left">msg</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Remarks</td>
+<td style="text-align: left">Description</td>
 </tr>
 <tr>
 <td style="text-align: left">data</td>
@@ -3088,10 +2954,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3123,14 +2989,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-19'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3141,7 +3005,7 @@
 <tr>
 <td style="text-align: left">msg</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Remarks</td>
+<td style="text-align: left">Description</td>
 </tr>
 <tr>
 <td style="text-align: left">data</td>
@@ -3185,10 +3049,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3227,14 +3091,12 @@
     </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-20'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3399,10 +3261,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3496,14 +3358,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-21'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3688,10 +3548,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3792,14 +3652,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-22'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -3950,10 +3808,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4005,14 +3863,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-23'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4128,14 +3984,12 @@
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85942975"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-24'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4196,10 +4050,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4226,14 +4080,12 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-25'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4288,10 +4140,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4343,14 +4195,12 @@
     </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-26'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4400,10 +4250,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4481,14 +4331,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-27'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4563,10 +4411,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4667,14 +4515,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-28'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4774,10 +4620,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4855,14 +4701,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-29'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4957,10 +4801,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5026,14 +4870,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-30'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5104,10 +4946,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5147,14 +4989,12 @@
     </span><span class="nl">"exportAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-31'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5247,14 +5087,12 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-32'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5360,10 +5198,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5403,14 +5241,12 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-33'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5530,10 +5366,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5597,14 +5433,12 @@
     </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-34'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5654,10 +5488,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5690,14 +5524,12 @@
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-35'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5708,7 +5540,7 @@
 <tr>
 <td style="text-align: left">msg</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Remarks</td>
+<td style="text-align: left">Description</td>
 </tr>
 <tr>
 <td style="text-align: left">data</td>
@@ -5747,10 +5579,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5782,14 +5614,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-36'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5800,7 +5630,7 @@
 <tr>
 <td style="text-align: left">msg</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">Remarks</td>
+<td style="text-align: left">Description</td>
 </tr>
 <tr>
 <td style="text-align: left">data</td>
@@ -5844,10 +5674,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -5941,14 +5771,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-37'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6133,10 +5961,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6175,14 +6003,12 @@
     </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-38'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6347,10 +6173,10 @@
 
 <table><thead>
 <tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Do you have to</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6451,14 +6277,12 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return value:</strong></p>
-
+</span></code></pre></div><h3 id='response-39'>Response</h3>
 <table><thead>
 <tr>
-<th style="text-align: left">Field name</th>
-<th style="text-align: left">Data type</th>
-<th style="text-align: left">Remarks</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6613,10 +6437,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6663,14 +6487,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-40'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6740,10 +6562,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6773,14 +6595,12 @@
     </span><span class="nl">"leastBorrowAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-41'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6840,10 +6660,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6874,14 +6694,12 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-42'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6921,10 +6739,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -6954,14 +6772,12 @@
     </span><span class="nl">"availAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.99999910"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-43'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7021,10 +6837,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7055,14 +6871,12 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-44'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7102,10 +6916,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7172,14 +6986,12 @@
     </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-45'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7269,10 +7081,10 @@
 
 <table><thead>
 <tr>
-<th>parameter</th>
+<th>Name</th>
 <th>Mandatory</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7336,14 +7148,12 @@
   </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
   </span><span class="nl">"operateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-28T18:17:01Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>Return Value:</strong></p>
-
+</span></code></pre></div><h3 id='response-46'>Response</h3>
 <table><thead>
 <tr>
-<th>Field Name</th>
+<th>Name</th>
 <th>Type</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7386,7 +7196,7 @@
 <table><thead>
 <tr>
 <th>code</th>
-<th>Remarks</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -7446,7 +7256,7 @@
 <td>The futures API interface is temporarily inaccessible</td>
 </tr>
 </tbody></table>
-<h1 id='common-problem'>common problem</h1>
+<h1 id='common-problem'>Common problem</h1>
 <table><thead>
 <tr>
 <th>common problem</th>
@@ -7517,7 +7327,7 @@
         // for the English Language env.
         lang_btn.innerHTML = '简体中文';
         btn_spot.innerHTML = 'Spot/Margin';
-        btn_swap.innerHTML = 'USDT Futures';
+        btn_swap.innerHTML = 'USDⓈ-M Futures';
         LG.href = "https://www.fameex.com/";
         lang_btn.href = url.replace('en/', 'cn/');
         btn_spot.href = btn_spot.href.replace('cn/', 'en/');
