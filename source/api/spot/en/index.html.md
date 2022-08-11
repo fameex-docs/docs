@@ -42,7 +42,7 @@ meta:
   - Delete registration in-depth quotation `wss://www.fameex.com/push`
   - Update and push the homepage quotation `wss://www.fameex.com/push`
   - Update the push currency pair depth list `wss://www.fameex.com/push`
-  - Update push K-line data `wss://www.fameex.com/push`
+  - Update push K-line/Candlestick data `wss://www.fameex.com/push`
   - Update and push the latest transaction order quotation `wss://www.fameex.com/push`
   - Delete push order transaction or cancellation `wss://www.fameex.com/push`
   - Delete push My order is partially cancelled `wss://www.fameex.com/push`
@@ -50,7 +50,7 @@ meta:
 
 - Updates to the currency trading API interface:
 
-  - Modify the interface for obtaining K-line data `/v1/market/history/kline`
+  - Modify the interface for obtaining K-line/Candlestick data `/v1/market/history/kline`
   - Modify the interface for obtaining market depth data `/v1/market/depth`
   - Modify the interface for obtaining transaction data `/v1/market/history/trade`
   - Modify the interface to obtain a ticker information `/v1/market/history/kline24h`
@@ -129,9 +129,9 @@ API overview
 
 FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
 
-Before using the API, please create your own API, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
+Before using the API, please create your own API credentials through the FAMEEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
 
-API trading permissions allow you to quickly obtain the latest market quotations and timely order transactions, query your available and frozen amounts, query your current pending orders, buy or sell, and withdraw orders.
+API trading permissions allow you to quickly obtain the latest market quotations and order book state information, query your available balance, query your current pending orders, buy or sell, and withdraw orders.
 
 FAMEEX official website homepage: [www.fameex.com](http://www.fameex.com)
 
@@ -141,15 +141,13 @@ Our contact information is as follows:
 
 Official customer service mailbox: [Service@mail.fameex.info](mailto:Service@mail.fameex.info)
 
-Official Weibo: [https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
-
 Official Twitter: [https://twitter.com/FAMEEXGLOBAL](https://twitter.com/FAMEEXGLOBAL)
 
 Official Telegram: [https://t.me/fameexgroup](https://t.me/fameexgroup)
 
 Official Facebook: [https://www.facebook.com/FAMEEXGLOBAL](https://www.facebook.com/FAMEEXGLOBAL)
 
-We will make the most authoritative answer for you.
+Our official support is the most authoritative source for information about this API.
 
 # Access instructions
 
@@ -162,7 +160,7 @@ We will make the most authoritative answer for you.
 
 All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:'application/json'
 
-In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.
+Accessing FAMEEX-API through a proxy is not recommended due to high latency and poor stability.
 
 ## Restriction rules
 
@@ -201,9 +199,9 @@ Explanation of the parameters of the request header:
 
 ## signature
 
-\1. Signature description
+1. Signature description
 
-API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to verify parameters or parameters Whether the value has changed during transmission.
+API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to distinguish parameters from parameters where the value has changed during transmission.
 
 Method request address: access server address api.fameex.com, such as api.fameex.com/v1/order/orders
 
@@ -213,9 +211,9 @@ AccessKey: API access key
 
 SecretKey: The key used for signature authentication and encryption (only visible at the time of application)
 
-`Signature`It is a string spliced on a `timestamp（Unit second） + method（GET OR POST） + requestPath + body`string (+ means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.
+`Signature`It is a string spliced on a `timestamp（in seconds） + method（GET OR POST） + requestPath + body`string ("+" means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.
 
-Among them, `timestamp`the value of is the same as the request header, `Timestamp`and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second
+Among them, the value of `timestamp`, is the same as the request header: `Timestamp`, and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second
 
 method is a request method, all uppercase letters: `GET/POST`.
 
@@ -326,11 +324,11 @@ websocket
 | on    | string | Message type ("req")     |
 | topic | string | Request subject ("auth") |
 
-## Push K line information
+## Push K line/Candlestick information
 
 **Function Description:**
 
-This interface is registered for K-line service
+This interface is registered for K-line/Candlestick service
 
 **Request path:**
 
@@ -361,7 +359,7 @@ websocket
 | topic  | Yes       | string | Subscribe to topic ("spot.market.kline")                |
 | params | Yes       | object | Parameter                                               |
 | symbol | Yes       | string | The name of the currency pair (for example, "BTC-USDT") |
-| period | Yes       | string | K-line time granularity (1,5,15,30,60,120,240,1D)       |
+| period | Yes       | string | Candlestick time granularity (1,5,15,30,60,120,240,1D)  |
 
 > **Return example:**
 
@@ -393,7 +391,7 @@ websocket
 | topic  | string | Request subject ("spot.market.kline")                   |
 | data   | object | Return data entity                                      |
 | symbol | string | The name of the currency pair (for example, "BTC-USDT") |
-| period | string | K-line time granularity (1,5,15,30,60,120,240,1D)       |
+| period | string | Candlestick time granularity (1,5,15,30,60,120,240,1D)  |
 | time   | int64  | Start timestamp, seconds                                |
 | open   | string | Opening price                                           |
 | low    | string | Lowest price                                            |
@@ -1103,7 +1101,7 @@ Speed limit rule: 20 times/2s
 
 **Function Description:**
 
-This interface obtains historical K-line data.
+This interface obtains historical K-line/Candlestick data.
 
 **Request path:**
 

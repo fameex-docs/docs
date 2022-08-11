@@ -28,6 +28,7 @@ meta:
 - New endpoint for USDⓈ-M Futures:
   - GET `/swap-api/v2/orderbook` to query order book.
   - GET `/swap-api/v2/tickers` to query 24 hour rolling window price change statistics.
+  - POST `/swap-api/v1/margin-mode` to change margin mode
 
 ## 2021-05-27
 
@@ -42,7 +43,7 @@ meta:
   - Added U futures to obtain transaction details list interface `/swap-api/v1/trades`
   - Added U futures to get the latest transaction details list interface `/swap-api/v1/last_trades`
   - Added U futures to obtain in-depth data interface `/swap-api/v1/depth`
-  - Added U futures to obtain K-line data interface `/swap-api/v1/kline`
+  - Added U futures to obtain K-line/Candlestick data interface `/swap-api/v1/kline`
   - Added U futures to obtain all currency pairs and configuration interface `/swap-api/v1/symbols`
   - Added U futures to obtain futures account asset interface `/swap-api/v1/wallet/asset`
   - Added U futures to obtain futures position interface `/swap-api/v1/wallet/pos`
@@ -54,9 +55,9 @@ API overview
 
 FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
 
-Before using the API, please create your own API, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
+Before using the API, please create your own API credentials through the FAMEEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
 
-API trading permissions allow you to quickly obtain the latest market quotations and timely order transactions, query your available and frozen amounts, query your current pending orders, buy or sell, and withdraw orders.
+API trading permissions allow you to quickly obtain the latest market quotations and order book state information, query your available balance, query your current pending orders, buy or sell, and withdraw orders.
 
 FAMEEX official website homepage: [www.fameex.com](http://www.fameex.com)
 
@@ -66,15 +67,13 @@ Our contact information is as follows:
 
 Official customer service mailbox: [Service@mail.fameex.info](mailto:Service@mail.fameex.info)
 
-Official Weibo: [https://weibo.com/fameexgroup](https://weibo.com/fameexgroup)
-
 Official Twitter: [https://twitter.com/FAMEEXGLOBAL](https://twitter.com/FAMEEXGLOBAL)
 
 Official Telegram: [https://t.me/fameexgroup](https://t.me/fameexgroup)
 
 Official Facebook: [https://www.facebook.com/FAMEEXGLOBAL](https://www.facebook.com/FAMEEXGLOBAL)
 
-We will make the most authoritative answer for you.
+Our official support is the most authoritative source for information about this API.
 
 # Access instructions
 
@@ -87,7 +86,7 @@ We will make the most authoritative answer for you.
 
 All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:'application/json'
 
-In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.
+Accessing FAMEEX-API through a proxy is not recommended due to high latency and poor stability.
 
 ## Restriction rules
 
@@ -128,7 +127,7 @@ Explanation of the parameters of the request header:
 
 1. Signature description
 
-API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to verify parameters or parameters Whether the value has changed during transmission.
+API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to distinguish parameters from parameters where the value has changed during transmission.
 
 Method request address: access server address api.fameex.com, such as api.fameex.com/v1/order/orders
 
@@ -138,9 +137,9 @@ AccessKey: API access key
 
 SecretKey: The key used for signature authentication and encryption (only visible at the time of application)
 
-`Signature`It is a string spliced on a `timestamp（Unit second） + method（GET OR POST） + requestPath + body`string (+ means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.
+`Signature`It is a string spliced on a `timestamp（in seconds） + method（GET OR POST） + requestPath + body`string ("+" means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.
 
-Among them, `timestamp`the value of is the same as the request header, `Timestamp`and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second
+Among them, the value of `timestamp`, is the same as the request header: `Timestamp`, and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second
 
 method is a request method, all uppercase letters: `GET/POST`.
 
@@ -328,13 +327,13 @@ no
 
 # Market Data Endpoints
 
-## Get k-line data
+## Get k-line/Candlestick data
 
 Speed limit rule: 20 times/2s
 
 `Function Description`
 
-This interface obtains historical K-line data.
+This interface obtains historical K-line/Candlestick data.
 
 **Request path:**
 
@@ -1143,6 +1142,41 @@ no
 | userid       | string | User id         |
 | contractCode | string | Contract code   |
 | leverage     | int    | Leverage        |
+
+## Change Margin Mode (TRADE)
+
+### HTTP Request
+
+POST `/swap-api/v1/margin-mode`
+
+### Parameters
+
+| Name         | Mandatory | Type   | Description                                   |
+| ------------ | --------- | ------ | --------------------------------------------- |
+| symbol       | Yes       | string | For example "BTC-USDT"         |
+| marginMode   | Yes       | int    | margin mode 1: CROSSED 2: ISOLATED |
+
+> Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "userId": "32102739",
+    "contractCode": "BTC-USDT",
+    "marginMode": 2
+  },
+  "msg": "success"
+}
+```
+
+### Response
+
+| Field Name   | Type   | Description     |
+| ------------ | ------ | --------------- |
+| userid       | string | User id         |
+| symbol       | string | Contract code   |
+| marginMode   | int    | Margin mode     |
 
 # U futures wallet API Endpoints
 
