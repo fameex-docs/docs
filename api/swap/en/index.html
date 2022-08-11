@@ -379,7 +379,7 @@
             <a href="#market-data-endpoints" class="toc-h1 toc-link" data-title="Market Data Endpoints">Market Data Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-k-line-data" class="toc-h2 toc-link" data-title="Get k-line data">Get k-line data</a>
+                    <a href="#get-k-line-candlestick-data" class="toc-h2 toc-link" data-title="Get k-line/Candlestick data">Get k-line/Candlestick data</a>
                   </li>
                   <li>
                     <a href="#order-book" class="toc-h2 toc-link" data-title="Order Book">Order Book</a>
@@ -416,6 +416,9 @@
                   <li>
                     <a href="#adjust-leverage" class="toc-h2 toc-link" data-title="Adjust leverage">Adjust leverage</a>
                   </li>
+                  <li>
+                    <a href="#change-margin-mode-trade" class="toc-h2 toc-link" data-title="Change Margin Mode (TRADE)">Change Margin Mode (TRADE)</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -450,6 +453,7 @@
 <ul>
 <li>GET <code>/swap-api/v2/orderbook</code> to query order book.</li>
 <li>GET <code>/swap-api/v2/tickers</code> to query 24 hour rolling window price change statistics.</li>
+<li>POST <code>/swap-api/v1/margin-mode</code> to change margin mode</li>
 </ul></li>
 </ul>
 <h2 id='2021-05-27'>2021-05-27</h2>
@@ -467,7 +471,7 @@
 <li>Added U futures to obtain transaction details list interface <code>/swap-api/v1/trades</code></li>
 <li>Added U futures to get the latest transaction details list interface <code>/swap-api/v1/last_trades</code></li>
 <li>Added U futures to obtain in-depth data interface <code>/swap-api/v1/depth</code></li>
-<li>Added U futures to obtain K-line data interface <code>/swap-api/v1/kline</code></li>
+<li>Added U futures to obtain K-line/Candlestick data interface <code>/swap-api/v1/kline</code></li>
 <li>Added U futures to obtain all currency pairs and configuration interface <code>/swap-api/v1/symbols</code></li>
 <li>Added U futures to obtain futures account asset interface <code>/swap-api/v1/wallet/asset</code></li>
 <li>Added U futures to obtain futures position interface <code>/swap-api/v1/wallet/pos</code></li>
@@ -479,9 +483,9 @@
 
 <p>FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.</p>
 
-<p>Before using the API, please create your own API, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.</p>
+<p>Before using the API, please create your own API credentials through the FAMEEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.</p>
 
-<p>API trading permissions allow you to quickly obtain the latest market quotations and timely order transactions, query your available and frozen amounts, query your current pending orders, buy or sell, and withdraw orders.</p>
+<p>API trading permissions allow you to quickly obtain the latest market quotations and order book state information, query your available balance, query your current pending orders, buy or sell, and withdraw orders.</p>
 
 <p>FAMEEX official website homepage: <a href="http://www.fameex.com">www.fameex.com</a></p>
 
@@ -491,15 +495,13 @@
 
 <p>Official customer service mailbox: <a href="mailto:Service@mail.fameex.info">Service@mail.fameex.info</a></p>
 
-<p>Official Weibo: <a href="https://weibo.com/fameexgroup">https://weibo.com/fameexgroup</a></p>
-
 <p>Official Twitter: <a href="https://twitter.com/FAMEEXGLOBAL">https://twitter.com/FAMEEXGLOBAL</a></p>
 
 <p>Official Telegram: <a href="https://t.me/fameexgroup">https://t.me/fameexgroup</a></p>
 
 <p>Official Facebook: <a href="https://www.facebook.com/FAMEEXGLOBAL">https://www.facebook.com/FAMEEXGLOBAL</a></p>
 
-<p>We will make the most authoritative answer for you.</p>
+<p>Our official support is the most authoritative source for information about this API.</p>
 <h1 id='access-instructions'>Access instructions</h1><h2 id='access-urls'>Access URLs</h2>
 <table><thead>
 <tr>
@@ -519,7 +521,7 @@
 
 <p>All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:&#39;application/json&#39;</p>
 
-<p>In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.</p>
+<p>Accessing FAMEEX-API through a proxy is not recommended due to high latency and poor stability.</p>
 <h2 id='restriction-rules'>Restriction rules</h2>
 <p><strong>Limit frequency:</strong> The limit of each interface is different.</p>
 
@@ -596,7 +598,7 @@
 <li>Signature description</li>
 </ol>
 
-<p>API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to verify parameters or parameters Whether the value has changed during transmission.</p>
+<p>API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to distinguish parameters from parameters where the value has changed during transmission.</p>
 
 <p>Method request address: access server address api.fameex.com, such as api.fameex.com/v1/order/orders</p>
 
@@ -606,9 +608,9 @@
 
 <p>SecretKey: The key used for signature authentication and encryption (only visible at the time of application)</p>
 
-<p><code>Signature</code>It is a string spliced on a <code>timestamp（Unit second） + method（GET OR POST） + requestPath + body</code>string (+ means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.</p>
+<p><code>Signature</code>It is a string spliced on a <code>timestamp（in seconds） + method（GET OR POST） + requestPath + body</code>string (&quot;+&quot; means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.</p>
 
-<p>Among them, <code>timestamp</code>the value of is the same as the request header, <code>Timestamp</code>and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second</p>
+<p>Among them, the value of <code>timestamp</code>, is the same as the request header: <code>Timestamp</code>, and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second</p>
 
 <p>method is a request method, all uppercase letters: <code>GET/POST</code>.</p>
 
@@ -885,12 +887,12 @@
 <td>Maintenance margin rate</td>
 </tr>
 </tbody></table>
-<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='get-k-line-data'>Get k-line data</h2>
+<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='get-k-line-candlestick-data'>Get k-line/Candlestick data</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><code>Function Description</code></p>
 
-<p>This interface obtains historical K-line data.</p>
+<p>This interface obtains historical K-line/Candlestick data.</p>
 
 <p><strong>Request path:</strong></p>
 
@@ -2649,6 +2651,67 @@
 <td>leverage</td>
 <td>int</td>
 <td>Leverage</td>
+</tr>
+</tbody></table>
+<h2 id='change-margin-mode-trade'>Change Margin Mode (TRADE)</h2><h3 id='http-request'>HTTP Request</h3>
+<p>POST <code>/swap-api/v1/margin-mode</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Yes</td>
+<td>string</td>
+<td>For example &quot;BTC-USDT&quot;</td>
+</tr>
+<tr>
+<td>marginMode</td>
+<td>Yes</td>
+<td>int</td>
+<td>margin mode 1: CROSSED 2: ISOLATED</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32102739"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contractCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userid</td>
+<td>string</td>
+<td>User id</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Contract code</td>
+</tr>
+<tr>
+<td>marginMode</td>
+<td>int</td>
+<td>Margin mode</td>
 </tr>
 </tbody></table>
 <h1 id='u-futures-wallet-api-endpoints'>U futures wallet API Endpoints</h1><h2 id='get-futures-wallet'>Get futures wallet</h2>

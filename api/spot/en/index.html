@@ -392,7 +392,7 @@
                     <a href="#login-information" class="toc-h2 toc-link" data-title="Login information">Login information</a>
                   </li>
                   <li>
-                    <a href="#push-k-line-information" class="toc-h2 toc-link" data-title="Push K line information">Push K line information</a>
+                    <a href="#push-k-line-candlestick-information" class="toc-h2 toc-link" data-title="Push K line/Candlestick information">Push K line/Candlestick information</a>
                   </li>
                   <li>
                     <a href="#push-homepage-quotation" class="toc-h2 toc-link" data-title="Push homepage quotation">Push homepage quotation</a>
@@ -587,7 +587,7 @@
 <li>Delete registration in-depth quotation <code>wss://www.fameex.com/push</code></li>
 <li>Update and push the homepage quotation <code>wss://www.fameex.com/push</code></li>
 <li>Update the push currency pair depth list <code>wss://www.fameex.com/push</code></li>
-<li>Update push K-line data <code>wss://www.fameex.com/push</code></li>
+<li>Update push K-line/Candlestick data <code>wss://www.fameex.com/push</code></li>
 <li>Update and push the latest transaction order quotation <code>wss://www.fameex.com/push</code></li>
 <li>Delete push order transaction or cancellation <code>wss://www.fameex.com/push</code></li>
 <li>Delete push My order is partially cancelled <code>wss://www.fameex.com/push</code></li>
@@ -596,7 +596,7 @@
 <li><p>Updates to the currency trading API interface:</p>
 
 <ul>
-<li>Modify the interface for obtaining K-line data <code>/v1/market/history/kline</code></li>
+<li>Modify the interface for obtaining K-line/Candlestick data <code>/v1/market/history/kline</code></li>
 <li>Modify the interface for obtaining market depth data <code>/v1/market/depth</code></li>
 <li>Modify the interface for obtaining transaction data <code>/v1/market/history/trade</code></li>
 <li>Modify the interface to obtain a ticker information <code>/v1/market/history/kline24h</code></li>
@@ -694,9 +694,9 @@
 
 <p>FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.</p>
 
-<p>Before using the API, please create your own API, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.</p>
+<p>Before using the API, please create your own API credentials through the FAMEEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.</p>
 
-<p>API trading permissions allow you to quickly obtain the latest market quotations and timely order transactions, query your available and frozen amounts, query your current pending orders, buy or sell, and withdraw orders.</p>
+<p>API trading permissions allow you to quickly obtain the latest market quotations and order book state information, query your available balance, query your current pending orders, buy or sell, and withdraw orders.</p>
 
 <p>FAMEEX official website homepage: <a href="http://www.fameex.com">www.fameex.com</a></p>
 
@@ -706,15 +706,13 @@
 
 <p>Official customer service mailbox: <a href="mailto:Service@mail.fameex.info">Service@mail.fameex.info</a></p>
 
-<p>Official Weibo: <a href="https://weibo.com/fameexgroup">https://weibo.com/fameexgroup</a></p>
-
 <p>Official Twitter: <a href="https://twitter.com/FAMEEXGLOBAL">https://twitter.com/FAMEEXGLOBAL</a></p>
 
 <p>Official Telegram: <a href="https://t.me/fameexgroup">https://t.me/fameexgroup</a></p>
 
 <p>Official Facebook: <a href="https://www.facebook.com/FAMEEXGLOBAL">https://www.facebook.com/FAMEEXGLOBAL</a></p>
 
-<p>We will make the most authoritative answer for you.</p>
+<p>Our official support is the most authoritative source for information about this API.</p>
 <h1 id='access-instructions'>Access instructions</h1><h2 id='access-urls'>Access URLs</h2>
 <table><thead>
 <tr>
@@ -734,7 +732,7 @@
 
 <p>All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:&#39;application/json&#39;</p>
 
-<p>In view of the high latency and poor stability, it is not recommended to access FAMEEX-API through proxy.</p>
+<p>Accessing FAMEEX-API through a proxy is not recommended due to high latency and poor stability.</p>
 <h2 id='restriction-rules'>Restriction rules</h2>
 <p><strong>Limit frequency:</strong> The limit of each interface is different.</p>
 
@@ -807,9 +805,11 @@
 
 <p><strong>Signature:</strong> The value calculated by the signature to ensure that the signature is valid and has not been tampered with.</p>
 <h2 id='signature'>signature</h2>
-<p>\1. Signature description</p>
+<ol>
+<li>Signature description</li>
+</ol>
 
-<p>API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to verify parameters or parameters Whether the value has changed during transmission.</p>
+<p>API requests are very likely to be tampered with during transmission via the internet. In order to ensure that the request has not been changed, all private interfaces except the push service interface must use your API’s AccessKey and SecretKey for signature authentication to distinguish parameters from parameters where the value has changed during transmission.</p>
 
 <p>Method request address: access server address api.fameex.com, such as api.fameex.com/v1/order/orders</p>
 
@@ -819,9 +819,9 @@
 
 <p>SecretKey: The key used for signature authentication and encryption (only visible at the time of application)</p>
 
-<p><code>Signature</code>It is a string spliced on a <code>timestamp（Unit second） + method（GET OR POST） + requestPath + body</code>string (+ means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.</p>
+<p><code>Signature</code>It is a string spliced on a <code>timestamp（in seconds） + method（GET OR POST） + requestPath + body</code>string (&quot;+&quot; means string connection), using secretKey, encrypting it according to the HMAC SHA256 method, and outputting it through hex encoding.</p>
 
-<p>Among them, <code>timestamp</code>the value of is the same as the request header, <code>Timestamp</code>and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second</p>
+<p>Among them, the value of <code>timestamp</code>, is the same as the request header: <code>Timestamp</code>, and must be in the decimal seconds format of the UTC time zone Unix timestamp or the ISO8601 standard time format, accurate to the second</p>
 
 <p>method is a request method, all uppercase letters: <code>GET/POST</code>.</p>
 
@@ -993,10 +993,10 @@
 <td style="text-align: left">Request subject (&quot;auth&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='push-k-line-information'>Push K line information</h2>
+<h2 id='push-k-line-candlestick-information'>Push K line/Candlestick information</h2>
 <p><strong>Function Description:</strong></p>
 
-<p>This interface is registered for K-line service</p>
+<p>This interface is registered for K-line/Candlestick service</p>
 
 <p><strong>Request path:</strong></p>
 
@@ -1056,7 +1056,7 @@
 <td style="text-align: left">period</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">K-line time granularity (1,5,15,30,60,120,240,1D)</td>
+<td style="text-align: left">Candlestick time granularity (1,5,15,30,60,120,240,1D)</td>
 </tr>
 </tbody></table>
 
@@ -1115,7 +1115,7 @@
 <tr>
 <td style="text-align: left">period</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">K-line time granularity (1,5,15,30,60,120,240,1D)</td>
+<td style="text-align: left">Candlestick time granularity (1,5,15,30,60,120,240,1D)</td>
 </tr>
 <tr>
 <td style="text-align: left">time</td>
@@ -2437,7 +2437,7 @@
 
 <p><strong>Function Description:</strong></p>
 
-<p>This interface obtains historical K-line data.</p>
+<p>This interface obtains historical K-line/Candlestick data.</p>
 
 <p><strong>Request path:</strong></p>
 
