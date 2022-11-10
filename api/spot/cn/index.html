@@ -337,6 +337,9 @@
             <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2022-11-07" class="toc-h2 toc-link" data-title="2022-11-07">2022-11-07</a>
+                  </li>
+                  <li>
                     <a href="#2021-03-30" class="toc-h2 toc-link" data-title="2021-03-30">2021-03-30</a>
                   </li>
                   <li>
@@ -439,6 +442,21 @@
                   </li>
                   <li>
                     <a href="#24hr" class="toc-h2 toc-link" data-title="24hr 价格变动情况">24hr 价格变动情况</a>
+                  </li>
+                  <li>
+                    <a href="#b4258c5371" class="toc-h2 toc-link" data-title="币种信息">币种信息</a>
+                  </li>
+                  <li>
+                    <a href="#0c7e3c679b" class="toc-h2 toc-link" data-title="交易对信息">交易对信息</a>
+                  </li>
+                  <li>
+                    <a href="#015ab461eb" class="toc-h2 toc-link" data-title="交易对摘要">交易对摘要</a>
+                  </li>
+                  <li>
+                    <a href="#38a975b802-2" class="toc-h2 toc-link" data-title="深度信息">深度信息</a>
+                  </li>
+                  <li>
+                    <a href="#1285d91409" class="toc-h2 toc-link" data-title="订单查询">订单查询</a>
                   </li>
                   <li>
                     <a href="#8ff46b58de" class="toc-h2 toc-link" data-title="最新价格">最新价格</a>
@@ -564,7 +582,19 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='185368440e'>更新日志</h1><h2 id='2021-03-30'>2021-03-30</h2>
+        <h1 id='185368440e'>更新日志</h1><h2 id='2022-11-07'>2022-11-07</h2>
+<ul>
+<li>新增现货行情接口:
+
+<ul>
+<li>GET <code>/v2/public/assets</code> 币种列表</li>
+<li>GET <code>/v2/public/summary</code> 交易对信息</li>
+<li>GET <code>/v2/public/ticker</code> 交易对摘要</li>
+<li>GET <code>/v2/public/orderbook/market_pair</code> 深度信息</li>
+<li>GET <code>/v2/public/trades/market_pair</code> 订单查询</li>
+</ul></li>
+</ul>
+<h2 id='2021-03-30'>2021-03-30</h2>
 <ul>
 <li>新增现货行情接口:
 
@@ -2657,7 +2687,430 @@
 <td style="text-align: left">24 小时最低价</td>
 </tr>
 </tbody></table>
-<h2 id='8ff46b58de'>最新价格</h2><h3 id='http-4'>HTTP 请求</h3>
+<h2 id='b4258c5371'>币种信息</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/assets'</span>
+</code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unified_cryptoasset_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_deposit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"min_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"max_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unified_cryptoasset_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_deposit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"min_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"max_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='http-4'>HTTP 请求</h3>
+<p>GET <code>/v2/public/assets</code></p>
+<h3 id='1f9ac54b15-4'>请求参数</h3>
+<p>无</p>
+<h3 id='50faad05f3-16'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">unified_cryptoasset_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">币种 id</td>
+</tr>
+<tr>
+<td style="text-align: left">can_withdraw</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">是否可以提现</td>
+</tr>
+<tr>
+<td style="text-align: left">can_deposit</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">是否可以充值</td>
+</tr>
+<tr>
+<td style="text-align: left">min_withdraw</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最小提现数量</td>
+</tr>
+<tr>
+<td style="text-align: left">max_withdraw</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最大提现数量</td>
+</tr>
+</tbody></table>
+<h2 id='0c7e3c679b'>交易对信息</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/summary'</span>
+</code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trading_pairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_change_percent_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trading_pairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_change_percent_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-5'>HTTP 请求</h3>
+<p>GET <code>/v2/public/summary</code></p>
+<h3 id='1f9ac54b15-5'>请求参数</h3>
+<p>无</p>
+<h3 id='50faad05f3-17'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trading_pairs</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最新成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest_ask</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最佳卖价</td>
+</tr>
+<tr>
+<td style="text-align: left">highest_bid</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最佳买价</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交额</td>
+</tr>
+<tr>
+<td style="text-align: left">price_change_percent_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 小时涨幅</td>
+</tr>
+<tr>
+<td style="text-align: left">highest_price_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 小时最高价</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest_price_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 小时最低价</td>
+</tr>
+<tr>
+<td style="text-align: left">base_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">交易币种</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">支付币种</td>
+</tr>
+</tbody></table>
+<h2 id='015ab461eb'>交易对摘要</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/ticker'</span>
+</code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTC_USDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"base_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isFrozen"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ETH_USDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"base_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isFrozen"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-6'>HTTP 请求</h3>
+<p>GET <code>/v2/public/ticker</code></p>
+<h3 id='1f9ac54b15-6'>请求参数</h3>
+<p>无</p>
+<h3 id='50faad05f3-18'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">base_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最新成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最佳卖价</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最佳买价</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">isFrozen</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是否启用</td>
+</tr>
+</tbody></table>
+<h2 id='38a975b802-2'>深度信息</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/orderbook/market_pair?market_pair=BTC_USDT&amp;level=3&amp;depth=100'</span>
+</code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622526449"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1102"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"20"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"60000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"91.185787"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"66000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.30322"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-7'>HTTP 请求</h3>
+<p>GET <code>/v2/public/orderbook/market_pair</code></p>
+<h3 id='1f9ac54b15-7'>请求参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">market_pair</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">示例例: &quot;BTC_USDT&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">level</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">示例例: 3</td>
+</tr>
+<tr>
+<td style="text-align: left">depth</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">示例例: 100</td>
+</tr>
+</tbody></table>
+<h3 id='50faad05f3-19'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">服务器时间</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">买</td>
+</tr>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">卖</td>
+</tr>
+</tbody></table>
+<h2 id='1285d91409'>订单查询</h2>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/trades/market_pair?market_pair=BTC_USDT'</span>
+</code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trade_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2101</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.003333"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622526904"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trade_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.008333"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622526904"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-8'>HTTP 请求</h3>
+<p>GET <code>/v2/public/trades/market_pair</code></p>
+<h3 id='1f9ac54b15-8'>请求参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">market_pair</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">示例例: &quot;BTC_USDT&quot;</td>
+</tr>
+</tbody></table>
+<h3 id='50faad05f3-20'>响应参数</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">参数</th>
+<th style="text-align: left">数据类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trade_id</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">订单 id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">最新成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">volume</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">price * volume</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">服务器时间</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">买/卖</td>
+</tr>
+</tbody></table>
+<h2 id='8ff46b58de'>最新价格</h2><h3 id='http-9'>HTTP 请求</h3>
 <p>GET <code>/api/v2/ticker/price</code></p>
 
 <blockquote>
@@ -2680,7 +3133,7 @@
     </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9999936"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-4'>请求参数</h3>
+</span></code></pre></div><h3 id='1f9ac54b15-9'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -2696,7 +3149,7 @@
 <td>示例例: &quot;BTC-USDT&quot;</td>
 </tr>
 </tbody></table>
-<h3 id='50faad05f3-16'>响应参数</h3>
+<h3 id='50faad05f3-21'>响应参数</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">参数</th>
@@ -2808,7 +3261,7 @@
     </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-17'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-22'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -2899,7 +3352,7 @@
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-18'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-23'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -2989,7 +3442,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-19'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-24'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3091,7 +3544,7 @@
     </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-20'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-25'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3362,7 +3815,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-21'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-26'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3656,7 +4109,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-22'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-27'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3867,7 +4320,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-23'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-28'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3988,7 +4441,7 @@
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85942975"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-24'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-29'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4084,7 +4537,7 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-25'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-30'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4199,7 +4652,7 @@
     </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-26'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-31'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4335,7 +4788,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-27'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-32'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4519,7 +4972,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-28'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-33'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4705,7 +5158,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-29'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-34'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4874,7 +5327,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-30'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-35'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -4993,7 +5446,7 @@
     </span><span class="nl">"exportAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-31'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-36'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5091,7 +5544,7 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-32'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-37'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5245,7 +5698,7 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-33'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-38'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5437,7 +5890,7 @@
     </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-34'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-39'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5528,7 +5981,7 @@
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-35'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-40'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5618,7 +6071,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-36'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-41'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5775,7 +6228,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-37'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-42'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -5944,7 +6397,7 @@
 <td>状态更新时间</td>
 </tr>
 </tbody></table>
-<h3 id='50faad05f3-38'>响应参数</h3>
+<h3 id='50faad05f3-43'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -6161,7 +6614,7 @@
     </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-39'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-44'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -6310,7 +6763,7 @@
 <td>状态更新时间</td>
 </tr>
 </tbody></table>
-<h3 id='50faad05f3-40'>响应参数</h3>
+<h3 id='50faad05f3-45'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -6529,7 +6982,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-41'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-46'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -6668,7 +7121,7 @@
 <td>创建时间</td>
 </tr>
 </tbody></table>
-<h3 id='50faad05f3-42'>响应参数</h3>
+<h3 id='50faad05f3-47'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -6828,7 +7281,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-43'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-48'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -6936,7 +7389,7 @@
     </span><span class="nl">"leastBorrowAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-44'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-49'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -7035,7 +7488,7 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-45'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-50'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -7113,7 +7566,7 @@
     </span><span class="nl">"availAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.99999910"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-46'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-51'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -7212,7 +7665,7 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-47'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-52'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -7327,7 +7780,7 @@
     </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-48'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-53'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -7489,7 +7942,7 @@
   </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
   </span><span class="nl">"operateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-28T18:17:01Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-49'>响应参数</h3>
+</span></code></pre></div><h3 id='50faad05f3-54'>响应参数</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>

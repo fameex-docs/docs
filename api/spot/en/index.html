@@ -337,6 +337,9 @@
             <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2022-11-07" class="toc-h2 toc-link" data-title="2022-11-07">2022-11-07</a>
+                  </li>
+                  <li>
                     <a href="#2021-03-30" class="toc-h2 toc-link" data-title="2021-03-30">2021-03-30</a>
                   </li>
                   <li>
@@ -439,6 +442,21 @@
                   </li>
                   <li>
                     <a href="#24hr-ticker-price-change-statistics" class="toc-h2 toc-link" data-title="24hr Ticker Price Change Statistics">24hr Ticker Price Change Statistics</a>
+                  </li>
+                  <li>
+                    <a href="#detailed-summary-for-each-currency" class="toc-h2 toc-link" data-title="Detailed summary for each currency">Detailed summary for each currency</a>
+                  </li>
+                  <li>
+                    <a href="#overview-of-market-data-for-all-tickers-and-all-market-pairs" class="toc-h2 toc-link" data-title="Overview of market data for all tickers and all market pairs">Overview of market data for all tickers and all market pairs</a>
+                  </li>
+                  <li>
+                    <a href="#24-hour-pricing-and-volume-summary" class="toc-h2 toc-link" data-title="24-hour pricing and volume summary">24-hour pricing and volume summary</a>
+                  </li>
+                  <li>
+                    <a href="#full-depth-returned-for-a-given-market-pair" class="toc-h2 toc-link" data-title="Full depth returned for a given market pair">Full depth returned for a given market pair</a>
+                  </li>
+                  <li>
+                    <a href="#completed-trades-for-a-given-market-pai" class="toc-h2 toc-link" data-title="Completed trades for a given market pai">Completed trades for a given market pai</a>
                   </li>
                   <li>
                     <a href="#symbol-price-ticker" class="toc-h2 toc-link" data-title="Symbol Price Ticker">Symbol Price Ticker</a>
@@ -564,7 +582,19 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='change-log'>Change Log</h1><h2 id='2021-03-30'>2021-03-30</h2>
+        <h1 id='change-log'>Change Log</h1><h2 id='2022-11-07'>2022-11-07</h2>
+<ul>
+<li>New endpoint for Market Data:
+
+<ul>
+<li>GET <code>/v2/public/assets</code> to query detailed summary for each currency</li>
+<li>GET <code>/v2/public/summary</code> to query an overview of market data for all tickers and all market pairs</li>
+<li>GET <code>/v2/public/ticker</code> to query a 24-hour pricing and volume summary for each market pair</li>
+<li>GET <code>/v2/public/orderbook/market_pair</code> to query full depth returned for a given market pair</li>
+<li>GET <code>/v2/public/trades/market_pair</code> to query completed trades for a given market pair</li>
+</ul></li>
+</ul>
+<h2 id='2021-03-30'>2021-03-30</h2>
 <ul>
 <li>New endpoint for Market Data:
 
@@ -2657,6 +2687,429 @@
 <td style="text-align: left">Low price</td>
 </tr>
 </tbody></table>
+<h2 id='detailed-summary-for-each-currency'>Detailed summary for each currency</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/assets'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unified_cryptoasset_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_deposit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"min_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"max_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unified_cryptoasset_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"can_deposit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"min_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"max_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p>GET <code>/v2/public/assets</code></p>
+<h3 id='parameters-4'>Parameters</h3>
+<p>无</p>
+<h3 id='response-16'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">currency name</td>
+</tr>
+<tr>
+<td style="text-align: left">unified_cryptoasset_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">currency id</td>
+</tr>
+<tr>
+<td style="text-align: left">can_withdraw</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">Identifies whether withdrawals are enabled or disabled.</td>
+</tr>
+<tr>
+<td style="text-align: left">can_deposit</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">Identifies whether deposits are enabled or disabled.</td>
+</tr>
+<tr>
+<td style="text-align: left">min_withdraw</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Identifies the single minimum withdrawal amount of a cryptocurrency.</td>
+</tr>
+<tr>
+<td style="text-align: left">max_withdraw</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Identifies the single maximum withdrawal amount of a cryptocurrency.</td>
+</tr>
+</tbody></table>
+<h2 id='overview-of-market-data-for-all-tickers-and-all-market-pairs'>Overview of market data for all tickers and all market pairs</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/summary'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trading_pairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_change_percent_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trading_pairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_change_percent_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowest_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p>GET <code>/v2/public/summary</code></p>
+<h3 id='parameters-5'>Parameters</h3>
+<p>无</p>
+<h3 id='response-17'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trading_pairs</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Identifier of a ticker with delimiter to separate base/quote,eg. BTC-USD</td>
+</tr>
+<tr>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Last transacted price of base currency based on given quote currency</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest_ask</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Lowest Ask price of base currency based on given quote currency</td>
+</tr>
+<tr>
+<td style="text-align: left">highest_bid</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Highest bid price of base currency based on given quote currency</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24-hr volume of market pair denoted in BASE currency</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24-hr volume of market pair denoted in QUOTE currency</td>
+</tr>
+<tr>
+<td style="text-align: left">price_change_percent_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24-hr % price change of market pair</td>
+</tr>
+<tr>
+<td style="text-align: left">highest_price_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Highest price of base currency based on given quote currency in the last 24-hrs</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest_price_24h</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Lowest price of base currency based on given quote currency in the last 24-hrs</td>
+</tr>
+<tr>
+<td style="text-align: left">base_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Symbol/currency code of base currency, eg. BTC</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_currency</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Symbol/currency code of quote currency, eg. USD</td>
+</tr>
+</tbody></table>
+<h2 id='24-hour-pricing-and-volume-summary'>24-hour pricing and volume summary</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/ticker'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTC_USDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"base_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isFrozen"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ETH_USDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"base_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isFrozen"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+<p>GET <code>/v2/public/ticker</code></p>
+<h3 id='parameters-6'>Parameters</h3>
+<p>无</p>
+<h3 id='response-18'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">base_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">The quote pair Unified Cryptoasset ID.</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">The base pair Unified Cryptoasset ID.</td>
+</tr>
+<tr>
+<td style="text-align: left">last_price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Last transacted price of base currency based on given quote currency</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24 hour trading volume denoted in QUOTE currency</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24-hour trading volume denoted in BASE currency</td>
+</tr>
+<tr>
+<td style="text-align: left">isFrozen</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Indicates if the market is currently enabled (0) or disabled (1).</td>
+</tr>
+</tbody></table>
+<h2 id='full-depth-returned-for-a-given-market-pair'>Full depth returned for a given market pair</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/orderbook/market_pair?market_pair=BTC_USDT&amp;level=3&amp;depth=100'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622526449"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1102"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"20"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"60000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"91.185787"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"66000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.30322"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
+<p>GET <code>/v2/public/orderbook/market_pair</code></p>
+<h3 id='parameters-7'>Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">market_pair</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">A pair such as &quot;BTC_USDT&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left">level</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">eg: 3</td>
+</tr>
+<tr>
+<td style="text-align: left">depth</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Orders depth quantity: [0,5,10,20,50,100,500] Not defined or 0 = full order book Depth = 100 means 50 for each bid/ask side.</td>
+</tr>
+</tbody></table>
+<h3 id='response-19'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">server time</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">买</td>
+</tr>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">卖</td>
+</tr>
+</tbody></table>
+<h2 id='completed-trades-for-a-given-market-pai'>Completed trades for a given market pai</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="s1">'https://api.fameex.com/v2/public/trades/market_pair?market_pair=BTC_USDT'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trade_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2101</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.003333"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622526904"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"trade_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.008333"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622526904"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
+<p>GET <code>/v2/public/trades/market_pair</code></p>
+<h3 id='parameters-8'>Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Mandatory</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">market_pair</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">A pair such as &quot;BTC_USDT&quot;</td>
+</tr>
+</tbody></table>
+<h3 id='response-20'>Response</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trade_id</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Last transacted price of base currency based on given quote currency</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Transaction amount in BASE currency.</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_volume</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Transaction amount in QUOTE currency.</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Unix timestamp in milliseconds for when the transaction occurred.</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.</td>
+</tr>
+</tbody></table>
 <h2 id='symbol-price-ticker'>Symbol Price Ticker</h2>
 <blockquote>
 <p>Request</p>
@@ -2678,9 +3131,9 @@
     </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9999936"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
 <p>GET <code>/api/v2/ticker/price</code></p>
-<h3 id='parameters-4'>Parameters</h3>
+<h3 id='parameters-9'>Parameters</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2696,7 +3149,7 @@
 <td style="text-align: left">Name of the trading pair, example: BTC-USDT</td>
 </tr>
 </tbody></table>
-<h3 id='response-16'>Response</h3>
+<h3 id='response-21'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2808,7 +3261,7 @@
     </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-17'>Response</h3>
+</span></code></pre></div><h3 id='response-22'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2899,7 +3352,7 @@
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-18'>Response</h3>
+</span></code></pre></div><h3 id='response-23'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2989,7 +3442,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-19'>Response</h3>
+</span></code></pre></div><h3 id='response-24'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -3091,7 +3544,7 @@
     </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-20'>Response</h3>
+</span></code></pre></div><h3 id='response-25'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -3358,7 +3811,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-21'>Response</h3>
+</span></code></pre></div><h3 id='response-26'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -3652,7 +4105,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-22'>Response</h3>
+</span></code></pre></div><h3 id='response-27'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -3863,7 +4316,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-23'>Response</h3>
+</span></code></pre></div><h3 id='response-28'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -3984,7 +4437,7 @@
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85942975"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-24'>Response</h3>
+</span></code></pre></div><h3 id='response-29'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4080,7 +4533,7 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-25'>Response</h3>
+</span></code></pre></div><h3 id='response-30'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4195,7 +4648,7 @@
     </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-26'>Response</h3>
+</span></code></pre></div><h3 id='response-31'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4331,7 +4784,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-27'>Response</h3>
+</span></code></pre></div><h3 id='response-32'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4515,7 +4968,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-28'>Response</h3>
+</span></code></pre></div><h3 id='response-33'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4701,7 +5154,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-29'>Response</h3>
+</span></code></pre></div><h3 id='response-34'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4870,7 +5323,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-30'>Response</h3>
+</span></code></pre></div><h3 id='response-35'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4989,7 +5442,7 @@
     </span><span class="nl">"exportAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-31'>Response</h3>
+</span></code></pre></div><h3 id='response-36'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5087,7 +5540,7 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-32'>Response</h3>
+</span></code></pre></div><h3 id='response-37'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5241,7 +5694,7 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72473826"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-33'>Response</h3>
+</span></code></pre></div><h3 id='response-38'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5433,7 +5886,7 @@
     </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-34'>Response</h3>
+</span></code></pre></div><h3 id='response-39'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -5524,7 +5977,7 @@
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10383992916667793408"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-35'>Response</h3>
+</span></code></pre></div><h3 id='response-40'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -5614,7 +6067,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-36'>Response</h3>
+</span></code></pre></div><h3 id='response-41'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -5771,7 +6224,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-37'>Response</h3>
+</span></code></pre></div><h3 id='response-42'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -6003,7 +6456,7 @@
     </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-38'>Response</h3>
+</span></code></pre></div><h3 id='response-43'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -6277,7 +6730,7 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-39'>Response</h3>
+</span></code></pre></div><h3 id='response-44'>Response</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -6487,7 +6940,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-40'>Response</h3>
+</span></code></pre></div><h3 id='response-45'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6595,7 +7048,7 @@
     </span><span class="nl">"leastBorrowAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-41'>Response</h3>
+</span></code></pre></div><h3 id='response-46'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6694,7 +7147,7 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-42'>Response</h3>
+</span></code></pre></div><h3 id='response-47'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6772,7 +7225,7 @@
     </span><span class="nl">"availAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.99999910"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-43'>Response</h3>
+</span></code></pre></div><h3 id='response-48'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6871,7 +7324,7 @@
   </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-44'>Response</h3>
+</span></code></pre></div><h3 id='response-49'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6986,7 +7439,7 @@
     </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-45'>Response</h3>
+</span></code></pre></div><h3 id='response-50'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7148,7 +7601,7 @@
   </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
   </span><span class="nl">"operateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-28T18:17:01Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-46'>Response</h3>
+</span></code></pre></div><h3 id='response-51'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
