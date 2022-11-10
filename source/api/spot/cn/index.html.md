@@ -23,6 +23,15 @@ meta:
 
 # 更新日志
 
+## 2022-11-07
+
+- 新增现货行情接口:
+  - GET `/v2/public/assets` 币种列表
+  - GET `/v2/public/summary` 交易对信息
+  - GET `/v2/public/ticker` 交易对摘要
+  - GET `/v2/public/orderbook/market_pair` 深度信息
+  - GET `/v2/public/trades/market_pair` 订单查询
+
 ## 2021-03-30
 
 - 新增现货行情接口:
@@ -1216,6 +1225,287 @@ GET `/api/v2/ticker/24hr`
 | price_change_percent_24h | string   | 24 小时涨幅   |
 | highest_price_24h        | string   | 24 小时最高价 |
 | lowest_price_24h         | string   | 24 小时最低价 |
+
+## 币种信息
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/assets'
+```
+
+> 响应
+
+```json
+{
+    "code": "0",
+    "message": null,
+    "data": {
+        "BTC": {
+            "name": "btc",
+            "unified_cryptoasset_id": 95,
+            "can_withdraw": "true",
+            "can_deposit": "true",
+            "min_withdraw": "10",
+            "max_withdraw": "100",
+        },
+        "ETH": {
+            "name": "eth",
+            "unified_cryptoasset_id": 47,
+            "can_withdraw": "true",
+            "can_deposit": "true",
+            "min_withdraw": "1",
+            "max_withdraw": "2",
+        }
+    }
+
+```
+
+### HTTP 请求
+
+GET `/v2/public/assets`
+
+### 请求参数
+
+无
+
+### 响应参数
+
+| 参数                   | 数据类型 | 说明         |
+| :--------------------- | :------- | :----------- |
+| name                   | string   | 币种名称     |
+| unified_cryptoasset_id | string   | 币种 id      |
+| can_withdraw           | bool     | 是否可以提现 |
+| can_deposit            | bool     | 是否可以充值 |
+| min_withdraw           | string   | 最小提现数量 |
+| max_withdraw           | string   | 最大提现数量 |
+
+## 交易对信息
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/summary'
+```
+
+> 响应
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": [
+    {
+      "trading_pairs": "btcusdt",
+      "last_price": "60000",
+      "lowest_ask": "60000",
+      "highest_bid": "555",
+      "base_volume": "0",
+      "quote_volume": "0",
+      "price_change_percent_24h": "0",
+      "highest_price_24h": "60000",
+      "lowest_price_24h": "60000",
+      "base_currency": "BTC",
+      "quote_currency": "USDT"
+    },
+    {
+      "trading_pairs": "ethusdt",
+      "last_price": "60000",
+      "lowest_ask": "60000",
+      "highest_bid": "555",
+      "base_volume": "0",
+      "quote_volume": "0",
+      "price_change_percent_24h": "0",
+      "highest_price_24h": "60000",
+      "lowest_price_24h": "60000",
+      "base_currency": "ETH",
+      "quote_currency": "USDT"
+    }
+  ]
+}
+```
+
+### HTTP 请求
+
+GET `/v2/public/summary`
+
+### 请求参数
+
+无
+
+### 响应参数
+
+| 参数                     | 数据类型 | 说明          |
+| :----------------------- | :------- | :------------ |
+| trading_pairs            | string   | 币对名称      |
+| last_price               | string   | 最新成交价    |
+| lowest_ask               | string   | 最佳卖价      |
+| highest_bid              | string   | 最佳买价      |
+| base_volume              | string   | 成交量        |
+| quote_volume             | string   | 成交额        |
+| price_change_percent_24h | string   | 24 小时涨幅   |
+| highest_price_24h        | string   | 24 小时最高价 |
+| lowest_price_24h         | string   | 24 小时最低价 |
+| base_currency            | string   | 交易币种      |
+| quote_currency           | string   | 支付币种      |
+
+## 交易对摘要
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/ticker'
+```
+
+> 响应
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": {
+    "BTC_USDT": {
+      "base_id": "BTC",
+      "quote_id": "USDT",
+      "last_price": "60000",
+      "quote_volume": "0",
+      "base_volume": "0",
+      "isFrozen": 0
+    },
+    "ETH_USDT": {
+      "base_id": "ETH",
+      "quote_id": "USDT",
+      "last_price": "60000",
+      "quote_volume": "0",
+      "base_volume": "0",
+      "isFrozen": 0
+    }
+  }
+}
+```
+
+### HTTP 请求
+
+GET `/v2/public/ticker`
+
+### 请求参数
+
+无
+
+### 响应参数
+
+| 参数         | 数据类型 | 说明       |
+| :----------- | :------- | :--------- |
+| base_id      | string   | 币对名称   |
+| quote_id     | string   | 最新成交价 |
+| last_price   | string   | 最佳卖价   |
+| quote_volume | string   | 最佳买价   |
+| base_volume  | string   | 成交量     |
+| isFrozen     | string   | 是否启用   |
+
+## 深度信息
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/orderbook/market_pair?market_pair=BTC_USDT&level=3&depth=100'
+```
+
+> 响应
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": {
+    "timestamp": "1622526449",
+    "bids": [
+      ["10", "0.1102"],
+      ["20", "0.1"]
+    ],
+    "asks": [
+      ["60000", "91.185787"],
+      ["66000", "0.30322"]
+    ]
+  }
+}
+```
+
+### HTTP 请求
+
+GET `/v2/public/orderbook/market_pair`
+
+### 请求参数
+
+| 参数        | 是否必须 | 数据类型 | 说明               |
+| :---------- | :------- | :------- | :----------------- |
+| market_pair | YES      | string   | 示例例: "BTC_USDT" |
+| level       | NO       | int      | 示例例: 3          |
+| depth       | NO       | int      | 示例例: 100        |
+
+### 响应参数
+
+| 参数      | 数据类型 | 说明       |
+| :-------- | :------- | :--------- |
+| timestamp | int      | 服务器时间 |
+| bids      | string   | 买         |
+| asks      | string   | 卖         |
+
+## 订单查询
+
+> 请求示例
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/trades/market_pair?market_pair=BTC_USDT'
+```
+
+> 响应
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": [
+    {
+      "trade_id": 2101,
+      "price": "60000",
+      "base_volume": "0.003333",
+      "quote_volume": "0",
+      "timestamp": "1622526904",
+      "type": "buy"
+    },
+    {
+      "trade_id": 2100,
+      "price": "60000",
+      "base_volume": "0.008333",
+      "quote_volume": "0",
+      "timestamp": "1622526904",
+      "type": "buy"
+    }
+  ]
+}
+```
+
+### HTTP 请求
+
+GET `/v2/public/trades/market_pair`
+
+### 请求参数
+
+| 参数        | 是否必须 | 数据类型 | 说明               |
+| :---------- | :------- | :------- | :----------------- |
+| market_pair | YES      | string   | 示例例: "BTC_USDT" |
+
+### 响应参数
+
+| 参数         | 数据类型 | 说明            |
+| :----------- | :------- | :-------------- |
+| trade_id     | int      | 订单 id         |
+| price        | string   | 最新成交价      |
+| base_volume  | string   | volume          |
+| quote_volume | string   | price \* volume |
+| timestamp    | string   | 服务器时间      |
+| type         | string   | 买/卖           |
 
 ## 最新价格
 

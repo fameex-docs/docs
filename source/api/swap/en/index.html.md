@@ -25,7 +25,7 @@ meta:
 
 ## 2022-03-30
 
-- New endpoint for USDⓈ-M Futures:
+- New endpoint for USDT Futures:
   - GET `/swap-api/v2/orderbook` to query order book.
   - GET `/swap-api/v2/tickers` to query 24 hour rolling window price change statistics.
   - POST `/swap-api/v1/margin-mode` to change margin mode

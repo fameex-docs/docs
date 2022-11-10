@@ -23,6 +23,15 @@ meta:
 
 # Change Log
 
+## 2022-11-07
+
+- New endpoint for Market Data:
+  - GET `/v2/public/assets` to query detailed summary for each currency
+  - GET `/v2/public/summary` to query an overview of market data for all tickers and all market pairs
+  - GET `/v2/public/ticker` to query a 24-hour pricing and volume summary for each market pair
+  - GET `/v2/public/orderbook/market_pair` to query full depth returned for a given market pair
+  - GET `/v2/public/trades/market_pair` to query completed trades for a given market pair
+
 ## 2021-03-30
 
 - New endpoint for Market Data:
@@ -1215,6 +1224,287 @@ GET `/api/v2/ticker/24hr`
 | price_change_percent_24h | string | 24 hour increase         |
 | highest_price_24h        | string | High price               |
 | lowest_price_24h         | string | Low price                |
+
+## Detailed summary for each currency
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/assets'
+```
+
+> Response
+
+```json
+{
+    "code": "0",
+    "message": null,
+    "data": {
+        "BTC": {
+            "name": "btc",
+            "unified_cryptoasset_id": 95,
+            "can_withdraw": "true",
+            "can_deposit": "true",
+            "min_withdraw": "10",
+            "max_withdraw": "100",
+        },
+        "ETH": {
+            "name": "eth",
+            "unified_cryptoasset_id": 47,
+            "can_withdraw": "true",
+            "can_deposit": "true",
+            "min_withdraw": "1",
+            "max_withdraw": "2",
+        }
+    }
+
+```
+
+### HTTP Request
+
+GET `/v2/public/assets`
+
+### Parameters
+
+无
+
+### Response
+
+| Name                   | Type   | Description                                                          |
+| :--------------------- | :----- | :------------------------------------------------------------------- |
+| name                   | string | currency name                                                        |
+| unified_cryptoasset_id | string | currency id                                                          |
+| can_withdraw           | bool   | Identifies whether withdrawals are enabled or disabled.              |
+| can_deposit            | bool   | Identifies whether deposits are enabled or disabled.                 |
+| min_withdraw           | string | Identifies the single minimum withdrawal amount of a cryptocurrency. |
+| max_withdraw           | string | Identifies the single maximum withdrawal amount of a cryptocurrency. |
+
+## Overview of market data for all tickers and all market pairs
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/summary'
+```
+
+> Response
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": [
+    {
+      "trading_pairs": "btcusdt",
+      "last_price": "60000",
+      "lowest_ask": "60000",
+      "highest_bid": "555",
+      "base_volume": "0",
+      "quote_volume": "0",
+      "price_change_percent_24h": "0",
+      "highest_price_24h": "60000",
+      "lowest_price_24h": "60000",
+      "base_currency": "BTC",
+      "quote_currency": "USDT"
+    },
+    {
+      "trading_pairs": "ethusdt",
+      "last_price": "60000",
+      "lowest_ask": "60000",
+      "highest_bid": "555",
+      "base_volume": "0",
+      "quote_volume": "0",
+      "price_change_percent_24h": "0",
+      "highest_price_24h": "60000",
+      "lowest_price_24h": "60000",
+      "base_currency": "ETH",
+      "quote_currency": "USDT"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+GET `/v2/public/summary`
+
+### Parameters
+
+无
+
+### Response
+
+| Name                     | Type   | Description                                                                     |
+| :----------------------- | :----- | :------------------------------------------------------------------------------ |
+| trading_pairs            | string | Identifier of a ticker with delimiter to separate base/quote,eg. BTC-USD        |
+| last_price               | string | Last transacted price of base currency based on given quote currency            |
+| lowest_ask               | string | Lowest Ask price of base currency based on given quote currency                 |
+| highest_bid              | string | Highest bid price of base currency based on given quote currency                |
+| base_volume              | string | 24-hr volume of market pair denoted in BASE currency                            |
+| quote_volume             | string | 24-hr volume of market pair denoted in QUOTE currency                           |
+| price_change_percent_24h | string | 24-hr % price change of market pair                                             |
+| highest_price_24h        | string | Highest price of base currency based on given quote currency in the last 24-hrs |
+| lowest_price_24h         | string | Lowest price of base currency based on given quote currency in the last 24-hrs  |
+| base_currency            | string | Symbol/currency code of base currency, eg. BTC                                  |
+| quote_currency           | string | Symbol/currency code of quote currency, eg. USD                                 |
+
+## 24-hour pricing and volume summary
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/ticker'
+```
+
+> Response
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": {
+    "BTC_USDT": {
+      "base_id": "BTC",
+      "quote_id": "USDT",
+      "last_price": "60000",
+      "quote_volume": "0",
+      "base_volume": "0",
+      "isFrozen": 0
+    },
+    "ETH_USDT": {
+      "base_id": "ETH",
+      "quote_id": "USDT",
+      "last_price": "60000",
+      "quote_volume": "0",
+      "base_volume": "0",
+      "isFrozen": 0
+    }
+  }
+}
+```
+
+### HTTP Request
+
+GET `/v2/public/ticker`
+
+### Parameters
+
+无
+
+### Response
+
+| Name         | Type   | Description                                                          |
+| :----------- | :----- | :------------------------------------------------------------------- |
+| base_id      | string | The quote pair Unified Cryptoasset ID.                               |
+| quote_id     | string | The base pair Unified Cryptoasset ID.                                |
+| last_price   | string | Last transacted price of base currency based on given quote currency |
+| quote_volume | string | 24 hour trading volume denoted in QUOTE currency                     |
+| base_volume  | string | 24-hour trading volume denoted in BASE currency                      |
+| isFrozen     | string | Indicates if the market is currently enabled (0) or disabled (1).    |
+
+## Full depth returned for a given market pair
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/orderbook/market_pair?market_pair=BTC_USDT&level=3&depth=100'
+```
+
+> Response
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": {
+    "timestamp": "1622526449",
+    "bids": [
+      ["10", "0.1102"],
+      ["20", "0.1"]
+    ],
+    "asks": [
+      ["60000", "91.185787"],
+      ["66000", "0.30322"]
+    ]
+  }
+}
+```
+
+### HTTP Request
+
+GET `/v2/public/orderbook/market_pair`
+
+### Parameters
+
+| Name        | Mandatory | Type   | Description                                                                                                                  |
+| :---------- | :-------- | :----- | :--------------------------------------------------------------------------------------------------------------------------- |
+| market_pair | YES       | string | A pair such as "BTC_USDT"                                                                                                    |
+| level       | NO        | int    | eg: 3                                                                                                                        |
+| depth       | NO        | int    | Orders depth quantity: [0,5,10,20,50,100,500] Not defined or 0 = full order book Depth = 100 means 50 for each bid/ask side. |
+
+### Response
+
+| Name      | Type   | Description |
+| :-------- | :----- | :---------- |
+| timestamp | int    | server time |
+| bids      | string | 买          |
+| asks      | string | 卖          |
+
+## Completed trades for a given market pai
+
+> Request
+
+```shell
+curl --request GET 'https://api.fameex.com/v2/public/trades/market_pair?market_pair=BTC_USDT'
+```
+
+> Response
+
+```json
+{
+  "code": "0",
+  "message": null,
+  "data": [
+    {
+      "trade_id": 2101,
+      "price": "60000",
+      "base_volume": "0.003333",
+      "quote_volume": "0",
+      "timestamp": "1622526904",
+      "type": "buy"
+    },
+    {
+      "trade_id": 2100,
+      "price": "60000",
+      "base_volume": "0.008333",
+      "quote_volume": "0",
+      "timestamp": "1622526904",
+      "type": "buy"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+GET `/v2/public/trades/market_pair`
+
+### Parameters
+
+| Name        | Mandatory | Type   | Description               |
+| :---------- | :-------- | :----- | :------------------------ |
+| market_pair | YES       | string | A pair such as "BTC_USDT" |
+
+### Response
+
+| Name         | Type   | Description                                                                                                                                                                                     |
+| :----------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| trade_id     | int    | A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.                                                                      |
+| price        | string | Last transacted price of base currency based on given quote currency                                                                                                                            |
+| base_volume  | string | Transaction amount in BASE currency.                                                                                                                                                            |
+| quote_volume | string | Transaction amount in QUOTE currency.                                                                                                                                                           |
+| timestamp    | string | Unix timestamp in milliseconds for when the transaction occurred.                                                                                                                               |
+| type         | string | Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book. |
 
 ## Symbol Price Ticker
 
