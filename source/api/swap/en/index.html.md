@@ -1,11 +1,11 @@
 ---
-title: FAMEEX API Documentation
+title: FameEX API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - go
 
 toc_footers:
-  - <a href='https://www.fameex.com' target='blank'>FAMEEX Exchange</a>
+  - <a href='https://www.fameex.com' target='blank'>FameEX Exchange</a>
 
 includes:
   # - errors
@@ -16,9 +16,9 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: FAMEEX API Documentation
+    content: FameEX API Documentation
   - name: keywords
-    content: FAMEEX,API,Documentation
+    content: FameEX,API,Documentation
 ---
 
 # Change Log
@@ -53,15 +53,15 @@ meta:
 
 API overview
 
-FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
+FameEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
 
-Before using the API, please create your own API credentials through the FAMEEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
+Before using the API, please create your own API credentials through the FameEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
 
 API trading permissions allow you to quickly obtain the latest market quotations and order book state information, query your available balance, query your current pending orders, buy or sell, and withdraw orders.
 
-FAMEEX official website homepage: [www.fameex.com](http://www.fameex.com)
+FameEX official website homepage: [www.fameex.com](http://www.fameex.com)
 
-If you have any questions during use, please contact FAMEEX official customer service,
+If you have any questions during use, please contact FameEX official customer service,
 
 Our contact information is as follows:
 
@@ -86,7 +86,7 @@ Our official support is the most authoritative source for information about this
 
 All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:'application/json'
 
-Accessing FAMEEX-API through a proxy is not recommended due to high latency and poor stability.
+Accessing FameEX-API through a proxy is not recommended due to high latency and poor stability.
 
 ## Restriction rules
 
@@ -1151,10 +1151,10 @@ POST `/swap-api/v1/margin-mode`
 
 ### Parameters
 
-| Name         | Mandatory | Type   | Description                                   |
-| ------------ | --------- | ------ | --------------------------------------------- |
-| symbol       | Yes       | string | For example "BTC-USDT"         |
-| marginMode   | Yes       | int    | margin mode 1: CROSSED 2: ISOLATED |
+| Name       | Mandatory | Type   | Description                        |
+| ---------- | --------- | ------ | ---------------------------------- |
+| symbol     | Yes       | string | For example "BTC-USDT"             |
+| marginMode | Yes       | int    | margin mode 1: CROSSED 2: ISOLATED |
 
 > Response
 
@@ -1172,11 +1172,11 @@ POST `/swap-api/v1/margin-mode`
 
 ### Response
 
-| Field Name   | Type   | Description     |
-| ------------ | ------ | --------------- |
-| userid       | string | User id         |
-| symbol       | string | Contract code   |
-| marginMode   | int    | Margin mode     |
+| Field Name | Type   | Description   |
+| ---------- | ------ | ------------- |
+| userid     | string | User id       |
+| symbol     | string | Contract code |
+| marginMode | int    | Margin mode   |
 
 # U futures wallet API Endpoints
 

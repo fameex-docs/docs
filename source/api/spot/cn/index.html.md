@@ -1,11 +1,11 @@
 ---
-title: FAMEEX API Documentation
+title: FameEX API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - go
 
 toc_footers:
-  - <a href='https://www.fameex.com' target='blank'>FAMEEX Exchange</a>
+  - <a href='https://www.fameex.com' target='blank'>FameEX Exchange</a>
 
 includes:
   # - errors
@@ -16,9 +16,9 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: FAMEEX API Documentation
+    content: FameEX API Documentation
   - name: keywords
-    content: FAMEEX,API,Documentation
+    content: FameEX,API,Documentation
 ---
 
 # 更新日志
@@ -135,15 +135,15 @@ meta:
 
 API 概述
 
-FAMEEX 为您提供了一套简单又强大的 API 接口，帮助您快速、高效的获取行情和进行交易。
+FameEX 为您提供了一套简单又强大的 API 接口，帮助您快速、高效的获取行情和进行交易。
 
 使用 API 前，请先创建您个人的 API，获取您的 AccessKey 和 SecretKey，并设置 API 的 IP 访问限制。
 
 API 的交易权限让您可以快速的获取当前市场最新行情及时的下单交易、查询自己可用和冻结金额、查询自己当前尚未成交的挂单、买进或卖出、撤单。
 
-FAMEEX 官网首页： www.fameex.com <br><br>
+FameEX 官网首页： www.fameex.com <br><br>
 
-如果在使用过程中有任何问题，请联系 FAMEEX 官方客服，
+如果在使用过程中有任何问题，请联系 FameEX 官方客服，
 
 我们的联系方式如下：
 
@@ -170,7 +170,7 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 所有请求基于 Https 协议，POST 请求的请求头信息中 contentType 需要统一设置为:’application/json’
 
-鉴于延迟高和稳定性差等原因，不建议通过代理的方式访问 FAMEEX- API。
+鉴于延迟高和稳定性差等原因，不建议通过代理的方式访问 FameEX- API。
 
 ## 限频规则
 
@@ -834,7 +834,7 @@ curl `https://api.fameex.com/v1/common/timestamp`
 
 **功能说明：**
 
-此接口返回 FAMEEX 平台支持的所有交易币对。
+此接口返回 FameEX 平台支持的所有交易币对。
 
 **请求路径：**
 
@@ -893,7 +893,7 @@ curl `https://api.fameex.com/v1/common/symbols`
 
 **功能说明：**
 
-此接口返回 FAMEEX 支持的所有交易币种。
+此接口返回 FameEX 支持的所有交易币种。
 
 **请求路径：**
 
@@ -3742,7 +3742,7 @@ curl `https://api.fameex.com/v1/api/lever/ledger`
 | 4.生成的密钥有什么用处?<br>答:<br> 密钥是用来操作 API 的钥匙，在调用 API 接口时需要提供 API 密钥。私有密钥只在刚生成时显示一次，遗忘需重新生成。                                                                                                                                                                                          |
 | 5.k 线图是否可以获取几个月或者一年前的数据?<br>答:<br> 系统 k 线图最多只提供 1000 条数据,如果要获取比较久的数据需要使用小时或者天的单位获取。                                                                                                                                                                                             |
 | 6.API 的 IP 是否需要绑定?<br>答:<br> 1.API 的 IP 绑定有效的防止除了这个 IP 之外的服务器进行调用自己的权限进行交易操作。<br> 2.绑定 IP 后，只能由绑定的 IP 进行访问，如不绑定，则不限制访问 IP。                                                                                                                                           |
-| 7.API 是否支持提币?<br>答:<br> 不支持,提币必须现在 FAMEEX 官网进行提币。                                                                                                                                                                                                                                                                  |
+| 7.API 是否支持提币?<br>答:<br> 不支持,提币必须现在 FameEX 官网进行提币。                                                                                                                                                                                                                                                                  |
 | 8.公钥私钥可以提供给别人吗?<br>答:<br> 不建议,会导致资产损失。                                                                                                                                                                                                                                                                            |
 | 9.签名失败频繁?<br> • 检查 API Key 是否有效，是否复制正确，是否有绑定 IP 白名单；<br>• 检查时间戳是否是 UTC 时间；<br>• 检查参数是否按字母排序；<br>• 检查编码；<br>• 检查签名编码应该是 hex；<br>• 检查 是否以表单方式提交；<br>• 检查 的 url 是否带着签名字段，POST 的数据格式是否是 json 格式；<br>• 检查签名结果是否有进行 URI 编码。 |
 | 10.返回 login-required?<br>• 检查参数 account-id 是否是由 /v1/account/accounts 接口返回的，而不是填的 UID；<br>• 检查请求是否把业务参数也计算进签名；<br>• 检查请求是否将参数按照 ASCII 码表顺序排序。                                                                                                                                    |

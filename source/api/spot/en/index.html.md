@@ -1,11 +1,11 @@
 ---
-title: FAMEEX API Documentation
+title: FameEX API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - go
 
 toc_footers:
-  - <a href='https://www.fameex.com' target='blank'>FAMEEX Exchange</a>
+  - <a href='https://www.fameex.com' target='blank'>FameEX Exchange</a>
 
 includes:
   # - errors
@@ -16,9 +16,9 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: FAMEEX API Documentation
+    content: FameEX API Documentation
   - name: keywords
-    content: FAMEEX,API,Documentation
+    content: FameEX,API,Documentation
 ---
 
 # Change Log
@@ -136,15 +136,15 @@ meta:
 
 API overview
 
-FAMEEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
+FameEX provides you with a simple and powerful API interface to help you obtain market information and trade quickly and efficiently.
 
-Before using the API, please create your own API credentials through the FAMEEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
+Before using the API, please create your own API credentials through the FameEX UI, obtain your AccessKey and SecretKey, and set the IP access restriction of the API.
 
 API trading permissions allow you to quickly obtain the latest market quotations and order book state information, query your available balance, query your current pending orders, buy or sell, and withdraw orders.
 
-FAMEEX official website homepage: [www.fameex.com](http://www.fameex.com)
+FameEX official website homepage: [www.fameex.com](http://www.fameex.com)
 
-If you have any questions during use, please contact FAMEEX official customer service,
+If you have any questions during use, please contact FameEX official customer service,
 
 Our contact information is as follows:
 
@@ -169,7 +169,7 @@ Our official support is the most authoritative source for information about this
 
 All requests are based on the Https protocol, and the contentType in the header information of the POST request needs to be uniformly set to:'application/json'
 
-Accessing FAMEEX-API through a proxy is not recommended due to high latency and poor stability.
+Accessing FameEX-API through a proxy is not recommended due to high latency and poor stability.
 
 ## Restriction rules
 
@@ -833,7 +833,7 @@ Speed limit rule: 20 times/2s
 
 **Function description:**
 
-This interface returns all trading currency pairs supported by the FAMEEX platform.
+This interface returns all trading currency pairs supported by the FameEX platform.
 
 **Request path:**
 
@@ -892,7 +892,7 @@ Speed limit rule: 20 times/2s
 
 **Function description:**
 
-This interface returns all trading currencies supported by FAMEEX.
+This interface returns all trading currencies supported by FameEX.
 
 **Request path:**
 
@@ -3660,7 +3660,7 @@ no
 | 4. What is the use of the generated key? Answer: The key is the key used to operate the API, and the API key needs to be provided when calling the API interface. The private key is only displayed once when it is just generated, and it needs to be regenerated if it is forgotten.                                                                                                                                                                                                                                                                                                                                                     |
 | 5. Can the candlestick chart obtain data from months or one year ago? Answer: The system candlestick chart only provides 1000 pieces of data at most. If you want to obtain longer data, you need to use the unit of hour or day to obtain it.                                                                                                                                                                                                                                                                                                                                                                                             |
 | 6. Does the IP of the API need to be bound? Answer: 1. The IP binding of the API effectively prevents servers other than this IP from calling their own authority for transaction operations. 2. After the IP is bound, it can only be accessed by the bound IP. If it is not bound, the access to the IP is not restricted.                                                                                                                                                                                                                                                                                                               |
-| 7. Does the API support withdrawals? Answer: No, withdrawals must be made on the FAMEEX official website.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 7. Does the API support withdrawals? Answer: No, withdrawals must be made on the FameEX official website.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | 8. Can the public key and private key be provided to others? Answer: It is not recommended, it will cause asset loss.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | 9. Frequent signature failures? • Check whether the API Key is valid, copied correctly, and whether there is a whitelist of bound IP; • Check whether the timestamp is UTC time; • Check whether the parameters are sorted alphabetically; • Check the code; • Check the signature code It should be hex; • Check whether it is submitted in a form ; • Check whether the url has a signature field, and whether the POST data format is json format; • Check whether the signature result is URI-encoded.                                                                                                                                 |
 | 10. Return login-required? • Check whether the parameter account-id is returned by the /v1/account/accounts interface instead of the filled UID; • Check whether the request includes the business parameters into the signature; • Check whether the request includes parameters Sort in the order of the ASCII code table.                                                                                                                                                                                                                                                                                                               |

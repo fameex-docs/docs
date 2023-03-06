@@ -1,11 +1,11 @@
 ---
-title: FAMEEX API Documentation
+title: FameEX API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - go
 
 toc_footers:
-  - <a href='https://www.fameex.com' target='blank'>FAMEEX Exchange</a>
+  - <a href='https://www.fameex.com' target='blank'>FameEX Exchange</a>
 
 includes:
   # - errors
@@ -16,9 +16,9 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: FAMEEX API Documentation
+    content: FameEX API Documentation
   - name: keywords
-    content: FAMEEX,API,Documentation
+    content: FameEX,API,Documentation
 ---
 
 # 更新日志
@@ -52,15 +52,15 @@ meta:
 
 API 概述
 
-FAMEEX 为您提供了一套简单又强大的 API 接口，帮助您快速、高效的获取行情和进行交易。
+FameEX 为您提供了一套简单又强大的 API 接口，帮助您快速、高效的获取行情和进行交易。
 
 使用 API 前，请先创建您个人的 API，获取您的 AccessKey 和 SecretKey，并设置 API 的 IP 访问限制。
 
 API 的交易权限让您可以快速的获取当前市场最新行情及时的下单交易、查询自己可用和冻结金额、查询自己当前尚未成交的挂单、买进或卖出、撤单。
 
-FAMEEX 官网首页： www.fameex.com <br><br>
+FameEX 官网首页： www.fameex.com <br><br>
 
-如果在使用过程中有任何问题，请联系 FAMEEX 官方客服，
+如果在使用过程中有任何问题，请联系 FameEX 官方客服，
 
 我们的联系方式如下：
 
@@ -87,7 +87,7 @@ FAMEEX 官网首页： www.fameex.com <br><br>
 
 所有请求基于 Https 协议，POST 请求的请求头信息中 contentType 需要统一设置为:’application/json’
 
-鉴于延迟高和稳定性差等原因，不建议通过代理的方式访问 FAMEEX- API。
+鉴于延迟高和稳定性差等原因，不建议通过代理的方式访问 FameEX- API。
 
 ## 限频规则
 

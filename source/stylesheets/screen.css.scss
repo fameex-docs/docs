@@ -652,7 +652,6 @@ header {
 }
 header .logo {
   width: 160px;
-  height: 33px;
 }
 header .lang {
   display: none;
@@ -661,13 +660,13 @@ header .lang {
   line-height: 26px;
   text-align: center;
   border: 1px solid #383F66;
-  color: #EABE00;
+  color: #884dff;
   text-decoration: none;
   border-radius: 3px;
   transition: all 300ms;
 }
 header .lang:hover {
-  border-color: #EABE00;
+  border-color: #884dff;
 }
 header .flex_box {
   -ms-flex: 1;
@@ -696,18 +695,17 @@ header .nav_box .nav_tab a {
   text-decoration: none;
 }
 header .nav_box .nav_tab a:hover {
-  color: #EABE00;
+  color: #884dff;
 }
 header .nav_box .nav_tab a.current {
   // color: #FFF;
-  color: #EABE00;
-  border-color: #EABE00;
+  color: #884dff;
+  border-color: #884dff;
 }
 
 @media (max-width: $phone-width) {
   header .logo {
     width: 90px;
-    height: 18.5px;
   }
   header .nav_box {
       position: relative;
