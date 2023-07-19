@@ -778,9 +778,9 @@ This interface obtains and lists your current order information (the order infor
 
 **Request path:**
 
-/v1/api/spot/orderlist
+/swap-api/v1/orders
 
-curl `https://api.fameex.com/v1/api/spot/orderlist`
+curl `https://api.fameex.com/swap-api/v1/orders`
 
 `Headers parameter`
 
@@ -797,7 +797,7 @@ no
 | liquidationType | no        | int       | Liquidation type 1- liquidation 2- lighten up 3- take profit lighten up                                                                                                                    |
 | orderTypes      | no        | int array | List of Order Types 1-Limit Price 2- Market Price 3- Limit Price Take Profit 4- Market Price Stop Profit 5- Limit Price Stop Loss 6 Market Price Stop Loss 7- Maker Only (such as [1,2,3]) |
 | state           | Yes       | int       | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                                                                                                  |
-| pageno          | Yes       | int       | Paging usage, which page                                                                                                                                                                   |
+| pageNum         | Yes       | int       | Paging usage, which page                                                                                                                                                                   |
 | pageSize        | Yes       | int       | Paging usage, number per page (0 <pageSize ≤ 500)                                                                                                                                          |
 | startTime       | no        | int64     | Timestamp, query the start time of the order in seconds                                                                                                                                    |
 | endTime         | no        | int64     | Timestamp, query the end time of the order in seconds                                                                                                                                      |
