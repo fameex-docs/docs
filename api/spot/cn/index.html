@@ -582,10 +582,17 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='185368440e'>更新日志</h1><h2 id='2022-11-07'>2022-11-07</h2>
+        <h1 id='185368440e'>更新日志</h1><h2 id='2023-09-11'>2023-09-11</h2>
+<ul>
+<li>修改现货订单接口:
+<ul>
+<li>GET <code>/v1/api/spot/orderlist</code> 获取委托单列表</li>
+<li>GET <code>/v1/api/orders_pending</code> 获取所有未完成的订单(弃用)</li>
+</ul></li>
+</ul>
+<h2 id='2022-11-07'>2022-11-07</h2>
 <ul>
 <li>新增现货行情接口:
-
 <ul>
 <li>GET <code>/v2/public/assets</code> 币种列表</li>
 <li>GET <code>/v2/public/summary</code> 交易对信息</li>
@@ -637,7 +644,7 @@
 <li>修改获取委托单详情接口 <code>/v1/api/spot/orderdetail</code></li>
 <li>修改获取委托单列表接口 <code>/v1/api/spot/orderlist</code></li>
 <li>修改获取成交明细接口 <code>/v1/api/spot/fills</code></li>
-<li>修改获取所有未完成的订单接口 <code>/v1/api/orders_pending</code></li>
+<li>修改获取所有未完成的订单接口 <code>/v1/api/orders_pending(废弃)</code></li>
 </ul></li>
 <li><p>杠杆交易 API 接口更新：</p>
 
@@ -3702,11 +3709,11 @@
 
 <p><strong>请求路径：</strong></p>
 
-<p>/v1/api/spot/orderlist</p>
+<p>POST /v1/api/spot/orderlist</p>
 
 <p>curl <code>https://api.fameex.com/v1/api/spot/orderlist</code></p>
 
-<p><code>headers参数</code></p>
+<p><strong>headers参数</strong></p>
 
 <p>无</p>
 
@@ -3726,13 +3733,13 @@
 </thead><tbody>
 <tr>
 <td>base</td>
-<td>否</td>
+<td>是</td>
 <td>string</td>
 <td>交易币(大写，例如“BTC”)</td>
 </tr>
 <tr>
 <td>quote</td>
-<td>否</td>
+<td>是</td>
 <td>string</td>
 <td>计价币(大写，例如“USDT”)</td>
 </tr>
@@ -3788,7 +3795,7 @@
 <td>strategyType</td>
 <td>否</td>
 <td>int</td>
-<td>策略类型</td>
+<td>策略类型,1-网格策略 2-极速定投</td>
 </tr>
 </tbody></table>
 
@@ -3804,13 +3811,33 @@
     </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMG-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10921153848062509056"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.518"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9633"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"money"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9633"</span><span class="w">
+        </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.4989894"</span><span class="w">
+        </span><span class="nl">"deductFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004633204633205"</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"omg"</span><span class="w">
+        </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="nl">"strategyType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="w">
+        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PC"</span><span class="w">
+        </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">{}</span><span class="w">
+        </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694423079</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694423081</span><span class="p">,</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4253,147 +4280,8 @@
 
 <p><strong>功能说明：</strong></p>
 
-<p>此接口获取您当前所有的成交订单信息。这个请求支持分页，并且按时间倒序排序和存储，最新的排在最前面。</p>
+<p>原先接口/v1/api/orders_pending已废弃。未完成订单可通过<a href="#bd88155b82">/v1/api/spot/orderlist</a> 中state=7来获取</p>
 
-<p><strong>请求路径：</strong></p>
-
-<p>/v1/api/orders_pending</p>
-
-<p>curl <code>https://api.fameex.com /v1/api/orders_pending</code></p>
-
-<p><strong>路由参数：</strong></p>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>是否必须</th>
-<th>数据类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>pairName</td>
-<td>是</td>
-<td>string</td>
-<td>币对名称（例:BTC_USDT）</td>
-</tr>
-<tr>
-<td>pageNum</td>
-<td>是</td>
-<td>string</td>
-<td>分页使用, 第几页,从第一页开始</td>
-</tr>
-<tr>
-<td>pageSize</td>
-<td>是</td>
-<td>string</td>
-<td>分页使用, 每页数量 (0&lt; pageSize ≤ 500)</td>
-</tr>
-</tbody></table>
-
-<p><strong>Post 参数：</strong></p>
-
-<p>无</p>
-
-<blockquote>
-<p><strong>返回示例：</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"pageNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11403650861072384000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pairName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMG_ETH"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00477"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyClass"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dealedCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dealedMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1571040752762737823</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='50faad05f3-28'>响应参数</h3>
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>返回值状态</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>返回值描述</td>
-</tr>
-<tr>
-<td>data</td>
-<td>string</td>
-<td>返回值,成交明细</td>
-</tr>
-<tr>
-<td>pairName</td>
-<td>string</td>
-<td>币对名称（例:BTC_USDT）</td>
-</tr>
-<tr>
-<td>orderId</td>
-<td>string</td>
-<td>订单编号</td>
-</tr>
-<tr>
-<td>buyClass</td>
-<td>int</td>
-<td>交易类型: 0 限价交易</td>
-</tr>
-<tr>
-<td>buyType</td>
-<td>int</td>
-<td>买卖方向: 0 买, 1 卖</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>委托价格</td>
-</tr>
-<tr>
-<td>count</td>
-<td>string</td>
-<td>委托数量</td>
-</tr>
-<tr>
-<td>dealedCount</td>
-<td>string</td>
-<td>已成交数量</td>
-</tr>
-<tr>
-<td>dealedMoney</td>
-<td>string</td>
-<td>已成交金额</td>
-</tr>
-<tr>
-<td>state</td>
-<td>int</td>
-<td>1 未生效 2 未成交 3 部分成交</td>
-</tr>
-<tr>
-<td>time</td>
-<td>int64</td>
-<td>时间（单位:纳秒）</td>
-</tr>
-</tbody></table>
 <h1 id='api-3'>钱包 API 接口</h1><h2 id='84ac7dd23c'>获取钱包账户信息</h2>
 <p>限速规则：20 次/2s</p>
 
@@ -8052,6 +7940,14 @@
 <tr>
 <td>230030</td>
 <td>请通过 KYC 认证后进行操作</td>
+</tr>
+<tr>
+<td>280042</td>
+<td>pageNum参数错误,需要大于0</td>
+</tr>
+<tr>
+<td>280043</td>
+<td>pageSize参数错误,需要在0-500之间</td>
 </tr>
 </tbody></table>
 <h1 id='0adb1147b3'>常见问题</h1>
