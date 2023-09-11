@@ -485,7 +485,7 @@
                     <a href="#get-transaction-details" class="toc-h2 toc-link" data-title="Get transaction details">Get transaction details</a>
                   </li>
                   <li>
-                    <a href="#get-all-outstanding-orders" class="toc-h2 toc-link" data-title="Get all outstanding orders">Get all outstanding orders</a>
+                    <a href="#get-all-outstanding-orders" class="toc-h2 toc-link" data-title="Get all outstanding orders">Get all outstanding orders(Deprecated)</a>
                   </li>
               </ul>
           </li>
@@ -582,7 +582,15 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='change-log'>Change Log</h1><h2 id='2022-11-07'>2022-11-07</h2>
+        <h1 id='change-log'>Change Log</h1><h2 id='2023-09-11'>2023-09-11</h2>
+<ul>
+<li>Spot Order Interface Update :
+<ul>
+<li>GET <code>/v1/api/spot/orderlist</code> Get a list of orders</li>
+<li>GET <code>/v1/api/orders_pending</code> Get all outstanding orders(Deprecated)</li>
+</ul></li>
+</ul>
+<h2 id='2022-11-07'>2022-11-07</h2>
 <ul>
 <li>New endpoint for Market Data:
 
@@ -3702,7 +3710,7 @@
 
 <p><strong>Request path:</strong></p>
 
-<p>/v1/api/spot/orderlist</p>
+<p>POST /v1/api/spot/orderlist</p>
 
 <p>curl <code>https://api.fameex.com/v1/api/spot/orderlist</code></p>
 
@@ -3734,44 +3742,44 @@
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">int</td>
 <td style="text-align: left">Order Direction 1-Buy 2-Sell</td>
 </tr>
 <tr>
 <td style="text-align: left">orderTypes</td>
-<td style="text-align: left">Yes</td>
+<td style="text-align: left">No</td>
 <td style="text-align: left">int array</td>
 <td style="text-align: left">List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only</td>
 </tr>
 <tr>
 <td style="text-align: left">state</td>
 <td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
+<td style="text-align: left">int</td>
 <td style="text-align: left">Order status 7-uncompleted 8-completed 9-completed or partially cancelled</td>
 </tr>
 <tr>
-<td style="text-align: left">pageno</td>
-<td style="text-align: left">No</td>
-<td style="text-align: left">string</td>
+<td style="text-align: left">pageNum</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">int</td>
 <td style="text-align: left">Pagination, the first few pages (1&lt;=pageNum)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
-<td style="text-align: left">No</td>
+<td style="text-align: left">Yes</td>
 <td style="text-align: left">string</td>
 <td style="text-align: left">Pagination, the number of pages (1&lt;=pageSize&lt;= 500)</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">int</td>
 <td style="text-align: left">Start timestamp, seconds</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">int</td>
 <td style="text-align: left">End timestamp, seconds</td>
 </tr>
 <tr>
@@ -3783,8 +3791,8 @@
 <tr>
 <td style="text-align: left">strategyType</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Strategy type</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">Strategy type, 1-StrategyTypeGrid, 2-StrategyTypeInvest  </td>
 </tr>
 </tbody></table>
 
@@ -3800,13 +3808,33 @@
     </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMG-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10921153848062509056"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.518"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9633"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"money"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9633"</span><span class="w">
+        </span><span class="nl">"filledMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.4989894"</span><span class="w">
+        </span><span class="nl">"deductFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004633204633205"</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"omg"</span><span class="w">
+        </span><span class="nl">"triggerPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerState"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="nl">"strategyType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="w">
+        </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PC"</span><span class="w">
+        </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">{}</span><span class="w">
+        </span><span class="nl">"cancelType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694423079</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694423081</span><span class="p">,</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4244,152 +4272,14 @@
 <td style="text-align: left">Creation time</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-outstanding-orders'>Get all outstanding orders</h2>
+<h2 id='get-all-outstanding-orders'>Get all outstanding orders(Deprecated)</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
 <p><strong>Function Description:</strong></p>
 
-<p>This interface gets all your current transaction order information. This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.</p>
+<p>This interface gets all your current transaction order information.</p>
+<p>The previous interface:/v1/api/orders_pending has been deprecated.You can get pending orders through API:<a href="#get-a-list-of-orders"> /v1/api/spot/orderlist</a>  With body param state=7</p>
 
-<p><strong>Request path:</strong></p>
-
-<p>/v1/api/orders_pending</p>
-
-<p>curl <code>https://api.fameex.com/v1/api/orders_pending</code></p>
-
-<p><strong>Routing parameters:</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Name</th>
-<th style="text-align: left">Mandatory</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">pairName</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">The name of the currency pair (for example: BTC_USDT)</td>
-</tr>
-<tr>
-<td style="text-align: left">pageno</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Paging use, the first few pages, starting from the first page</td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">Yes</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Paging usage, number per page (0&lt; pageSize ≤ 500)</td>
-</tr>
-</tbody></table>
-
-<p><strong>Post parameters:</strong></p>
-
-<p>No</p>
-
-<blockquote>
-<p><strong>Return example:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"pageNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11403650861072384000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pairName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMG_ETH"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00477"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyClass"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dealedCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dealedMoney"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1571040752762737823</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-28'>Response</h3>
-<table><thead>
-<tr>
-<th style="text-align: left">Name</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Return value status</td>
-</tr>
-<tr>
-<td style="text-align: left">msg</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Return value description</td>
-</tr>
-<tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Return value, transaction details</td>
-</tr>
-<tr>
-<td style="text-align: left">pairName</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">The name of the currency pair (for example: BTC_USDT)</td>
-</tr>
-<tr>
-<td style="text-align: left">orderId</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Order number</td>
-</tr>
-<tr>
-<td style="text-align: left">buyClass</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Transaction type: 0 limit transaction</td>
-</tr>
-<tr>
-<td style="text-align: left">buyType</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">Trading direction: 0 buy, 1 sell</td>
-</tr>
-<tr>
-<td style="text-align: left">price</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Commission price</td>
-</tr>
-<tr>
-<td style="text-align: left">count</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Number of orders</td>
-</tr>
-<tr>
-<td style="text-align: left">dealedCount</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Number of transactions</td>
-</tr>
-<tr>
-<td style="text-align: left">dealedMoney</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">Transaction amount</td>
-</tr>
-<tr>
-<td style="text-align: left">state</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">1 Not effective 2 Not completed 3 Partially completed</td>
-</tr>
-<tr>
-<td style="text-align: left">time</td>
-<td style="text-align: left">int64</td>
-<td style="text-align: left">Time (unit: nanosecond)</td>
-</tr>
-</tbody></table>
 <h1 id='wallet-api-endpoints'>Wallet API Endpoints</h1><h2 id='get-wallet-info'>Get wallet info</h2>
 <p>Speed limit rule: 20 times/2s</p>
 
@@ -7711,6 +7601,15 @@
 <tr>
 <td>230030</td>
 <td>Please operate after KYC certification</td>
+</tr>
+
+<tr>
+<td>280042</td>
+<td>pageNum value error,should greater than 0</td>
+</tr>
+<tr>
+<td>280043</td>
+<td>pageSize value error,should between 0-500</td>
 </tr>
 </tbody></table>
 <h1 id='common-problem'>Common problem</h1>
