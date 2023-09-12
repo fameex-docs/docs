@@ -23,6 +23,11 @@ meta:
 
 # Change Log
 
+## 2023-09-12
+
+- Coin trading interface update:
+  - Delete the interface to get all outstanding orders `/v1/api/orders_pending` (use `/v1/api/spot/orderlist` instead)
+
 ## 2022-11-07
 
 - New endpoint for Market Data:
@@ -1790,7 +1795,7 @@ This interface obtains and lists your current order information (the order infor
 
 **Request path:**
 
-/v1/api/spot/orderlist
+POST /v1/api/spot/orderlist
 
 curl `https://api.fameex.com/v1/api/spot/orderlist`
 
@@ -1804,15 +1809,15 @@ No
 | :----------- | :-------- | :-------- | :---------------------------------------------------------------------------------------------------------- |
 | base         | Yes       | string    | Transaction currency (uppercase, such as "BTC")                                                             |
 | quote        | Yes       | string    | Denominated currency (uppercase, such as "USDT")                                                            |
-| side         | Yes       | string    | Order Direction 1-Buy 2-Sell                                                                                |
-| orderTypes   | Yes       | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
-| state        | Yes       | string    | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                   |
-| pageno       | No        | string    | Pagination, the first few pages (1<=pageNum)                                                                |
-| pageSize     | No        | string    | Pagination, the number of pages (1<=pageSize<= 500)                                                         |
-| startTime    | Yes       | string    | Start timestamp, seconds                                                                                    |
-| endTime      | Yes       | string    | End timestamp, seconds                                                                                      |
-| strategyId   | No        | string    | Strategy Id                                                                                                 |
-| strategyType | No        | string    | Strategy type                                                                                               |
+| side         | No       | int    | Order Direction 1-Buy 2-Sell                                                                                |
+| orderTypes   | No       | int array | List of order types 1- limit price 2- market price 3- stop profit stop loss 4- tracking order 5- Maker only |
+| state        | Yes       | int    | Order status 7-uncompleted 8-completed 9-completed or partially cancelled                                   |
+| pageNum      | Yes       | int       | Pagination, the first few pages (1<=pageNum)                 |
+| pageSize     | Yes       | int       | Pagination, the number of pages (1<=pageSize<= 500)          |
+| startTime    | No        | int       | Start timestamp, seconds                                     |
+| endTime      | No        | int       | End timestamp, seconds                                       |
+| strategyId   | No        | string    | Strategy Id                                                  |
+| strategyType | No        | int       | Strategy type: 1-StrategyTypeGrid, 2-StrategyTypeInvest      |
 
 > **Return example:**
 
@@ -1972,77 +1977,6 @@ No
 | role            | string       | Character type 1-maker 2-taker                                                                    |
 | selftrade       | int          | Whether self-deal 1-self-deal                                                                     |
 | createTime      | int64        | Creation time                                                                                     |
-
-## Get all outstanding orders
-
-Speed limit rule: 20 times/2s
-
-**Function Description:**
-
-This interface gets all your current transaction order information. This request supports paging, and is sorted and stored in reverse chronological order, with the latest one at the top.
-
-**Request path:**
-
-/v1/api/orders_pending
-
-curl `https://api.fameex.com/v1/api/orders_pending`
-
-**Routing parameters:**
-
-| Name     | Mandatory | Type   | Description                                                   |
-| :------- | :-------- | :----- | :------------------------------------------------------------ |
-| pairName | Yes       | string | The name of the currency pair (for example: BTC_USDT)         |
-| pageno   | Yes       | string | Paging use, the first few pages, starting from the first page |
-| pageSize | Yes       | string | Paging usage, number per page (0< pageSize ≤ 500)             |
-
-**Post parameters:**
-
-No
-
-> **Return example:**
-
-```json
-{
-  "code": 200,
-  "msg": "SUCCESS",
-  "data": {
-    "pageNum": 1,
-    "pageSize": 100,
-    "list": [
-      {
-        "orderId": "11403650861072384000",
-        "pairName": "OMG_ETH",
-        "price": "0.00477",
-        "count": "1",
-        "buyType": 1,
-        "buyClass": 0,
-        "dealedCount": "0",
-        "dealedMoney": "0",
-        "state": 1,
-        "time": 1571040752762737823
-      }
-    ]
-  }
-}
-```
-
-### Response
-
-| Name        | Type   | Description                                           |
-| :---------- | :----- | :---------------------------------------------------- |
-| code        | int    | Return value status                                   |
-| msg         | string | Return value description                              |
-| data        | string | Return value, transaction details                     |
-| pairName    | string | The name of the currency pair (for example: BTC_USDT) |
-| orderId     | string | Order number                                          |
-| buyClass    | int    | Transaction type: 0 limit transaction                 |
-| buyType     | int    | Trading direction: 0 buy, 1 sell                      |
-| price       | string | Commission price                                      |
-| count       | string | Number of orders                                      |
-| dealedCount | string | Number of transactions                                |
-| dealedMoney | string | Transaction amount                                    |
-| state       | int    | 1 Not effective 2 Not completed 3 Partially completed |
-| time        | int64  | Time (unit: nanosecond)                               |
 
 # Wallet API Endpoints
 
@@ -3649,6 +3583,14 @@ no
 | 112047 | The spot API interface is temporarily inaccessible                                       |
 | 112048 | The futures API interface is temporarily inaccessible                                    |
 | 230030 | Please operate after KYC certification                                                   |
+| 280007 | Query Coin Pair Not Exist                |
+| 280014 | Query Side Err: 1-Buy 2-Sell             |
+| 280048 | Query LiquidationType Error              |
+| 280204 | Query StrategyType Error                 |
+| 280044 | Query OrderTypes Error                   |
+| 280045 | Query OrderState Error                   |
+| 280042 | PageNum Error: should >0                 |
+| 280043 | PageSize Error: should between 0 and 500 |
 
 # Common problem
 

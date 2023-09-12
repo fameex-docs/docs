@@ -23,6 +23,11 @@ meta:
 
 # 更新日志
 
+## 2023-09-12
+
+- Coin trading interface update:
+  - 获取所有未完成的订单接口 `/v1/api/orders_pending` (使用 `/v1/api/spot/orderlist` 替代)
+
 ## 2022-11-07
 
 - 新增现货行情接口:
@@ -1791,7 +1796,7 @@ curl `https://api.fameex.com/v1/api/spot/orderdetail`
 
 **请求路径：**
 
-/v1/api/spot/orderlist
+POST /v1/api/spot/orderlist
 
 curl `https://api.fameex.com/v1/api/spot/orderlist`
 
@@ -1809,7 +1814,7 @@ curl `https://api.fameex.com/v1/api/spot/orderlist`
 | ------------ | -------- | --------- | ------------------------------------------------------------- |
 | base         | 否       | string    | 交易币(大写，例如“BTC”)                                       |
 | quote        | 否       | string    | 计价币(大写，例如“USDT”)                                      |
-| side         | 否       | string    | 委托方向 1-买 2-卖                                            |
+| side         | 否       | int    | 委托方向 1-买 2-卖                                            |
 | orderTypes   | 否       | int array | 委托类型列表 1-限价 2-市价 3-止盈止损 4-跟踪委托 5-只做 Maker |
 | state        | 是       | int       | 委托单状态 7-未完成 8-已完成 9-完全成交或部分成交撤销         |
 | pageNum      | 是       | int       | 分页, 第几页(1<=pageNum)                                      |
@@ -3731,6 +3736,14 @@ curl `https://api.fameex.com/v1/api/lever/ledger`
 | 112047  | 现货 API 接口暂时不可访问                         |
 | 112048  | 期货 API 接口暂时不可访问                         |
 | 230030  | 请通过 KYC 认证后进行操作                         |
+| 280007 | 币对不存在或未开启交易                |
+| 280014 | 买卖方向参数错误             |
+| 280048 | 强平类型参数错误              |
+| 280204 | 策略类型参数错误                 |
+| 280044 | 订单类型参数错误                   |
+| 280045 | 订单状态参数错误                   |
+| 280042 | 页码要大于0                 |
+| 280043 | 页数要在 0 - 500 之间 |
 
 # 常见问题
 
