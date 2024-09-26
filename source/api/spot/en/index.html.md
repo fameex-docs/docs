@@ -1681,8 +1681,6 @@ No
 | Name       | Mandatory | Type   | Description                                                                |
 | :--------- | :-------- | :----- | :------------------------------------------------------------------------- |
 | symbol     | Yes       | string | For example, the name of the currency pair: "BTC-USDT"                     |
-| orderIds   | No        | array  | Order ID list (orderId and clientOid must be filled in only one)           |
-| clientOids | No        | array  | User-made order ID list (orderId and clientOid must be filled in only one) |
 
 ```json
 {

@@ -1682,8 +1682,6 @@ curl `https://api.fameex.com/v1/api/spot/cancel_orders_all`
 | 参数       | 是否必须 | 数据类型 | 说明                                                              |
 | ---------- | -------- | -------- | ----------------------------------------------------------------- |
 | symbol     | 是       | string   | 币对名称 例如:"BTC-USDT"                                          |
-| orderIds   | 否       | array    | 委托单 ID 列表(orderId 和 clientOid 必须且只能选一个填写)         |
-| clientOids | 否       | array    | 用户自编委托单 ID 列表(orderId 和 clientOid 必须且只能选一个填写) |
 
 ```json
 {
