@@ -847,9 +847,9 @@ curl `https://api.fameex.com/v1/common/timestamp`
 
 curl `https://api.fameex.com/v1/common/symbols`
 
-**headers参数**
-| 字段名称 | 参数 |
-| -------- | -------- |
+**headers：**
+| 字段名称 | 参数 			      |
+| -------- | -------------------------------- |
 | header   | Accept-Encoding:application/gzip |
 
 **路由参数：**

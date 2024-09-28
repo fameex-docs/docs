@@ -1673,8 +1673,8 @@ This interface provides the function of canceling all unexecuted orders of a spe
 curl `https://api.fameex.com/v1/api/spot/cancel_orders_all`
 
 **headers parameters:**
-| name  | param |
-| -------- | -------- |
+| name     | param                            |
+| :------- | :------------------------------- |
 | header   | Accept-Encoding:application/gzip |
 
 **Routing parameters:**
